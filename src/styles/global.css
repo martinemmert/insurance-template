@@ -35,17 +35,23 @@ body {
 }
 
 @keyframes sidebar-bg {
-  0%, 24% {
+  0%, 14% {
     background: #1a1a2e;
   }
-  25%, 49% {
+  15%, 29% {
     background: #2e1a1a;
   }
-  50%, 74% {
+  30%, 44% {
     background: #1a2e1a;
   }
-  75%, 100% {
+  45%, 59% {
     background: #2e2e1a;
+  }
+  60%, 74% {
+    background: #1a2e2e;
+  }
+  75%, 100% {
+    background: #2e1a2e;
   }
 }
 
@@ -65,6 +71,16 @@ body {
   opacity: 0;
 }
 
+/* First panel visible by default before JS loads */
+.sidebar-panel[data-section="1"] {
+  opacity: 1;
+}
+
+/* Reset first panel when JS activates another */
+.sidebar:has(.sidebar-panel--active) .sidebar-panel[data-section="1"]:not(.sidebar-panel--active) {
+  opacity: 0;
+}
+
 .sidebar-panel__title {
   font-size: 2.5rem;
   margin-bottom: 1rem;
@@ -75,47 +91,9 @@ body {
   opacity: 0.8;
 }
 
-/* Animate sidebar panels based on scroll position */
-.sidebar-panel[data-section="1"] {
-  animation: show-panel-1 linear both;
-  animation-timeline: --content-scroll;
-}
-
-.sidebar-panel[data-section="2"] {
-  animation: show-panel-2 linear both;
-  animation-timeline: --content-scroll;
-}
-
-.sidebar-panel[data-section="3"] {
-  animation: show-panel-3 linear both;
-  animation-timeline: --content-scroll;
-}
-
-.sidebar-panel[data-section="4"] {
-  animation: show-panel-4 linear both;
-  animation-timeline: --content-scroll;
-}
-
-@keyframes show-panel-1 {
-  0%, 20% { opacity: 1; }
-  25%, 100% { opacity: 0; }
-}
-
-@keyframes show-panel-2 {
-  0%, 24% { opacity: 0; }
-  25%, 45% { opacity: 1; }
-  50%, 100% { opacity: 0; }
-}
-
-@keyframes show-panel-3 {
-  0%, 49% { opacity: 0; }
-  50%, 70% { opacity: 1; }
-  75%, 100% { opacity: 0; }
-}
-
-@keyframes show-panel-4 {
-  0%, 74% { opacity: 0; }
-  75%, 100% { opacity: 1; }
+/* Sidebar panel visibility controlled by JS */
+.sidebar-panel--active {
+  opacity: 1;
 }
 
 /* Content - full width with left padding for sidebar space */
@@ -705,5 +683,276 @@ body {
   width: 100%;
   justify-content: center;
   margin-top: 0.5rem;
+}
+
+/* About Section */
+.section-about {
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
+  align-items: center;
+  width: 100%;
+}
+
+.about__image-placeholder {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: linear-gradient(135deg, #e8e6e3 0%, #d4d1cc 100%);
+  border-radius: 1rem;
+}
+
+.about__label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #1a4d2e;
+  margin-bottom: 0.5rem;
+}
+
+.about__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+}
+
+.about__text {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.about__credentials {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.about__credential {
+  display: flex;
+  flex-direction: column;
+}
+
+.about__credential-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a4d2e;
+  line-height: 1;
+}
+
+.about__credential-label {
+  font-size: 0.875rem;
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+/* Reviews Section */
+.section-reviews {
+  background: #f5f3f0;
+}
+
+.reviews {
+  width: 100%;
+}
+
+.reviews__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.reviews__label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #1a4d2e;
+  margin-bottom: 0.5rem;
+}
+
+.reviews__title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+}
+
+.reviews__rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.reviews__stars {
+  display: flex;
+  gap: 0.25rem;
+  color: #f59e0b;
+}
+
+.reviews__score {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.reviews__count {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.review-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.review-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.review-card__avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: #1a4d2e;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.review-card__meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-card__name {
+  font-weight: 600;
+  color: #1a1a1a;
+  font-size: 0.9375rem;
+}
+
+.review-card__date {
+  font-size: 0.8125rem;
+  color: #999;
+}
+
+.review-card__stars {
+  display: flex;
+  gap: 0.125rem;
+  color: #f59e0b;
+  margin-bottom: 0.75rem;
+}
+
+.review-card__text {
+  font-size: 0.9375rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.reviews__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #1a4d2e;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 0.9375rem;
+  transition: color 0.2s ease;
+}
+
+.reviews__link:hover {
+  color: #143d24;
+}
+
+/* Imprint Section */
+.section-imprint {
+  background: #f5f3f0;
+  min-height: auto;
+  padding: 4rem 3rem;
+}
+
+.imprint {
+  width: 100%;
+}
+
+.imprint__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.imprint__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.imprint__section {
+  margin-bottom: 0;
+}
+
+.imprint__section--wide {
+  grid-column: span 2;
+}
+
+.imprint__heading {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #1a4d2e;
+  margin-bottom: 0.5rem;
+}
+
+.imprint__text {
+  font-size: 0.9375rem;
+  color: #666;
+  line-height: 1.7;
+}
+
+.imprint__text a {
+  color: #1a4d2e;
+  text-decoration: none;
+}
+
+.imprint__text a:hover {
+  text-decoration: underline;
+}
+
+.imprint__copyright {
+  font-size: 0.875rem;
+  color: #999;
+  padding-top: 2rem;
+  border-top: 1px solid #ddd;
 }
 
