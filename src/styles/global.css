@@ -14,18 +14,20 @@ body {
 }
 
 .layout {
-  display: grid;
-  grid-template-columns: 2fr 3fr;
+  position: relative;
   height: 100%;
-  timeline-scope: --content-scroll;
+  timeline-scope: --content-scroll, --section-horizontal, --section-steps;
 }
 
-/* Left sidebar - sticky */
+/* Left sidebar - sits behind content */
 .sidebar {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 40%;
   height: 100vh;
   overflow: hidden;
+  z-index: 1;
 
   /* Animate background color based on scroll */
   animation: sidebar-bg linear both;
@@ -61,16 +63,16 @@ body {
   padding: 3rem;
   color: white;
   opacity: 0;
+}
 
-  & h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
+.sidebar-panel__title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
 
-  & p {
-    font-size: 1.25rem;
-    opacity: 0.8;
-  }
+.sidebar-panel__description {
+  font-size: 1.25rem;
+  opacity: 0.8;
 }
 
 /* Animate sidebar panels based on scroll position */
@@ -116,12 +118,16 @@ body {
   75%, 100% { opacity: 1; }
 }
 
-/* Right content - scroll snap */
+/* Content - full width with left padding for sidebar space */
 .content {
+  position: relative;
+  width: 100%;
   height: 100vh;
   overflow-y: auto;
+  padding-left: 40%;
   scroll-timeline: --content-scroll block;
   scroll-snap-type: y mandatory;
+  z-index: 2;
 }
 
 .section {
@@ -129,19 +135,19 @@ body {
   min-height: 100vh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
+}
 
-  & h1 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-  }
+.section__title {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
 
-  & p {
-    font-size: 1.25rem;
-    color: #666;
-    margin-bottom: 1rem;
-    max-width: 60ch;
-    line-height: 1.6;
-  }
+.section__text {
+  font-size: 1.25rem;
+  color: #666;
+  margin-bottom: 1rem;
+  max-width: 60ch;
+  line-height: 1.6;
 }
 
 /* Alternate section colors */
@@ -242,5 +248,462 @@ body {
     background: #fff;
     border-color: #999;
   }
+}
+
+/* Horizontal scrolling section */
+.section-horizontal {
+  /*
+    Height = viewport + horizontal scroll distance + buffer
+    5 cards (350px) + 4 gaps (2rem) + padding (4rem) - viewport width (60vw)
+    100vh + (5 * 350px + 4 * 2rem + 4rem - 60vw) + 50vh buffer
+  */
+  height: calc(150vh + 1750px + 12rem - 60vw);
+  padding: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  view-timeline: --section-horizontal block;
+}
+
+.horizontal-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  margin-left: -40vw;
+  padding-left: 40vw;
+}
+
+.horizontal-track {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  animation: horizontal-scroll linear both;
+  animation-timeline: --section-horizontal;
+  animation-range: contain 20% contain 80%;
+}
+
+@keyframes horizontal-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Scroll until last card is at left edge of sidebar (negative = into padding/sidebar area) */
+    transform: translateX(calc(-100% + 100vw - 40vw));
+  }
+}
+
+.horizontal-card {
+  flex: 0 0 350px;
+  height: calc(100vh - 8rem);
+  background: white;
+  border-radius: 1rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 10px 20px -5px rgba(0, 0, 0, 0.08);
+}
+
+.horizontal-card__number {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1a4d2e;
+  margin-bottom: auto;
+}
+
+.horizontal-card__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+}
+
+.horizontal-card__description {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 0;
+  max-width: none;
+}
+
+/* 5-Step Process Section */
+.section-steps {
+  /* Height = viewport + scroll distance for 5 steps */
+  height: calc(100vh + 400vh);
+  padding: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  background: #f5f3f0;
+  view-timeline: --section-steps block;
+}
+
+.steps-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  overflow: hidden;
+}
+
+.steps-header {
+  margin-bottom: 2rem;
+}
+
+.steps-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #1a4d2e;
+  margin-bottom: 0.5rem;
+}
+
+.steps-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.75rem;
+}
+
+.steps-intro {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  max-width: 80ch;
+}
+
+.steps-timeline {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  padding-left: 3rem;
+}
+
+.steps-line {
+  position: absolute;
+  left: 1.25rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #ddd;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: #1a4d2e;
+    animation: fill-line linear both;
+    animation-timeline: --section-steps;
+    animation-range: contain 0% contain 90%;
+  }
+}
+
+@keyframes fill-line {
+  from { height: 0%; }
+  to { height: 100%; }
+}
+
+.step {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  opacity: 0.3;
+  transform: translateY(20px);
+}
+
+.step__marker {
+  position: relative;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: -3rem;
+  background: #ddd;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.step__number {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #666;
+}
+
+.step__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.step__description {
+  font-size: 0.9375rem;
+  color: #666;
+  line-height: 1.6;
+  max-width: 80ch;
+}
+
+/* Step animations - reveal one by one */
+.step[data-step="1"] {
+  animation: reveal-step linear both;
+  animation-timeline: --section-steps;
+  animation-range: contain 0% contain 15%;
+}
+
+.step[data-step="2"] {
+  animation: reveal-step linear both;
+  animation-timeline: --section-steps;
+  animation-range: contain 15% contain 30%;
+}
+
+.step[data-step="3"] {
+  animation: reveal-step linear both;
+  animation-timeline: --section-steps;
+  animation-range: contain 30% contain 45%;
+}
+
+.step[data-step="4"] {
+  animation: reveal-step linear both;
+  animation-timeline: --section-steps;
+  animation-range: contain 45% contain 60%;
+}
+
+.step[data-step="5"] {
+  animation: reveal-step linear both;
+  animation-timeline: --section-steps;
+  animation-range: contain 60% contain 75%;
+}
+
+@keyframes reveal-step {
+  from {
+    opacity: 0.3;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Step marker activation */
+.step[data-step="1"] .step__marker {
+  animation: activate-marker linear both;
+  animation-timeline: --section-steps;
+  animation-range: contain 0% contain 15%;
+}
+
+.step[data-step="2"] .step__marker {
+  animation: activate-marker linear both;
+  animation-timeline: --section-steps;
+  animation-range: contain 15% contain 30%;
+}
+
+.step[data-step="3"] .step__marker {
+  animation: activate-marker linear both;
+  animation-timeline: --section-steps;
+  animation-range: contain 30% contain 45%;
+}
+
+.step[data-step="4"] .step__marker {
+  animation: activate-marker linear both;
+  animation-timeline: --section-steps;
+  animation-range: contain 45% contain 60%;
+}
+
+.step[data-step="5"] .step__marker {
+  animation: activate-marker linear both;
+  animation-timeline: --section-steps;
+  animation-range: contain 60% contain 75%;
+}
+
+@keyframes activate-marker {
+  from {
+    background: #ddd;
+  }
+  to {
+    background: #1a4d2e;
+  }
+}
+
+.step[data-step="1"] .step__number {
+  animation: activate-number linear both;
+  animation-timeline: --section-steps;
+  animation-range: contain 0% contain 15%;
+}
+
+.step[data-step="2"] .step__number {
+  animation: activate-number linear both;
+  animation-timeline: --section-steps;
+  animation-range: contain 15% contain 30%;
+}
+
+.step[data-step="3"] .step__number {
+  animation: activate-number linear both;
+  animation-timeline: --section-steps;
+  animation-range: contain 30% contain 45%;
+}
+
+.step[data-step="4"] .step__number {
+  animation: activate-number linear both;
+  animation-timeline: --section-steps;
+  animation-range: contain 45% contain 60%;
+}
+
+.step[data-step="5"] .step__number {
+  animation: activate-number linear both;
+  animation-timeline: --section-steps;
+  animation-range: contain 60% contain 75%;
+}
+
+@keyframes activate-number {
+  from {
+    color: #666;
+  }
+  to {
+    color: white;
+  }
+}
+
+/* Contact Section */
+.section-contact {
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  width: 100%;
+}
+
+.contact-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #1a4d2e;
+  margin-bottom: 0.5rem;
+}
+
+.contact-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.75rem;
+}
+
+.contact-intro {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contact-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.contact-item__icon {
+  color: #1a4d2e;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.contact-item__details {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-item__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.125rem;
+}
+
+.contact-item__value {
+  font-size: 0.9375rem;
+  color: #666;
+}
+
+.contact-form {
+  background: #f5f3f0;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group__label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.form-group__input,
+.form-group__textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  background: white;
+  transition: border-color 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: #1a4d2e;
+  }
+
+  &::placeholder {
+    color: #999;
+  }
+}
+
+.form-group__textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form .btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.5rem;
 }
 
