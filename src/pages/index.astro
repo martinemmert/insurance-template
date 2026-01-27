@@ -1,0 +1,74 @@
+---
+import '../styles/global.css';
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Helmut Emmert Versicherungen</title>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="sidebar-content">
+          <div class="sidebar-panel" data-section="1">
+            <h2>Welcome</h2>
+            <p>Introduction to our services</p>
+          </div>
+          <div class="sidebar-panel" data-section="2">
+            <h2>Our Services</h2>
+            <p>What we offer</p>
+          </div>
+          <div class="sidebar-panel" data-section="3">
+            <h2>About Us</h2>
+            <p>Our story and values</p>
+          </div>
+          <div class="sidebar-panel" data-section="4">
+            <h2>Contact</h2>
+            <p>Get in touch</p>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content">
+        <section class="section hero" id="section-1">
+          <div class="hero-content">
+            <span class="hero-label">Versicherungsberater</span>
+            <h1 class="hero-name">Helmut Emmert</h1>
+            <p class="hero-tagline">Schutz für das, was Ihnen und Ihrer Familie am wichtigsten ist. Persönliche Versicherungsberatung, der Sie vertrauen können.</p>
+
+            <h2 class="hero-heading">Ihr Partner für Sicherheit</h2>
+            <p class="hero-description">Seit über zwei Jahrzehnten helfe ich Familien und Einzelpersonen, sich in der komplexen Welt der Versicherungen zurechtzufinden. Mein Ansatz ist einfach: zuhören, Ihre Bedürfnisse verstehen und dann den perfekten Schutz finden, der zu Ihrem Leben und Budget passt.</p>
+
+            <div class="hero-buttons">
+              <a href="#kontakt" class="btn btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                Termin vereinbaren
+              </a>
+              <a href="#leistungen" class="btn btn-secondary">Mehr erfahren</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="section-2">
+          <h1>Leistungen</h1>
+          <p>Wir bieten eine breite Palette an Versicherungsprodukten.</p>
+        </section>
+
+        <section class="section" id="section-3">
+          <h1>Über uns</h1>
+          <p>Seit 1990 sind wir für unsere Kunden da.</p>
+        </section>
+
+        <section class="section" id="section-4">
+          <h1>Kontakt</h1>
+          <p>Wir freuen uns auf Ihre Nachricht.</p>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
