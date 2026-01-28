@@ -9,39 +9,49 @@ import '../styles/global.css';
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <title>Helmut Emmert Versicherungen</title>
   </head>
   <body>
+    <header class="nav" id="nav">
+      <div class="nav__brand">Helmut Emmert <span class="nav__brand-subtitle">Ihr Versicherungsmakler</span></div>
+      <nav class="nav__menu">
+        <a href="#section-1" class="nav__link nav__link--active" data-section="1">Start</a>
+        <a href="#section-2" class="nav__link" data-section="2">Leistungen</a>
+        <a href="#section-3" class="nav__link" data-section="3">Ihr Weg</a>
+        <a href="#section-4" class="nav__link" data-section="4">Kontakt</a>
+        <a href="#section-5" class="nav__link" data-section="5">Über mich</a>
+        <a href="#section-6" class="nav__link" data-section="6">Bewertungen</a>
+        <a href="#section-7" class="nav__link" data-section="7">Impressum</a>
+      </nav>
+      <a href="#section-4" class="nav__cta btn btn-primary">Beratung</a>
+    </header>
     <div class="layout">
       <aside class="sidebar">
+        <div class="sidebar-mosaic" id="sidebar-mosaic"></div>
         <div class="sidebar-content">
-          <div class="sidebar-panel" data-section="1">
+          <div class="sidebar-panel" data-section="1" style="background-image: url('/images/castle.jpg');">
             <h2 class="sidebar-panel__title">Willkommen</h2>
-            <p class="sidebar-panel__description">Ihr Versicherungsberater</p>
           </div>
-          <div class="sidebar-panel" data-section="2">
+          <div class="sidebar-panel" data-section="2" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=1200&fit=crop');">
             <h2 class="sidebar-panel__title">Leistungen</h2>
-            <p class="sidebar-panel__description">Umfassender Versicherungsschutz</p>
           </div>
-          <div class="sidebar-panel" data-section="3">
+          <div class="sidebar-panel" data-section="3" style="background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=1200&fit=crop');">
             <h2 class="sidebar-panel__title">Ihr Weg</h2>
-            <p class="sidebar-panel__description">In 5 Schritten zum Ziel</p>
           </div>
-          <div class="sidebar-panel" data-section="4">
+          <div class="sidebar-panel" data-section="4" style="background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&h=1200&fit=crop');">
             <h2 class="sidebar-panel__title">Kontakt</h2>
-            <p class="sidebar-panel__description">Jetzt Beratung vereinbaren</p>
           </div>
-          <div class="sidebar-panel" data-section="5">
+          <div class="sidebar-panel" data-section="5" style="background-image: url('https://images.unsplash.com/photo-1556157382-97edd2f9e472?w=800&h=1200&fit=crop');">
             <h2 class="sidebar-panel__title">Über mich</h2>
-            <p class="sidebar-panel__description">25 Jahre Erfahrung</p>
           </div>
-          <div class="sidebar-panel" data-section="6">
+          <div class="sidebar-panel" data-section="6" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=1200&fit=crop');">
             <h2 class="sidebar-panel__title">Bewertungen</h2>
-            <p class="sidebar-panel__description">Das sagen meine Kunden</p>
           </div>
-          <div class="sidebar-panel" data-section="7">
+          <div class="sidebar-panel" data-section="7" style="background-image: url('https://images.unsplash.com/photo-1548372290-8d01b6c8e78c?w=800&h=1200&fit=crop');">
             <h2 class="sidebar-panel__title">Impressum</h2>
-            <p class="sidebar-panel__description">Rechtliche Informationen</p>
           </div>
         </div>
       </aside>
@@ -70,29 +80,69 @@ import '../styles/global.css';
           <div class="horizontal-sticky">
             <div class="horizontal-track">
               <div class="horizontal-card">
-                <span class="horizontal-card__number">01</span>
-                <h3 class="horizontal-card__title">Lebensversicherung</h3>
-                <p class="horizontal-card__description">Sichern Sie die Zukunft Ihrer Familie ab. Mit einer maßgeschneiderten Lebensversicherung schützen Sie Ihre Liebsten vor finanziellen Sorgen.</p>
+                <img
+                  class="horizontal-card__image"
+                  src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=400&fit=crop"
+                  alt="Glückliche Familie am Strand"
+                  loading="lazy"
+                />
+                <div class="horizontal-card__content">
+                  <span class="horizontal-card__number">01</span>
+                  <h3 class="horizontal-card__title">Lebensversicherung</h3>
+                  <p class="horizontal-card__description">Sichern Sie die Zukunft Ihrer Familie ab. Mit einer maßgeschneiderten Lebensversicherung schützen Sie Ihre Liebsten vor finanziellen Sorgen – egal was passiert. Ob Risikolebensversicherung für den Ernstfall oder kapitalbildende Varianten für den Vermögensaufbau: Gemeinsam finden wir die Lösung, die zu Ihrem Leben passt.</p>
+                </div>
               </div>
               <div class="horizontal-card">
-                <span class="horizontal-card__number">02</span>
-                <h3 class="horizontal-card__title">Berufsunfähigkeit</h3>
-                <p class="horizontal-card__description">Ihre Arbeitskraft ist Ihr wertvollstes Gut. Schützen Sie sich vor den finanziellen Folgen, wenn Sie Ihren Beruf nicht mehr ausüben können.</p>
+                <img
+                  class="horizontal-card__image"
+                  src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&h=400&fit=crop"
+                  alt="Professionelles Team bei der Arbeit"
+                  loading="lazy"
+                />
+                <div class="horizontal-card__content">
+                  <span class="horizontal-card__number">02</span>
+                  <h3 class="horizontal-card__title">Berufsunfähigkeit</h3>
+                  <p class="horizontal-card__description">Ihre Arbeitskraft ist Ihr wertvollstes Gut – und oft unterschätzt. Statistisch wird jeder vierte Berufstätige vor dem Rentenalter berufsunfähig. Eine gute BU-Versicherung sichert Ihren Lebensstandard, wenn Sie durch Krankheit oder Unfall nicht mehr arbeiten können. Ich helfe Ihnen, Fallstricke zu vermeiden und den optimalen Schutz zu finden.</p>
+                </div>
               </div>
               <div class="horizontal-card">
-                <span class="horizontal-card__number">03</span>
-                <h3 class="horizontal-card__title">Private Krankenversicherung</h3>
-                <p class="horizontal-card__description">Erstklassige medizinische Versorgung und kurze Wartezeiten. Genießen Sie die Vorteile einer privaten Krankenversicherung.</p>
+                <img
+                  class="horizontal-card__image"
+                  src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop"
+                  alt="Arzt bei der Patientenberatung"
+                  loading="lazy"
+                />
+                <div class="horizontal-card__content">
+                  <span class="horizontal-card__number">03</span>
+                  <h3 class="horizontal-card__title">Private Krankenversicherung</h3>
+                  <p class="horizontal-card__description">Erstklassige medizinische Versorgung, kurze Wartezeiten und Zugang zu Spezialisten. Die private Krankenversicherung bietet mehr als nur Komfort – sie gibt Ihnen Sicherheit bei Ihrer Gesundheit. Ob Vollversicherung oder Zusatzversicherung: Ich analysiere Ihre Situation und finde den Tarif, der wirklich zu Ihnen passt.</p>
+                </div>
               </div>
               <div class="horizontal-card">
-                <span class="horizontal-card__number">04</span>
-                <h3 class="horizontal-card__title">Altersvorsorge</h3>
-                <p class="horizontal-card__description">Planen Sie heute für einen sorgenfreien Ruhestand. Mit der richtigen Strategie sichern Sie Ihren Lebensstandard im Alter.</p>
+                <img
+                  class="horizontal-card__image"
+                  src="https://images.unsplash.com/photo-1447005497901-b3e9ee359928?w=600&h=400&fit=crop"
+                  alt="Glückliches Seniorenpaar"
+                  loading="lazy"
+                />
+                <div class="horizontal-card__content">
+                  <span class="horizontal-card__number">04</span>
+                  <h3 class="horizontal-card__title">Altersvorsorge</h3>
+                  <p class="horizontal-card__description">Die gesetzliche Rente allein reicht längst nicht mehr aus. Planen Sie heute für einen sorgenfreien Ruhestand – mit der richtigen Strategie aus privater Rente, betrieblicher Altersvorsorge und staatlicher Förderung. Ich zeige Ihnen, wie Sie auch mit kleinen Beiträgen langfristig ein solides Polster aufbauen.</p>
+                </div>
               </div>
               <div class="horizontal-card">
-                <span class="horizontal-card__number">05</span>
-                <h3 class="horizontal-card__title">Sachversicherungen</h3>
-                <p class="horizontal-card__description">Haus, Auto, Haftpflicht – schützen Sie Ihr Eigentum und sich selbst vor unerwarteten Schäden und Kosten.</p>
+                <img
+                  class="horizontal-card__image"
+                  src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop"
+                  alt="Modernes Einfamilienhaus"
+                  loading="lazy"
+                />
+                <div class="horizontal-card__content">
+                  <span class="horizontal-card__number">05</span>
+                  <h3 class="horizontal-card__title">Sachversicherungen</h3>
+                  <p class="horizontal-card__description">Haus, Auto, Haftpflicht – schützen Sie Ihr Eigentum und sich selbst vor unerwarteten Schäden. Von der Wohngebäudeversicherung über die Hausrat bis zur privaten Haftpflicht: Ich sorge dafür, dass Sie optimal abgesichert sind, ohne für unnötigen Schutz zu bezahlen. Transparente Beratung, faire Tarife.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -432,7 +482,128 @@ import '../styles/global.css';
     </div>
     <script>
       const content = document.querySelector('.content');
+      const sidebar = document.querySelector('.sidebar');
+      const mosaic = document.getElementById('sidebar-mosaic');
       const panels = document.querySelectorAll('.sidebar-panel');
+      const nav = document.getElementById('nav');
+      const navLinks = document.querySelectorAll('.nav__link');
+
+      // Mosaic configuration
+      const COLS = 8;
+      const ROWS = 10;
+      const CENTER_X = (COLS - 1) / 2;
+      const CENTER_Y = (ROWS - 1) / 2;
+      const MAX_DIST = Math.sqrt(CENTER_X * CENTER_X + CENTER_Y * CENTER_Y);
+
+      // Section background colors
+      const sectionColors = {
+        '1': '#1a1a2e',
+        '2': '#2e1a1a',
+        '3': '#1a2e1a',
+        '4': '#2e2e1a',
+        '5': '#1a2e2e',
+        '6': '#2e1a2e',
+        '7': '#1a1a1a',
+      };
+
+      let currentColor = sectionColors['1'];
+      let currentSectionNumber = '1';
+      let isAnimating = false;
+
+      // Generate mosaic tiles
+      const tiles = [];
+      for (let row = 0; row < ROWS; row++) {
+        for (let col = 0; col < COLS; col++) {
+          const tile = document.createElement('div');
+          tile.className = 'mosaic-tile';
+          tile.dataset.row = row;
+          tile.dataset.col = col;
+
+          mosaic.appendChild(tile);
+          tiles.push(tile);
+        }
+      }
+
+      const ANIMATION_DURATION = 0.4;
+      const MAX_STAGGER = 0.3;
+
+      const triggerTransition = (newColor, newSectionNumber, scrollingDown) => {
+        if (isAnimating) return;
+        if (newColor === currentColor) return;
+
+        isAnimating = true;
+
+        // Phase 1: Cover old scene
+        // Scrolling down: bottom to top (high rows first)
+        // Scrolling up: top to bottom (low rows first)
+        tiles.forEach((tile) => {
+          tile.classList.remove('mosaic-tile--cover', 'mosaic-tile--reveal');
+          tile.style.setProperty('--tile-color', currentColor);
+        });
+
+        mosaic.offsetHeight; // Force reflow
+
+        let maxCoverDelay = 0;
+        tiles.forEach((tile) => {
+          const row = parseInt(tile.dataset.row);
+          // Normalize row position (0 to 1)
+          const normalizedRow = row / (ROWS - 1);
+          // Scrolling down: start from bottom (invert), scrolling up: start from top
+          const normalized = scrollingDown ? (1 - normalizedRow) : normalizedRow;
+          const randomness = (Math.random() - 0.5) * 0.08;
+          const delay = Math.max(0, (normalized + randomness) * MAX_STAGGER);
+          const brightness = 1 + (Math.random() * 0.4 - 0.1);
+
+          tile.style.setProperty('--tile-delay', `${delay}s`);
+          tile.style.setProperty('--tile-brightness', brightness);
+          tile.classList.add('mosaic-tile--cover');
+
+          if (delay > maxCoverDelay) maxCoverDelay = delay;
+        });
+
+        // At peak: switch to new scene
+        const coverDone = (maxCoverDelay + ANIMATION_DURATION) * 1000;
+        setTimeout(() => {
+          sidebar.style.backgroundColor = newColor;
+          updatePanel(newSectionNumber);
+
+          // Phase 2: Reveal new scene (continue in same direction)
+          tiles.forEach((tile) => {
+            tile.classList.remove('mosaic-tile--cover');
+            tile.style.setProperty('--tile-color', newColor);
+          });
+
+          mosaic.offsetHeight; // Force reflow
+
+          let maxRevealDelay = 0;
+          tiles.forEach((tile) => {
+            const row = parseInt(tile.dataset.row);
+            const normalizedRow = row / (ROWS - 1);
+            // Continue in same direction for reveal
+            const normalized = scrollingDown ? (1 - normalizedRow) : normalizedRow;
+            const randomness = (Math.random() - 0.5) * 0.08;
+            const delay = Math.max(0, (normalized + randomness) * MAX_STAGGER);
+            const brightness = 1 + (Math.random() * 0.4 - 0.1);
+
+            tile.style.setProperty('--tile-delay', `${delay}s`);
+            tile.style.setProperty('--tile-brightness', brightness);
+            tile.classList.add('mosaic-tile--reveal');
+
+            if (delay > maxRevealDelay) maxRevealDelay = delay;
+          });
+
+          // Cleanup after reveal
+          const revealDone = (maxRevealDelay + ANIMATION_DURATION) * 1000;
+          setTimeout(() => {
+            tiles.forEach((tile) => {
+              tile.classList.remove('mosaic-tile--reveal');
+            });
+            currentColor = newColor;
+            currentSectionNumber = newSectionNumber;
+            isAnimating = false;
+          }, revealDone);
+        }, coverDone);
+      };
 
       const updatePanel = (sectionNumber) => {
         panels.forEach((panel) => {
@@ -441,11 +612,62 @@ import '../styles/global.css';
         });
       };
 
-      content.addEventListener('scrollsnapchange', (event) => {
-        const snappedSection = event.snapTargetBlock;
-        if (snappedSection && snappedSection.id) {
-          const sectionNumber = snappedSection.id.replace('section-', '');
-          updatePanel(sectionNumber);
+      const updateNavLink = (sectionNumber) => {
+        navLinks.forEach((link) => {
+          const linkSection = link.getAttribute('data-section');
+          link.classList.toggle('nav__link--active', linkSection === sectionNumber);
+        });
+      };
+
+      // Nav visibility on scroll
+      let lastScrollTop = 0;
+      content.addEventListener('scroll', () => {
+        const scrollTop = content.scrollTop;
+
+        // Show nav after scrolling past first section
+        if (scrollTop > 100) {
+          nav.classList.add('nav--visible', 'nav--scrolled');
+        } else {
+          nav.classList.remove('nav--visible', 'nav--scrolled');
+        }
+
+        lastScrollTop = scrollTop;
+      });
+
+      const updateSidebar = (sectionNumber) => {
+        const newColor = sectionColors[sectionNumber] || sectionColors['1'];
+        const scrollingDown = parseInt(sectionNumber) > parseInt(currentSectionNumber);
+        triggerTransition(newColor, sectionNumber, scrollingDown);
+      };
+
+      // Use scrollsnapchanging to trigger at the START of the transition
+      content.addEventListener('scrollsnapchanging', (event) => {
+        const targetSection = event.snapTargetBlock;
+        if (targetSection && targetSection.id) {
+          const sectionNumber = targetSection.id.replace('section-', '');
+          updateSidebar(sectionNumber);
+          updateNavLink(sectionNumber);
+        }
+      });
+
+      // Handle nav link clicks for smooth scroll
+      navLinks.forEach((link) => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('href');
+          const target = document.querySelector(targetId);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+      // Also handle CTA button click
+      document.querySelector('.nav__cta')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector('#section-4');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
         }
       });
     </script>
