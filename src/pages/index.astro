@@ -1,12 +1,13 @@
 ---
 import '../styles/global.css';
+const base = import.meta.env.BASE_URL;
 ---
 
 <html lang="de">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="icon" href={`${base}favicon.ico`} />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +33,7 @@ import '../styles/global.css';
       <aside class="sidebar">
         <div class="sidebar-mosaic" id="sidebar-mosaic"></div>
         <div class="sidebar-content">
-          <div class="sidebar-panel" data-section="1" style="background-image: url('/images/castle.jpg');">
+          <div class="sidebar-panel" data-section="1" style={`background-image: url('${base}images/castle.jpg');`}>
             <h2 class="sidebar-panel__title">Willkommen</h2>
           </div>
           <div class="sidebar-panel" data-section="2" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=1200&fit=crop');">
