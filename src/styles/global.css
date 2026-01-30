@@ -124,31 +124,8 @@ body {
 }
 
 .mosaic-tile {
-  background: var(--tile-color, #1a1a2e);
   opacity: 0;
-  filter: brightness(var(--tile-brightness, 1));
-}
-
-/* Phase 1: tiles animate IN (cover old scene) */
-.mosaic-tile--cover {
-  animation: mosaic-cover 0.4s ease-in-out both;
-  animation-delay: var(--tile-delay, 0s);
-}
-
-/* Phase 2: tiles animate OUT (reveal new scene) */
-.mosaic-tile--reveal {
-  animation: mosaic-reveal 0.4s ease-in-out both;
-  animation-delay: var(--tile-delay, 0s);
-}
-
-@keyframes mosaic-cover {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes mosaic-reveal {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  will-change: opacity, filter;
 }
 
 
@@ -205,11 +182,33 @@ body {
   z-index: 2;
 }
 
+.content.is-scrolling {
+  filter: blur(8px);
+  transition: filter 0.2s ease-out;
+}
+
 .section {
   padding: 5rem 3rem 4rem;
   min-height: 100vh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
+}
+
+/* Fullwidth sections break out of the sidebar layout */
+.section--fullwidth {
+  margin-left: -40vw;
+  padding-left: calc(40vw + 3rem);
+  width: calc(100% + 40vw);
+}
+
+/* Sidebar hides when fullwidth section is active */
+.sidebar {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.sidebar.is-hidden {
+  transform: translateX(-100%);
+  opacity: 0;
 }
 
 .section__title {
@@ -333,11 +332,14 @@ body {
 .section-horizontal {
   /*
     Height = viewport + horizontal scroll distance + buffer
-    5 cards (350px) + 4 gaps (2rem) + padding (4rem) - viewport width (60vw)
-    100vh + (5 * 350px + 4 * 2rem + 4rem - 60vw) + 50vh buffer
+    5 cards (350px) + 4 gaps (2rem) + padding (4rem) - viewport width (100vw)
+    100vh + (5 * 350px + 4 * 2rem + 4rem - 100vw) + 50vh buffer
   */
-  height: calc(150vh + 1750px + 12rem - 60vw);
+  height: calc(150vh + 1750px + 12rem - 100vw);
   padding: 0;
+  padding-left: 0;
+  margin-left: 0;
+  width: 100vw;
   scroll-snap-align: start;
   scroll-snap-stop: normal;
   view-timeline: --section-horizontal block;
@@ -350,8 +352,7 @@ body {
   overflow: visible;
   display: flex;
   align-items: center;
-  margin-left: -40vw;
-  padding-left: 40vw;
+  padding-left: 4rem;
   padding-top: 5rem;
 }
 
@@ -359,9 +360,15 @@ body {
   display: flex;
   gap: 2rem;
   padding: 2rem;
-  animation: horizontal-scroll linear both;
+  animation: horizontal-scroll ease-in-out both;
   animation-timeline: --section-horizontal;
-  animation-range: contain 20% contain 80%;
+  animation-range: contain 15% contain 85%;
+  opacity: 0.3;
+  transition: opacity 0.4s ease;
+}
+
+.section-horizontal.is-active .horizontal-track {
+  opacity: 1;
 }
 
 @keyframes horizontal-scroll {
@@ -369,8 +376,8 @@ body {
     transform: translateX(0);
   }
   to {
-    /* Scroll until last card is at left edge of sidebar (negative = into padding/sidebar area) */
-    transform: translateX(calc(-100% + 100vw - 40vw));
+    /* Scroll until last card is visible */
+    transform: translateX(calc(-100% + 100vw - 4rem));
   }
 }
 
@@ -420,8 +427,23 @@ body {
   font-size: 0.9375rem;
   color: #666;
   line-height: 1.6;
-  margin-bottom: 0;
+  margin-bottom: 1rem;
   max-width: none;
+}
+
+.horizontal-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1a4d2e;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.horizontal-card__link:hover {
+  color: #143d24;
 }
 
 /* 5-Step Process Section */

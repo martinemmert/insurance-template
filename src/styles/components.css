@@ -1,0 +1,1064 @@
+/**
+ * Consolidated BEM Components
+ * ===========================
+ * Reusable component library using BEM methodology
+ */
+
+/* ==========================================================================
+   1. BUTTONS
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Size modifiers */
+.btn--sm {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+}
+
+.btn--lg {
+  padding: 1.25rem 2.5rem;
+  font-size: 1.125rem;
+}
+
+.btn--full {
+  width: 100%;
+}
+
+/* Color modifiers */
+.btn--primary {
+  background: #1a4d2e;
+  color: white;
+}
+.btn--primary:hover {
+  background: #143d24;
+}
+
+.btn--secondary {
+  background: white;
+  color: #1a1a1a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.btn--secondary:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.btn--outline {
+  background: transparent;
+  color: #1a4d2e;
+  border: 2px solid #1a4d2e;
+}
+.btn--outline:hover {
+  background: #1a4d2e;
+  color: white;
+}
+
+.btn--white {
+  background: white;
+  color: #1a4d2e;
+}
+.btn--white:hover {
+  background: #f0f0f0;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: #1a4d2e;
+}
+.btn--ghost:hover {
+  background: rgba(26, 77, 46, 0.1);
+}
+
+/* Social button variant */
+.btn--social {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border-radius: 50%;
+  color: white;
+}
+.btn--social:hover {
+  transform: scale(1.1);
+}
+
+.btn--twitter { background: #1da1f2; }
+.btn--facebook { background: #4267b2; }
+.btn--linkedin { background: #0077b5; }
+.btn--email { background: #666; }
+.btn--whatsapp { background: #25d366; }
+
+
+/* ==========================================================================
+   2. CARDS
+   ========================================================================== */
+
+.card {
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Card with hover elevation */
+.card--hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Card with subtle shadow */
+.card--shadow {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Card with border */
+.card--bordered {
+  border: 1px solid #e5e5e5;
+  box-shadow: none;
+}
+.card--bordered:hover {
+  border-color: #1a4d2e;
+}
+
+/* Card padding variants */
+.card--padded {
+  padding: 1.5rem;
+}
+
+.card--padded-lg {
+  padding: 2rem 2.5rem;
+}
+
+/* Dark card variant */
+.card--dark {
+  background: #242424;
+  color: white;
+}
+
+/* Featured/highlighted card */
+.card--featured {
+  background: #1a4d2e;
+  color: white;
+  transform: scale(1.05);
+}
+.card--featured:hover {
+  transform: scale(1.05) translateY(-4px);
+}
+
+/* Card elements */
+.card__image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card__content {
+  padding: 1.5rem;
+}
+
+.card__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.card__text {
+  font-size: 0.9375rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.card--dark .card__text {
+  color: #ccc;
+}
+
+.card__link {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1a4d2e;
+  text-decoration: none;
+}
+.card__link:hover {
+  text-decoration: underline;
+}
+
+
+/* ==========================================================================
+   3. BOXES (Alert/Info boxes)
+   ========================================================================== */
+
+.box {
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  border-radius: 0.75rem;
+  display: flex;
+  gap: 1rem;
+}
+
+/* Box color variants */
+.box--info {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+}
+.box--info .box__icon { color: #2563eb; }
+.box--info .box__title { color: #1e40af; }
+.box--info .box__text { color: #1e40af; }
+
+.box--success {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+}
+.box--success .box__icon { color: #059669; }
+.box--success .box__title { color: #065f46; }
+.box--success .box__text { color: #065f46; }
+
+.box--warning {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+}
+.box--warning .box__icon { color: #d97706; }
+.box--warning .box__title { color: #92400e; }
+.box--warning .box__text { color: #92400e; }
+
+.box--error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+.box--error .box__icon { color: #dc2626; }
+.box--error .box__title { color: #991b1b; }
+.box--error .box__text { color: #991b1b; }
+
+.box--highlight {
+  background: #fffbeb;
+  border: 1px solid #fef3c7;
+}
+
+.box--neutral {
+  background: #f8f7f5;
+  border: 1px solid #e5e5e5;
+}
+
+.box--primary {
+  background: linear-gradient(135deg, #1a4d2e 0%, #2d6b45 100%);
+  color: white;
+}
+
+/* Box elements */
+.box__icon {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 0.125rem;
+}
+
+.box__content {
+  flex: 1;
+}
+
+.box__title {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.box__text {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+
+/* ==========================================================================
+   4. ICON CONTAINERS
+   ========================================================================== */
+
+.icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Size variants */
+.icon-box--xs {
+  width: 2rem;
+  height: 2rem;
+}
+
+.icon-box--sm {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.icon-box--md {
+  width: 3rem;
+  height: 3rem;
+}
+
+.icon-box--lg {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.icon-box--xl {
+  width: 4rem;
+  height: 4rem;
+}
+
+/* Shape variants */
+.icon-box--circle {
+  border-radius: 50%;
+}
+
+.icon-box--rounded {
+  border-radius: 0.5rem;
+}
+
+.icon-box--rounded-lg {
+  border-radius: 0.75rem;
+}
+
+.icon-box--rounded-xl {
+  border-radius: 1rem;
+}
+
+/* Color variants */
+.icon-box--primary {
+  background: #1a4d2e;
+  color: white;
+}
+
+.icon-box--primary-light {
+  background: #e8f4ed;
+  color: #1a4d2e;
+}
+
+.icon-box--secondary {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.icon-box--white {
+  background: white;
+  color: #1a4d2e;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.icon-box--warning {
+  background: #fef3e7;
+  color: #d97706;
+}
+
+.icon-box--gradient {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: white;
+}
+
+
+/* ==========================================================================
+   5. LABELS & BADGES
+   ========================================================================== */
+
+.label {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #1a4d2e;
+}
+
+.label--sm {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.label--lg {
+  font-size: 1rem;
+}
+
+.label--muted {
+  color: #666;
+}
+
+.label--light {
+  color: #6db88f;
+}
+
+/* Badge (label with background) */
+.badge {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.375rem 0.875rem;
+  border-radius: 2rem;
+}
+
+.badge--primary {
+  background: #e8f4ed;
+  color: #1a4d2e;
+}
+
+.badge--secondary {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.badge--dark {
+  background: #1a1a1a;
+  color: white;
+}
+
+
+/* ==========================================================================
+   6. HEADINGS
+   ========================================================================== */
+
+.heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #1a1a1a;
+}
+
+.heading--h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+}
+
+.heading--h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.heading--h3 {
+  font-size: 1.75rem;
+}
+
+.heading--h4 {
+  font-size: 1.5rem;
+}
+
+.heading--h5 {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 1.25rem;
+}
+
+.heading--h6 {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 1.125rem;
+}
+
+/* Light variant for dark backgrounds */
+.heading--light {
+  color: white;
+}
+
+
+/* ==========================================================================
+   7. GRIDS
+   ========================================================================== */
+
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+/* Column variants */
+.grid--cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid--cols-5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* Auto-fit responsive */
+.grid--auto-sm {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.grid--auto-md {
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+}
+
+.grid--auto-lg {
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+/* Gap variants */
+.grid--gap-sm {
+  gap: 1rem;
+}
+
+.grid--gap-lg {
+  gap: 3rem;
+}
+
+.grid--gap-xl {
+  gap: 4rem;
+}
+
+/* Alignment */
+.grid--center {
+  align-items: center;
+}
+
+.grid--start {
+  align-items: start;
+}
+
+
+/* ==========================================================================
+   8. LISTS
+   ========================================================================== */
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* List with checkmarks */
+.list--check li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+}
+
+.list--check li svg {
+  flex-shrink: 0;
+  color: #1a4d2e;
+  margin-top: 0.125rem;
+}
+
+/* List with dots */
+.list--dot li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.list--dot li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.625rem;
+  width: 0.375rem;
+  height: 0.375rem;
+  background: #1a4d2e;
+  border-radius: 50%;
+}
+
+/* List with numbers */
+.list--numbered {
+  counter-reset: list-counter;
+}
+
+.list--numbered li {
+  counter-increment: list-counter;
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.list--numbered li:last-child {
+  border-bottom: none;
+}
+
+.list--numbered li::before {
+  content: counter(list-counter);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: #1a4d2e;
+  color: white;
+  font-weight: 700;
+  border-radius: 50%;
+}
+
+/* Definition list */
+.list--definition dt {
+  font-weight: 700;
+  color: #1a4d2e;
+  margin-bottom: 0.375rem;
+}
+
+.list--definition dd {
+  font-size: 0.9375rem;
+  color: #555;
+  margin: 0;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 1.25rem;
+}
+
+.list--definition dd:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+
+/* ==========================================================================
+   9. QUOTES
+   ========================================================================== */
+
+.quote {
+  margin: 2.5rem 0;
+}
+
+/* Block quote with left border */
+.quote--block {
+  padding: 1.75rem 2rem;
+  border-left: 4px solid #1a4d2e;
+  background: #f8f7f5;
+  border-radius: 0 0.75rem 0.75rem 0;
+}
+
+.quote--block p {
+  font-size: 1.125rem;
+  font-style: italic;
+  color: #333;
+  margin-bottom: 0.75rem;
+}
+
+.quote--block cite {
+  font-size: 0.9375rem;
+  font-style: normal;
+  color: #666;
+}
+
+/* Pull quote (centered, large) */
+.quote--pull {
+  text-align: center;
+  padding: 2rem;
+}
+
+.quote--pull p {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  font-style: italic;
+  color: #1a4d2e;
+  line-height: 1.4;
+}
+
+.quote--pull cite {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+  font-style: normal;
+  color: #666;
+}
+
+
+/* ==========================================================================
+   10. SECTIONS
+   ========================================================================== */
+
+.section {
+  padding: 6rem 4rem;
+}
+
+.section--sm {
+  padding: 4rem;
+}
+
+.section--lg {
+  padding: 8rem 4rem;
+}
+
+.section--white {
+  background: white;
+}
+
+.section--light {
+  background: #f8f7f5;
+}
+
+.section--dark {
+  background: #1a1a1a;
+  color: white;
+}
+
+.section--dark .label {
+  color: #6db88f;
+}
+
+.section--dark .heading {
+  color: white;
+}
+
+.section__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section__header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section__header .label {
+  margin-bottom: 1rem;
+}
+
+.section__header .heading {
+  margin-bottom: 1rem;
+}
+
+.section__subtitle {
+  font-size: 1.125rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.section--dark .section__subtitle {
+  color: #999;
+}
+
+
+/* ==========================================================================
+   11. STATS
+   ========================================================================== */
+
+.stat {
+  text-align: center;
+}
+
+.stat__value {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a4d2e;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat__value--lg {
+  font-size: 3rem;
+}
+
+.stat__label {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+/* Light variant for dark backgrounds */
+.stat--light .stat__value {
+  color: white;
+}
+
+.stat--light .stat__label {
+  color: #999;
+}
+
+
+/* ==========================================================================
+   12. FORM ELEMENTS
+   ========================================================================== */
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group__label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.form-group__input,
+.form-group__textarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-family: inherit;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  transition: border-color 0.2s;
+}
+
+.form-group__input:focus,
+.form-group__textarea:focus {
+  outline: none;
+  border-color: #1a4d2e;
+}
+
+.form-group__textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+
+/* ==========================================================================
+   13. INTERACTIVE ELEMENTS
+   ========================================================================== */
+
+/* Accordion */
+.accordion {
+  border: 1px solid #e5e5e5;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.accordion__item {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.accordion__item:last-child {
+  border-bottom: none;
+}
+
+.accordion__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background: white;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.accordion__trigger:hover {
+  background: #fafafa;
+}
+
+.accordion__trigger svg {
+  flex-shrink: 0;
+  color: #666;
+  transition: transform 0.3s;
+}
+
+.accordion__item--open .accordion__trigger svg {
+  transform: rotate(180deg);
+}
+
+.accordion__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.accordion__item--open .accordion__content {
+  max-height: 500px;
+}
+
+.accordion__body {
+  padding: 0 1.5rem 1.5rem;
+  font-size: 0.9375rem;
+  color: #555;
+}
+
+/* Tabs */
+.tabs__nav {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.tabs__btn {
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #666;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.tabs__btn:hover {
+  color: #1a4d2e;
+}
+
+.tabs__btn--active {
+  color: #1a4d2e;
+}
+
+.tabs__btn--active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #1a4d2e;
+}
+
+.tabs__panel {
+  display: none;
+}
+
+.tabs__panel--active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ==========================================================================
+   14. IMAGES & MEDIA
+   ========================================================================== */
+
+.image {
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.image--rounded-lg {
+  border-radius: 1rem;
+}
+
+.image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image__caption {
+  font-size: 0.875rem;
+  color: #666;
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+/* Figure with caption */
+.figure {
+  margin: 2rem 0;
+}
+
+.figure img {
+  width: 100%;
+  border-radius: 0.75rem;
+}
+
+.figure__caption {
+  font-size: 0.875rem;
+  color: #666;
+  margin-top: 0.75rem;
+}
+
+
+/* ==========================================================================
+   15. DIVIDERS
+   ========================================================================== */
+
+.divider {
+  margin: 3rem 0;
+  border: none;
+  border-top: 1px solid #e5e5e5;
+}
+
+.divider--dots {
+  border: none;
+  text-align: center;
+}
+
+.divider--dots::before {
+  content: '• • •';
+  color: #ccc;
+  letter-spacing: 0.5rem;
+}
+
+.divider--gradient {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #1a4d2e, transparent);
+}
+
+
+/* ==========================================================================
+   16. RESPONSIVE UTILITIES
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .section {
+    padding: 4rem 2rem;
+  }
+
+  .section--sm {
+    padding: 2rem;
+  }
+
+  .grid--cols-2,
+  .grid--cols-3,
+  .grid--cols-4,
+  .grid--cols-5 {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .tabs__nav {
+    flex-wrap: wrap;
+  }
+
+  .card--featured {
+    transform: none;
+  }
+
+  .card--featured:hover {
+    transform: translateY(-4px);
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1024px) {
+  .grid--cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

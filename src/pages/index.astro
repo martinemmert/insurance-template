@@ -77,7 +77,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           </div>
         </section>
 
-        <section class="section section-horizontal" id="section-2">
+        <section class="section section-horizontal section--fullwidth" id="section-2">
           <div class="horizontal-sticky">
             <div class="horizontal-track">
               <div class="horizontal-card">
@@ -91,6 +91,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
                   <span class="horizontal-card__number">01</span>
                   <h3 class="horizontal-card__title">Lebensversicherung</h3>
                   <p class="horizontal-card__description">Sichern Sie die Zukunft Ihrer Familie ab. Mit einer maßgeschneiderten Lebensversicherung schützen Sie Ihre Liebsten vor finanziellen Sorgen – egal was passiert. Ob Risikolebensversicherung für den Ernstfall oder kapitalbildende Varianten für den Vermögensaufbau: Gemeinsam finden wir die Lösung, die zu Ihrem Leben passt.</p>
+                  <a href={`${base}leistungen/lebensversicherung`} class="horizontal-card__link">Mehr erfahren →</a>
                 </div>
               </div>
               <div class="horizontal-card">
@@ -104,6 +105,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
                   <span class="horizontal-card__number">02</span>
                   <h3 class="horizontal-card__title">Berufsunfähigkeit</h3>
                   <p class="horizontal-card__description">Ihre Arbeitskraft ist Ihr wertvollstes Gut – und oft unterschätzt. Statistisch wird jeder vierte Berufstätige vor dem Rentenalter berufsunfähig. Eine gute BU-Versicherung sichert Ihren Lebensstandard, wenn Sie durch Krankheit oder Unfall nicht mehr arbeiten können. Ich helfe Ihnen, Fallstricke zu vermeiden und den optimalen Schutz zu finden.</p>
+                  <a href={`${base}leistungen/berufsunfaehigkeit`} class="horizontal-card__link">Mehr erfahren →</a>
                 </div>
               </div>
               <div class="horizontal-card">
@@ -117,6 +119,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
                   <span class="horizontal-card__number">03</span>
                   <h3 class="horizontal-card__title">Private Krankenversicherung</h3>
                   <p class="horizontal-card__description">Erstklassige medizinische Versorgung, kurze Wartezeiten und Zugang zu Spezialisten. Die private Krankenversicherung bietet mehr als nur Komfort – sie gibt Ihnen Sicherheit bei Ihrer Gesundheit. Ob Vollversicherung oder Zusatzversicherung: Ich analysiere Ihre Situation und finde den Tarif, der wirklich zu Ihnen passt.</p>
+                  <a href={`${base}leistungen/krankenversicherung`} class="horizontal-card__link">Mehr erfahren →</a>
                 </div>
               </div>
               <div class="horizontal-card">
@@ -130,6 +133,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
                   <span class="horizontal-card__number">04</span>
                   <h3 class="horizontal-card__title">Altersvorsorge</h3>
                   <p class="horizontal-card__description">Die gesetzliche Rente allein reicht längst nicht mehr aus. Planen Sie heute für einen sorgenfreien Ruhestand – mit der richtigen Strategie aus privater Rente, betrieblicher Altersvorsorge und staatlicher Förderung. Ich zeige Ihnen, wie Sie auch mit kleinen Beiträgen langfristig ein solides Polster aufbauen.</p>
+                  <a href={`${base}leistungen/altersvorsorge`} class="horizontal-card__link">Mehr erfahren →</a>
                 </div>
               </div>
               <div class="horizontal-card">
@@ -143,13 +147,14 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
                   <span class="horizontal-card__number">05</span>
                   <h3 class="horizontal-card__title">Sachversicherungen</h3>
                   <p class="horizontal-card__description">Haus, Auto, Haftpflicht – schützen Sie Ihr Eigentum und sich selbst vor unerwarteten Schäden. Von der Wohngebäudeversicherung über die Hausrat bis zur privaten Haftpflicht: Ich sorge dafür, dass Sie optimal abgesichert sind, ohne für unnötigen Schutz zu bezahlen. Transparente Beratung, faire Tarife.</p>
+                  <a href={`${base}leistungen/sachversicherungen`} class="horizontal-card__link">Mehr erfahren →</a>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="section section-steps" id="section-3">
+        <section class="section section-steps section--fullwidth" id="section-3">
           <div class="steps-sticky">
             <div class="steps-header">
               <span class="steps-label">So funktioniert's</span>
@@ -207,7 +212,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           </div>
         </section>
 
-        <section class="section section-contact" id="section-4">
+        <section class="section section-contact section--fullwidth" id="section-4">
           <div class="contact-container">
             <div class="contact-info">
               <span class="contact-label">Kontakt</span>
@@ -296,7 +301,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           </div>
         </section>
 
-        <section class="section section-reviews" id="section-6">
+        <section class="section section-reviews section--fullwidth" id="section-6">
           <div class="reviews">
             <div class="reviews__header">
               <span class="reviews__label">Kundenstimmen</span>
@@ -424,7 +429,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           </div>
         </section>
 
-        <section class="section section-imprint" id="section-7">
+        <section class="section section-imprint section--fullwidth" id="section-7">
           <div class="imprint">
             <h2 class="imprint__title">Impressum</h2>
 
@@ -482,19 +487,23 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       </main>
     </div>
     <script>
+      import gsap from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+      import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+      gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
       const content = document.querySelector('.content');
       const sidebar = document.querySelector('.sidebar');
       const mosaic = document.getElementById('sidebar-mosaic');
       const panels = document.querySelectorAll('.sidebar-panel');
       const nav = document.getElementById('nav');
       const navLinks = document.querySelectorAll('.nav__link');
+      const sections = document.querySelectorAll('.section[id^="section-"]');
 
       // Mosaic configuration
       const COLS = 8;
       const ROWS = 10;
-      const CENTER_X = (COLS - 1) / 2;
-      const CENTER_Y = (ROWS - 1) / 2;
-      const MAX_DIST = Math.sqrt(CENTER_X * CENTER_X + CENTER_Y * CENTER_Y);
 
       // Section background colors
       const sectionColors = {
@@ -510,6 +519,8 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       let currentColor = sectionColors['1'];
       let currentSectionNumber = '1';
       let isAnimating = false;
+      let targetSectionNumber = '1'; // Track what section user is actually viewing
+      let isJumping = false; // Flag for programmatic scroll (skip intermediate sections)
 
       // Generate mosaic tiles
       const tiles = [];
@@ -525,85 +536,77 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         }
       }
 
-      const ANIMATION_DURATION = 0.4;
-      const MAX_STAGGER = 0.3;
+      // Sort tiles by row for stagger effect
+      const getTilesByDirection = (scrollingDown) => {
+        return [...tiles].sort((a, b) => {
+          const rowA = parseInt(a.dataset.row);
+          const rowB = parseInt(b.dataset.row);
+          // Scrolling down: bottom to top (high rows first)
+          // Scrolling up: top to bottom (low rows first)
+          return scrollingDown ? rowB - rowA : rowA - rowB;
+        });
+      };
 
-      const triggerTransition = (newColor, newSectionNumber, scrollingDown) => {
-        if (isAnimating) return;
-        if (newColor === currentColor) return;
+      const triggerTransition = (newSectionNumber, scrollingDown) => {
+        const newColor = sectionColors[newSectionNumber] || sectionColors['1'];
+
+        // If same section, do nothing
+        if (newSectionNumber === currentSectionNumber) return;
+
+        // If animating, just update target - we'll sync when animation ends
+        if (isAnimating) {
+          return;
+        }
 
         isAnimating = true;
 
-        // Phase 1: Cover old scene
-        // Scrolling down: bottom to top (high rows first)
-        // Scrolling up: top to bottom (low rows first)
-        tiles.forEach((tile) => {
-          tile.classList.remove('mosaic-tile--cover', 'mosaic-tile--reveal');
-          tile.style.setProperty('--tile-color', currentColor);
+        const sortedTiles = getTilesByDirection(scrollingDown);
+        const tl = gsap.timeline();
+
+        // Phase 1: Cover - tiles fade in with current color
+        tl.to(sortedTiles, {
+          opacity: 1,
+          backgroundColor: currentColor,
+          filter: () => `brightness(${1 + (Math.random() * 0.3 - 0.1)})`,
+          duration: 0.12,
+          ease: 'power3.out',
+          stagger: {
+            each: 0.006,
+            from: 'start',
+          },
         });
 
-        mosaic.offsetHeight; // Force reflow
-
-        let maxCoverDelay = 0;
-        tiles.forEach((tile) => {
-          const row = parseInt(tile.dataset.row);
-          // Normalize row position (0 to 1)
-          const normalizedRow = row / (ROWS - 1);
-          // Scrolling down: start from bottom (invert), scrolling up: start from top
-          const normalized = scrollingDown ? (1 - normalizedRow) : normalizedRow;
-          const randomness = (Math.random() - 0.5) * 0.08;
-          const delay = Math.max(0, (normalized + randomness) * MAX_STAGGER);
-          const brightness = 1 + (Math.random() * 0.4 - 0.1);
-
-          tile.style.setProperty('--tile-delay', `${delay}s`);
-          tile.style.setProperty('--tile-brightness', brightness);
-          tile.classList.add('mosaic-tile--cover');
-
-          if (delay > maxCoverDelay) maxCoverDelay = delay;
-        });
-
-        // At peak: switch to new scene
-        const coverDone = (maxCoverDelay + ANIMATION_DURATION) * 1000;
-        setTimeout(() => {
+        // At peak: switch the background and panel
+        tl.call(() => {
           sidebar.style.backgroundColor = newColor;
           updatePanel(newSectionNumber);
+        });
 
-          // Phase 2: Reveal new scene (continue in same direction)
-          tiles.forEach((tile) => {
-            tile.classList.remove('mosaic-tile--cover');
-            tile.style.setProperty('--tile-color', newColor);
-          });
+        // Phase 2: Reveal - tiles fade out with new color
+        tl.to(sortedTiles, {
+          opacity: 0,
+          backgroundColor: newColor,
+          filter: () => `brightness(${1 + (Math.random() * 0.3 - 0.1)})`,
+          duration: 0.12,
+          ease: 'power3.in',
+          stagger: {
+            each: 0.006,
+            from: 'start',
+          },
+        });
 
-          mosaic.offsetHeight; // Force reflow
+        // Cleanup
+        tl.call(() => {
+          currentColor = newColor;
+          currentSectionNumber = newSectionNumber;
+          isAnimating = false;
 
-          let maxRevealDelay = 0;
-          tiles.forEach((tile) => {
-            const row = parseInt(tile.dataset.row);
-            const normalizedRow = row / (ROWS - 1);
-            // Continue in same direction for reveal
-            const normalized = scrollingDown ? (1 - normalizedRow) : normalizedRow;
-            const randomness = (Math.random() - 0.5) * 0.08;
-            const delay = Math.max(0, (normalized + randomness) * MAX_STAGGER);
-            const brightness = 1 + (Math.random() * 0.4 - 0.1);
-
-            tile.style.setProperty('--tile-delay', `${delay}s`);
-            tile.style.setProperty('--tile-brightness', brightness);
-            tile.classList.add('mosaic-tile--reveal');
-
-            if (delay > maxRevealDelay) maxRevealDelay = delay;
-          });
-
-          // Cleanup after reveal
-          const revealDone = (maxRevealDelay + ANIMATION_DURATION) * 1000;
-          setTimeout(() => {
-            tiles.forEach((tile) => {
-              tile.classList.remove('mosaic-tile--reveal');
-            });
-            currentColor = newColor;
-            currentSectionNumber = newSectionNumber;
-            isAnimating = false;
-          }, revealDone);
-        }, coverDone);
+          // If user scrolled to a different section during animation, sync to it
+          if (targetSectionNumber !== currentSectionNumber) {
+            const nextScrollingDown = parseInt(targetSectionNumber) > parseInt(currentSectionNumber);
+            triggerTransition(targetSectionNumber, nextScrollingDown);
+          }
+        });
       };
 
       const updatePanel = (sectionNumber) => {
@@ -620,36 +623,115 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         });
       };
 
+      // Sections that should show the sidebar (1 and 5)
+      const sidebarSections = ['1', '5'];
+
+      const updateSidebar = (sectionNumber, direction) => {
+        // Skip if we're doing a programmatic jump
+        if (isJumping) return;
+
+        // Always update target and nav immediately
+        targetSectionNumber = sectionNumber;
+        updateNavLink(sectionNumber);
+
+        // Show/hide sidebar based on section
+        const shouldShowSidebar = sidebarSections.includes(sectionNumber);
+        sidebar.classList.toggle('is-hidden', !shouldShowSidebar);
+
+        // Only trigger mosaic transition for sidebar sections
+        if (shouldShowSidebar) {
+          const scrollingDown = direction === 1;
+          triggerTransition(sectionNumber, scrollingDown);
+        }
+      };
+
+      // Setup GSAP ScrollTrigger for each section
+      sections.forEach((section) => {
+        const sectionNumber = section.id.replace('section-', '');
+
+        ScrollTrigger.create({
+          trigger: section,
+          scroller: content,
+          start: 'top center',
+          end: 'bottom center',
+          onEnter: () => updateSidebar(sectionNumber, 1),
+          onEnterBack: () => updateSidebar(sectionNumber, -1),
+        });
+      });
+
+      // Horizontal section opacity based on active state
+      const horizontalSection = document.querySelector('.section-horizontal');
+      if (horizontalSection) {
+        ScrollTrigger.create({
+          trigger: horizontalSection,
+          scroller: content,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          onEnter: () => horizontalSection.classList.add('is-active'),
+          onLeave: () => horizontalSection.classList.remove('is-active'),
+          onEnterBack: () => horizontalSection.classList.add('is-active'),
+          onLeaveBack: () => horizontalSection.classList.remove('is-active'),
+        });
+      }
+
       // Nav visibility on scroll
-      let lastScrollTop = 0;
       content.addEventListener('scroll', () => {
         const scrollTop = content.scrollTop;
-
-        // Show nav after scrolling past first section
         if (scrollTop > 100) {
           nav.classList.add('nav--visible', 'nav--scrolled');
         } else {
           nav.classList.remove('nav--visible', 'nav--scrolled');
         }
-
-        lastScrollTop = scrollTop;
       });
 
-      const updateSidebar = (sectionNumber) => {
-        const newColor = sectionColors[sectionNumber] || sectionColors['1'];
-        const scrollingDown = parseInt(sectionNumber) > parseInt(currentSectionNumber);
-        triggerTransition(newColor, sectionNumber, scrollingDown);
-      };
+      // Smooth scroll with blur effect
+      const scrollToSection = (target) => {
+        if (!target) return;
 
-      // Use scrollsnapchanging to trigger at the START of the transition
-      content.addEventListener('scrollsnapchanging', (event) => {
-        const targetSection = event.snapTargetBlock;
-        if (targetSection && targetSection.id) {
-          const sectionNumber = targetSection.id.replace('section-', '');
-          updateSidebar(sectionNumber);
-          updateNavLink(sectionNumber);
+        const currentScroll = content.scrollTop;
+        const targetScroll = target.offsetTop;
+        const isScrollingUp = targetScroll < currentScroll;
+        const sectionNumber = target.id.replace('section-', '');
+        const scrollingDown = !isScrollingUp;
+
+        // Set jumping flag to skip intermediate sidebar updates
+        isJumping = true;
+
+        // Directly update sidebar to target section
+        targetSectionNumber = sectionNumber;
+        updateNavLink(sectionNumber);
+
+        // Show/hide sidebar based on target section
+        const shouldShowSidebar = sidebarSections.includes(sectionNumber);
+        sidebar.classList.toggle('is-hidden', !shouldShowSidebar);
+
+        // Only trigger mosaic transition for sidebar sections
+        if (shouldShowSidebar) {
+          triggerTransition(sectionNumber, scrollingDown);
         }
-      });
+
+        // Scrolling up: instant jump (skip interactive sections)
+        // Scrolling down: smooth animated scroll
+        if (isScrollingUp) {
+          content.classList.add('is-scrolling');
+          content.scrollTo({ top: targetScroll, behavior: 'instant' });
+          setTimeout(() => {
+            content.classList.remove('is-scrolling');
+            isJumping = false;
+          }, 150);
+        } else {
+          content.classList.add('is-scrolling');
+          gsap.to(content, {
+            duration: 0.6,
+            scrollTo: { y: target, autoKill: false },
+            ease: 'power2.out',
+            onComplete: () => {
+              content.classList.remove('is-scrolling');
+              isJumping = false;
+            },
+          });
+        }
+      };
 
       // Handle nav link clicks for smooth scroll
       navLinks.forEach((link) => {
@@ -657,9 +739,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
           e.preventDefault();
           const targetId = link.getAttribute('href');
           const target = document.querySelector(targetId);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-          }
+          scrollToSection(target);
         });
       });
 
@@ -667,9 +747,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
       document.querySelector('.nav__cta')?.addEventListener('click', (e) => {
         e.preventDefault();
         const target = document.querySelector('#section-4');
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
+        scrollToSection(target);
       });
     </script>
   </body>
