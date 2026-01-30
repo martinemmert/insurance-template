@@ -1,0 +1,3344 @@
+---
+import '../styles/components.css';
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Helmut Emmert - Ihr Versicherungsmakler in Aschaffenburg</title>
+    <meta name="description" content="Unabhängige Versicherungsberatung für Lebensversicherung, Berufsunfähigkeit, Krankenversicherung und Altersvorsorge. Persönlich. Transparent. Fair.">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        color: #1a1a1a;
+        line-height: 1.6;
+      }
+
+      /* Navigation */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.25rem 4rem;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        z-index: 100;
+      }
+      .nav__brand {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        text-decoration: none;
+      }
+      .nav__brand span {
+        font-weight: 400;
+        color: #666;
+        margin-left: 0.5rem;
+      }
+      .nav__links {
+        display: flex;
+        gap: 2.5rem;
+        list-style: none;
+      }
+      .nav__link {
+        font-size: 0.9375rem;
+        font-weight: 500;
+        color: #666;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .nav__link:hover { color: #1a4d2e; }
+      .nav__cta {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: white;
+        background: #1a4d2e;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        transition: background 0.2s;
+      }
+      .nav__cta:hover { background: #143d24; }
+
+      /* Hero */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 8rem 4rem 6rem;
+        background: linear-gradient(135deg, #f8f7f5 0%, #f0eeea 100%);
+      }
+      .hero__container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      .hero__label {
+        display: inline-block;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #1a4d2e;
+        margin-bottom: 1rem;
+      }
+      .hero__title {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+      }
+      .hero__text {
+        font-size: 1.25rem;
+        color: #555;
+        margin-bottom: 2rem;
+        max-width: 500px;
+      }
+      .hero__buttons {
+        display: flex;
+        gap: 1rem;
+      }
+      .hero__image {
+        position: relative;
+      }
+      .hero__image img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 1rem;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      }
+      .hero__stats {
+        position: absolute;
+        bottom: -2rem;
+        left: -2rem;
+        display: flex;
+        gap: 1.5rem;
+        background: white;
+        padding: 1.5rem 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      }
+      .stat__number {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #1a4d2e;
+      }
+      .stat__label {
+        font-size: 0.875rem;
+        color: #666;
+      }
+
+      /* Section base */
+      .section {
+        padding: 6rem 4rem;
+      }
+      .section--gray { background: #f8f7f5; }
+      .section--white { background: white; }
+      .section--dark { background: #1a1a1a; color: white; }
+      .section__container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .section__header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+      .section__label {
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #1a4d2e;
+        margin-bottom: 1rem;
+      }
+      .section--dark .section__label { color: #6db88f; }
+      .section__title {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      .section__subtitle {
+        font-size: 1.125rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .section--dark .section__subtitle { color: #999; }
+
+      /* Services Grid */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 2rem;
+      }
+      .service-card {
+        background: white;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .service-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+      }
+      .service-card__image {
+        height: 200px;
+        object-fit: cover;
+        width: 100%;
+      }
+      .service-card__content {
+        padding: 1.5rem;
+      }
+      .service-card__title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+      .service-card__text {
+        font-size: 0.9375rem;
+        color: #666;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+      .service-card__link {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: #1a4d2e;
+        text-decoration: none;
+      }
+      .service-card__link:hover { text-decoration: underline; }
+
+      /* Process Steps */
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 2rem;
+      }
+      .step {
+        text-align: center;
+        position: relative;
+      }
+      .step::after {
+        content: '';
+        position: absolute;
+        top: 2rem;
+        right: -1rem;
+        width: calc(100% - 4rem);
+        height: 2px;
+        background: #e0e0e0;
+      }
+      .step:last-child::after { display: none; }
+      .step__number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 4rem;
+        height: 4rem;
+        background: #1a4d2e;
+        color: white;
+        font-size: 1.25rem;
+        font-weight: 700;
+        border-radius: 50%;
+        margin-bottom: 1.5rem;
+      }
+      .step__title {
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+      .step__text {
+        font-size: 0.875rem;
+        color: #666;
+      }
+
+      /* About */
+      .about {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      .about__image {
+        border-radius: 1rem;
+        overflow: hidden;
+      }
+      .about__image img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+      }
+      .about__title {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+      }
+      .about__text {
+        font-size: 1.0625rem;
+        color: #555;
+        margin-bottom: 1rem;
+      }
+      .about__credentials {
+        display: flex;
+        gap: 2rem;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid #e0e0e0;
+      }
+      .credential__number {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #1a4d2e;
+      }
+      .credential__label {
+        font-size: 0.875rem;
+        color: #666;
+      }
+
+      /* Reviews */
+      .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+      .review-card {
+        background: #242424;
+        padding: 2rem;
+        border-radius: 1rem;
+      }
+      .review-card__stars {
+        color: #fbbf24;
+        margin-bottom: 1rem;
+      }
+      .review-card__text {
+        font-size: 1rem;
+        color: #ccc;
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+      }
+      .review-card__author {
+        font-weight: 600;
+        color: white;
+      }
+      .review-card__date {
+        font-size: 0.875rem;
+        color: #888;
+      }
+
+      /* Contact */
+      .contact {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+      }
+      .contact__info h3 {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      .contact__info p {
+        color: #666;
+        margin-bottom: 2rem;
+      }
+      .contact__item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      .contact__icon {
+        width: 3rem;
+        height: 3rem;
+        background: #f0f0f0;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #1a4d2e;
+      }
+      .contact__label {
+        font-size: 0.875rem;
+        color: #999;
+      }
+      .contact__value {
+        font-weight: 600;
+      }
+      .contact__form {
+        background: #f8f7f5;
+        padding: 2.5rem;
+        border-radius: 1rem;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      .form-group {
+        margin-bottom: 1rem;
+      }
+      .form-group label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        color: #333;
+      }
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.875rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        font-family: inherit;
+        background: white;
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #1a472a;
+        box-shadow: 0 0 0 3px rgba(26, 71, 42, 0.1);
+      }
+      .form-group textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+        border: none;
+        font-family: inherit;
+      }
+      .btn--primary {
+        background-color: #1a472a;
+        color: white;
+      }
+      .btn--primary:hover {
+        background-color: #143d23;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(26, 71, 42, 0.3);
+      }
+      .btn--secondary {
+        background-color: transparent;
+        color: #1a472a;
+        border: 2px solid #1a472a;
+      }
+      .btn--secondary:hover {
+        background-color: #1a472a;
+        color: white;
+        transform: translateY(-2px);
+      }
+      /* Footer */
+      .footer {
+        background: #111;
+        color: white;
+        padding: 4rem 4rem 2rem;
+      }
+      .footer__container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .footer__grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 3rem;
+      }
+      .footer__brand {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      .footer__text {
+        color: #888;
+        font-size: 0.9375rem;
+        line-height: 1.7;
+      }
+      .footer__title {
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      .footer__links {
+        list-style: none;
+      }
+      .footer__link {
+        color: #888;
+        text-decoration: none;
+        font-size: 0.9375rem;
+        display: block;
+        margin-bottom: 0.75rem;
+        transition: color 0.2s;
+      }
+      .footer__link:hover { color: white; }
+      .footer__bottom {
+        padding-top: 2rem;
+        border-top: 1px solid #333;
+        display: flex;
+        justify-content: space-between;
+        color: #666;
+        font-size: 0.875rem;
+      }
+
+      /* Trust Badges */
+      .trust-bar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4rem;
+        flex-wrap: wrap;
+      }
+      .trust-badge {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        text-align: center;
+      }
+      .trust-badge__icon {
+        width: 4rem;
+        height: 4rem;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        color: #1a4d2e;
+      }
+      .trust-badge__text {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: #333;
+      }
+      .trust-badge__subtext {
+        font-size: 0.8125rem;
+        color: #666;
+      }
+
+      /* Featured Quote */
+      .quote-block {
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .quote-block__icon {
+        font-size: 4rem;
+        color: #1a4d2e;
+        line-height: 1;
+        margin-bottom: 1.5rem;
+        opacity: 0.3;
+      }
+      .quote-block__text {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: clamp(1.5rem, 3vw, 2.25rem);
+        font-weight: 500;
+        font-style: italic;
+        line-height: 1.5;
+        color: #1a1a1a;
+        margin-bottom: 2rem;
+      }
+      .quote-block__author {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+      }
+      .quote-block__avatar {
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .quote-block__name {
+        font-weight: 700;
+        font-size: 1rem;
+      }
+      .quote-block__role {
+        font-size: 0.875rem;
+        color: #666;
+      }
+
+      /* Benefits Grid */
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+      .benefit-item {
+        display: flex;
+        gap: 1.25rem;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      }
+      .benefit-item__icon {
+        flex-shrink: 0;
+        width: 3rem;
+        height: 3rem;
+        background: #e8f4ed;
+        border-radius: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #1a4d2e;
+      }
+      .benefit-item__title {
+        font-weight: 700;
+        font-size: 1.0625rem;
+        margin-bottom: 0.375rem;
+      }
+      .benefit-item__text {
+        font-size: 0.9375rem;
+        color: #666;
+        line-height: 1.5;
+      }
+
+      /* FAQ */
+      .faq-list {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .faq-item {
+        border-bottom: 1px solid #e0e0e0;
+      }
+      .faq-item:last-child {
+        border-bottom: none;
+      }
+      .faq-question {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1.5rem 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+        font-family: inherit;
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        transition: color 0.2s;
+      }
+      .faq-question:hover { color: #1a4d2e; }
+      .faq-question__icon {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 1.5rem;
+        color: #1a4d2e;
+        transition: transform 0.3s;
+      }
+      .faq-item.open .faq-question__icon {
+        transform: rotate(45deg);
+      }
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+      .faq-item.open .faq-answer {
+        max-height: 300px;
+      }
+      .faq-answer__content {
+        padding-bottom: 1.5rem;
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.7;
+      }
+
+      /* Stats Banner */
+      .stats-banner {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        text-align: center;
+      }
+      .stats-banner__item {
+        padding: 2rem 1rem;
+      }
+      .stats-banner__number {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 3rem;
+        font-weight: 700;
+        color: #1a4d2e;
+        margin-bottom: 0.5rem;
+      }
+      .stats-banner__label {
+        font-size: 1rem;
+        color: #666;
+      }
+
+      /* Newsletter */
+      .newsletter {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .newsletter__title {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      .newsletter__text {
+        font-size: 1.0625rem;
+        color: #666;
+        margin-bottom: 2rem;
+      }
+      .newsletter__form {
+        display: flex;
+        gap: 1rem;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      .newsletter__input {
+        flex: 1;
+        padding: 1rem 1.25rem;
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 0.5rem;
+        font-family: inherit;
+      }
+      .newsletter__input:focus {
+        outline: none;
+        border-color: #1a4d2e;
+      }
+      .newsletter__btn {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: white;
+        background: #1a4d2e;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .newsletter__btn:hover { background: #143d24; }
+
+      /* Comparison Table */
+      .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      }
+      .comparison-table th,
+      .comparison-table td {
+        padding: 1.25rem 1.5rem;
+        text-align: left;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      .comparison-table th {
+        background: #1a4d2e;
+        color: white;
+        font-weight: 600;
+        font-size: 0.9375rem;
+      }
+      .comparison-table th:first-child {
+        border-radius: 1rem 0 0 0;
+      }
+      .comparison-table th:last-child {
+        border-radius: 0 1rem 0 0;
+      }
+      .comparison-table tr:last-child td {
+        border-bottom: none;
+      }
+      .comparison-table tr:hover td {
+        background: #f8f8f8;
+      }
+      .comparison-table td:first-child {
+        font-weight: 600;
+      }
+      .comparison-table .check {
+        color: #1a4d2e;
+        font-size: 1.25rem;
+      }
+      .comparison-table .cross {
+        color: #ccc;
+      }
+
+      /* Partner Logos */
+      .partners-grid {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4rem;
+        flex-wrap: wrap;
+        opacity: 0.6;
+        filter: grayscale(100%);
+      }
+      .partner-logo {
+        height: 2.5rem;
+        object-fit: contain;
+      }
+
+      /* CTA Banner */
+      .cta-banner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        background: linear-gradient(135deg, #1a4d2e 0%, #2d6b45 100%);
+        padding: 3rem;
+        border-radius: 1.5rem;
+      }
+      .cta-banner__content h3 {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 0.5rem;
+      }
+      .cta-banner__content p {
+        color: rgba(255,255,255,0.8);
+        font-size: 1.0625rem;
+      }
+      .cta-banner__btn {
+        flex-shrink: 0;
+        padding: 1rem 2rem;
+        background: white;
+        color: #1a4d2e;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .cta-banner__btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      }
+
+      /* Video Section */
+      .video-section {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      .video-placeholder {
+        position: relative;
+        aspect-ratio: 16/9;
+        background: #1a1a1a;
+        border-radius: 1rem;
+        overflow: hidden;
+      }
+      .video-placeholder__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.7;
+      }
+      .video-placeholder__play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 5rem;
+        height: 5rem;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 0.2s;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      }
+      .video-placeholder__play:hover {
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+      .video-placeholder__play svg {
+        margin-left: 4px;
+        color: #1a4d2e;
+      }
+      .video-content__title {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 2.25rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      .video-content__text {
+        font-size: 1.0625rem;
+        color: #555;
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+      }
+      .video-content__list {
+        list-style: none;
+      }
+      .video-content__list li {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+        color: #333;
+      }
+      .video-content__list li svg {
+        color: #1a4d2e;
+        flex-shrink: 0;
+      }
+
+      /* Icon Features Grid */
+      .icon-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+      }
+      .icon-feature {
+        text-align: center;
+        padding: 2rem 1.5rem;
+      }
+      .icon-feature__icon {
+        width: 4rem;
+        height: 4rem;
+        background: #e8f4ed;
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.25rem;
+        color: #1a4d2e;
+      }
+      .icon-feature__title {
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+      .icon-feature__text {
+        font-size: 0.9375rem;
+        color: #666;
+        line-height: 1.5;
+      }
+
+      /* Timeline */
+      .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 100%;
+        background: #e0e0e0;
+      }
+      .timeline-item {
+        position: relative;
+        width: 50%;
+        padding: 0 3rem 3rem;
+      }
+      .timeline-item:nth-child(odd) {
+        margin-left: 50%;
+        text-align: left;
+      }
+      .timeline-item:nth-child(even) {
+        text-align: right;
+      }
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        top: 0.5rem;
+        width: 1rem;
+        height: 1rem;
+        background: #1a4d2e;
+        border-radius: 50%;
+        border: 3px solid white;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+      .timeline-item:nth-child(odd)::before {
+        left: -0.5rem;
+      }
+      .timeline-item:nth-child(even)::before {
+        right: -0.5rem;
+      }
+      .timeline-item__year {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: #1a4d2e;
+        margin-bottom: 0.5rem;
+      }
+      .timeline-item__title {
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin-bottom: 0.375rem;
+      }
+      .timeline-item__text {
+        font-size: 0.9375rem;
+        color: #666;
+      }
+
+      /* Pricing Cards */
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+      .pricing-card {
+        background: white;
+        border-radius: 1rem;
+        padding: 2.5rem;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .pricing-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+      }
+      .pricing-card--featured {
+        background: #1a4d2e;
+        color: white;
+        transform: scale(1.05);
+      }
+      .pricing-card--featured:hover {
+        transform: scale(1.05) translateY(-4px);
+      }
+      .pricing-card__label {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #1a4d2e;
+        margin-bottom: 0.5rem;
+      }
+      .pricing-card--featured .pricing-card__label {
+        color: #6db88f;
+      }
+      .pricing-card__title {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      .pricing-card__desc {
+        font-size: 0.9375rem;
+        color: #666;
+        margin-bottom: 1.5rem;
+      }
+      .pricing-card--featured .pricing-card__desc {
+        color: rgba(255,255,255,0.7);
+      }
+      .pricing-card__features {
+        list-style: none;
+        text-align: left;
+        margin-bottom: 2rem;
+      }
+      .pricing-card__features li {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.625rem 0;
+        font-size: 0.9375rem;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      .pricing-card--featured .pricing-card__features li {
+        border-color: rgba(255,255,255,0.1);
+      }
+      .pricing-card__features li svg {
+        color: #1a4d2e;
+        flex-shrink: 0;
+      }
+      .pricing-card--featured .pricing-card__features li svg {
+        color: #6db88f;
+      }
+      .pricing-card__btn {
+        display: block;
+        padding: 1rem;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+      }
+      .pricing-card__btn--outline {
+        border: 2px solid #1a4d2e;
+        color: #1a4d2e;
+      }
+      .pricing-card__btn--outline:hover {
+        background: #1a4d2e;
+        color: white;
+      }
+      .pricing-card__btn--solid {
+        background: white;
+        color: #1a4d2e;
+      }
+      .pricing-card__btn--solid:hover {
+        background: #f0f0f0;
+      }
+
+      /* Checklist Section */
+      .checklist-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      .checklist {
+        list-style: none;
+      }
+      .checklist__item {
+        display: flex;
+        gap: 1rem;
+        padding: 1.25rem 0;
+        border-bottom: 1px solid #e0e0e0;
+      }
+      .checklist__item:last-child {
+        border-bottom: none;
+      }
+      .checklist__icon {
+        flex-shrink: 0;
+        width: 2rem;
+        height: 2rem;
+        background: #e8f4ed;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #1a4d2e;
+      }
+      .checklist__title {
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+      }
+      .checklist__text {
+        font-size: 0.9375rem;
+        color: #666;
+      }
+
+      /* Download Resources */
+      .resources-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+      .resource-card {
+        background: white;
+        border-radius: 1rem;
+        padding: 2rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 1.25rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        transition: transform 0.2s, box-shadow 0.2s;
+        text-decoration: none;
+        color: inherit;
+      }
+      .resource-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      }
+      .resource-card__icon {
+        flex-shrink: 0;
+        width: 3.5rem;
+        height: 3.5rem;
+        background: #fef3e7;
+        border-radius: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #d97706;
+      }
+      .resource-card__title {
+        font-weight: 700;
+        margin-bottom: 0.375rem;
+      }
+      .resource-card__desc {
+        font-size: 0.875rem;
+        color: #666;
+        margin-bottom: 0.5rem;
+      }
+      .resource-card__meta {
+        font-size: 0.75rem;
+        color: #999;
+      }
+
+      /* Social Proof Bar */
+      .social-proof {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4rem;
+        flex-wrap: wrap;
+      }
+      .social-proof__item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .social-proof__logo {
+        height: 2rem;
+        opacity: 0.7;
+      }
+      .social-proof__rating {
+        display: flex;
+        flex-direction: column;
+      }
+      .social-proof__stars {
+        color: #fbbf24;
+        font-size: 1.125rem;
+      }
+      .social-proof__text {
+        font-size: 0.8125rem;
+        color: #666;
+      }
+
+      /* Split Content */
+      .split-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      .split-content--reverse {
+        direction: rtl;
+      }
+      .split-content--reverse > * {
+        direction: ltr;
+      }
+      .split-content__image {
+        border-radius: 1rem;
+        overflow: hidden;
+      }
+      .split-content__image img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+      }
+      .split-content__title {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      .split-content__text {
+        font-size: 1.0625rem;
+        color: #555;
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+      }
+
+      /* Logo Cloud */
+      .logo-cloud {
+        text-align: center;
+      }
+      .logo-cloud__text {
+        font-size: 0.9375rem;
+        color: #666;
+        margin-bottom: 2rem;
+      }
+      .logo-cloud__logos {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .logo-cloud__partner {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #666;
+        padding: 0.5rem 1rem;
+        background: white;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      }
+
+      /* Testimonial Slider */
+      .testimonial-large {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 4rem;
+        align-items: center;
+        background: white;
+        border-radius: 1.5rem;
+        padding: 3rem;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      }
+      .testimonial-large__image {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 1rem;
+      }
+      .testimonial-large__stars {
+        color: #fbbf24;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .testimonial-large__text {
+        font-size: 1.375rem;
+        line-height: 1.6;
+        color: #333;
+        margin-bottom: 2rem;
+      }
+      .testimonial-large__author {
+        font-weight: 700;
+        font-size: 1.125rem;
+      }
+      .testimonial-large__role {
+        color: #666;
+        font-size: 0.9375rem;
+      }
+
+      /* Problem/Solution */
+      .problem-solution {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+      .problem-card, .solution-card {
+        padding: 2.5rem;
+        border-radius: 1rem;
+      }
+      .problem-card {
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+      }
+      .solution-card {
+        background: #ecfdf5;
+        border: 1px solid #a7f3d0;
+      }
+      .problem-card__label, .solution-card__label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 1rem;
+      }
+      .problem-card__label {
+        color: #dc2626;
+      }
+      .solution-card__label {
+        color: #059669;
+      }
+      .problem-card__title, .solution-card__title {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      .problem-card__list, .solution-card__list {
+        list-style: none;
+      }
+      .problem-card__list li, .solution-card__list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+        font-size: 0.9375rem;
+      }
+      .problem-card__list li svg {
+        color: #dc2626;
+        flex-shrink: 0;
+        margin-top: 0.125rem;
+      }
+      .solution-card__list li svg {
+        color: #059669;
+        flex-shrink: 0;
+        margin-top: 0.125rem;
+      }
+
+      /* Team/Partner Grid */
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+      }
+      .team-card {
+        text-align: center;
+      }
+      .team-card__image {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 1rem;
+        margin-bottom: 1.25rem;
+        filter: grayscale(20%);
+        transition: filter 0.3s, transform 0.3s;
+      }
+      .team-card:hover .team-card__image {
+        filter: grayscale(0%);
+        transform: scale(1.02);
+      }
+      .team-card__name {
+        font-weight: 700;
+        font-size: 1.125rem;
+        margin-bottom: 0.25rem;
+      }
+      .team-card__role {
+        font-size: 0.875rem;
+        color: #666;
+        margin-bottom: 0.75rem;
+      }
+      .team-card__social {
+        display: flex;
+        justify-content: center;
+        gap: 0.75rem;
+      }
+      .team-card__social a {
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f0f0f0;
+        border-radius: 50%;
+        color: #666;
+        transition: background 0.2s, color 0.2s;
+      }
+      .team-card__social a:hover {
+        background: #1a4d2e;
+        color: white;
+      }
+
+      /* Awards Grid */
+      .awards-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+      }
+      .award-card {
+        text-align: center;
+        padding: 2rem;
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      }
+      .award-card__icon {
+        width: 4rem;
+        height: 4rem;
+        margin: 0 auto 1rem;
+        background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+      }
+      .award-card__title {
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+      }
+      .award-card__year {
+        font-size: 0.875rem;
+        color: #666;
+      }
+
+      /* Tabbed Content */
+      .tabs {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .tabs__nav {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+        border-bottom: 2px solid #e0e0e0;
+      }
+      .tabs__btn {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #666;
+        background: none;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        transition: color 0.2s;
+      }
+      .tabs__btn:hover { color: #1a4d2e; }
+      .tabs__btn.active {
+        color: #1a4d2e;
+      }
+      .tabs__btn.active::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: #1a4d2e;
+      }
+      .tabs__panel {
+        display: none;
+        animation: fadeIn 0.3s ease;
+      }
+      .tabs__panel.active {
+        display: block;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .tabs__content {
+        font-size: 1.0625rem;
+        color: #555;
+        line-height: 1.8;
+      }
+      .tabs__content h4 {
+        font-size: 1.25rem;
+        color: #1a1a1a;
+        margin-bottom: 1rem;
+      }
+
+      /* Numbered List */
+      .numbered-list {
+        max-width: 800px;
+        margin: 0 auto;
+        counter-reset: item;
+      }
+      .numbered-item {
+        display: flex;
+        gap: 2rem;
+        padding: 2rem 0;
+        border-bottom: 1px solid #e0e0e0;
+      }
+      .numbered-item:last-child {
+        border-bottom: none;
+      }
+      .numbered-item__number {
+        flex-shrink: 0;
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 4rem;
+        font-weight: 700;
+        color: #1a4d2e;
+        opacity: 0.3;
+        line-height: 1;
+      }
+      .numbered-item__title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+      .numbered-item__text {
+        font-size: 1rem;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      /* Blog/Article Preview */
+      .articles-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+      .article-card {
+        background: white;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .article-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+      }
+      .article-card__image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .article-card__content {
+        padding: 1.5rem;
+      }
+      .article-card__category {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #1a4d2e;
+        background: #e8f4ed;
+        padding: 0.25rem 0.75rem;
+        border-radius: 1rem;
+        margin-bottom: 0.75rem;
+      }
+      .article-card__title {
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.4;
+      }
+      .article-card__excerpt {
+        font-size: 0.9375rem;
+        color: #666;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+      }
+      .article-card__meta {
+        font-size: 0.8125rem;
+        color: #999;
+      }
+
+      /* Image Gallery */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+      }
+      .gallery-grid--masonry {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .gallery-item {
+        border-radius: 0.75rem;
+        overflow: hidden;
+        cursor: pointer;
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.3s;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+      .gallery-item--tall img {
+        height: 416px;
+      }
+
+      /* Two-Column Text */
+      .two-column-text {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+      }
+      .two-column-text__col {
+        font-size: 1.0625rem;
+        color: #555;
+        line-height: 1.8;
+      }
+      .two-column-text__col p {
+        margin-bottom: 1.5rem;
+      }
+      .two-column-text__col p:last-child {
+        margin-bottom: 0;
+      }
+      .two-column-text__heading {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Feature Cards */
+      .feature-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+      .feature-card {
+        padding: 2.5rem;
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        transition: transform 0.3s, box-shadow 0.3s;
+        text-align: center;
+      }
+      .feature-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+      }
+      .feature-card__icon {
+        width: 5rem;
+        height: 5rem;
+        margin: 0 auto 1.5rem;
+        background: linear-gradient(135deg, #e8f4ed 0%, #d0e8d9 100%);
+        border-radius: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #1a4d2e;
+      }
+      .feature-card__title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+      .feature-card__text {
+        font-size: 0.9375rem;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      /* Contact Method Cards */
+      .contact-cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+      }
+      .contact-card {
+        padding: 2rem;
+        background: white;
+        border-radius: 1rem;
+        text-align: center;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        transition: transform 0.2s, box-shadow 0.2s;
+        text-decoration: none;
+        color: inherit;
+      }
+      .contact-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      }
+      .contact-card__icon {
+        width: 3.5rem;
+        height: 3.5rem;
+        margin: 0 auto 1rem;
+        background: #e8f4ed;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #1a4d2e;
+      }
+      .contact-card__title {
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+      }
+      .contact-card__value {
+        font-size: 0.875rem;
+        color: #666;
+      }
+
+      /* Marquee */
+      .marquee {
+        overflow: hidden;
+        white-space: nowrap;
+        padding: 1.5rem 0;
+      }
+      .marquee__content {
+        display: inline-flex;
+        animation: marquee 30s linear infinite;
+      }
+      .marquee__item {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-right: 3rem;
+        font-size: 1.125rem;
+        font-weight: 500;
+        color: #666;
+      }
+      .marquee__item svg {
+        color: #1a4d2e;
+      }
+      @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+
+      /* Offset Cards */
+      .offset-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        padding-top: 2rem;
+      }
+      .offset-card {
+        background: white;
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        transition: transform 0.3s;
+      }
+      .offset-card:nth-child(2) {
+        transform: translateY(-2rem);
+      }
+      .offset-card:hover {
+        transform: translateY(-0.5rem);
+      }
+      .offset-card:nth-child(2):hover {
+        transform: translateY(-2.5rem);
+      }
+      .offset-card__number {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 3rem;
+        font-weight: 700;
+        color: #1a4d2e;
+        margin-bottom: 1rem;
+      }
+      .offset-card__title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+      .offset-card__text {
+        font-size: 0.9375rem;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+        .nav { padding: 1rem 2rem; }
+        .nav__links { display: none; }
+        .hero { padding: 6rem 2rem 4rem; }
+        .hero__container { grid-template-columns: 1fr; }
+        .hero__image { display: none; }
+        .section { padding: 4rem 2rem; }
+        .steps { grid-template-columns: 1fr; }
+        .step::after { display: none; }
+        .about { grid-template-columns: 1fr; }
+        .reviews-grid { grid-template-columns: 1fr; }
+        .contact { grid-template-columns: 1fr; }
+        .form-row { grid-template-columns: 1fr; }
+        .hero__buttons { flex-direction: column; }
+        .footer__grid { grid-template-columns: 1fr 1fr; }
+        .trust-bar { gap: 2rem; }
+        .benefits-grid { grid-template-columns: 1fr; }
+        .stats-banner { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .newsletter__form { flex-direction: column; }
+        .comparison-table { font-size: 0.875rem; }
+        .comparison-table th, .comparison-table td { padding: 1rem; }
+        .partners-grid { gap: 2rem; }
+        .partner-logo { height: 2rem; }
+        .cta-banner { flex-direction: column; text-align: center; }
+        .video-section { grid-template-columns: 1fr; }
+        .icon-grid { grid-template-columns: repeat(2, 1fr); }
+        .timeline::before { left: 0; }
+        .timeline-item { width: 100%; margin-left: 0 !important; padding-left: 2rem; text-align: left !important; }
+        .timeline-item::before { left: -0.5rem !important; right: auto !important; }
+        .pricing-grid { grid-template-columns: 1fr; }
+        .pricing-card--featured { transform: none; }
+        .pricing-card--featured:hover { transform: translateY(-4px); }
+        .checklist-section { grid-template-columns: 1fr; }
+        .resources-grid { grid-template-columns: 1fr; }
+        .social-proof { gap: 2rem; }
+        .split-content { grid-template-columns: 1fr; }
+        .split-content--reverse { direction: ltr; }
+        .testimonial-large { grid-template-columns: 1fr; padding: 2rem; }
+        .testimonial-large__image { max-width: 200px; margin: 0 auto; }
+        .problem-solution { grid-template-columns: 1fr; }
+        .logo-cloud__logos { gap: 1rem; }
+        .logo-cloud__partner { font-size: 1rem; padding: 0.375rem 0.75rem; }
+        .team-grid { grid-template-columns: repeat(2, 1fr); }
+        .awards-grid { grid-template-columns: repeat(2, 1fr); }
+        .tabs__nav { flex-wrap: wrap; }
+        .numbered-item { flex-direction: column; gap: 1rem; }
+        .numbered-item__number { font-size: 3rem; }
+        .articles-grid { grid-template-columns: 1fr; }
+        .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+        .gallery-grid--masonry { grid-template-columns: 1fr; }
+        .gallery-item--tall img { height: 200px; }
+        .two-column-text { grid-template-columns: 1fr; gap: 2rem; }
+        .feature-cards { grid-template-columns: 1fr; }
+        .contact-cards { grid-template-columns: repeat(2, 1fr); }
+        .offset-cards { grid-template-columns: 1fr; }
+        .offset-card:nth-child(2) { transform: none; }
+        .offset-card:nth-child(2):hover { transform: translateY(-0.5rem); }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="nav">
+      <a href="#" class="nav__brand">Helmut Emmert <span>Versicherungsmakler</span></a>
+      <ul class="nav__links">
+        <li><a href="#leistungen" class="nav__link">Leistungen</a></li>
+        <li><a href="#ablauf" class="nav__link">So funktioniert's</a></li>
+        <li><a href="#ueber" class="nav__link">Über mich</a></li>
+        <li><a href="#bewertungen" class="nav__link">Bewertungen</a></li>
+        <li><a href="#kontakt" class="nav__link">Kontakt</a></li>
+      </ul>
+      <a href="#kontakt" class="nav__cta">Beratung anfragen</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__container">
+        <div class="hero__content">
+          <span class="hero__label">Versicherungsmakler in Aschaffenburg</span>
+          <h1 class="hero__title">Schutz für das, was Ihnen wichtig ist</h1>
+          <p class="hero__text">Persönliche Versicherungsberatung ohne Verkaufsdruck. Ich finde die Absicherung, die wirklich zu Ihrem Leben passt – transparent, unabhängig und fair.</p>
+          <div class="hero__buttons">
+            <a href="#kontakt" class="btn btn--primary">Kostenloses Erstgespräch</a>
+            <a href="#leistungen" class="btn btn--secondary">Leistungen entdecken</a>
+          </div>
+        </div>
+        <div class="hero__image">
+          <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=800&h=600&fit=crop" alt="Beratungsgespräch">
+          <div class="hero__stats">
+            <div class="stat">
+              <div class="stat__number">25+</div>
+              <div class="stat__label">Jahre Erfahrung</div>
+            </div>
+            <div class="stat">
+              <div class="stat__number">1.500+</div>
+              <div class="stat__label">Zufriedene Kunden</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof Bar -->
+    <section class="section section--gray" style="padding: 2rem 4rem;">
+      <div class="section__container">
+        <div class="social-proof">
+          <div class="social-proof__item">
+            <div class="social-proof__rating">
+              <div class="social-proof__stars">★★★★★</div>
+              <div class="social-proof__text">4.9/5 bei Google (47 Bewertungen)</div>
+            </div>
+          </div>
+          <div class="social-proof__item">
+            <div class="social-proof__rating">
+              <div class="social-proof__stars">★★★★★</div>
+              <div class="social-proof__text">5.0/5 bei ProvenExpert</div>
+            </div>
+          </div>
+          <div class="social-proof__item">
+            <div class="social-proof__rating">
+              <div class="social-proof__stars">★★★★★</div>
+              <div class="social-proof__text">98% Weiterempfehlung</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="section section--white" style="padding-top: 3rem; padding-bottom: 3rem; border-bottom: 1px solid #f0f0f0;">
+      <div class="section__container">
+        <div class="trust-bar">
+          <div class="trust-badge">
+            <div class="trust-badge__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <div class="trust-badge__text">IHK-zertifiziert</div>
+            <div class="trust-badge__subtext">Geprüfter Versicherungsmakler</div>
+          </div>
+          <div class="trust-badge">
+            <div class="trust-badge__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+            </div>
+            <div class="trust-badge__text">Top-Bewertet</div>
+            <div class="trust-badge__subtext">4.9 von 5 Sternen</div>
+          </div>
+          <div class="trust-badge">
+            <div class="trust-badge__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <div class="trust-badge__text">1.500+ Kunden</div>
+            <div class="trust-badge__subtext">Vertrauen uns</div>
+          </div>
+          <div class="trust-badge">
+            <div class="trust-badge__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div class="trust-badge__text">100% Unabhängig</div>
+            <div class="trust-badge__subtext">Keine Gesellschaftsbindung</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <section class="section section--white" style="padding: 0; border-bottom: 1px solid #f0f0f0;">
+      <div class="marquee">
+        <div class="marquee__content">
+          <span class="marquee__item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Unabhängige Beratung
+          </span>
+          <span class="marquee__item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Über 100 Versicherer
+          </span>
+          <span class="marquee__item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Kostenlose Erstberatung
+          </span>
+          <span class="marquee__item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Persönlicher Ansprechpartner
+          </span>
+          <span class="marquee__item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            25+ Jahre Erfahrung
+          </span>
+          <span class="marquee__item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Schadensregulierung
+          </span>
+          <!-- Duplicate for seamless loop -->
+          <span class="marquee__item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Unabhängige Beratung
+          </span>
+          <span class="marquee__item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Über 100 Versicherer
+          </span>
+          <span class="marquee__item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Kostenlose Erstberatung
+          </span>
+          <span class="marquee__item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Persönlicher Ansprechpartner
+          </span>
+          <span class="marquee__item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            25+ Jahre Erfahrung
+          </span>
+          <span class="marquee__item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Schadensregulierung
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem / Solution -->
+    <section class="section section--white">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">Die Herausforderung</div>
+          <h2 class="section__title">Versicherungen sind kompliziert. Das muss nicht sein.</h2>
+        </div>
+        <div class="problem-solution">
+          <div class="problem-card">
+            <div class="problem-card__label">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+              Das Problem
+            </div>
+            <h3 class="problem-card__title">Ohne unabhängige Beratung</h3>
+            <ul class="problem-card__list">
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Stundenlange Recherche und Vergleiche im Internet
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Vertreter, die nur ihre eigenen Produkte verkaufen
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Unübersichtliche Tarife und versteckte Klauseln
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Im Schadensfall allein gegen die Versicherung
+              </li>
+            </ul>
+          </div>
+          <div class="solution-card">
+            <div class="solution-card__label">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              Die Lösung
+            </div>
+            <h3 class="solution-card__title">Mit Helmut Emmert</h3>
+            <ul class="solution-card__list">
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Ein Ansprechpartner, der den Markt für Sie durchsucht
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Unabhängige Empfehlungen ohne Verkaufsdruck
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Verständliche Erklärungen in klarer Sprache
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Ihr Anwalt im Schadensfall – auf Ihrer Seite
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section section--gray" id="leistungen">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">Leistungen</div>
+          <h2 class="section__title">Rundum abgesichert</h2>
+          <p class="section__subtitle">Von der Lebensversicherung bis zur Altersvorsorge – ich berate Sie unabhängig und finde die optimale Lösung für Ihre Situation.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card">
+            <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=400&fit=crop" alt="Familie" class="service-card__image">
+            <div class="service-card__content">
+              <h3 class="service-card__title">Lebensversicherung</h3>
+              <p class="service-card__text">Sichern Sie die Zukunft Ihrer Familie ab. Mit einer maßgeschneiderten Lebensversicherung schützen Sie Ihre Liebsten vor finanziellen Sorgen.</p>
+              <a href={`${base}leistungen/lebensversicherung`} class="service-card__link">Mehr erfahren →</a>
+            </div>
+          </article>
+          <article class="service-card">
+            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&h=400&fit=crop" alt="Beruf" class="service-card__image">
+            <div class="service-card__content">
+              <h3 class="service-card__title">Berufsunfähigkeit</h3>
+              <p class="service-card__text">Ihre Arbeitskraft ist Ihr wertvollstes Gut. Eine BU-Versicherung sichert Ihren Lebensstandard, wenn Sie nicht mehr arbeiten können.</p>
+              <a href={`${base}leistungen/berufsunfaehigkeit`} class="service-card__link">Mehr erfahren →</a>
+            </div>
+          </article>
+          <article class="service-card">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop" alt="Gesundheit" class="service-card__image">
+            <div class="service-card__content">
+              <h3 class="service-card__title">Private Krankenversicherung</h3>
+              <p class="service-card__text">Erstklassige medizinische Versorgung, kurze Wartezeiten und Zugang zu Spezialisten. Die PKV bietet mehr als nur Komfort.</p>
+              <a href={`${base}leistungen/krankenversicherung`} class="service-card__link">Mehr erfahren →</a>
+            </div>
+          </article>
+          <article class="service-card">
+            <img src="https://images.unsplash.com/photo-1447005497901-b3e9ee359928?w=600&h=400&fit=crop" alt="Ruhestand" class="service-card__image">
+            <div class="service-card__content">
+              <h3 class="service-card__title">Altersvorsorge</h3>
+              <p class="service-card__text">Die gesetzliche Rente reicht nicht. Planen Sie heute für einen sorgenfreien Ruhestand mit der richtigen Strategie.</p>
+              <a href={`${base}leistungen/altersvorsorge`} class="service-card__link">Mehr erfahren →</a>
+            </div>
+          </article>
+          <article class="service-card">
+            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop" alt="Haus" class="service-card__image">
+            <div class="service-card__content">
+              <h3 class="service-card__title">Sachversicherungen</h3>
+              <p class="service-card__text">Haus, Auto, Haftpflicht – schützen Sie Ihr Eigentum vor unerwarteten Schäden. Transparente Beratung, faire Tarife.</p>
+              <a href={`${base}leistungen/sachversicherungen`} class="service-card__link">Mehr erfahren →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="section section--white" style="padding-top: 0;">
+      <div class="section__container">
+        <div class="cta-banner">
+          <div class="cta-banner__content">
+            <h3>Unsicher, welche Versicherung Sie brauchen?</h3>
+            <p>In einem kostenlosen Erstgespräch analysiere ich Ihre Situation und zeige Ihnen, wo Sie gut abgesichert sind – und wo nicht.</p>
+          </div>
+          <a href="#kontakt" class="cta-banner__btn">Jetzt Termin vereinbaren</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Quote -->
+    <section class="section section--gray">
+      <div class="section__container">
+        <div class="quote-block">
+          <div class="quote-block__icon">"</div>
+          <p class="quote-block__text">Herr Emmert hat mir nicht einfach eine Versicherung verkauft – er hat sich die Zeit genommen, meine gesamte Lebenssituation zu verstehen. Das Ergebnis: Ein Schutz, der wirklich zu mir passt, ohne überteuerte Extras.</p>
+          <div class="quote-block__author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Dr. Martin Weber" class="quote-block__avatar">
+            <div>
+              <div class="quote-block__name">Dr. Martin Weber</div>
+              <div class="quote-block__role">Facharzt für Orthopädie, Aschaffenburg</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="section section--white">
+      <div class="section__container">
+        <div class="video-section">
+          <div class="video-placeholder">
+            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=450&fit=crop" alt="Beratungsvideo" class="video-placeholder__image">
+            <div class="video-placeholder__play">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            </div>
+          </div>
+          <div class="video-content">
+            <h2 class="video-content__title">Lernen Sie mich kennen</h2>
+            <p class="video-content__text">In diesem kurzen Video erkläre ich Ihnen, wie ich arbeite und warum unabhängige Beratung einen echten Unterschied macht.</p>
+            <ul class="video-content__list">
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Meine Philosophie: Zuhören, verstehen, beraten
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Warum ich mich für die Selbstständigkeit entschieden habe
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Was Sie von einer Zusammenarbeit erwarten können
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section section--gray" id="ablauf">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">So funktioniert's</div>
+          <h2 class="section__title">Ihr Weg zur besseren Absicherung</h2>
+          <p class="section__subtitle">In fünf einfachen Schritten zu Ihrem optimalen Versicherungsschutz.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step__number">1</div>
+            <h3 class="step__title">Erstgespräch</h3>
+            <p class="step__text">Wir lernen uns kennen und ich höre Ihnen zu.</p>
+          </div>
+          <div class="step">
+            <div class="step__number">2</div>
+            <h3 class="step__title">Bedarfsanalyse</h3>
+            <p class="step__text">Ich analysiere Ihren aktuellen Schutz und identifiziere Lücken.</p>
+          </div>
+          <div class="step">
+            <div class="step__number">3</div>
+            <h3 class="step__title">Angebotsvergleich</h3>
+            <p class="step__text">Sie erhalten eine transparente Gegenüberstellung der besten Angebote.</p>
+          </div>
+          <div class="step">
+            <div class="step__number">4</div>
+            <h3 class="step__title">Vertragsabschluss</h3>
+            <p class="step__text">Ich kümmere mich um den gesamten Papierkram.</p>
+          </div>
+          <div class="step">
+            <div class="step__number">5</div>
+            <h3 class="step__title">Betreuung</h3>
+            <p class="step__text">Ich begleite Sie langfristig und stehe im Schadensfall bereit.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Offset Cards -->
+    <section class="section section--white">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">Fakten</div>
+          <h2 class="section__title">Zahlen, die für sich sprechen</h2>
+        </div>
+        <div class="offset-cards">
+          <div class="offset-card">
+            <div class="offset-card__number">97%</div>
+            <h3 class="offset-card__title">Erfolgsquote</h3>
+            <p class="offset-card__text">bei der Durchsetzung von Schadensfällen gegenüber Versicherungen.</p>
+          </div>
+          <div class="offset-card">
+            <div class="offset-card__number">24h</div>
+            <h3 class="offset-card__title">Reaktionszeit</h3>
+            <p class="offset-card__text">im Schadensfall – schnelle Hilfe, wenn Sie sie am meisten brauchen.</p>
+          </div>
+          <div class="offset-card">
+            <div class="offset-card__number">∅ 18%</div>
+            <h3 class="offset-card__title">Ersparnis</h3>
+            <p class="offset-card__text">sparen meine Kunden durchschnittlich bei gleicher oder besserer Leistung.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Icon Features -->
+    <section class="section section--gray">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">Mein Versprechen</div>
+          <h2 class="section__title">Was mich von anderen unterscheidet</h2>
+        </div>
+        <div class="icon-grid">
+          <div class="icon-feature">
+            <div class="icon-feature__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h3 class="icon-feature__title">100% Unabhängig</h3>
+            <p class="icon-feature__text">Keine Bindung an Versicherungsgesellschaften – nur Ihren Interessen verpflichtet.</p>
+          </div>
+          <div class="icon-feature">
+            <div class="icon-feature__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <h3 class="icon-feature__title">Schnelle Reaktion</h3>
+            <p class="icon-feature__text">Erreichbar wenn Sie mich brauchen – besonders im Schadensfall.</p>
+          </div>
+          <div class="icon-feature">
+            <div class="icon-feature__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+            </div>
+            <h3 class="icon-feature__title">Transparente Dokumentation</h3>
+            <p class="icon-feature__text">Alle Empfehlungen schriftlich und nachvollziehbar begründet.</p>
+          </div>
+          <div class="icon-feature">
+            <div class="icon-feature__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h3 class="icon-feature__title">Persönliche Betreuung</h3>
+            <p class="icon-feature__text">Kein Callcenter – Sie sprechen immer direkt mit mir.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabbed Content -->
+    <section class="section section--gray">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">Lebensphasen</div>
+          <h2 class="section__title">Für jede Situation die richtige Absicherung</h2>
+        </div>
+        <div class="tabs">
+          <div class="tabs__nav">
+            <button class="tabs__btn active" data-tab="berufsstart">Berufsstart</button>
+            <button class="tabs__btn" data-tab="familie">Familienplanung</button>
+            <button class="tabs__btn" data-tab="immobilie">Immobilienkauf</button>
+            <button class="tabs__btn" data-tab="ruhestand">Ruhestand</button>
+          </div>
+          <div class="tabs__panel active" id="berufsstart">
+            <div class="tabs__content">
+              <h4>Der Einstieg ins Berufsleben</h4>
+              <p>Mit dem ersten Job beginnt ein neuer Lebensabschnitt. Jetzt ist der ideale Zeitpunkt, die Weichen für eine solide Absicherung zu stellen. Eine Berufsunfähigkeitsversicherung ist in jungen Jahren besonders günstig und schützt Ihr wichtigstes Kapital: Ihre Arbeitskraft. Auch eine private Haftpflichtversicherung gehört zur Grundausstattung.</p>
+              <p>Gemeinsam analysieren wir, welche Absicherungen für Ihren Berufsstart sinnvoll sind – ohne Sie zu überlasten.</p>
+            </div>
+          </div>
+          <div class="tabs__panel" id="familie">
+            <div class="tabs__content">
+              <h4>Wenn aus zwei mehr werden</h4>
+              <p>Mit der Gründung einer Familie ändern sich die Prioritäten. Plötzlich tragen Sie Verantwortung für andere. Eine Risikolebensversicherung sichert Ihre Familie ab, falls Ihnen etwas zustößt. Auch die Krankenversicherung für Kinder und die Absicherung des Hauptverdieners gewinnen an Bedeutung.</p>
+              <p>Ich helfe Ihnen, den Überblick zu behalten und die richtigen Entscheidungen für Ihre Familie zu treffen.</p>
+            </div>
+          </div>
+          <div class="tabs__panel" id="immobilie">
+            <div class="tabs__content">
+              <h4>Der Traum vom Eigenheim</h4>
+              <p>Eine Immobilie ist für die meisten Menschen die größte Investition ihres Lebens. Neben der Finanzierung ist der richtige Versicherungsschutz entscheidend: Wohngebäudeversicherung, Hausratversicherung und eine Absicherung der Darlehensraten bei Arbeitsunfähigkeit gehören auf die Checkliste.</p>
+              <p>Als Ihr Berater sorge ich dafür, dass Ihr Traum vom Eigenheim nicht zum finanziellen Risiko wird.</p>
+            </div>
+          </div>
+          <div class="tabs__panel" id="ruhestand">
+            <div class="tabs__content">
+              <h4>Den Ruhestand genießen</h4>
+              <p>Sie haben Ihr Leben lang gearbeitet – jetzt soll die Rente reichen. Eine gute Altersvorsorge ist kein Zufall, sondern das Ergebnis kluger Planung. Ob Riester, Rürup oder private Rentenversicherung: Ich zeige Ihnen, welche Bausteine für Ihre Situation am besten passen.</p>
+              <p>Auch die Absicherung im Pflegefall wird mit zunehmendem Alter wichtiger. Sprechen Sie mich an.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="section section--white">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">Ihre Vorteile</div>
+          <h2 class="section__title">Warum Sie bei mir richtig sind</h2>
+          <p class="section__subtitle">Unabhängige Beratung bedeutet: Ihre Interessen stehen immer an erster Stelle.</p>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit-item">
+            <div class="benefit-item__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <div>
+              <h4 class="benefit-item__title">Zeitersparnis</h4>
+              <p class="benefit-item__text">Ich übernehme den kompletten Anbietervergleich und die Kommunikation mit den Versicherungen. Sie bekommen nur das Ergebnis.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-item__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+            </div>
+            <div>
+              <h4 class="benefit-item__title">Marktüberblick</h4>
+              <p class="benefit-item__text">Zugang zu über 100 Versicherungsgesellschaften. Ich finde die beste Kombination aus Leistung und Preis für Sie.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-item__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            </div>
+            <div>
+              <h4 class="benefit-item__title">Persönlicher Ansprechpartner</h4>
+              <p class="benefit-item__text">Kein Callcenter, keine Warteschleifen. Sie erreichen mich direkt – auch im Schadensfall, wenn es schnell gehen muss.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-item__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <div>
+              <h4 class="benefit-item__title">Keine versteckten Kosten</h4>
+              <p class="benefit-item__text">Meine Beratung ist für Sie kostenlos. Ich werde von den Versicherungen vergütet – transparent und ohne Aufpreis für Sie.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-item__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <div>
+              <h4 class="benefit-item__title">Schadensregulierung</h4>
+              <p class="benefit-item__text">Im Schadensfall kämpfe ich für Sie. Mit meiner Erfahrung weiß ich, wie Ansprüche erfolgreich durchgesetzt werden.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-item__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+            </div>
+            <div>
+              <h4 class="benefit-item__title">Regelmäßige Überprüfung</h4>
+              <p class="benefit-item__text">Ihr Leben ändert sich, Ihr Schutz sollte es auch. Ich überprüfe jährlich, ob Ihre Absicherung noch passt.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section section--white" id="ueber">
+      <div class="section__container">
+        <div class="about">
+          <div class="about__image">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=700&fit=crop" alt="Helmut Emmert">
+          </div>
+          <div class="about__content">
+            <div class="section__label">Über mich</div>
+            <h2 class="about__title">Helmut Emmert</h2>
+            <p class="about__text">Mit über 25 Jahren Erfahrung in der Versicherungsbranche habe ich es mir zur Aufgabe gemacht, Menschen dabei zu helfen, die richtige Absicherung für sich und ihre Familien zu finden.</p>
+            <p class="about__text">Meine Philosophie ist einfach: Ich höre zu, verstehe Ihre individuelle Situation und finde gemeinsam mit Ihnen die optimale Lösung. Keine Standardprodukte, keine unnötigen Policen.</p>
+            <p class="about__text">Als unabhängiger Versicherungsberater bin ich keiner Gesellschaft verpflichtet. Das bedeutet für Sie: objektive Beratung und Zugang zu den besten Angeboten am Markt.</p>
+            <div class="about__credentials">
+              <div class="credential">
+                <div class="credential__number">25+</div>
+                <div class="credential__label">Jahre Erfahrung</div>
+              </div>
+              <div class="credential">
+                <div class="credential__number">1.500+</div>
+                <div class="credential__label">Zufriedene Kunden</div>
+              </div>
+              <div class="credential">
+                <div class="credential__number">100%</div>
+                <div class="credential__label">Unabhängig</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section section--gray">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">Netzwerk</div>
+          <h2 class="section__title">Meine Kooperationspartner</h2>
+          <p class="section__subtitle">Für spezialisierte Fragen arbeite ich mit erfahrenen Experten zusammen.</p>
+        </div>
+        <div class="team-grid">
+          <div class="team-card">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop" alt="Dr. Thomas Richter" class="team-card__image">
+            <h3 class="team-card__name">Dr. Thomas Richter</h3>
+            <p class="team-card__role">Steuerberater</p>
+            <div class="team-card__social">
+              <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+              <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+            </div>
+          </div>
+          <div class="team-card">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop" alt="Sandra Hoffmann" class="team-card__image">
+            <h3 class="team-card__name">Sandra Hoffmann</h3>
+            <p class="team-card__role">Finanzberaterin</p>
+            <div class="team-card__social">
+              <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+              <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+            </div>
+          </div>
+          <div class="team-card">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop" alt="Michael Braun" class="team-card__image">
+            <h3 class="team-card__name">Michael Braun</h3>
+            <p class="team-card__role">Rechtsanwalt</p>
+            <div class="team-card__social">
+              <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+              <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+            </div>
+          </div>
+          <div class="team-card">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop" alt="Julia Klein" class="team-card__image">
+            <h3 class="team-card__name">Julia Klein</h3>
+            <p class="team-card__role">Immobilienmaklerin</p>
+            <div class="team-card__social">
+              <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+              <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Checklist Section -->
+    <section class="section section--white">
+      <div class="section__container">
+        <div class="checklist-section">
+          <div>
+            <div class="section__label">Erstgespräch</div>
+            <h2 class="split-content__title">Was Sie zum ersten Termin mitbringen sollten</h2>
+            <p class="split-content__text">Je besser ich Ihre aktuelle Situation verstehe, desto gezielter kann ich Sie beraten. Diese Unterlagen helfen dabei:</p>
+            <ul class="checklist">
+              <li class="checklist__item">
+                <div class="checklist__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div>
+                  <div class="checklist__title">Bestehende Versicherungspolicen</div>
+                  <p class="checklist__text">Alle aktuellen Verträge, die Sie haben – auch wenn Sie unsicher sind, ob sie relevant sind.</p>
+                </div>
+              </li>
+              <li class="checklist__item">
+                <div class="checklist__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div>
+                  <div class="checklist__title">Gehaltsnachweis oder Einkommensbescheid</div>
+                  <p class="checklist__text">Für die Berechnung der optimalen Absicherungshöhe und Beiträge.</p>
+                </div>
+              </li>
+              <li class="checklist__item">
+                <div class="checklist__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div>
+                  <div class="checklist__title">Fragen und Anliegen</div>
+                  <p class="checklist__text">Notieren Sie sich vorab, was Ihnen wichtig ist und welche Fragen Sie haben.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="split-content__image">
+            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=500&fit=crop" alt="Dokumente vorbereiten">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="section section--white">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">Mein Weg</div>
+          <h2 class="section__title">25 Jahre Erfahrung für Sie</h2>
+          <p class="section__subtitle">Ein Blick auf meinen beruflichen Werdegang.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-item__year">1998</div>
+            <h3 class="timeline-item__title">Start in der Branche</h3>
+            <p class="timeline-item__text">Ausbildung zum Versicherungskaufmann bei einer großen deutschen Versicherung.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item__year">2003</div>
+            <h3 class="timeline-item__title">Spezialisierung</h3>
+            <p class="timeline-item__text">Weiterbildung zum Fachwirt für Versicherungen und Finanzen (IHK).</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item__year">2008</div>
+            <h3 class="timeline-item__title">Schritt in die Selbstständigkeit</h3>
+            <p class="timeline-item__text">Gründung des eigenen Maklerbüros in Aschaffenburg.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item__year">2015</div>
+            <h3 class="timeline-item__title">1.000 Kunden</h3>
+            <p class="timeline-item__text">Meilenstein: Über 1.000 zufriedene Kunden vertrauen meiner Beratung.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item__year">Heute</div>
+            <h3 class="timeline-item__title">Unabhängig & persönlich</h3>
+            <p class="timeline-item__text">Weiterhin für Sie da – mit der gleichen Leidenschaft wie am ersten Tag.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section class="section section--gray">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">Auszeichnungen</div>
+          <h2 class="section__title">Qualität, die anerkannt wird</h2>
+        </div>
+        <div class="awards-grid">
+          <div class="award-card">
+            <div class="award-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+            </div>
+            <h3 class="award-card__title">Top Versicherungsmakler</h3>
+            <p class="award-card__year">Focus Money 2023</p>
+          </div>
+          <div class="award-card">
+            <div class="award-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+            </div>
+            <h3 class="award-card__title">Exzellente Beratung</h3>
+            <p class="award-card__year">TÜV Rheinland</p>
+          </div>
+          <div class="award-card">
+            <div class="award-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <h3 class="award-card__title">Kundenzufriedenheit</h3>
+            <p class="award-card__year">ProvenExpert 2024</p>
+          </div>
+          <div class="award-card">
+            <div class="award-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h3 class="award-card__title">IHK Zertifizierung</h3>
+            <p class="award-card__year">Fachwirt (IHK)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Banner -->
+    <section class="section section--dark" style="padding: 4rem;">
+      <div class="section__container">
+        <div class="stats-banner">
+          <div class="stats-banner__item">
+            <div class="stats-banner__number">25+</div>
+            <div class="stats-banner__label">Jahre Berufserfahrung</div>
+          </div>
+          <div class="stats-banner__item">
+            <div class="stats-banner__number">1.500+</div>
+            <div class="stats-banner__label">Zufriedene Kunden</div>
+          </div>
+          <div class="stats-banner__item">
+            <div class="stats-banner__number">100+</div>
+            <div class="stats-banner__label">Versicherungspartner</div>
+          </div>
+          <div class="stats-banner__item">
+            <div class="stats-banner__number">98%</div>
+            <div class="stats-banner__label">Weiterempfehlungsrate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Numbered List -->
+    <section class="section section--white">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">Grundprinzipien</div>
+          <h2 class="section__title">Meine Beratungsphilosophie</h2>
+        </div>
+        <div class="numbered-list">
+          <div class="numbered-item">
+            <div class="numbered-item__number">01</div>
+            <div>
+              <h3 class="numbered-item__title">Zuhören statt verkaufen</h3>
+              <p class="numbered-item__text">Jedes Gespräch beginnt damit, dass ich Ihnen zuhöre. Nur wenn ich Ihre Situation wirklich verstehe, kann ich die richtigen Empfehlungen geben.</p>
+            </div>
+          </div>
+          <div class="numbered-item">
+            <div class="numbered-item__number">02</div>
+            <div>
+              <h3 class="numbered-item__title">Unabhängigkeit bewahren</h3>
+              <p class="numbered-item__text">Ich bin keiner Versicherungsgesellschaft verpflichtet. Das bedeutet: Meine Empfehlungen orientieren sich ausschließlich an Ihren Bedürfnissen.</p>
+            </div>
+          </div>
+          <div class="numbered-item">
+            <div class="numbered-item__number">03</div>
+            <div>
+              <h3 class="numbered-item__title">Transparenz schaffen</h3>
+              <p class="numbered-item__text">Sie verstehen genau, warum ich was empfehle. Keine Fachbegriffe, keine versteckten Klauseln – klare Sprache und nachvollziehbare Begründungen.</p>
+            </div>
+          </div>
+          <div class="numbered-item">
+            <div class="numbered-item__number">04</div>
+            <div>
+              <h3 class="numbered-item__title">Langfristig denken</h3>
+              <p class="numbered-item__text">Eine gute Absicherung wächst mit Ihrem Leben. Deshalb bleibe ich Ihr Ansprechpartner – heute, morgen und in 20 Jahren.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Logo Cloud -->
+    <section class="section section--gray" style="padding: 3rem 4rem;">
+      <div class="section__container">
+        <div class="logo-cloud">
+          <p class="logo-cloud__text">Ich arbeite mit über 100 Versicherungsgesellschaften zusammen, darunter:</p>
+          <div class="logo-cloud__logos">
+            <span class="logo-cloud__partner">Allianz</span>
+            <span class="logo-cloud__partner">AXA</span>
+            <span class="logo-cloud__partner">HUK-Coburg</span>
+            <span class="logo-cloud__partner">ERGO</span>
+            <span class="logo-cloud__partner">Generali</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Large Testimonial -->
+    <section class="section section--gray">
+      <div class="section__container">
+        <div class="testimonial-large">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop" alt="Sabine Müller" class="testimonial-large__image">
+          <div>
+            <div class="testimonial-large__stars">★★★★★</div>
+            <p class="testimonial-large__text">"Nach einem schweren Unfall war ich monatelang arbeitsunfähig. Herr Emmert hat sich nicht nur um die Schadensregulierung gekümmert, sondern mich auch persönlich unterstützt. Dank seiner Hartnäckigkeit wurde mein Anspruch vollständig anerkannt. So einen Einsatz hatte ich nicht erwartet."</p>
+            <div class="testimonial-large__author">Sabine Müller</div>
+            <div class="testimonial-large__role">Kundin seit 2016 • Berufsunfähigkeitsfall</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section section--dark" id="bewertungen">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">Kundenstimmen</div>
+          <h2 class="section__title">Was meine Kunden sagen</h2>
+          <p class="section__subtitle">4.9 von 5 Sternen basierend auf 47 Google-Bewertungen</p>
+        </div>
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div class="review-card__stars">★★★★★</div>
+            <p class="review-card__text">"Herr Emmert hat sich viel Zeit genommen, um meine Situation zu verstehen. Die Beratung war kompetent und ohne Verkaufsdruck. Absolute Empfehlung!"</p>
+            <div class="review-card__author">Michael S.</div>
+            <div class="review-card__date">vor 2 Monaten</div>
+          </div>
+          <div class="review-card">
+            <div class="review-card__stars">★★★★★</div>
+            <p class="review-card__text">"Endlich jemand, der Versicherungen verständlich erklärt! Herr Emmert hat mir geholfen, meinen Versicherungsschutz zu optimieren und dabei sogar Geld zu sparen."</p>
+            <div class="review-card__author">Sandra K.</div>
+            <div class="review-card__date">vor 3 Monaten</div>
+          </div>
+          <div class="review-card">
+            <div class="review-card__stars">★★★★★</div>
+            <p class="review-card__text">"Bei einem Schadensfall hat Herr Emmert sich sofort um alles gekümmert. Die Abwicklung war unkompliziert und schnell. So stelle ich mir Service vor!"</p>
+            <div class="review-card__author">Thomas B.</div>
+            <div class="review-card__date">vor 5 Monaten</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image Gallery -->
+    <section class="section section--gray">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">Einblicke</div>
+          <h2 class="section__title">Mein Büro & meine Arbeit</h2>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop" alt="Büro">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&h=300&fit=crop" alt="Beratung">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Team Meeting">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=300&fit=crop" alt="Handschlag">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=300&fit=crop" alt="Präsentation">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&h=300&fit=crop" alt="Dokumente">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=300&fit=crop" alt="Besprechung">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=400&h=300&fit=crop" alt="Kundengespräch">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Cards -->
+    <section class="section section--white">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">Schwerpunkte</div>
+          <h2 class="section__title">Meine Kernkompetenzen</h2>
+        </div>
+        <div class="feature-cards">
+          <div class="feature-card">
+            <div class="feature-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h3 class="feature-card__title">Privatkundenberatung</h3>
+            <p class="feature-card__text">Individuelle Lösungen für Familien, Singles und Paare – von der Grundabsicherung bis zur Vermögensplanung.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            </div>
+            <h3 class="feature-card__title">Gewerbeversicherung</h3>
+            <p class="feature-card__text">Maßgeschneiderte Absicherung für Selbstständige, Freiberufler und kleine Unternehmen.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            </div>
+            <h3 class="feature-card__title">Schadensmanagement</h3>
+            <p class="feature-card__text">Professionelle Unterstützung bei der Schadensmeldung und Durchsetzung Ihrer Ansprüche.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Split Content -->
+    <section class="section section--gray">
+      <div class="section__container">
+        <div class="split-content split-content--reverse">
+          <div class="split-content__image">
+            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop" alt="Schadensfall Bearbeitung">
+          </div>
+          <div>
+            <div class="section__label">Im Schadensfall</div>
+            <h2 class="split-content__title">Ihr Anwalt bei der Versicherung</h2>
+            <p class="split-content__text">Wenn der Ernstfall eintritt, zeigt sich der wahre Wert einer guten Beratung. Während Sie sich auf Ihre Genesung konzentrieren, kümmere ich mich um die komplette Schadensabwicklung.</p>
+            <p class="split-content__text">Ich kenne die Tricks der Versicherungen und weiß, wie Ansprüche erfolgreich durchgesetzt werden. Mit mir an Ihrer Seite bekommen Sie, was Ihnen zusteht.</p>
+            <a href="#kontakt" class="btn btn--primary">Jetzt absichern</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="section section--gray">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">Im Vergleich</div>
+          <h2 class="section__title">Makler vs. Vertreter vs. Online-Portal</h2>
+          <p class="section__subtitle">Warum ein unabhängiger Makler oft die bessere Wahl ist.</p>
+        </div>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Unabhängiger Makler</th>
+              <th>Versicherungsvertreter</th>
+              <th>Online-Vergleichsportal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Zugang zu allen Anbietern</td>
+              <td><span class="check">✓</span></td>
+              <td><span class="cross">✗</span> Nur eigene Gesellschaft</td>
+              <td><span class="check">✓</span> Nur Kooperationspartner</td>
+            </tr>
+            <tr>
+              <td>Persönliche Beratung vor Ort</td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="cross">✗</span></td>
+            </tr>
+            <tr>
+              <td>Unterstützung im Schadensfall</td>
+              <td><span class="check">✓</span> Auf Ihrer Seite</td>
+              <td><span class="cross">✗</span> Vertritt die Gesellschaft</td>
+              <td><span class="cross">✗</span> Keine Hilfe</td>
+            </tr>
+            <tr>
+              <td>Langfristige Betreuung</td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="cross">✗</span></td>
+            </tr>
+            <tr>
+              <td>Individuelle Tarifgestaltung</td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span> Begrenzt</td>
+              <td><span class="cross">✗</span> Standardtarife</td>
+            </tr>
+            <tr>
+              <td>Kostenlose Beratung</td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Two Column Text -->
+    <section class="section section--white">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">Philosophie</div>
+          <h2 class="section__title">Warum ich diesen Beruf liebe</h2>
+        </div>
+        <div class="two-column-text">
+          <div class="two-column-text__col">
+            <h3 class="two-column-text__heading">Der Mensch im Mittelpunkt</h3>
+            <p>Versicherungen sind für viele Menschen ein notwendiges Übel. Formulare, Kleingedrucktes, komplizierte Bedingungen – das alles schreckt ab. Ich verstehe das.</p>
+            <p>Deshalb habe ich mir zur Aufgabe gemacht, das Thema Versicherung menschlich zu gestalten. Bei mir geht es nicht um Produkte, sondern um Menschen. Um Ihre Sorgen, Ihre Wünsche, Ihre Lebenssituation.</p>
+          </div>
+          <div class="two-column-text__col">
+            <h3 class="two-column-text__heading">Vertrauen durch Kompetenz</h3>
+            <p>In über 25 Jahren habe ich gelernt, dass gute Beratung Zeit braucht. Zeit zum Zuhören, Zeit zum Erklären, Zeit für die richtige Lösung. Diese Zeit nehme ich mir.</p>
+            <p>Mein Wissen halte ich durch regelmäßige Weiterbildungen aktuell. Denn der Versicherungsmarkt verändert sich ständig – und Sie verdienen einen Berater, der auf dem neuesten Stand ist.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resources / Downloads -->
+    <section class="section section--gray">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">Kostenlose Ressourcen</div>
+          <h2 class="section__title">Nützliche Ratgeber zum Download</h2>
+          <p class="section__subtitle">Informieren Sie sich vorab – alle Guides sind kostenlos und unverbindlich.</p>
+        </div>
+        <div class="resources-grid">
+          <a href="#" class="resource-card">
+            <div class="resource-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            </div>
+            <div>
+              <h4 class="resource-card__title">BU-Versicherung verstehen</h4>
+              <p class="resource-card__desc">Alles, was Sie über die Berufsunfähigkeitsversicherung wissen müssen.</p>
+              <span class="resource-card__meta">PDF • 12 Seiten</span>
+            </div>
+          </a>
+          <a href="#" class="resource-card">
+            <div class="resource-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            </div>
+            <div>
+              <h4 class="resource-card__title">Checkliste Erstgespräch</h4>
+              <p class="resource-card__desc">Diese Unterlagen sollten Sie zum ersten Beratungstermin mitbringen.</p>
+              <span class="resource-card__meta">PDF • 2 Seiten</span>
+            </div>
+          </a>
+          <a href="#" class="resource-card">
+            <div class="resource-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            </div>
+            <div>
+              <h4 class="resource-card__title">Altersvorsorge-Rechner</h4>
+              <p class="resource-card__desc">Berechnen Sie Ihre Rentenlücke und den Sparbedarf.</p>
+              <span class="resource-card__meta">Excel • Interaktiv</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section--white">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">Häufige Fragen</div>
+          <h2 class="section__title">Das werde ich oft gefragt</h2>
+          <p class="section__subtitle">Hier finden Sie Antworten auf die wichtigsten Fragen zur Zusammenarbeit.</p>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Wie wird Ihre Beratung bezahlt?</span>
+              <svg class="faq-question__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+            <div class="faq-answer">
+              <p class="faq-answer__content">Meine Beratung ist für Sie komplett kostenlos. Als Makler erhalte ich eine Courtage von der Versicherungsgesellschaft, sobald ein Vertrag zustande kommt. Diese Courtage ist in den regulären Versicherungsbeiträgen bereits enthalten – Sie zahlen also nicht mehr als bei einem Direktabschluss.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Was unterscheidet Sie von einem Versicherungsvertreter?</span>
+              <svg class="faq-question__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+            <div class="faq-answer">
+              <p class="faq-answer__content">Ein Versicherungsvertreter ist an eine bestimmte Gesellschaft gebunden und kann nur deren Produkte anbieten. Als unabhängiger Makler bin ich keiner Gesellschaft verpflichtet und arbeite ausschließlich in Ihrem Interesse. Ich vergleiche die Angebote aller relevanten Anbieter und empfehle Ihnen nur das, was wirklich zu Ihrer Situation passt.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Kann ich meine bestehenden Versicherungen zu Ihnen übertragen?</span>
+              <svg class="faq-question__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+            <div class="faq-answer">
+              <p class="faq-answer__content">Ja, das ist in den meisten Fällen problemlos möglich. Mit einer Maklervollmacht kann ich die Betreuung Ihrer bestehenden Verträge übernehmen, ohne dass Sie kündigen oder wechseln müssen. So haben Sie einen Ansprechpartner für alle Ihre Versicherungen.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Wie läuft ein Erstgespräch ab?</span>
+              <svg class="faq-question__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+            <div class="faq-answer">
+              <p class="faq-answer__content">Im Erstgespräch nehme ich mir Zeit, Ihre aktuelle Lebenssituation und Ihre Wünsche zu verstehen. Bringen Sie gerne Ihre bestehenden Versicherungsunterlagen mit – dann kann ich direkt prüfen, wo eventuell Lücken oder Optimierungspotenzial bestehen. Das Gespräch dauert in der Regel 60-90 Minuten und ist völlig unverbindlich.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Was passiert im Schadensfall?</span>
+              <svg class="faq-question__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+            <div class="faq-answer">
+              <p class="faq-answer__content">Im Schadensfall bin ich Ihr erster Ansprechpartner. Ich unterstütze Sie bei der Schadensmeldung, prüfe die Regulierung und setze mich bei Bedarf für Ihre Ansprüche ein. Mein Ziel ist es, dass Sie schnell und unkompliziert zu Ihrem Recht kommen.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Method Cards -->
+    <section class="section section--white">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">Erreichbarkeit</div>
+          <h2 class="section__title">So können Sie mich erreichen</h2>
+        </div>
+        <div class="contact-cards">
+          <a href="tel:+49123456789" class="contact-card">
+            <div class="contact-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </div>
+            <h3 class="contact-card__title">Telefon</h3>
+            <p class="contact-card__value">+49 123 456 789</p>
+          </a>
+          <a href="mailto:info@emmert-versicherungen.de" class="contact-card">
+            <div class="contact-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <h3 class="contact-card__title">E-Mail</h3>
+            <p class="contact-card__value">info@emmert-versicherungen.de</p>
+          </a>
+          <a href="https://wa.me/49123456789" class="contact-card">
+            <div class="contact-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            </div>
+            <h3 class="contact-card__title">WhatsApp</h3>
+            <p class="contact-card__value">Schnelle Antworten</p>
+          </a>
+          <a href="#kontakt" class="contact-card">
+            <div class="contact-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            </div>
+            <h3 class="contact-card__title">Termin</h3>
+            <p class="contact-card__value">Online buchen</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Packages -->
+    <section class="section section--gray">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">Beratungsangebote</div>
+          <h2 class="section__title">Wählen Sie Ihr Paket</h2>
+          <p class="section__subtitle">Für jeden Bedarf das passende Angebot – von der Einzelfrage bis zur Komplettbetreuung.</p>
+        </div>
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-card__label">Einstieg</div>
+            <h3 class="pricing-card__title">Versicherungs-Check</h3>
+            <p class="pricing-card__desc">Schnelle Analyse Ihrer bestehenden Verträge mit konkreten Empfehlungen.</p>
+            <ul class="pricing-card__features">
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Prüfung aller bestehenden Policen
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Identifikation von Versicherungslücken
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Schriftlicher Bericht mit Empfehlungen
+              </li>
+            </ul>
+            <a href="#kontakt" class="pricing-card__btn pricing-card__btn--outline">Anfragen</a>
+          </div>
+          <div class="pricing-card pricing-card--featured">
+            <div class="pricing-card__label">Empfohlen</div>
+            <h3 class="pricing-card__title">Rundum-Beratung</h3>
+            <p class="pricing-card__desc">Komplette Analyse und Neuaufstellung Ihres Versicherungsschutzes.</p>
+            <ul class="pricing-card__features">
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Alles aus dem Versicherungs-Check
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Detaillierter Marktvergleich
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Vertragsverhandlung & Abschluss
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Jährliche Überprüfung
+              </li>
+            </ul>
+            <a href="#kontakt" class="pricing-card__btn pricing-card__btn--solid">Termin vereinbaren</a>
+          </div>
+          <div class="pricing-card">
+            <div class="pricing-card__label">Premium</div>
+            <h3 class="pricing-card__title">VIP-Betreuung</h3>
+            <p class="pricing-card__desc">Exklusive Betreuung für anspruchsvolle Kunden mit komplexen Anforderungen.</p>
+            <ul class="pricing-card__features">
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Alles aus der Rundum-Beratung
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Prioritäre Erreichbarkeit
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Hausbesuche nach Vereinbarung
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Familien-Mitbetreuung
+              </li>
+            </ul>
+            <a href="#kontakt" class="pricing-card__btn pricing-card__btn--outline">Anfragen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section section--white" id="kontakt">
+      <div class="section__container">
+        <div class="contact">
+          <div class="contact__info">
+            <h3>Lassen Sie uns sprechen</h3>
+            <p>Vereinbaren Sie jetzt Ihr kostenloses Erstgespräch. Ich freue mich darauf, Sie kennenzulernen.</p>
+            <div class="contact__item">
+              <div class="contact__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div>
+                <div class="contact__label">Telefon</div>
+                <div class="contact__value">+49 123 456 789</div>
+              </div>
+            </div>
+            <div class="contact__item">
+              <div class="contact__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div>
+                <div class="contact__label">E-Mail</div>
+                <div class="contact__value">info@emmert-versicherungen.de</div>
+              </div>
+            </div>
+            <div class="contact__item">
+              <div class="contact__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div>
+                <div class="contact__label">Adresse</div>
+                <div class="contact__value">Musterstraße 123, 63739 Aschaffenburg</div>
+              </div>
+            </div>
+          </div>
+          <form class="contact__form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Ihr Name" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefon</label>
+                <input type="tel" id="phone" name="phone" placeholder="Ihre Telefonnummer">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">E-Mail</label>
+              <input type="email" id="email" name="email" placeholder="Ihre E-Mail-Adresse" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Nachricht</label>
+              <textarea id="message" name="message" placeholder="Wie kann ich Ihnen helfen?"></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary" style="width: 100%;">Nachricht senden</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog/Articles -->
+    <section class="section section--white">
+      <div class="section__container">
+        <div class="section__header">
+          <div class="section__label">Wissen</div>
+          <h2 class="section__title">Aktuelle Ratgeber & Tipps</h2>
+          <p class="section__subtitle">Bleiben Sie informiert mit meinen neuesten Artikeln zu Versicherungen und Vorsorge.</p>
+        </div>
+        <div class="articles-grid">
+          <article class="article-card">
+            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop" alt="Steuererklärung" class="article-card__image">
+            <div class="article-card__content">
+              <span class="article-card__category">Steuern</span>
+              <h3 class="article-card__title">Diese Versicherungen können Sie von der Steuer absetzen</h3>
+              <p class="article-card__excerpt">Viele wissen nicht, dass bestimmte Versicherungsbeiträge steuerlich absetzbar sind. Ein Überblick.</p>
+              <span class="article-card__meta">15. Januar 2024 • 5 Min. Lesezeit</span>
+            </div>
+          </article>
+          <article class="article-card">
+            <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=600&h=400&fit=crop" alt="Berufsunfähigkeit" class="article-card__image">
+            <div class="article-card__content">
+              <span class="article-card__category">Berufsunfähigkeit</span>
+              <h3 class="article-card__title">BU-Versicherung: Die 5 häufigsten Fehler beim Abschluss</h3>
+              <p class="article-card__excerpt">Worauf Sie achten müssen, damit die BU im Ernstfall auch wirklich zahlt.</p>
+              <span class="article-card__meta">8. Januar 2024 • 7 Min. Lesezeit</span>
+            </div>
+          </article>
+          <article class="article-card">
+            <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=600&h=400&fit=crop" alt="Altersvorsorge" class="article-card__image">
+            <div class="article-card__content">
+              <span class="article-card__category">Altersvorsorge</span>
+              <h3 class="article-card__title">Rentenlücke berechnen: So viel fehlt Ihnen wirklich</h3>
+              <p class="article-card__excerpt">Eine einfache Methode, um herauszufinden, wie viel Sie für die Rente zurücklegen sollten.</p>
+              <span class="article-card__meta">2. Januar 2024 • 6 Min. Lesezeit</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="section section--gray">
+      <div class="section__container">
+        <div class="newsletter">
+          <h2 class="newsletter__title">Bleiben Sie informiert</h2>
+          <p class="newsletter__text">Erhalten Sie regelmäßig wertvolle Tipps zu Versicherungen, Vorsorge und Finanzen – direkt in Ihr Postfach. Kein Spam, versprochen.</p>
+          <form class="newsletter__form">
+            <input type="email" class="newsletter__input" placeholder="Ihre E-Mail-Adresse" required>
+            <button type="submit" class="newsletter__btn">Anmelden</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer__container">
+        <div class="footer__grid">
+          <div>
+            <div class="footer__brand">Helmut Emmert</div>
+            <p class="footer__text">Ihr unabhängiger Versicherungsmakler in Aschaffenburg. Persönliche Beratung, transparente Lösungen.</p>
+          </div>
+          <div>
+            <div class="footer__title">Leistungen</div>
+            <ul class="footer__links">
+              <li><a href={`${base}leistungen/lebensversicherung`} class="footer__link">Lebensversicherung</a></li>
+              <li><a href={`${base}leistungen/berufsunfaehigkeit`} class="footer__link">Berufsunfähigkeit</a></li>
+              <li><a href={`${base}leistungen/krankenversicherung`} class="footer__link">Krankenversicherung</a></li>
+              <li><a href={`${base}leistungen/altersvorsorge`} class="footer__link">Altersvorsorge</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="footer__title">Kontakt</div>
+            <ul class="footer__links">
+              <li><a href="tel:+49123456789" class="footer__link">+49 123 456 789</a></li>
+              <li><a href="mailto:info@emmert-versicherungen.de" class="footer__link">info@emmert-versicherungen.de</a></li>
+              <li><span class="footer__link">Musterstraße 123</span></li>
+              <li><span class="footer__link">63739 Aschaffenburg</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="footer__title">Rechtliches</div>
+            <ul class="footer__links">
+              <li><a href="#impressum" class="footer__link">Impressum</a></li>
+              <li><a href="#datenschutz" class="footer__link">Datenschutz</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <span>© 2024 Helmut Emmert Versicherungen. Alle Rechte vorbehalten.</span>
+          <span>Made with care in Aschaffenburg</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // FAQ Accordion
+      document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          const wasOpen = item.classList.contains('open');
+
+          // Close all other items
+          document.querySelectorAll('.faq-item').forEach(faq => {
+            faq.classList.remove('open');
+          });
+
+          // Toggle current item
+          if (!wasOpen) {
+            item.classList.add('open');
+          }
+        });
+      });
+
+      // Tabs
+      document.querySelectorAll('.tabs__btn').forEach(button => {
+        button.addEventListener('click', () => {
+          const tabId = button.dataset.tab;
+          const tabsContainer = button.closest('.tabs');
+
+          // Remove active from all buttons and panels
+          tabsContainer.querySelectorAll('.tabs__btn').forEach(btn => btn.classList.remove('active'));
+          tabsContainer.querySelectorAll('.tabs__panel').forEach(panel => panel.classList.remove('active'));
+
+          // Add active to clicked button and corresponding panel
+          button.classList.add('active');
+          document.getElementById(tabId).classList.add('active');
+        });
+      });
+    </script>
+  </body>
+</html>

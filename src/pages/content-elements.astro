@@ -1,0 +1,2117 @@
+---
+import '../styles/components.css';
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Content Elements - Bausteine für Inhaltsseiten</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        color: #1a1a1a;
+        line-height: 1.7;
+        font-size: 1.0625rem;
+      }
+
+      /* Navigation */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 4rem;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        z-index: 100;
+      }
+      .nav__brand {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        text-decoration: none;
+      }
+      .nav__brand span {
+        font-weight: 400;
+        color: #666;
+        margin-left: 0.5rem;
+      }
+
+      /* Reading Progress */
+      .reading-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(90deg, #1a4d2e, #2d6b45);
+        z-index: 101;
+        transition: width 0.1s;
+      }
+
+      /* Content Layout */
+      .content-layout {
+        display: grid;
+        grid-template-columns: 1fr min(720px, 100%) 1fr;
+        padding-top: 5rem;
+      }
+      .content-layout > * {
+        grid-column: 2;
+      }
+      .content-layout > .prose,
+      .content-layout > .lead,
+      .content-layout > p,
+      .content-layout > h1,
+      .content-layout > h2,
+      .content-layout > h3,
+      .content-layout > h4,
+      .content-layout > .section-heading,
+      .content-layout > .subsection-heading,
+      .content-layout > .divider,
+      .content-layout > .footnotes,
+      .content-layout > .share-buttons,
+      .content-layout > .pagination,
+      .content-layout > .styled-list,
+      .content-layout > .checklist,
+      .content-layout > .steps-list,
+      .content-layout > .definition-list,
+      .content-layout > .content-timeline,
+      .content-layout > .interview-item,
+      .content-layout > .multi-column,
+      .content-layout > .two-column-content {
+        padding: 0 1.5rem;
+      }
+      .content-layout > .full-width {
+        grid-column: 1 / -1;
+        padding: 0;
+      }
+      .content-layout > .wide {
+        grid-column: 1 / -1;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      /* Article Header */
+      .article-header {
+        padding: 3rem 1.5rem 2rem;
+      }
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        color: #666;
+        margin-bottom: 1.5rem;
+      }
+      .breadcrumb a {
+        color: #666;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .breadcrumb a:hover { color: #1a4d2e; }
+      .breadcrumb__separator { color: #ccc; }
+      .article-header__category {
+        display: inline-block;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #1a4d2e;
+        background: #e8f4ed;
+        padding: 0.375rem 0.875rem;
+        border-radius: 2rem;
+        margin-bottom: 1rem;
+      }
+      .article-header__title {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+      .article-header__subtitle {
+        font-size: 1.25rem;
+        color: #555;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+      }
+      .article-header__meta {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        font-size: 0.9375rem;
+        color: #666;
+      }
+      .article-header__author {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .article-header__author-image {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .article-header__author-name {
+        font-weight: 600;
+        color: #1a1a1a;
+      }
+      .article-header__date,
+      .article-header__reading-time {
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+      }
+
+      /* Hero Image */
+      .hero-image {
+        margin: 2rem 0;
+      }
+      .hero-image img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 1rem;
+      }
+      .hero-image figcaption {
+        font-size: 0.875rem;
+        color: #666;
+        text-align: center;
+        margin-top: 0.75rem;
+      }
+
+      /* Table of Contents */
+      .toc {
+        background: #f8f7f5;
+        border-radius: 1rem;
+        padding: 2rem 2.5rem;
+        margin: 2rem 1.5rem;
+      }
+      .toc__title {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .toc__list {
+        list-style: none;
+        counter-reset: toc;
+      }
+      .toc__list li {
+        counter-increment: toc;
+        margin-bottom: 0.5rem;
+      }
+      .toc__list a {
+        display: flex;
+        align-items: baseline;
+        gap: 0.75rem;
+        color: #555;
+        text-decoration: none;
+        font-size: 0.9375rem;
+        transition: color 0.2s;
+      }
+      .toc__list a:hover { color: #1a4d2e; }
+      .toc__list a::before {
+        content: counter(toc) ".";
+        font-weight: 600;
+        color: #1a4d2e;
+        min-width: 1.5rem;
+      }
+      .toc__list--nested {
+        margin-left: 2.25rem;
+        margin-top: 0.5rem;
+      }
+      .toc__list--nested a::before {
+        content: "–";
+        color: #999;
+      }
+
+      /* Prose / Body Text */
+      .prose {
+        margin: 1.5rem 0;
+      }
+      .prose p {
+        margin-bottom: 1.5rem;
+      }
+      .prose p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Lead Paragraph */
+      .lead {
+        font-size: 1.25rem;
+        color: #444;
+        line-height: 1.7;
+        margin: 2rem 0;
+      }
+
+      /* Drop Cap */
+      .drop-cap::first-letter {
+        float: left;
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 4.5rem;
+        line-height: 0.8;
+        padding-right: 0.75rem;
+        padding-top: 0.25rem;
+        color: #1a4d2e;
+        font-weight: 700;
+      }
+
+      /* Section Headings */
+      .section-heading {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin: 3rem 0 1.5rem;
+        padding-top: 1rem;
+      }
+      .section-heading--numbered {
+        display: flex;
+        align-items: baseline;
+        gap: 0.75rem;
+      }
+      .section-heading__number {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #1a4d2e;
+        background: #e8f4ed;
+        padding: 0.25rem 0.625rem;
+        border-radius: 0.375rem;
+      }
+
+      .subsection-heading {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin: 2rem 0 1rem;
+      }
+
+      /* Blockquote */
+      .blockquote {
+        margin: 2.5rem 1.5rem;
+        padding: 1.75rem 2rem;
+        border-left: 4px solid #1a4d2e;
+        background: #f8f7f5;
+        border-radius: 0 0.75rem 0.75rem 0;
+      }
+      .blockquote p {
+        font-size: 1.125rem;
+        font-style: italic;
+        color: #333;
+        margin-bottom: 0.75rem;
+      }
+      .blockquote cite {
+        font-size: 0.9375rem;
+        font-style: normal;
+        color: #666;
+      }
+
+      /* Pull Quote */
+      .pull-quote {
+        margin: 3rem 1.5rem;
+        text-align: center;
+        padding: 2rem;
+      }
+      .pull-quote p {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 1.75rem;
+        font-weight: 500;
+        font-style: italic;
+        color: #1a4d2e;
+        line-height: 1.4;
+      }
+      .pull-quote cite {
+        display: block;
+        margin-top: 1rem;
+        font-size: 0.9375rem;
+        font-style: normal;
+        color: #666;
+      }
+
+      /* Highlight Box */
+      .highlight-box {
+        margin: 2rem 1.5rem;
+        padding: 1.75rem 2rem;
+        border-radius: 1rem;
+        background: #fffbeb;
+        border: 1px solid #fef3c7;
+      }
+      .highlight-box p {
+        margin: 0;
+        color: #92400e;
+      }
+
+      /* Info Boxes / Callouts */
+      .callout {
+        margin: 2rem 1.5rem;
+        padding: 1.5rem 2rem;
+        border-radius: 0.75rem;
+        display: flex;
+        gap: 1rem;
+      }
+      .callout__icon {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-top: 0.125rem;
+      }
+      .callout__content {
+        flex: 1;
+      }
+      .callout__title {
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+      }
+      .callout__text {
+        font-size: 0.9375rem;
+        line-height: 1.6;
+      }
+      .callout--info {
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+      }
+      .callout--info .callout__icon { color: #2563eb; }
+      .callout--info .callout__title { color: #1e40af; }
+      .callout--info .callout__text { color: #1e40af; }
+
+      .callout--tip {
+        background: #ecfdf5;
+        border: 1px solid #a7f3d0;
+      }
+      .callout--tip .callout__icon { color: #059669; }
+      .callout--tip .callout__title { color: #065f46; }
+      .callout--tip .callout__text { color: #065f46; }
+
+      .callout--warning {
+        background: #fffbeb;
+        border: 1px solid #fde68a;
+      }
+      .callout--warning .callout__icon { color: #d97706; }
+      .callout--warning .callout__title { color: #92400e; }
+      .callout--warning .callout__text { color: #92400e; }
+
+      .callout--danger {
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+      }
+      .callout--danger .callout__icon { color: #dc2626; }
+      .callout--danger .callout__title { color: #991b1b; }
+      .callout--danger .callout__text { color: #991b1b; }
+
+      /* Key Takeaways */
+      .key-takeaways {
+        margin: 2.5rem 1.5rem;
+        padding: 2rem 2.5rem;
+        background: linear-gradient(135deg, #1a4d2e 0%, #2d6b45 100%);
+        border-radius: 1rem;
+        color: white;
+      }
+      .key-takeaways__title {
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .key-takeaways__list {
+        list-style: none;
+      }
+      .key-takeaways__list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+        font-size: 0.9375rem;
+      }
+      .key-takeaways__list li:last-child {
+        margin-bottom: 0;
+      }
+      .key-takeaways__list li svg {
+        flex-shrink: 0;
+        margin-top: 0.125rem;
+        color: #6db88f;
+      }
+
+      /* Definition List */
+      .definition-list {
+        margin: 2rem 0;
+      }
+      .definition-item {
+        padding: 1.25rem 0;
+        border-bottom: 1px solid #e5e5e5;
+      }
+      .definition-item:first-child {
+        padding-top: 0;
+      }
+      .definition-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .definition-term {
+        font-weight: 700;
+        color: #1a4d2e;
+        margin-bottom: 0.375rem;
+      }
+      .definition-desc {
+        font-size: 0.9375rem;
+        color: #555;
+      }
+
+      /* Ordered Steps */
+      .steps-list {
+        margin: 2rem 0;
+        list-style: none;
+        counter-reset: steps;
+      }
+      .steps-list li {
+        counter-increment: steps;
+        display: flex;
+        gap: 1.25rem;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid #e5e5e5;
+      }
+      .steps-list li:last-child {
+        border-bottom: none;
+      }
+      .steps-list li::before {
+        content: counter(steps);
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        background: #1a4d2e;
+        color: white;
+        font-weight: 700;
+        border-radius: 50%;
+      }
+      .step-content__title {
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+      }
+      .step-content__text {
+        font-size: 0.9375rem;
+        color: #555;
+      }
+
+      /* Checklist */
+      .checklist {
+        margin: 2rem 0;
+        list-style: none;
+      }
+      .checklist li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 0.75rem 0;
+      }
+      .checklist li svg {
+        flex-shrink: 0;
+        color: #1a4d2e;
+        margin-top: 0.125rem;
+      }
+
+      /* Unordered List Styled */
+      .styled-list {
+        margin: 1.5rem 0;
+        list-style: none;
+      }
+      .styled-list li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.75rem;
+      }
+      .styled-list li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.625rem;
+        width: 0.375rem;
+        height: 0.375rem;
+        background: #1a4d2e;
+        border-radius: 50%;
+      }
+
+      /* Image with Caption */
+      .content-image {
+        margin: 2.5rem 1.5rem;
+      }
+      .content-image img {
+        width: 100%;
+        border-radius: 0.75rem;
+      }
+      .content-image figcaption {
+        font-size: 0.875rem;
+        color: #666;
+        margin-top: 0.75rem;
+        padding: 0 0.5rem;
+      }
+
+      /* Image Float */
+      .image-float {
+        margin: 1.5rem 0;
+      }
+      .image-float--left {
+        float: left;
+        margin-right: 2rem;
+        margin-bottom: 1rem;
+        max-width: 300px;
+      }
+      .image-float--right {
+        float: right;
+        margin-left: 2rem;
+        margin-bottom: 1rem;
+        max-width: 300px;
+      }
+      .image-float img {
+        width: 100%;
+        border-radius: 0.75rem;
+      }
+      .image-float figcaption {
+        font-size: 0.8125rem;
+        color: #666;
+        margin-top: 0.5rem;
+      }
+
+      /* Image Comparison */
+      .image-comparison {
+        margin: 2.5rem 1.5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+      .image-comparison figure img {
+        width: 100%;
+        border-radius: 0.75rem;
+      }
+      .image-comparison figcaption {
+        font-size: 0.875rem;
+        color: #666;
+        margin-top: 0.75rem;
+        text-align: center;
+      }
+
+      /* Content Table */
+      .content-table {
+        margin: 2rem 1.5rem;
+        width: calc(100% - 3rem);
+        border-collapse: collapse;
+        font-size: 0.9375rem;
+      }
+      .content-table th,
+      .content-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid #e5e5e5;
+      }
+      .content-table th {
+        font-weight: 700;
+        background: #f8f7f5;
+      }
+      .content-table tr:last-child td {
+        border-bottom: none;
+      }
+      .content-table tr:hover td {
+        background: #fafafa;
+      }
+
+      /* Comparison Table */
+      .comparison-table {
+        margin: 2rem 1.5rem;
+        width: calc(100% - 3rem);
+        border-collapse: collapse;
+        font-size: 0.9375rem;
+        background: white;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      }
+      .comparison-table th,
+      .comparison-table td {
+        padding: 1rem 1.25rem;
+        text-align: left;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      .comparison-table th {
+        font-weight: 700;
+        background: #1a4d2e;
+        color: white;
+      }
+      .comparison-table tr:last-child td {
+        border-bottom: none;
+      }
+      .comparison-table .check { color: #059669; }
+      .comparison-table .cross { color: #dc2626; }
+
+      /* Accordion */
+      .accordion {
+        margin: 2rem 1.5rem;
+        border: 1px solid #e5e5e5;
+        border-radius: 0.75rem;
+        overflow: hidden;
+      }
+      .accordion-item {
+        border-bottom: 1px solid #e5e5e5;
+      }
+      .accordion-item:last-child {
+        border-bottom: none;
+      }
+      .accordion-trigger {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.25rem 1.5rem;
+        background: white;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: left;
+        transition: background 0.2s;
+      }
+      .accordion-trigger:hover { background: #fafafa; }
+      .accordion-trigger svg {
+        flex-shrink: 0;
+        color: #666;
+        transition: transform 0.3s;
+      }
+      .accordion-item.open .accordion-trigger svg {
+        transform: rotate(180deg);
+      }
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+      .accordion-item.open .accordion-content {
+        max-height: 500px;
+      }
+      .accordion-content__inner {
+        padding: 0 1.5rem 1.5rem;
+        font-size: 0.9375rem;
+        color: #555;
+      }
+
+      /* Q&A Format */
+      .qa-item {
+        margin: 2rem 1.5rem;
+        padding: 1.75rem 2rem;
+        background: #f8f7f5;
+        border-radius: 0.75rem;
+      }
+      .qa-question {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+      .qa-label {
+        flex-shrink: 0;
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.875rem;
+        border-radius: 0.375rem;
+      }
+      .qa-question .qa-label {
+        background: #1a4d2e;
+        color: white;
+      }
+      .qa-question p {
+        font-weight: 600;
+        margin: 0;
+      }
+      .qa-answer {
+        display: flex;
+        gap: 1rem;
+      }
+      .qa-answer .qa-label {
+        background: #e8f4ed;
+        color: #1a4d2e;
+      }
+      .qa-answer p {
+        margin: 0;
+        font-size: 0.9375rem;
+        color: #555;
+      }
+
+      /* Interview Format */
+      .interview-item {
+        margin: 2rem 0;
+        padding-left: 1.5rem;
+        border-left: 3px solid #e5e5e5;
+      }
+      .interview-speaker {
+        font-weight: 700;
+        color: #1a4d2e;
+        margin-bottom: 0.5rem;
+      }
+      .interview-text {
+        color: #555;
+      }
+      .interview-item--highlight {
+        border-left-color: #1a4d2e;
+        background: #f8f7f5;
+        padding: 1.5rem;
+        border-radius: 0 0.75rem 0.75rem 0;
+      }
+
+      /* Summary Box */
+      .summary-box {
+        margin: 2.5rem 1.5rem;
+        padding: 2rem 2.5rem;
+        background: #f8f7f5;
+        border-radius: 1rem;
+        border: 1px solid #e5e5e5;
+      }
+      .summary-box__title {
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .summary-box__content {
+        font-size: 0.9375rem;
+        color: #555;
+      }
+      .summary-box__content p {
+        margin-bottom: 1rem;
+      }
+      .summary-box__content p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Code Block */
+      .code-block {
+        margin: 2rem 1.5rem;
+        background: #1a1a1a;
+        border-radius: 0.75rem;
+        overflow: hidden;
+      }
+      .code-block__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1.25rem;
+        background: #2a2a2a;
+        font-size: 0.8125rem;
+        color: #999;
+      }
+      .code-block__copy {
+        background: none;
+        border: none;
+        color: #999;
+        cursor: pointer;
+        font-size: 0.8125rem;
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+      }
+      .code-block__copy:hover { color: white; }
+      .code-block pre {
+        padding: 1.5rem 2rem;
+        overflow-x: auto;
+        font-family: 'SF Mono', 'Fira Code', monospace;
+        font-size: 0.875rem;
+        line-height: 1.6;
+        color: #e5e5e5;
+      }
+
+      /* Inline Code */
+      code {
+        font-family: 'SF Mono', 'Fira Code', monospace;
+        font-size: 0.875em;
+        background: #f0f0f0;
+        padding: 0.125rem 0.375rem;
+        border-radius: 0.25rem;
+        color: #c7254e;
+      }
+
+      /* Download Box */
+      .download-box {
+        margin: 2rem 1.5rem;
+        padding: 1.75rem 2rem;
+        background: white;
+        border: 1px solid #e5e5e5;
+        border-radius: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+      }
+      .download-box__icon {
+        flex-shrink: 0;
+        width: 3.5rem;
+        height: 3.5rem;
+        background: #fef3e7;
+        border-radius: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #d97706;
+      }
+      .download-box__info {
+        flex: 1;
+      }
+      .download-box__title {
+        font-weight: 700;
+        margin-bottom: 0.125rem;
+      }
+      .download-box__meta {
+        font-size: 0.8125rem;
+        color: #666;
+      }
+      .download-box__btn {
+        flex-shrink: 0;
+        padding: 0.75rem 1.5rem;
+        background: #1a4d2e;
+        color: white;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        transition: background 0.2s;
+      }
+      .download-box__btn:hover { background: #143d24; }
+
+      /* Footnotes */
+      .footnote-ref {
+        font-size: 0.75rem;
+        vertical-align: super;
+        color: #1a4d2e;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .footnotes {
+        margin: 3rem 0 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid #e5e5e5;
+      }
+      .footnotes__title {
+        font-size: 0.9375rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      .footnotes__list {
+        list-style: none;
+        counter-reset: footnotes;
+      }
+      .footnotes__list li {
+        counter-increment: footnotes;
+        display: flex;
+        gap: 0.75rem;
+        font-size: 0.875rem;
+        color: #666;
+        margin-bottom: 0.5rem;
+      }
+      .footnotes__list li::before {
+        content: counter(footnotes) ".";
+        font-weight: 600;
+        color: #1a4d2e;
+      }
+
+      /* Sources / References */
+      .sources {
+        margin: 2.5rem 1.5rem;
+        padding: 2rem 2.5rem;
+        background: #f8f7f5;
+        border-radius: 0.75rem;
+      }
+      .sources__title {
+        font-size: 0.9375rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      .sources__list {
+        list-style: none;
+      }
+      .sources__list li {
+        font-size: 0.875rem;
+        color: #555;
+        margin-bottom: 0.5rem;
+        padding-left: 1rem;
+        position: relative;
+      }
+      .sources__list li::before {
+        content: '→';
+        position: absolute;
+        left: 0;
+        color: #999;
+      }
+      .sources__list a {
+        color: #1a4d2e;
+        text-decoration: none;
+      }
+      .sources__list a:hover {
+        text-decoration: underline;
+      }
+
+      /* Author Bio */
+      .author-bio {
+        margin: 3rem 1.5rem;
+        padding: 2rem 2.5rem;
+        background: #f8f7f5;
+        border-radius: 1rem;
+        display: flex;
+        gap: 1.5rem;
+      }
+      .author-bio__image {
+        flex-shrink: 0;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .author-bio__label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #666;
+        margin-bottom: 0.25rem;
+      }
+      .author-bio__name {
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+      .author-bio__text {
+        font-size: 0.9375rem;
+        color: #555;
+        margin-bottom: 0.75rem;
+      }
+      .author-bio__social {
+        display: flex;
+        gap: 0.75rem;
+      }
+      .author-bio__social a {
+        color: #666;
+        transition: color 0.2s;
+      }
+      .author-bio__social a:hover { color: #1a4d2e; }
+
+      /* Share Buttons */
+      .share-buttons {
+        margin: 2rem 0;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .share-buttons__label {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: #666;
+      }
+      .share-buttons__list {
+        display: flex;
+        gap: 0.5rem;
+      }
+      .share-btn {
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: white;
+        transition: transform 0.2s;
+      }
+      .share-btn:hover { transform: scale(1.1); }
+      .share-btn--twitter { background: #1da1f2; }
+      .share-btn--facebook { background: #4267b2; }
+      .share-btn--linkedin { background: #0077b5; }
+      .share-btn--email { background: #666; }
+
+      /* Related Content */
+      .related-content {
+        margin: 3rem 1.5rem;
+        padding: 2rem 2.5rem;
+        background: #f8f7f5;
+        border-radius: 1rem;
+      }
+      .related-content__title {
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+      }
+      .related-content__grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      .related-card {
+        display: flex;
+        gap: 1rem;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.2s;
+      }
+      .related-card:hover { transform: translateX(4px); }
+      .related-card__image {
+        flex-shrink: 0;
+        width: 5rem;
+        height: 5rem;
+        object-fit: cover;
+        border-radius: 0.5rem;
+      }
+      .related-card__category {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #1a4d2e;
+        margin-bottom: 0.25rem;
+      }
+      .related-card__title {
+        font-weight: 600;
+        font-size: 0.9375rem;
+        line-height: 1.4;
+      }
+
+      /* Pagination */
+      .pagination {
+        margin: 3rem 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+      .pagination__link {
+        padding: 1.5rem;
+        background: #f8f7f5;
+        border-radius: 0.75rem;
+        text-decoration: none;
+        color: inherit;
+        transition: background 0.2s;
+      }
+      .pagination__link:hover { background: #f0eeea; }
+      .pagination__link--next { text-align: right; }
+      .pagination__label {
+        font-size: 0.8125rem;
+        color: #666;
+        margin-bottom: 0.375rem;
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+      }
+      .pagination__link--next .pagination__label {
+        justify-content: flex-end;
+      }
+      .pagination__title {
+        font-weight: 600;
+      }
+
+      /* Dividers */
+      .divider {
+        margin: 3rem 0;
+        border: none;
+        border-top: 1px solid #e5e5e5;
+      }
+      .divider--dots {
+        border: none;
+        text-align: center;
+      }
+      .divider--dots::before {
+        content: '• • •';
+        color: #ccc;
+        letter-spacing: 0.5rem;
+      }
+      .divider--gradient {
+        border: none;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #1a4d2e, transparent);
+      }
+
+      /* Content Timeline */
+      .content-timeline {
+        margin: 2rem 0;
+        position: relative;
+        padding-left: 2rem;
+      }
+      .content-timeline::before {
+        content: '';
+        position: absolute;
+        left: 0.375rem;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #e5e5e5;
+      }
+      .timeline-entry {
+        position: relative;
+        padding-bottom: 2rem;
+      }
+      .timeline-entry:last-child {
+        padding-bottom: 0;
+      }
+      .timeline-entry::before {
+        content: '';
+        position: absolute;
+        left: -1.625rem;
+        top: 0.375rem;
+        width: 0.75rem;
+        height: 0.75rem;
+        background: #1a4d2e;
+        border-radius: 50%;
+        border: 2px solid white;
+        box-shadow: 0 0 0 2px #1a4d2e;
+      }
+      .timeline-entry__date {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: #1a4d2e;
+        margin-bottom: 0.375rem;
+      }
+      .timeline-entry__title {
+        font-weight: 700;
+        margin-bottom: 0.375rem;
+      }
+      .timeline-entry__text {
+        font-size: 0.9375rem;
+        color: #555;
+      }
+
+      /* Content Cards Grid */
+      .content-cards {
+        margin: 2rem 1.5rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      .content-card {
+        padding: 1.75rem 2rem;
+        background: white;
+        border: 1px solid #e5e5e5;
+        border-radius: 0.75rem;
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .content-card:hover {
+        border-color: #1a4d2e;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      }
+      .content-card__icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        background: #e8f4ed;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #1a4d2e;
+        margin-bottom: 1rem;
+      }
+      .content-card__title {
+        font-weight: 700;
+        margin-bottom: 0.375rem;
+      }
+      .content-card__text {
+        font-size: 0.9375rem;
+        color: #555;
+      }
+
+      /* Media Embed */
+      .media-embed {
+        margin: 2.5rem 1.5rem;
+      }
+      .media-embed__wrapper {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 0.75rem;
+      }
+      .media-embed__wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .media-embed figcaption {
+        font-size: 0.875rem;
+        color: #666;
+        margin-top: 0.75rem;
+        text-align: center;
+      }
+
+      /* Sidebar Layout */
+      .sidebar-layout {
+        display: grid;
+        grid-template-columns: 1fr 280px;
+        gap: 3rem;
+        align-items: start;
+      }
+      .sidebar {
+        position: sticky;
+        top: 6rem;
+      }
+      .sidebar-box {
+        padding: 1.75rem 2rem;
+        background: #f8f7f5;
+        border-radius: 0.75rem;
+        margin-bottom: 1.5rem;
+      }
+      .sidebar-box__title {
+        font-size: 0.9375rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      .sidebar-links {
+        list-style: none;
+      }
+      .sidebar-links li {
+        margin-bottom: 0.5rem;
+      }
+      .sidebar-links a {
+        font-size: 0.875rem;
+        color: #555;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: color 0.2s;
+      }
+      .sidebar-links a:hover { color: #1a4d2e; }
+
+      /* Two Column Content */
+      .two-column-content {
+        margin: 2rem 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+      .two-column-content p {
+        margin-bottom: 1rem;
+      }
+
+      /* Multi-column Text */
+      .multi-column {
+        margin: 2rem 0;
+        column-count: 2;
+        column-gap: 3rem;
+      }
+      .multi-column p {
+        margin-bottom: 1rem;
+      }
+
+      /* Footer */
+      .footer {
+        margin-top: 4rem;
+        padding: 3rem 4rem;
+        background: #111;
+        color: white;
+        text-align: center;
+      }
+      .footer p {
+        color: #666;
+        font-size: 0.875rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+        .nav { padding: 1rem 1.5rem; }
+        .content-layout > .prose,
+        .content-layout > .lead,
+        .content-layout > p,
+        .content-layout > h1,
+        .content-layout > h2,
+        .content-layout > h3,
+        .content-layout > h4,
+        .content-layout > .section-heading,
+        .content-layout > .subsection-heading,
+        .content-layout > .divider,
+        .content-layout > .footnotes,
+        .content-layout > .share-buttons,
+        .content-layout > .pagination,
+        .content-layout > .styled-list,
+        .content-layout > .checklist,
+        .content-layout > .steps-list,
+        .content-layout > .definition-list,
+        .content-layout > .content-timeline,
+        .content-layout > .interview-item,
+        .content-layout > .multi-column,
+        .content-layout > .two-column-content { padding: 0 1rem; }
+        .hero-image img { height: 280px; }
+        .image-comparison { grid-template-columns: 1fr; }
+        .image-float--left,
+        .image-float--right {
+          float: none;
+          max-width: 100%;
+          margin: 1.5rem 0;
+        }
+        .related-content__grid { grid-template-columns: 1fr; }
+        .pagination { grid-template-columns: 1fr; }
+        .sidebar-layout { grid-template-columns: 1fr; }
+        .sidebar { position: static; }
+        .two-column-content { grid-template-columns: 1fr; }
+        .multi-column { column-count: 1; }
+        .content-cards { grid-template-columns: 1fr; }
+        .author-bio { flex-direction: column; text-align: center; }
+        .author-bio__social { justify-content: center; }
+        .footer { padding: 2rem 1.5rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Reading Progress -->
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+      <a href="#" class="nav__brand">Helmut Emmert <span>Versicherungsmakler</span></a>
+    </nav>
+
+    <!-- Content Layout -->
+    <div class="content-layout">
+
+      <!-- Article Header -->
+      <header class="article-header">
+        <nav class="breadcrumb">
+          <a href="#">Startseite</a>
+          <span class="breadcrumb__separator">/</span>
+          <a href="#">Ratgeber</a>
+          <span class="breadcrumb__separator">/</span>
+          <span>Berufsunfähigkeit</span>
+        </nav>
+        <span class="article-header__category">Berufsunfähigkeit</span>
+        <h1 class="article-header__title">Berufsunfähigkeitsversicherung: Der komplette Ratgeber für 2024</h1>
+        <p class="article-header__subtitle">Alles, was Sie wissen müssen, um die richtige BU-Versicherung zu finden – von den Grundlagen bis zu den wichtigsten Klauseln.</p>
+        <div class="article-header__meta">
+          <div class="article-header__author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Helmut Emmert" class="article-header__author-image">
+            <div>
+              <div class="article-header__author-name">Helmut Emmert</div>
+            </div>
+          </div>
+          <div class="article-header__date">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            15. Januar 2024
+          </div>
+          <div class="article-header__reading-time">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            12 Min. Lesezeit
+          </div>
+        </div>
+      </header>
+
+      <!-- Hero Image -->
+      <figure class="hero-image full-width">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=500&fit=crop" alt="Berufsunfähigkeitsversicherung">
+        <figcaption>Die Berufsunfähigkeitsversicherung gehört zu den wichtigsten Absicherungen für Berufstätige.</figcaption>
+      </figure>
+
+      <!-- Table of Contents -->
+      <nav class="toc">
+        <h2 class="toc__title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+          Inhaltsverzeichnis
+        </h2>
+        <ol class="toc__list">
+          <li><a href="#was-ist">Was ist eine Berufsunfähigkeitsversicherung?</a></li>
+          <li><a href="#warum-wichtig">Warum ist sie so wichtig?</a></li>
+          <li><a href="#worauf-achten">Worauf Sie beim Abschluss achten sollten</a>
+            <ol class="toc__list toc__list--nested">
+              <li><a href="#klauseln">Wichtige Klauseln</a></li>
+              <li><a href="#ausschluesse">Ausschlüsse vermeiden</a></li>
+            </ol>
+          </li>
+          <li><a href="#kosten">Was kostet eine BU-Versicherung?</a></li>
+          <li><a href="#fazit">Fazit und Empfehlung</a></li>
+        </ol>
+      </nav>
+
+      <!-- Lead Paragraph -->
+      <p class="lead">
+        Die Berufsunfähigkeitsversicherung (BU) gilt als eine der wichtigsten Versicherungen überhaupt. Dennoch sind viele Menschen unzureichend oder gar nicht abgesichert. In diesem Ratgeber erfahren Sie alles, was Sie für eine fundierte Entscheidung wissen müssen.
+      </p>
+
+      <!-- Section Heading -->
+      <h2 class="section-heading" id="was-ist">Was ist eine Berufsunfähigkeitsversicherung?</h2>
+
+      <!-- Drop Cap Paragraph -->
+      <div class="prose drop-cap">
+        <p>Eine Berufsunfähigkeitsversicherung zahlt Ihnen eine monatliche Rente, wenn Sie Ihren Beruf aus gesundheitlichen Gründen nicht mehr ausüben können. Anders als die staatliche Erwerbsminderungsrente orientiert sie sich dabei an Ihrem konkreten Beruf – nicht daran, ob Sie irgendeine Arbeit noch verrichten könnten.</p>
+      </div>
+
+      <!-- Callout Info -->
+      <div class="callout callout--info">
+        <svg class="callout__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        <div class="callout__content">
+          <div class="callout__title">Definition: Berufsunfähigkeit</div>
+          <p class="callout__text">Sie gelten als berufsunfähig, wenn Sie Ihren zuletzt ausgeübten Beruf voraussichtlich dauerhaft zu mindestens 50% nicht mehr ausüben können.</p>
+        </div>
+      </div>
+
+      <!-- Prose -->
+      <div class="prose">
+        <p>Die BU-Versicherung springt ein, wenn Ihr wichtigstes Kapital – Ihre Arbeitskraft – wegfällt. Ob durch Krankheit, Unfall oder psychische Erkrankungen: Ohne eine private Absicherung stehen Sie im Ernstfall vor erheblichen finanziellen Problemen.</p>
+      </div>
+
+      <!-- Section Heading with Number -->
+      <h2 class="section-heading section-heading--numbered" id="warum-wichtig">
+        <span class="section-heading__number">2</span>
+        Warum ist sie so wichtig?
+      </h2>
+
+      <!-- Key Takeaways -->
+      <div class="key-takeaways">
+        <h3 class="key-takeaways__title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          Das Wichtigste in Kürze
+        </h3>
+        <ul class="key-takeaways__list">
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Jeder Vierte wird im Laufe seines Berufslebens berufsunfähig
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Die staatliche Erwerbsminderungsrente reicht bei weitem nicht aus
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Psychische Erkrankungen sind heute die häufigste Ursache für BU
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Je früher Sie abschließen, desto günstiger sind die Beiträge
+          </li>
+        </ul>
+      </div>
+
+      <!-- Prose with Image Float -->
+      <div class="prose">
+        <figure class="image-float image-float--right">
+          <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=400&h=300&fit=crop" alt="Statistik">
+          <figcaption>Quelle: GDV Statistik 2023</figcaption>
+        </figure>
+        <p>Die Statistik spricht eine deutliche Sprache: Etwa 25% aller Erwerbstätigen werden im Laufe ihres Berufslebens mindestens einmal berufsunfähig. Die häufigsten Ursachen sind dabei psychische Erkrankungen (32%), gefolgt von Erkrankungen des Bewegungsapparats (21%) und Krebs (15%).</p>
+        <p>Die staatliche Absicherung durch die Erwerbsminderungsrente ist dabei nur ein schwacher Trost: Im Durchschnitt liegt sie bei weniger als 1.000 Euro monatlich – und wird nur gezahlt, wenn Sie kaum noch arbeiten können.</p>
+      </div>
+
+      <!-- Blockquote -->
+      <blockquote class="blockquote">
+        <p>"Die Berufsunfähigkeitsversicherung ist die wichtigste Absicherung für jeden Berufstätigen. Ohne sie setzen Sie Ihre finanzielle Existenz aufs Spiel."</p>
+        <cite>— Stiftung Warentest, Finanztest 2023</cite>
+      </blockquote>
+
+      <!-- Divider -->
+      <hr class="divider divider--dots">
+
+      <!-- Section Heading -->
+      <h2 class="section-heading" id="worauf-achten">Worauf Sie beim Abschluss achten sollten</h2>
+
+      <!-- Steps List -->
+      <ol class="steps-list">
+        <li>
+          <div class="step-content">
+            <h3 class="step-content__title">Richtige Rentenhöhe wählen</h3>
+            <p class="step-content__text">Empfohlen werden 70-80% Ihres Nettoeinkommens. Bedenken Sie: Im BU-Fall fallen zwar einige Kosten weg, aber Sie haben auch keinen Arbeitgeberanteil zur Sozialversicherung mehr.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <h3 class="step-content__title">Laufzeit bis zum Rentenalter</h3>
+            <p class="step-content__text">Die BU-Rente sollte mindestens bis zum 67. Lebensjahr gezahlt werden. Eine kürzere Laufzeit spart zwar Beiträge, lässt Sie aber im schlimmsten Fall ohne Schutz.</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <h3 class="step-content__title">Verzicht auf abstrakte Verweisung</h3>
+            <p class="step-content__text">Die Versicherung darf Sie nicht auf einen anderen Beruf verweisen. Achten Sie auf den "echten Verzicht auf abstrakte Verweisung".</p>
+          </div>
+        </li>
+        <li>
+          <div class="step-content">
+            <h3 class="step-content__title">Nachversicherungsgarantie sichern</h3>
+            <p class="step-content__text">Mit dieser Klausel können Sie die BU-Rente später erhöhen, ohne erneute Gesundheitsprüfung – etwa bei Gehaltserhöhung oder Familienzuwachs.</p>
+          </div>
+        </li>
+      </ol>
+
+      <!-- Subsection Heading -->
+      <h3 class="subsection-heading" id="klauseln">Wichtige Klauseln im Detail</h3>
+
+      <!-- Definition List -->
+      <dl class="definition-list">
+        <div class="definition-item">
+          <dt class="definition-term">Verzicht auf abstrakte Verweisung</dt>
+          <dd class="definition-desc">Die Versicherung kann Sie nicht auf einen anderen, vergleichbaren Beruf verweisen. Entscheidend ist nur, ob Sie Ihren konkreten Beruf noch ausüben können.</dd>
+        </div>
+        <div class="definition-item">
+          <dt class="definition-term">Nachversicherungsgarantie</dt>
+          <dd class="definition-desc">Sie können die versicherte Rente bei bestimmten Anlässen (z.B. Heirat, Geburt, Gehaltserhöhung) ohne erneute Gesundheitsprüfung erhöhen.</dd>
+        </div>
+        <div class="definition-item">
+          <dt class="definition-term">Dynamik</dt>
+          <dd class="definition-desc">Beitrag und Leistung steigen jährlich um einen festgelegten Prozentsatz. So bleibt der Schutz an die Inflation angepasst.</dd>
+        </div>
+        <div class="definition-item">
+          <dt class="definition-term">Leistungen bei Arbeitsunfähigkeit</dt>
+          <dd class="definition-desc">Manche Tarife zahlen bereits bei längerer Arbeitsunfähigkeit, auch wenn noch keine Berufsunfähigkeit festgestellt wurde.</dd>
+        </div>
+      </dl>
+
+      <!-- Callout Tip -->
+      <div class="callout callout--tip">
+        <svg class="callout__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+        <div class="callout__content">
+          <div class="callout__title">Tipp vom Experten</div>
+          <p class="callout__text">Achten Sie auf die 6-Monats-Prognose: Gute Tarife zahlen bereits, wenn die Berufsunfähigkeit "voraussichtlich" 6 Monate andauern wird – nicht erst, wenn sie tatsächlich 6 Monate angedauert hat.</p>
+        </div>
+      </div>
+
+      <!-- Subsection Heading -->
+      <h3 class="subsection-heading" id="ausschluesse">Typische Ausschlüsse vermeiden</h3>
+
+      <!-- Callout Warning -->
+      <div class="callout callout--warning">
+        <svg class="callout__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+        <div class="callout__content">
+          <div class="callout__title">Achtung bei der Gesundheitsprüfung</div>
+          <p class="callout__text">Falsche oder unvollständige Angaben bei den Gesundheitsfragen können dazu führen, dass die Versicherung im Leistungsfall nicht zahlt. Antworten Sie ehrlich und vollständig!</p>
+        </div>
+      </div>
+
+      <!-- Checklist -->
+      <ul class="checklist">
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Keine Ausschlüsse für psychische Erkrankungen</span>
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Keine Ausschlüsse für Rückenerkrankungen</span>
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Weltweiter Versicherungsschutz</span>
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Keine Einschränkungen bei gefährlichen Hobbys (sofern relevant)</span>
+        </li>
+      </ul>
+
+      <!-- Divider -->
+      <hr class="divider divider--gradient">
+
+      <!-- Section Heading -->
+      <h2 class="section-heading" id="kosten">Was kostet eine BU-Versicherung?</h2>
+
+      <!-- Prose -->
+      <div class="prose">
+        <p>Die Kosten einer BU-Versicherung hängen von vielen Faktoren ab: Alter, Beruf, Gesundheitszustand, gewünschte Rentenhöhe und Laufzeit. Grundsätzlich gilt: Je früher Sie abschließen, desto günstiger sind die Beiträge.</p>
+      </div>
+
+      <!-- Comparison Table -->
+      <table class="comparison-table wide">
+        <thead>
+          <tr>
+            <th>Berufsgruppe</th>
+            <th>Monatlicher Beitrag*</th>
+            <th>BU-Rente</th>
+            <th>Eintrittsalter</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Kaufmännische Angestellte</td>
+            <td>ca. 80-120 €</td>
+            <td>2.000 €</td>
+            <td>30 Jahre</td>
+          </tr>
+          <tr>
+            <td>Ingenieur</td>
+            <td>ca. 70-100 €</td>
+            <td>2.000 €</td>
+            <td>30 Jahre</td>
+          </tr>
+          <tr>
+            <td>Handwerker</td>
+            <td>ca. 150-200 €</td>
+            <td>2.000 €</td>
+            <td>30 Jahre</td>
+          </tr>
+          <tr>
+            <td>Krankenpfleger</td>
+            <td>ca. 130-170 €</td>
+            <td>2.000 €</td>
+            <td>30 Jahre</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size: 0.8125rem; color: #666; margin-top: 0.75rem;">*Beispielhafte Beiträge, Stand 2024. Die tatsächlichen Beiträge können je nach Anbieter und individueller Situation variieren.</p>
+
+      <!-- Content Image -->
+      <figure class="content-image wide">
+        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1000&h=400&fit=crop" alt="Kostenübersicht">
+        <figcaption>Die Beiträge variieren stark je nach Beruf und Gesundheitszustand. Ein Vergleich lohnt sich.</figcaption>
+      </figure>
+
+      <!-- Pull Quote -->
+      <aside class="pull-quote">
+        <p>"Eine gute BU-Versicherung kostet Geld. Keine BU-Versicherung kann Sie alles kosten."</p>
+        <cite>— Helmut Emmert, Versicherungsmakler</cite>
+      </aside>
+
+      <!-- Q&A Item -->
+      <div class="qa-item">
+        <div class="qa-question">
+          <span class="qa-label">F</span>
+          <p>Kann ich die Beiträge von der Steuer absetzen?</p>
+        </div>
+        <div class="qa-answer">
+          <span class="qa-label">A</span>
+          <p>Ja, die Beiträge zur BU-Versicherung können als Vorsorgeaufwendungen in der Steuererklärung geltend gemacht werden. Der Höchstbetrag für Arbeitnehmer liegt bei 1.900 Euro pro Jahr (für Selbstständige bei 2.800 Euro). Allerdings konkurrieren die BU-Beiträge mit anderen Versicherungen wie der Krankenversicherung um diesen Höchstbetrag.</p>
+        </div>
+      </div>
+
+      <!-- Accordion -->
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            <span>Kann ich später noch wechseln?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content__inner">
+              <p>Ein Wechsel ist grundsätzlich möglich, aber oft nicht sinnvoll. Mit zunehmendem Alter steigen die Beiträge, und zwischenzeitlich aufgetretene Erkrankungen können zu Ausschlüssen oder Risikozuschlägen führen. Prüfen Sie vor einem Wechsel immer, ob Sie zum gleichen Preis vergleichbare Leistungen bekommen.</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            <span>Was passiert bei Beitragsrückständen?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content__inner">
+              <p>Bei Zahlungsschwierigkeiten sollten Sie unbedingt mit Ihrer Versicherung sprechen. Oft sind Stundungen oder eine vorübergehende Beitragsreduzierung möglich. Eine Kündigung sollte der letzte Ausweg sein, da Sie dann Ihren Schutz verlieren und später möglicherweise keinen neuen Vertrag mehr bekommen.</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            <span>Brauche ich als Beamter eine BU?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content__inner">
+              <p>Beamte haben zwar eine Dienstunfähigkeitsabsicherung durch den Dienstherrn, aber auch hier kann eine private BU sinnvoll sein. Die Dienstunfähigkeitspension deckt oft nicht die gesamte Versorgungslücke ab, insbesondere wenn Sie noch nicht lange verbeamtet sind.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Heading -->
+      <h2 class="section-heading" id="fazit">Fazit und Empfehlung</h2>
+
+      <!-- Summary Box -->
+      <div class="summary-box">
+        <h3 class="summary-box__title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          Zusammenfassung
+        </h3>
+        <div class="summary-box__content">
+          <p>Eine Berufsunfähigkeitsversicherung ist für jeden Berufstätigen unverzichtbar. Sie schützt Ihr wichtigstes Kapital – Ihre Arbeitskraft – und bewahrt Sie im Ernstfall vor dem finanziellen Absturz.</p>
+          <p>Achten Sie beim Abschluss auf den Verzicht auf abstrakte Verweisung, eine ausreichende Rentenhöhe und eine Laufzeit bis zum Rentenalter. Schließen Sie so früh wie möglich ab, um von günstigen Beiträgen und einer unkomplizierten Gesundheitsprüfung zu profitieren.</p>
+        </div>
+      </div>
+
+      <!-- Callout Danger -->
+      <div class="callout callout--danger">
+        <svg class="callout__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+        <div class="callout__content">
+          <div class="callout__title">Wichtiger Hinweis</div>
+          <p class="callout__text">Dieser Artikel ersetzt keine individuelle Beratung. Die richtige BU-Versicherung hängt von Ihrer persönlichen Situation ab. Lassen Sie sich von einem unabhängigen Berater helfen.</p>
+        </div>
+      </div>
+
+      <!-- Download Box -->
+      <div class="download-box">
+        <div class="download-box__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><polyline points="9 15 12 18 15 15"></polyline></svg>
+        </div>
+        <div class="download-box__info">
+          <h4 class="download-box__title">BU-Checkliste zum Download</h4>
+          <p class="download-box__meta">PDF • 2 Seiten • 156 KB</p>
+        </div>
+        <a href="#" class="download-box__btn">Herunterladen</a>
+      </div>
+
+      <!-- Footnotes -->
+      <div class="footnotes">
+        <h4 class="footnotes__title">Anmerkungen</h4>
+        <ol class="footnotes__list">
+          <li>Statistik basiert auf Daten des Gesamtverbands der Deutschen Versicherungswirtschaft (GDV) 2023</li>
+          <li>Durchschnittliche Erwerbsminderungsrente nach Angaben der Deutschen Rentenversicherung 2023</li>
+          <li>Beispielhafte Beiträge für einen Nichtraucher ohne Vorerkrankungen</li>
+        </ol>
+      </div>
+
+      <!-- Sources -->
+      <div class="sources">
+        <h4 class="sources__title">Quellen und weiterführende Links</h4>
+        <ul class="sources__list">
+          <li><a href="#">GDV: Berufsunfähigkeitsversicherung Statistiken 2023</a></li>
+          <li><a href="#">Stiftung Warentest: BU-Versicherung im Test (Finanztest 12/2023)</a></li>
+          <li><a href="#">Deutsche Rentenversicherung: Informationen zur Erwerbsminderungsrente</a></li>
+          <li><a href="#">Bundesanstalt für Finanzdienstleistungsaufsicht (BaFin): Verbraucherinformationen</a></li>
+        </ul>
+      </div>
+
+      <!-- Divider -->
+      <hr class="divider">
+
+      <!-- Share Buttons -->
+      <div class="share-buttons">
+        <span class="share-buttons__label">Artikel teilen:</span>
+        <div class="share-buttons__list">
+          <a href="#" class="share-btn share-btn--twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+          </a>
+          <a href="#" class="share-btn share-btn--facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+          </a>
+          <a href="#" class="share-btn share-btn--linkedin">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+          </a>
+          <a href="#" class="share-btn share-btn--email">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Author Bio -->
+      <div class="author-bio">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="Helmut Emmert" class="author-bio__image">
+        <div>
+          <p class="author-bio__label">Über den Autor</p>
+          <h3 class="author-bio__name">Helmut Emmert</h3>
+          <p class="author-bio__text">Unabhängiger Versicherungsmakler mit über 25 Jahren Erfahrung. Spezialisiert auf Berufsunfähigkeitsversicherungen, private Krankenversicherung und Altersvorsorge. IHK-geprüfter Fachwirt für Versicherungen und Finanzen.</p>
+          <div class="author-bio__social">
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADDITIONAL CONTENT ELEMENTS SHOWCASE -->
+      <hr class="divider divider--gradient">
+
+      <h2 class="section-heading">Weitere Content-Elemente</h2>
+      <p class="lead">Die folgenden Elemente zeigen zusätzliche Bausteine für die Strukturierung von Inhalten.</p>
+
+      <!-- Highlight Box -->
+      <div class="highlight-box">
+        <p><strong>Wichtig:</strong> Diese hervorgehobene Box eignet sich für wichtige Informationen, die besondere Aufmerksamkeit verdienen, aber keinen Warncharakter haben.</p>
+      </div>
+
+      <!-- Image Comparison -->
+      <div class="image-comparison wide">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=350&fit=crop" alt="Vorher">
+          <figcaption>Ohne professionelle Beratung</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=350&fit=crop" alt="Nachher">
+          <figcaption>Mit professioneller Beratung</figcaption>
+        </figure>
+      </div>
+
+      <!-- Content Timeline -->
+      <h3 class="subsection-heading">Chronologische Darstellung</h3>
+      <div class="content-timeline">
+        <div class="timeline-entry">
+          <div class="timeline-entry__date">Januar 2024</div>
+          <h4 class="timeline-entry__title">Erstgespräch und Bedarfsanalyse</h4>
+          <p class="timeline-entry__text">Im ersten Schritt lernen wir Ihre Situation kennen und identifizieren Ihren individuellen Absicherungsbedarf.</p>
+        </div>
+        <div class="timeline-entry">
+          <div class="timeline-entry__date">Februar 2024</div>
+          <h4 class="timeline-entry__title">Marktanalyse und Angebotsvergleich</h4>
+          <p class="timeline-entry__text">Wir vergleichen die Angebote verschiedener Versicherer und erstellen eine übersichtliche Gegenüberstellung.</p>
+        </div>
+        <div class="timeline-entry">
+          <div class="timeline-entry__date">März 2024</div>
+          <h4 class="timeline-entry__title">Vertragsabschluss</h4>
+          <p class="timeline-entry__text">Nach Ihrer Entscheidung kümmern wir uns um die gesamte Abwicklung und den Papierkram.</p>
+        </div>
+        <div class="timeline-entry">
+          <div class="timeline-entry__date">Laufend</div>
+          <h4 class="timeline-entry__title">Kontinuierliche Betreuung</h4>
+          <p class="timeline-entry__text">Wir bleiben Ihr Ansprechpartner und prüfen regelmäßig, ob Ihr Schutz noch passt.</p>
+        </div>
+      </div>
+
+      <!-- Content Cards Grid -->
+      <h3 class="subsection-heading">Verwandte Themen</h3>
+      <div class="content-cards">
+        <div class="content-card">
+          <div class="content-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h4 class="content-card__title">Risikolebensversicherung</h4>
+          <p class="content-card__text">Schützen Sie Ihre Familie mit einer günstigen Absicherung im Todesfall.</p>
+        </div>
+        <div class="content-card">
+          <div class="content-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </div>
+          <h4 class="content-card__title">Pflegeversicherung</h4>
+          <p class="content-card__text">Sorgen Sie vor für den Fall, dass Sie auf Pflege angewiesen sind.</p>
+        </div>
+        <div class="content-card">
+          <div class="content-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          </div>
+          <h4 class="content-card__title">Betriebliche Altersvorsorge</h4>
+          <p class="content-card__text">Nutzen Sie die Vorteile der bAV für Ihre Altersvorsorge.</p>
+        </div>
+        <div class="content-card">
+          <div class="content-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          </div>
+          <h4 class="content-card__title">Wohngebäudeversicherung</h4>
+          <p class="content-card__text">Schützen Sie Ihr Eigenheim vor Feuer, Sturm und anderen Gefahren.</p>
+        </div>
+      </div>
+
+      <!-- Two Column Content -->
+      <h3 class="subsection-heading">Zweispaltiger Inhalt</h3>
+      <div class="two-column-content">
+        <div>
+          <p><strong>Die Vorteile einer frühen Absicherung</strong></p>
+          <p>Je früher Sie eine Berufsunfähigkeitsversicherung abschließen, desto günstiger sind in der Regel die Beiträge. Das liegt daran, dass jüngere Menschen statistisch gesehen gesünder sind und ein geringeres Risiko darstellen.</p>
+          <p>Außerdem haben Sie bei einem frühen Abschluss weniger Vorerkrankungen, die zu Ausschlüssen oder Risikozuschlägen führen könnten.</p>
+        </div>
+        <div>
+          <p><strong>Wann ist der richtige Zeitpunkt?</strong></p>
+          <p>Der ideale Zeitpunkt für den Abschluss einer BU ist der Einstieg ins Berufsleben. Schon Auszubildende und Studenten können und sollten sich absichern – die Beiträge sind in diesem Alter besonders niedrig.</p>
+          <p>Aber auch später ist ein Abschluss noch sinnvoll und möglich. Wichtig ist: Je länger Sie warten, desto teurer wird es.</p>
+        </div>
+      </div>
+
+      <!-- Multi-Column Text -->
+      <h3 class="subsection-heading">Mehrspaltiger Fließtext</h3>
+      <div class="multi-column">
+        <p>Die Berufsunfähigkeitsversicherung hat sich in den letzten Jahrzehnten stark weiterentwickelt. Während früher vor allem körperlich tätige Berufe als gefährdet galten, sind heute psychische Erkrankungen die häufigste Ursache für Berufsunfähigkeit.</p>
+        <p>Diese Entwicklung hat dazu geführt, dass Versicherer ihre Risikobewertung angepasst haben. Büroberufe, die früher als wenig riskant galten, werden heute differenzierter betrachtet. Faktoren wie Stress, Bildschirmarbeit und mangelnde Bewegung spielen eine größere Rolle.</p>
+        <p>Für Verbraucher bedeutet das: Eine pauschale Einschätzung, ob eine BU teuer oder günstig ist, ist nicht möglich. Es kommt immer auf den individuellen Beruf, die persönliche Gesundheit und die gewünschten Leistungen an.</p>
+      </div>
+
+      <!-- Interview Format -->
+      <h3 class="subsection-heading">Interview-Format</h3>
+      <div class="interview-item">
+        <p class="interview-speaker">Redaktion:</p>
+        <p class="interview-text">Herr Emmert, was ist der häufigste Fehler, den Menschen bei der BU-Versicherung machen?</p>
+      </div>
+      <div class="interview-item interview-item--highlight">
+        <p class="interview-speaker">Helmut Emmert:</p>
+        <p class="interview-text">Der größte Fehler ist das Aufschieben. Viele denken: "Das mache ich später, wenn ich mehr verdiene." Aber jedes Jahr, das Sie warten, kostet Sie Geld – und im schlimmsten Fall die Versicherbarkeit, wenn zwischenzeitlich eine Erkrankung auftritt.</p>
+      </div>
+      <div class="interview-item">
+        <p class="interview-speaker">Redaktion:</p>
+        <p class="interview-text">Und was empfehlen Sie Berufseinsteigern?</p>
+      </div>
+      <div class="interview-item">
+        <p class="interview-speaker">Helmut Emmert:</p>
+        <p class="interview-text">Schließen Sie so früh wie möglich ab – am besten schon während der Ausbildung oder des Studiums. Die Beiträge sind dann minimal, und Sie sichern sich günstige Konditionen für Jahrzehnte.</p>
+      </div>
+
+      <!-- Styled List -->
+      <h3 class="subsection-heading">Liste mit Aufzählungspunkten</h3>
+      <ul class="styled-list">
+        <li>Berufsunfähigkeit kann jeden treffen – unabhängig vom Beruf</li>
+        <li>Die staatliche Absicherung ist meist unzureichend</li>
+        <li>Je früher Sie abschließen, desto günstiger sind die Beiträge</li>
+        <li>Achten Sie auf den Verzicht auf abstrakte Verweisung</li>
+        <li>Lassen Sie sich unabhängig beraten</li>
+      </ul>
+
+      <!-- Content Table -->
+      <h3 class="subsection-heading">Daten-Tabelle</h3>
+      <table class="content-table">
+        <thead>
+          <tr>
+            <th>Merkmal</th>
+            <th>Empfehlung</th>
+            <th>Wichtigkeit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rentenhöhe</td>
+            <td>70-80% des Nettoeinkommens</td>
+            <td>Sehr wichtig</td>
+          </tr>
+          <tr>
+            <td>Laufzeit</td>
+            <td>Bis zum Rentenalter (67)</td>
+            <td>Sehr wichtig</td>
+          </tr>
+          <tr>
+            <td>Verzicht auf abstrakte Verweisung</td>
+            <td>Unbedingt vereinbaren</td>
+            <td>Sehr wichtig</td>
+          </tr>
+          <tr>
+            <td>Nachversicherungsgarantie</td>
+            <td>Empfohlen</td>
+            <td>Wichtig</td>
+          </tr>
+          <tr>
+            <td>Dynamik</td>
+            <td>Optional, aber sinnvoll</td>
+            <td>Mittel</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Code Block (for technical content) -->
+      <h3 class="subsection-heading">Code-Block (für technische Inhalte)</h3>
+      <div class="code-block">
+        <div class="code-block__header">
+          <span>Berechnungsbeispiel</span>
+          <button class="code-block__copy">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Kopieren
+          </button>
+        </div>
+        <pre>Nettoeinkommen:        3.000 €/Monat
+Empfohlene BU-Rente:   2.100 €/Monat (70%)
+Maximale BU-Rente:     2.400 €/Monat (80%)
+
+Beispielrechnung (30 Jahre, Bürokaufmann):
+Monatlicher Beitrag:   ca. 85-110 €</pre>
+      </div>
+
+      <!-- Media Embed -->
+      <h3 class="subsection-heading">Video einbetten</h3>
+      <figure class="media-embed wide">
+        <div class="media-embed__wrapper">
+          <iframe src="about:blank" style="background: #1a1a1a; display: flex; align-items: center; justify-content: center;" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <figcaption>Video: So funktioniert die Berufsunfähigkeitsversicherung (Platzhalter)</figcaption>
+      </figure>
+
+      <!-- Inline Code Example -->
+      <h3 class="subsection-heading">Text mit Inline-Code</h3>
+      <div class="prose">
+        <p>Bei der Berechnung der BU-Rente gilt die Faustformel: <code>Nettoeinkommen × 0.7 = BU-Rente</code>. Das entspricht 70% des Nettoeinkommens und reicht in den meisten Fällen aus, um den Lebensstandard zu halten.</p>
+      </div>
+
+      <!-- Divider Variants -->
+      <h3 class="subsection-heading">Trennlinien-Varianten</h3>
+      <p>Einfache Linie:</p>
+      <hr class="divider">
+      <p>Punkte:</p>
+      <hr class="divider divider--dots">
+      <p>Gradient:</p>
+      <hr class="divider divider--gradient">
+
+      <!-- Related Content -->
+      <div class="related-content">
+        <h3 class="related-content__title">Das könnte Sie auch interessieren</h3>
+        <div class="related-content__grid">
+          <a href="#" class="related-card">
+            <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=200&h=200&fit=crop" alt="Altersvorsorge" class="related-card__image">
+            <div>
+              <p class="related-card__category">Altersvorsorge</p>
+              <h4 class="related-card__title">Rentenlücke berechnen: So viel fehlt Ihnen wirklich</h4>
+            </div>
+          </a>
+          <a href="#" class="related-card">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=200&h=200&fit=crop" alt="Krankenversicherung" class="related-card__image">
+            <div>
+              <p class="related-card__category">Krankenversicherung</p>
+              <h4 class="related-card__title">PKV vs. GKV: Welche Versicherung passt zu Ihnen?</h4>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <nav class="pagination">
+        <a href="#" class="pagination__link">
+          <span class="pagination__label">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            Vorheriger Artikel
+          </span>
+          <span class="pagination__title">Private Krankenversicherung: Lohnt sich der Wechsel?</span>
+        </a>
+        <a href="#" class="pagination__link pagination__link--next">
+          <span class="pagination__label">
+            Nächster Artikel
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </span>
+          <span class="pagination__title">Altersvorsorge: Die besten Strategien für jeden Lebensabschnitt</span>
+        </a>
+      </nav>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2024 Helmut Emmert Versicherungen. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <script>
+      // Reading Progress
+      const progressBar = document.getElementById('readingProgress');
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (scrollTop / docHeight) * 100;
+        progressBar.style.width = progress + '%';
+      });
+
+      // Accordion
+      document.querySelectorAll('.accordion-trigger').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          const wasOpen = item.classList.contains('open');
+
+          // Close all
+          document.querySelectorAll('.accordion-item').forEach(acc => {
+            acc.classList.remove('open');
+          });
+
+          // Toggle current
+          if (!wasOpen) {
+            item.classList.add('open');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
