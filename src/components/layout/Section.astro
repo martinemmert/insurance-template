@@ -1,0 +1,82 @@
+---
+interface Props {
+  variant?: 'white' | 'light' | 'dark';
+  size?: 'sm' | 'md' | 'lg';
+  id?: string;
+  class?: string;
+}
+
+const {
+  variant = 'white',
+  size = 'md',
+  id,
+  class: className
+} = Astro.props;
+
+const sizeClasses = {
+  sm: 'section--sm',
+  md: '',
+  lg: 'section--lg'
+};
+
+const variantClasses = {
+  white: 'section--white',
+  light: 'section--light',
+  dark: 'section--dark'
+};
+
+const classes = [
+  'section',
+  sizeClasses[size],
+  variantClasses[variant],
+  className
+].filter(Boolean).join(' ');
+---
+
+<section class={classes} id={id}>
+  <div class="section__container">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    padding: 6rem 4rem;
+  }
+
+  .section--sm {
+    padding: 4rem;
+  }
+
+  .section--lg {
+    padding: 8rem 4rem;
+  }
+
+  .section--white {
+    background: white;
+  }
+
+  .section--light {
+    background: #f8f7f5;
+  }
+
+  .section--dark {
+    background: #1a1a1a;
+    color: white;
+  }
+
+  .section__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 1024px) {
+    .section {
+      padding: 4rem 2rem;
+    }
+
+    .section--sm {
+      padding: 2rem;
+    }
+  }
+</style>

@@ -1,0 +1,59 @@
+---
+interface Props {
+  text: string;
+  author: string;
+  date?: string;
+  rating?: number;
+  class?: string;
+}
+
+const {
+  text,
+  author,
+  date,
+  rating = 5,
+  class: className
+} = Astro.props;
+---
+
+<article class:list={['review-card', className]}>
+  <div class="review-card__stars">
+    {Array.from({ length: rating }).map(() => '★').join('')}
+  </div>
+  <p class="review-card__text">{text}</p>
+  <p class="review-card__author">{author}</p>
+  {date && <p class="review-card__date">{date}</p>}
+</article>
+
+<style>
+  .review-card {
+    background: #242424;
+    padding: 2rem;
+    border-radius: 1rem;
+  }
+
+  .review-card__stars {
+    color: #fbbf24;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    letter-spacing: 0.1em;
+  }
+
+  .review-card__text {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+
+  .review-card__author {
+    font-weight: 600;
+    color: white;
+  }
+
+  .review-card__date {
+    font-size: 0.875rem;
+    color: #888;
+    margin-top: 0.25rem;
+  }
+</style>

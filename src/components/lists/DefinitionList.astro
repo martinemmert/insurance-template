@@ -1,0 +1,54 @@
+---
+interface Definition {
+  term: string;
+  description: string;
+}
+
+interface Props {
+  items: Definition[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+---
+
+<dl class:list={['definition-list', className]}>
+  {items.map(item => (
+    <div class="definition-item">
+      <dt class="definition-term">{item.term}</dt>
+      <dd class="definition-desc">{item.description}</dd>
+    </div>
+  ))}
+</dl>
+
+<style>
+  .definition-list {
+    margin: 2rem 0;
+  }
+
+  .definition-item {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .definition-item:first-child {
+    padding-top: 0;
+  }
+
+  .definition-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .definition-term {
+    font-weight: 700;
+    color: #1a4d2e;
+    margin-bottom: 0.375rem;
+  }
+
+  .definition-desc {
+    font-size: 0.9375rem;
+    color: #555;
+    line-height: 1.6;
+  }
+</style>

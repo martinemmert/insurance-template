@@ -1,0 +1,47 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  fullWidth?: boolean;
+  class?: string;
+}
+
+const { src, alt, caption, fullWidth = true, class: className } = Astro.props;
+---
+
+<figure class:list={['hero-image', fullWidth && 'full-width', className]}>
+  <img src={src} alt={alt} />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .hero-image {
+    margin: 2rem 0;
+  }
+
+  .hero-image.full-width {
+    grid-column: 1 / -1;
+    padding: 0;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+
+  .hero-image figcaption {
+    font-size: 0.875rem;
+    color: #666;
+    text-align: center;
+    margin-top: 0.75rem;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-image img {
+      height: 280px;
+    }
+  }
+</style>

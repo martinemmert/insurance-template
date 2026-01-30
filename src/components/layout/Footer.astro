@@ -1,0 +1,150 @@
+---
+interface FooterLink {
+  label: string;
+  href: string;
+}
+
+interface FooterColumn {
+  title: string;
+  links: FooterLink[];
+}
+
+interface Props {
+  brandName?: string;
+  brandDescription?: string;
+  columns?: FooterColumn[];
+  copyright?: string;
+}
+
+const {
+  brandName = 'Helmut Emmert',
+  brandDescription = 'Unabhängiger Versicherungsmakler in Aschaffenburg. Persönliche Beratung für Ihre optimale Absicherung.',
+  columns = [
+    {
+      title: 'Leistungen',
+      links: [
+        { label: 'Berufsunfähigkeit', href: '#' },
+        { label: 'Krankenversicherung', href: '#' },
+        { label: 'Altersvorsorge', href: '#' },
+        { label: 'Lebensversicherung', href: '#' }
+      ]
+    },
+    {
+      title: 'Kontakt',
+      links: [
+        { label: 'Terminbuchung', href: '#' },
+        { label: 'Telefon', href: 'tel:+49' },
+        { label: 'E-Mail', href: 'mailto:' }
+      ]
+    },
+    {
+      title: 'Rechtliches',
+      links: [
+        { label: 'Impressum', href: '#' },
+        { label: 'Datenschutz', href: '#' },
+        { label: 'Erstinformation', href: '#' }
+      ]
+    }
+  ],
+  copyright = `© ${new Date().getFullYear()} Helmut Emmert. Alle Rechte vorbehalten.`
+} = Astro.props;
+---
+
+<footer class="footer">
+  <div class="footer__container">
+    <div class="footer__grid">
+      <div>
+        <p class="footer__brand">{brandName}</p>
+        <p class="footer__text">{brandDescription}</p>
+      </div>
+      {columns.map(column => (
+        <div>
+          <h4 class="footer__title">{column.title}</h4>
+          <ul class="footer__links">
+            {column.links.map(link => (
+              <li><a href={link.href} class="footer__link">{link.label}</a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+    <div class="footer__bottom">
+      <p>{copyright}</p>
+      <slot name="bottom-right" />
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: #111;
+    color: white;
+    padding: 4rem 4rem 2rem;
+  }
+
+  .footer__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer__brand {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .footer__text {
+    color: #888;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+
+  .footer__title {
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .footer__links {
+    list-style: none;
+  }
+
+  .footer__link {
+    color: #888;
+    text-decoration: none;
+    font-size: 0.9375rem;
+    display: block;
+    margin-bottom: 0.75rem;
+    transition: color 0.2s;
+  }
+
+  .footer__link:hover {
+    color: white;
+  }
+
+  .footer__bottom {
+    padding-top: 2rem;
+    border-top: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    color: #666;
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 1024px) {
+    .footer {
+      padding: 2rem 1.5rem;
+    }
+
+    .footer__grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

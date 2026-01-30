@@ -1,0 +1,82 @@
+---
+interface Props {
+  quote: string;
+  authorName: string;
+  authorRole?: string;
+  authorImage?: string;
+  class?: string;
+}
+
+const {
+  quote,
+  authorName,
+  authorRole,
+  authorImage,
+  class: className
+} = Astro.props;
+---
+
+<div class:list={['quote-block', className]}>
+  <div class="quote-block__icon">"</div>
+  <p class="quote-block__text">{quote}</p>
+  <div class="quote-block__author">
+    {authorImage && (
+      <img src={authorImage} alt={authorName} class="quote-block__avatar" />
+    )}
+    <div>
+      <div class="quote-block__name">{authorName}</div>
+      {authorRole && <div class="quote-block__role">{authorRole}</div>}
+    </div>
+  </div>
+</div>
+
+<style>
+  .quote-block {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .quote-block__icon {
+    font-size: 4rem;
+    color: #1a4d2e;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    opacity: 0.3;
+    font-family: Georgia, serif;
+  }
+
+  .quote-block__text {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.5;
+    color: #1a1a1a;
+    margin-bottom: 2rem;
+  }
+
+  .quote-block__author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .quote-block__avatar {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .quote-block__name {
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .quote-block__role {
+    font-size: 0.875rem;
+    color: #666;
+  }
+</style>

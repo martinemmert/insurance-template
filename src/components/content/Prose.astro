@@ -1,0 +1,38 @@
+---
+interface Props {
+  dropCap?: boolean;
+  class?: string;
+}
+
+const { dropCap = false, class: className } = Astro.props;
+const classes = ['prose', dropCap && 'drop-cap', className].filter(Boolean).join(' ');
+---
+
+<div class={classes}>
+  <slot />
+</div>
+
+<style>
+  .prose {
+    margin: 1.5rem 0;
+  }
+
+  .prose :global(p) {
+    margin-bottom: 1.5rem;
+  }
+
+  .prose :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .drop-cap::first-letter {
+    float: left;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 4.5rem;
+    line-height: 0.8;
+    padding-right: 0.75rem;
+    padding-top: 0.25rem;
+    color: #1a4d2e;
+    font-weight: 700;
+  }
+</style>

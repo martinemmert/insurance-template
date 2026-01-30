@@ -1,0 +1,92 @@
+---
+interface Props {
+  title?: string;
+  text?: string;
+  buttonText?: string;
+  placeholder?: string;
+  class?: string;
+}
+
+const {
+  title = 'Newsletter abonnieren',
+  text = 'Erhalten Sie regelmäßig Tipps und Neuigkeiten rund um das Thema Versicherungen.',
+  buttonText = 'Anmelden',
+  placeholder = 'Ihre E-Mail-Adresse',
+  class: className
+} = Astro.props;
+---
+
+<div class:list={['newsletter', className]}>
+  <h3 class="newsletter__title">{title}</h3>
+  <p class="newsletter__text">{text}</p>
+  <form class="newsletter__form">
+    <input type="email" class="newsletter__input" placeholder={placeholder} required />
+    <button type="submit" class="newsletter__btn">{buttonText}</button>
+  </form>
+</div>
+
+<style>
+  .newsletter {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .newsletter__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .newsletter__text {
+    font-size: 1.0625rem;
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .newsletter__form {
+    display: flex;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .newsletter__input {
+    flex: 1;
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    font-family: inherit;
+  }
+
+  .newsletter__input:focus {
+    outline: none;
+    border-color: #1a4d2e;
+  }
+
+  .newsletter__btn {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background: #1a4d2e;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: inherit;
+  }
+
+  .newsletter__btn:hover {
+    background: #143d24;
+  }
+
+  @media (max-width: 640px) {
+    .newsletter__form {
+      flex-direction: column;
+    }
+  }
+</style>

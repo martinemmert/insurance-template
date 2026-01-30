@@ -1,0 +1,56 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  position?: 'left' | 'right';
+  class?: string;
+}
+
+const { src, alt, caption, position = 'right', class: className } = Astro.props;
+---
+
+<figure class:list={['image-float', `image-float--${position}`, className]}>
+  <img src={src} alt={alt} />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .image-float {
+    margin: 1.5rem 0;
+  }
+
+  .image-float--left {
+    float: left;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+    max-width: 300px;
+  }
+
+  .image-float--right {
+    float: right;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+    max-width: 300px;
+  }
+
+  .image-float img {
+    width: 100%;
+    border-radius: 0.75rem;
+  }
+
+  .image-float figcaption {
+    font-size: 0.8125rem;
+    color: #666;
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 1024px) {
+    .image-float--left,
+    .image-float--right {
+      float: none;
+      max-width: 100%;
+      margin: 1.5rem 0;
+    }
+  }
+</style>

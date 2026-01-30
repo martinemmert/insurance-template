@@ -1,0 +1,79 @@
+---
+interface Props {
+  title: string;
+  text: string;
+  image: string;
+  imageAlt?: string;
+  linkText?: string;
+  linkHref?: string;
+  class?: string;
+}
+
+const {
+  title,
+  text,
+  image,
+  imageAlt = '',
+  linkText = 'Mehr erfahren →',
+  linkHref = '#',
+  class: className
+} = Astro.props;
+---
+
+<article class:list={['service-card', className]}>
+  <img src={image} alt={imageAlt} class="service-card__image" />
+  <div class="service-card__content">
+    <h3 class="service-card__title">{title}</h3>
+    <p class="service-card__text">{text}</p>
+    <a href={linkHref} class="service-card__link">{linkText}</a>
+  </div>
+</article>
+
+<style>
+  .service-card {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .service-card__image {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .service-card__content {
+    padding: 1.5rem;
+  }
+
+  .service-card__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+
+  .service-card__text {
+    font-size: 0.9375rem;
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .service-card__link {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #1a4d2e;
+    text-decoration: none;
+  }
+
+  .service-card__link:hover {
+    text-decoration: underline;
+  }
+</style>

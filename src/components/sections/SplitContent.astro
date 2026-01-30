@@ -1,0 +1,40 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={['split-content', className]}>
+  <div class="split-content__left">
+    <slot name="left" />
+  </div>
+  <div class="split-content__right">
+    <slot name="right" />
+  </div>
+</div>
+
+<style>
+  .split-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .split-content__left,
+  .split-content__right {
+    line-height: 1.7;
+  }
+
+  .split-content__left :global(p),
+  .split-content__right :global(p) {
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 1024px) {
+    .split-content {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

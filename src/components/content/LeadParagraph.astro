@@ -1,0 +1,20 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<p class:list={['lead', className]}>
+  <slot />
+</p>
+
+<style>
+  .lead {
+    font-size: 1.25rem;
+    color: #444;
+    line-height: 1.7;
+    margin: 2rem 0;
+  }
+</style>

@@ -1,0 +1,36 @@
+---
+interface Props {
+  variant?: 'line' | 'dots' | 'gradient';
+  class?: string;
+}
+
+const { variant = 'line', class: className } = Astro.props;
+---
+
+<hr class:list={['divider', `divider--${variant}`, className]} />
+
+<style>
+  .divider {
+    margin: 3rem 0;
+    border: none;
+  }
+
+  .divider--line {
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .divider--dots {
+    text-align: center;
+  }
+
+  .divider--dots::before {
+    content: '• • •';
+    color: #ccc;
+    letter-spacing: 0.5rem;
+  }
+
+  .divider--gradient {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #1a4d2e, transparent);
+  }
+</style>

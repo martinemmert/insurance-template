@@ -1,0 +1,124 @@
+---
+interface Tab {
+  id: string;
+  label: string;
+  content: string;
+}
+
+interface Props {
+  tabs: Tab[];
+  defaultTab?: string;
+  class?: string;
+}
+
+const { tabs, defaultTab, class: className } = Astro.props;
+const activeTab = defaultTab || tabs[0]?.id;
+---
+
+<div class:list={['tabs', className]} data-tabs>
+  <div class="tabs__nav">
+    {tabs.map(tab => (
+      <button
+        class:list={['tabs__btn', tab.id === activeTab && 'tabs__btn--active']}
+        data-tab-trigger={tab.id}
+      >
+        {tab.label}
+      </button>
+    ))}
+  </div>
+
+  {tabs.map(tab => (
+    <div
+      class:list={['tabs__panel', tab.id === activeTab && 'tabs__panel--active']}
+      data-tab-panel={tab.id}
+    >
+      <Fragment set:html={tab.content} />
+    </div>
+  ))}
+</div>
+
+<script>
+  document.querySelectorAll('[data-tabs]').forEach(tabsContainer => {
+    const triggers = tabsContainer.querySelectorAll('[data-tab-trigger]');
+    const panels = tabsContainer.querySelectorAll('[data-tab-panel]');
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const tabId = trigger.getAttribute('data-tab-trigger');
+
+        // Update active states
+        triggers.forEach(t => t.classList.remove('tabs__btn--active'));
+        panels.forEach(p => p.classList.remove('tabs__panel--active'));
+
+        trigger.classList.add('tabs__btn--active');
+        tabsContainer.querySelector(`[data-tab-panel="${tabId}"]`)?.classList.add('tabs__panel--active');
+      });
+    });
+  });
+</script>
+
+<style>
+  .tabs__nav {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e0e0e0;
+  }
+
+  .tabs__btn {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #666;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+    font-family: inherit;
+  }
+
+  .tabs__btn:hover {
+    color: #1a4d2e;
+  }
+
+  .tabs__btn--active {
+    color: #1a4d2e;
+  }
+
+  .tabs__btn--active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #1a4d2e;
+  }
+
+  .tabs__panel {
+    display: none;
+  }
+
+  .tabs__panel--active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .tabs__nav {
+      flex-wrap: wrap;
+    }
+  }
+</style>

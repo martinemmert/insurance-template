@@ -1,0 +1,58 @@
+---
+interface ComparisonImage {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+interface Props {
+  images: [ComparisonImage, ComparisonImage];
+  wide?: boolean;
+  class?: string;
+}
+
+const { images, wide = false, class: className } = Astro.props;
+---
+
+<div class:list={['image-comparison', wide && 'wide', className]}>
+  {images.map(image => (
+    <figure>
+      <img src={image.src} alt={image.alt} />
+      {image.caption && <figcaption>{image.caption}</figcaption>}
+    </figure>
+  ))}
+</div>
+
+<style>
+  .image-comparison {
+    margin: 2.5rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .image-comparison.wide {
+    grid-column: 1 / -1;
+    max-width: 1000px;
+    margin: 2.5rem auto;
+    padding: 0 1.5rem;
+  }
+
+  .image-comparison figure img {
+    width: 100%;
+    border-radius: 0.75rem;
+  }
+
+  .image-comparison figcaption {
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.75rem;
+    text-align: center;
+  }
+
+  @media (max-width: 1024px) {
+    .image-comparison {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

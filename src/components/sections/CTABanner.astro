@@ -1,0 +1,75 @@
+---
+interface Props {
+  title: string;
+  text: string;
+  ctaText?: string;
+  ctaHref?: string;
+  class?: string;
+}
+
+const {
+  title,
+  text,
+  ctaText = 'Jetzt starten',
+  ctaHref = '#',
+  class: className
+} = Astro.props;
+---
+
+<div class:list={['cta-banner', className]}>
+  <div class="cta-banner__content">
+    <h3>{title}</h3>
+    <p>{text}</p>
+  </div>
+  <a href={ctaHref} class="cta-banner__btn">{ctaText}</a>
+</div>
+
+<style>
+  .cta-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    background: linear-gradient(135deg, #1a4d2e 0%, #2d6b45 100%);
+    padding: 3rem;
+    border-radius: 1.5rem;
+  }
+
+  .cta-banner__content h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-banner__content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  .cta-banner__btn {
+    flex-shrink: 0;
+    padding: 1rem 2rem;
+    background: white;
+    color: #1a4d2e;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .cta-banner__btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    .cta-banner {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

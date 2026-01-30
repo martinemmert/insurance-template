@@ -1,0 +1,24 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={['drop-cap', className]}>
+  <slot />
+</div>
+
+<style>
+  .drop-cap :global(p:first-of-type::first-letter) {
+    float: left;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 4.5rem;
+    line-height: 0.8;
+    padding-right: 0.75rem;
+    padding-top: 0.25rem;
+    color: #1a4d2e;
+    font-weight: 700;
+  }
+</style>

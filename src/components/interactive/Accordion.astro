@@ -1,0 +1,110 @@
+---
+interface AccordionItem {
+  title: string;
+  content: string;
+}
+
+interface Props {
+  items: AccordionItem[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+---
+
+<div class:list={['accordion', className]}>
+  {items.map((item, index) => (
+    <div class="accordion-item" data-accordion-item>
+      <button class="accordion-trigger" data-accordion-trigger>
+        <span>{item.title}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="accordion-content">
+        <div class="accordion-content__inner">
+          <p>{item.content}</p>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  document.querySelectorAll('[data-accordion-trigger]').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('[data-accordion-item]');
+      if (item) {
+        item.classList.toggle('open');
+      }
+    });
+  });
+</script>
+
+<style>
+  .accordion {
+    margin: 2rem 1.5rem;
+    border: 1px solid #e5e5e5;
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  .accordion-item {
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .accordion-item:last-child {
+    border-bottom: none;
+  }
+
+  .accordion-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    background: white;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+    transition: background 0.2s;
+  }
+
+  .accordion-trigger:hover {
+    background: #fafafa;
+  }
+
+  .accordion-trigger svg {
+    flex-shrink: 0;
+    color: #666;
+    transition: transform 0.3s;
+  }
+
+  .accordion-item.open .accordion-trigger svg {
+    transform: rotate(180deg);
+  }
+
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .accordion-item.open .accordion-content {
+    max-height: 500px;
+  }
+
+  .accordion-content__inner {
+    padding: 0 1.5rem 1.5rem;
+    font-size: 0.9375rem;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  .accordion-content__inner p {
+    margin: 0;
+  }
+</style>

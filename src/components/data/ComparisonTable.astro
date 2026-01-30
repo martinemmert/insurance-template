@@ -1,0 +1,103 @@
+---
+interface TableColumn {
+  key: string;
+  label: string;
+}
+
+interface TableRow {
+  [key: string]: string | boolean;
+}
+
+interface Props {
+  columns: TableColumn[];
+  rows: TableRow[];
+  wide?: boolean;
+  class?: string;
+}
+
+const { columns, rows, wide = false, class: className } = Astro.props;
+---
+
+<table class:list={['comparison-table', wide && 'wide', className]}>
+  <thead>
+    <tr>
+      {columns.map(col => (
+        <th>{col.label}</th>
+      ))}
+    </tr>
+  </thead>
+  <tbody>
+    {rows.map(row => (
+      <tr>
+        {columns.map(col => (
+          <td>
+            {typeof row[col.key] === 'boolean' ? (
+              row[col.key] ? (
+                <span class="check">✓</span>
+              ) : (
+                <span class="cross">×</span>
+              )
+            ) : (
+              row[col.key]
+            )}
+          </td>
+        ))}
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+<style>
+  .comparison-table {
+    margin: 2rem 1.5rem;
+    width: calc(100% - 3rem);
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+    background: white;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .comparison-table.wide {
+    grid-column: 1 / -1;
+    max-width: 1000px;
+    margin: 2rem auto;
+    width: 100%;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 1rem 1.25rem;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .comparison-table th {
+    font-weight: 700;
+    background: #1a4d2e;
+    color: white;
+  }
+
+  .comparison-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .comparison-table tr:hover td {
+    background: #fafafa;
+  }
+
+  .comparison-table td:first-child {
+    font-weight: 600;
+  }
+
+  .check {
+    color: #059669;
+    font-size: 1.25rem;
+  }
+
+  .cross {
+    color: #dc2626;
+    font-size: 1.25rem;
+  }
+</style>

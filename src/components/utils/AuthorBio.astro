@@ -1,0 +1,111 @@
+---
+interface SocialLink {
+  platform: string;
+  url: string;
+  icon: string;
+}
+
+interface Props {
+  name: string;
+  bio: string;
+  image: string;
+  label?: string;
+  socialLinks?: SocialLink[];
+  class?: string;
+}
+
+const {
+  name,
+  bio,
+  image,
+  label = 'Über den Autor',
+  socialLinks = [],
+  class: className
+} = Astro.props;
+---
+
+<div class:list={['author-bio', className]}>
+  <img src={image} alt={name} class="author-bio__image" />
+  <div>
+    <p class="author-bio__label">{label}</p>
+    <h3 class="author-bio__name">{name}</h3>
+    <p class="author-bio__text">{bio}</p>
+    {socialLinks.length > 0 && (
+      <div class="author-bio__social">
+        {socialLinks.map(link => (
+          <a href={link.url} aria-label={link.platform} set:html={link.icon} />
+        ))}
+      </div>
+    )}
+  </div>
+</div>
+
+<style>
+  .author-bio {
+    margin: 3rem 1.5rem;
+    padding: 2rem 2.5rem;
+    background: #f8f7f5;
+    border-radius: 1rem;
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .author-bio__image {
+    flex-shrink: 0;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-bio__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #666;
+    margin-bottom: 0.25rem;
+  }
+
+  .author-bio__name {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .author-bio__text {
+    font-size: 0.9375rem;
+    color: #555;
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .author-bio__social {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .author-bio__social a {
+    color: #666;
+    transition: color 0.2s;
+  }
+
+  .author-bio__social a:hover {
+    color: #1a4d2e;
+  }
+
+  @media (max-width: 1024px) {
+    .author-bio {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .author-bio__image {
+      margin: 0 auto;
+    }
+
+    .author-bio__social {
+      justify-content: center;
+    }
+  }
+</style>

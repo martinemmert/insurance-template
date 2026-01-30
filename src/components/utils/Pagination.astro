@@ -1,0 +1,95 @@
+---
+interface PaginationLink {
+  label: string;
+  title: string;
+  href: string;
+}
+
+interface Props {
+  prev?: PaginationLink;
+  next?: PaginationLink;
+  class?: string;
+}
+
+const { prev, next, class: className } = Astro.props;
+---
+
+<nav class:list={['pagination', className]}>
+  {prev ? (
+    <a href={prev.href} class="pagination__link">
+      <span class="pagination__label">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        {prev.label}
+      </span>
+      <span class="pagination__title">{prev.title}</span>
+    </a>
+  ) : (
+    <div></div>
+  )}
+
+  {next ? (
+    <a href={next.href} class="pagination__link pagination__link--next">
+      <span class="pagination__label">
+        {next.label}
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </span>
+      <span class="pagination__title">{next.title}</span>
+    </a>
+  ) : (
+    <div></div>
+  )}
+</nav>
+
+<style>
+  .pagination {
+    margin: 3rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .pagination__link {
+    padding: 1.5rem;
+    background: #f8f7f5;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s;
+  }
+
+  .pagination__link:hover {
+    background: #f0eeea;
+  }
+
+  .pagination__link--next {
+    text-align: right;
+  }
+
+  .pagination__label {
+    font-size: 0.8125rem;
+    color: #666;
+    margin-bottom: 0.375rem;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .pagination__link--next .pagination__label {
+    justify-content: flex-end;
+  }
+
+  .pagination__title {
+    display: block;
+    font-weight: 600;
+  }
+
+  @media (max-width: 1024px) {
+    .pagination {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

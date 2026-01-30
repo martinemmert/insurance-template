@@ -1,0 +1,38 @@
+---
+interface Props {
+  cite?: string;
+  class?: string;
+}
+
+const { cite, class: className } = Astro.props;
+---
+
+<aside class:list={['pull-quote', className]}>
+  <p><slot /></p>
+  {cite && <cite>— {cite}</cite>}
+</aside>
+
+<style>
+  .pull-quote {
+    margin: 3rem 1.5rem;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+    font-style: italic;
+    color: #1a4d2e;
+    line-height: 1.4;
+  }
+
+  .pull-quote cite {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.9375rem;
+    font-style: normal;
+    color: #666;
+  }
+</style>

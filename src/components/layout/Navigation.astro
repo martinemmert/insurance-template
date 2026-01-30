@@ -1,0 +1,113 @@
+---
+interface Props {
+  brandName?: string;
+  brandSubtitle?: string;
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+interface NavLink {
+  label: string;
+  href: string;
+}
+
+const {
+  brandName = 'Helmut Emmert',
+  brandSubtitle = 'Versicherungsmakler',
+  ctaText = 'Beratung anfragen',
+  ctaHref = '#kontakt'
+} = Astro.props;
+
+const links: NavLink[] = [
+  { label: 'Leistungen', href: '#leistungen' },
+  { label: 'Über mich', href: '#ueber-mich' },
+  { label: 'Bewertungen', href: '#bewertungen' },
+  { label: 'Kontakt', href: '#kontakt' }
+];
+---
+
+<nav class="nav">
+  <a href="/" class="nav__brand">
+    {brandName}
+    {brandSubtitle && <span>{brandSubtitle}</span>}
+  </a>
+  <ul class="nav__links">
+    {links.map(link => (
+      <li><a href={link.href} class="nav__link">{link.label}</a></li>
+    ))}
+  </ul>
+  <a href={ctaHref} class="nav__cta">{ctaText}</a>
+</nav>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    z-index: 100;
+  }
+
+  .nav__brand {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-decoration: none;
+  }
+
+  .nav__brand span {
+    font-weight: 400;
+    color: #666;
+    margin-left: 0.5rem;
+  }
+
+  .nav__links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav__link {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav__link:hover {
+    color: #1a4d2e;
+  }
+
+  .nav__cta {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: white;
+    background: #1a4d2e;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .nav__cta:hover {
+    background: #143d24;
+  }
+
+  @media (max-width: 1024px) {
+    .nav {
+      padding: 1rem 1.5rem;
+    }
+
+    .nav__links {
+      display: none;
+    }
+  }
+</style>

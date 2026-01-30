@@ -1,0 +1,70 @@
+---
+interface Props {
+  icon?: string;
+  label: string;
+  value: string;
+  href?: string;
+  class?: string;
+}
+
+const { icon, label, value, href, class: className } = Astro.props;
+---
+
+<div class:list={['contact-card', className]}>
+  {icon && (
+    <div class="contact-card__icon" set:html={icon} />
+  )}
+  <slot name="icon" />
+  <div class="contact-card__content">
+    <span class="contact-card__label">{label}</span>
+    {href ? (
+      <a href={href} class="contact-card__value">{value}</a>
+    ) : (
+      <span class="contact-card__value">{value}</span>
+    )}
+  </div>
+</div>
+
+<style>
+  .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .contact-card__icon {
+    width: 3rem;
+    height: 3rem;
+    background: #f0f0f0;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a4d2e;
+  }
+
+  .contact-card__icon :global(svg) {
+    width: 20px;
+    height: 20px;
+  }
+
+  .contact-card__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-card__label {
+    font-size: 0.875rem;
+    color: #999;
+  }
+
+  .contact-card__value {
+    font-weight: 600;
+    color: #1a1a1a;
+    text-decoration: none;
+  }
+
+  a.contact-card__value:hover {
+    color: #1a4d2e;
+  }
+</style>

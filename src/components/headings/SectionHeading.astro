@@ -1,0 +1,50 @@
+---
+interface Props {
+  level?: 2 | 3;
+  number?: string | number;
+  id?: string;
+  class?: string;
+}
+
+const { level = 2, number, id, class: className } = Astro.props;
+const Tag = `h${level}` as 'h2' | 'h3';
+const hasNumber = number !== undefined;
+---
+
+<Tag
+  class:list={[
+    'section-heading',
+    hasNumber && 'section-heading--numbered',
+    className
+  ]}
+  id={id}
+>
+  {hasNumber && <span class="section-heading__number">{number}</span>}
+  <slot />
+</Tag>
+
+<style>
+  .section-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 3rem 0 1.5rem;
+    padding-top: 1rem;
+  }
+
+  .section-heading--numbered {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+
+  .section-heading__number {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a4d2e;
+    background: #e8f4ed;
+    padding: 0.25rem 0.625rem;
+    border-radius: 0.375rem;
+  }
+</style>

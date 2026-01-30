@@ -1,0 +1,40 @@
+---
+interface Logo {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  logos: Logo[];
+  grayscale?: boolean;
+  class?: string;
+}
+
+const { logos, grayscale = true, class: className } = Astro.props;
+---
+
+<div class:list={['logo-cloud', grayscale && 'logo-cloud--grayscale', className]}>
+  {logos.map(logo => (
+    <img src={logo.src} alt={logo.alt} class="logo-cloud__logo" />
+  ))}
+</div>
+
+<style>
+  .logo-cloud {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+
+  .logo-cloud--grayscale {
+    opacity: 0.6;
+    filter: grayscale(100%);
+  }
+
+  .logo-cloud__logo {
+    height: 2.5rem;
+    object-fit: contain;
+  }
+</style>

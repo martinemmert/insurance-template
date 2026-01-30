@@ -1,0 +1,36 @@
+---
+interface Props {
+  cite?: string;
+  class?: string;
+}
+
+const { cite, class: className } = Astro.props;
+---
+
+<blockquote class:list={['blockquote', className]}>
+  <p><slot /></p>
+  {cite && <cite>— {cite}</cite>}
+</blockquote>
+
+<style>
+  .blockquote {
+    margin: 2.5rem 1.5rem;
+    padding: 1.75rem 2rem;
+    border-left: 4px solid #1a4d2e;
+    background: #f8f7f5;
+    border-radius: 0 0.75rem 0.75rem 0;
+  }
+
+  .blockquote p {
+    font-size: 1.125rem;
+    font-style: italic;
+    color: #333;
+    margin-bottom: 0.75rem;
+  }
+
+  .blockquote cite {
+    font-size: 0.9375rem;
+    font-style: normal;
+    color: #666;
+  }
+</style>

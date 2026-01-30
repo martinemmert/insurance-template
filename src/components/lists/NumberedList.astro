@@ -1,0 +1,37 @@
+---
+interface Props {
+  items: string[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+---
+
+<ol class:list={['numbered-list', className]}>
+  {items.map(item => (
+    <li>{item}</li>
+  ))}
+</ol>
+
+<style>
+  .numbered-list {
+    margin: 1.5rem 0;
+    list-style: none;
+    counter-reset: numbered;
+  }
+
+  .numbered-list li {
+    counter-increment: numbered;
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .numbered-list li::before {
+    content: counter(numbered) ".";
+    font-weight: 700;
+    color: #1a4d2e;
+    min-width: 1.5rem;
+  }
+</style>

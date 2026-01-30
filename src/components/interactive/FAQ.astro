@@ -1,0 +1,113 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items: FAQItem[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+---
+
+<div class:list={['faq-list', className]}>
+  {items.map(item => (
+    <div class="faq-item" data-faq-item>
+      <button class="faq-question" data-faq-trigger>
+        <span>{item.question}</span>
+        <svg class="faq-question__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer__content">
+          <p>{item.answer}</p>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  document.querySelectorAll('[data-faq-trigger]').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('[data-faq-item]');
+      if (item) {
+        item.classList.toggle('open');
+      }
+    });
+  });
+</script>
+
+<style>
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .faq-item:last-child {
+    border-bottom: none;
+  }
+
+  .faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: color 0.2s;
+  }
+
+  .faq-question:hover {
+    color: #1a4d2e;
+  }
+
+  .faq-question__icon {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #1a4d2e;
+    transition: transform 0.3s;
+  }
+
+  .faq-item.open .faq-question__icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .faq-item.open .faq-answer {
+    max-height: 300px;
+  }
+
+  .faq-answer__content {
+    padding-bottom: 1.5rem;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  .faq-answer__content p {
+    margin: 0;
+  }
+</style>
