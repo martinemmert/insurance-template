@@ -1,0 +1,127 @@
+---
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Private Krankenversicherung - Helmut Emmert Versicherungen</title>
+    <meta name="description" content="Erstklassige medizinische Versorgung mit privater Krankenversicherung. Unabhängige PKV-Beratung in Aschaffenburg.">
+    <style is:global>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        background: #f5f3f0;
+      }
+    </style>
+    <style>
+      .page { min-height: 100vh; display: flex; flex-direction: column; }
+      .page-nav { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 4rem; background: white; border-bottom: 1px solid #eee; }
+      .page-nav__brand { font-size: 1.125rem; font-weight: 600; color: #1a1a1a; text-decoration: none; display: flex; align-items: baseline; gap: 0.5rem; }
+      .page-nav__brand-subtitle { font-size: 0.875rem; font-weight: 400; color: #666; }
+      .page-nav__cta { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1.25rem; font-size: 0.875rem; font-weight: 600; text-decoration: none; border-radius: 0.5rem; background: #1a4d2e; color: white; transition: background 0.2s ease; }
+      .page-nav__cta:hover { background: #143d24; }
+      .page-main { flex: 1; display: flex; justify-content: center; padding: 4rem 2rem 6rem; }
+      .article { max-width: 720px; width: 100%; }
+      .article__header { margin-bottom: 3rem; }
+      .article__label { display: block; font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #1a4d2e; margin-bottom: 0.75rem; }
+      .article__title { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; color: #1a1a1a; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem; }
+      .article__intro { font-size: 1.25rem; color: #666; line-height: 1.6; }
+      .article__content h2 { font-size: 1.5rem; font-weight: 700; color: #1a1a1a; letter-spacing: -0.02em; margin: 2.5rem 0 1rem; }
+      .article__content h2:first-child { margin-top: 0; }
+      .article__content p { font-size: 1.0625rem; color: #444; line-height: 1.75; margin-bottom: 1.25rem; }
+      .article__content ul { margin: 1.5rem 0; padding-left: 1.25rem; }
+      .article__content li { font-size: 1.0625rem; color: #444; line-height: 1.75; margin-bottom: 1rem; }
+      .article__content strong { color: #1a1a1a; font-weight: 600; }
+      .article__cta { margin-top: 4rem; padding: 2.5rem; background: white; border-radius: 1rem; text-align: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+      .article__cta-title { font-size: 1.5rem; font-weight: 700; color: #1a1a1a; margin-bottom: 0.5rem; }
+      .article__cta-text { font-size: 1rem; color: #666; margin-bottom: 1.5rem; }
+      .article__cta-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 1.5rem; font-size: 1rem; font-weight: 600; text-decoration: none; border-radius: 0.5rem; background: #1a4d2e; color: white; transition: background 0.2s ease; }
+      .article__cta-btn:hover { background: #143d24; }
+      .page-footer { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 4rem; background: white; border-top: 1px solid #eee; }
+      .page-footer__copyright { font-size: 0.875rem; color: #999; }
+      .page-footer__link { font-size: 0.875rem; color: #666; text-decoration: none; }
+      .page-footer__link:hover { color: #1a4d2e; }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="page-nav">
+        <a href={`${base}`} class="page-nav__brand">
+          Helmut Emmert <span class="page-nav__brand-subtitle">Ihr Versicherungsmakler</span>
+        </a>
+        <a href={`${base}#section-4`} class="page-nav__cta">Beratung</a>
+      </header>
+
+      <main class="page-main">
+        <article class="article">
+          <header class="article__header">
+            <span class="article__label">Leistungen</span>
+            <h1 class="article__title">Private Krankenversicherung</h1>
+            <p class="article__intro">
+              Erstklassige medizinische Versorgung, kurze Wartezeiten und Zugang zu Spezialisten. Die private Krankenversicherung bietet mehr als nur Komfort.
+            </p>
+          </header>
+
+          <div class="article__content">
+            <h2>Vorteile der privaten Krankenversicherung</h2>
+            <p>
+              Privatpatienten genießen zahlreiche Vorteile: Sie erhalten schneller Termine bei Fachärzten, haben Zugang zu modernsten Behandlungsmethoden und können sich im Krankenhaus vom Chefarzt behandeln lassen.
+            </p>
+            <ul>
+              <li><strong>Freie Arztwahl:</strong> Sie entscheiden selbst, welcher Spezialist Sie behandelt – ohne Überweisung.</li>
+              <li><strong>Kürzere Wartezeiten:</strong> Termine bei Fachärzten oft innerhalb weniger Tage statt Wochen.</li>
+              <li><strong>Bessere Leistungen:</strong> Hochwertigere Behandlungen, Medikamente und Hilfsmittel.</li>
+              <li><strong>Einzelzimmer im Krankenhaus:</strong> Mehr Ruhe und Privatsphäre bei stationären Aufenthalten.</li>
+            </ul>
+
+            <h2>Für wen ist die PKV geeignet?</h2>
+            <p>
+              Die private Krankenversicherung steht Selbstständigen, Freiberuflern und Beamten offen. Angestellte können wechseln, wenn ihr Einkommen über der Jahresarbeitsentgeltgrenze liegt (2024: 69.300 Euro).
+            </p>
+            <p>
+              Ob die PKV für Sie sinnvoll ist, hängt von verschiedenen Faktoren ab: Ihrem Alter, Gesundheitszustand, Familienplanung und langfristigen Einkommensperspektiven. Eine ehrliche Analyse ist entscheidend.
+            </p>
+
+            <h2>Zusatzversicherungen als Alternative</h2>
+            <p>
+              Nicht jeder kann oder möchte in die PKV wechseln. Zusatzversicherungen bieten eine gute Möglichkeit, die Leistungen der gesetzlichen Kasse aufzuwerten:
+            </p>
+            <ul>
+              <li><strong>Zahnzusatzversicherung:</strong> Übernahme von Kosten für Zahnersatz, Implantate und professionelle Reinigung.</li>
+              <li><strong>Krankenhauszusatz:</strong> Chefarztbehandlung und Einzelzimmer als Kassenpatient.</li>
+              <li><strong>Ambulante Zusatzversicherung:</strong> Heilpraktiker, alternative Behandlungen und bessere Sehhilfen.</li>
+            </ul>
+
+            <h2>Meine Beratung für Sie</h2>
+            <p>
+              Die Entscheidung für oder gegen die PKV ist weitreichend und sollte gut überlegt sein. Ich analysiere Ihre individuelle Situation und zeige Ihnen ehrlich die Vor- und Nachteile auf – ohne Ihnen etwas zu verkaufen, das nicht zu Ihnen passt.
+            </p>
+            <p>
+              Auch bei der Wahl des richtigen Tarifs unterstütze ich Sie. Die Unterschiede zwischen den Anbietern sind groß, und der günstigste Tarif ist selten der beste.
+            </p>
+          </div>
+
+          <div class="article__cta">
+            <p class="article__cta-title">Ist die PKV das Richtige für Sie?</p>
+            <p class="article__cta-text">Lassen Sie uns gemeinsam herausfinden, welche Lösung am besten zu Ihrer Situation passt.</p>
+            <a href={`${base}#section-4`} class="article__cta-btn">Beratungstermin vereinbaren</a>
+          </div>
+        </article>
+      </main>
+
+      <footer class="page-footer">
+        <p class="page-footer__copyright">© 2024 Helmut Emmert Versicherungen</p>
+        <a href={`${base}#section-7`} class="page-footer__link">Impressum</a>
+      </footer>
+    </div>
+  </body>
+</html>

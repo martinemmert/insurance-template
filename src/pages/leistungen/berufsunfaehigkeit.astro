@@ -1,0 +1,125 @@
+---
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Berufsunfähigkeitsversicherung - Helmut Emmert Versicherungen</title>
+    <meta name="description" content="Schützen Sie Ihr wichtigstes Gut: Ihre Arbeitskraft. Unabhängige BU-Beratung ohne Fallstricke in Aschaffenburg.">
+    <style is:global>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        background: #f5f3f0;
+      }
+    </style>
+    <style>
+      .page { min-height: 100vh; display: flex; flex-direction: column; }
+      .page-nav { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 4rem; background: white; border-bottom: 1px solid #eee; }
+      .page-nav__brand { font-size: 1.125rem; font-weight: 600; color: #1a1a1a; text-decoration: none; display: flex; align-items: baseline; gap: 0.5rem; }
+      .page-nav__brand-subtitle { font-size: 0.875rem; font-weight: 400; color: #666; }
+      .page-nav__cta { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1.25rem; font-size: 0.875rem; font-weight: 600; text-decoration: none; border-radius: 0.5rem; background: #1a4d2e; color: white; transition: background 0.2s ease; }
+      .page-nav__cta:hover { background: #143d24; }
+      .page-main { flex: 1; display: flex; justify-content: center; padding: 4rem 2rem 6rem; }
+      .article { max-width: 720px; width: 100%; }
+      .article__header { margin-bottom: 3rem; }
+      .article__label { display: block; font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #1a4d2e; margin-bottom: 0.75rem; }
+      .article__title { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; color: #1a1a1a; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem; }
+      .article__intro { font-size: 1.25rem; color: #666; line-height: 1.6; }
+      .article__content h2 { font-size: 1.5rem; font-weight: 700; color: #1a1a1a; letter-spacing: -0.02em; margin: 2.5rem 0 1rem; }
+      .article__content h2:first-child { margin-top: 0; }
+      .article__content p { font-size: 1.0625rem; color: #444; line-height: 1.75; margin-bottom: 1.25rem; }
+      .article__content ul { margin: 1.5rem 0; padding-left: 1.25rem; }
+      .article__content li { font-size: 1.0625rem; color: #444; line-height: 1.75; margin-bottom: 1rem; }
+      .article__content strong { color: #1a1a1a; font-weight: 600; }
+      .article__cta { margin-top: 4rem; padding: 2.5rem; background: white; border-radius: 1rem; text-align: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+      .article__cta-title { font-size: 1.5rem; font-weight: 700; color: #1a1a1a; margin-bottom: 0.5rem; }
+      .article__cta-text { font-size: 1rem; color: #666; margin-bottom: 1.5rem; }
+      .article__cta-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 1.5rem; font-size: 1rem; font-weight: 600; text-decoration: none; border-radius: 0.5rem; background: #1a4d2e; color: white; transition: background 0.2s ease; }
+      .article__cta-btn:hover { background: #143d24; }
+      .page-footer { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 4rem; background: white; border-top: 1px solid #eee; }
+      .page-footer__copyright { font-size: 0.875rem; color: #999; }
+      .page-footer__link { font-size: 0.875rem; color: #666; text-decoration: none; }
+      .page-footer__link:hover { color: #1a4d2e; }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="page-nav">
+        <a href={`${base}`} class="page-nav__brand">
+          Helmut Emmert <span class="page-nav__brand-subtitle">Ihr Versicherungsmakler</span>
+        </a>
+        <a href={`${base}#section-4`} class="page-nav__cta">Beratung</a>
+      </header>
+
+      <main class="page-main">
+        <article class="article">
+          <header class="article__header">
+            <span class="article__label">Leistungen</span>
+            <h1 class="article__title">Berufsunfähigkeit</h1>
+            <p class="article__intro">
+              Ihre Arbeitskraft ist Ihr wertvollstes Gut – und oft unterschätzt. Statistisch wird jeder vierte Berufstätige vor dem Rentenalter berufsunfähig.
+            </p>
+          </header>
+
+          <div class="article__content">
+            <h2>Warum ist eine BU-Versicherung so wichtig?</h2>
+            <p>
+              Wenn Sie durch Krankheit oder Unfall Ihren Beruf nicht mehr ausüben können, bricht Ihr Einkommen weg. Die staatliche Erwerbsminderungsrente reicht bei weitem nicht aus, um Ihren Lebensstandard zu halten – sie beträgt im Schnitt nur etwa 900 Euro monatlich.
+            </p>
+            <p>
+              Eine Berufsunfähigkeitsversicherung schließt diese Lücke. Sie zahlt Ihnen eine monatliche Rente, wenn Sie Ihren Beruf zu mindestens 50% nicht mehr ausüben können.
+            </p>
+
+            <h2>Häufige Ursachen für Berufsunfähigkeit</h2>
+            <ul>
+              <li><strong>Psychische Erkrankungen:</strong> Mit über 30% die häufigste Ursache. Burnout, Depressionen und Angststörungen können jeden treffen.</li>
+              <li><strong>Erkrankungen des Bewegungsapparats:</strong> Rückenprobleme, Bandscheibenvorfälle und Gelenkerkrankungen machen etwa 20% der Fälle aus.</li>
+              <li><strong>Krebs:</strong> Etwa 15% der Berufsunfähigkeitsfälle gehen auf Krebserkrankungen zurück.</li>
+              <li><strong>Herz-Kreislauf-Erkrankungen:</strong> Herzinfarkt und Schlaganfall sind weitere häufige Ursachen.</li>
+            </ul>
+
+            <h2>Worauf Sie beim Abschluss achten sollten</h2>
+            <p>
+              Die BU-Versicherung ist komplex und voller Fallstricke. Viele Verträge enthalten Klauseln, die im Leistungsfall Probleme bereiten können. Als unabhängiger Berater kenne ich diese Stolperfallen und helfe Ihnen, sie zu vermeiden.
+            </p>
+            <ul>
+              <li><strong>Verzicht auf abstrakte Verweisung:</strong> Der Versicherer darf Sie nicht auf einen anderen Beruf verweisen.</li>
+              <li><strong>Rückwirkende Leistung:</strong> Die Rente sollte ab Beginn der Berufsunfähigkeit gezahlt werden.</li>
+              <li><strong>Nachversicherungsgarantie:</strong> Ermöglicht Erhöhungen ohne erneute Gesundheitsprüfung.</li>
+              <li><strong>Korrekte Gesundheitsangaben:</strong> Fehler bei der Antragstellung können später zur Leistungsablehnung führen.</li>
+            </ul>
+
+            <h2>Meine Beratung für Sie</h2>
+            <p>
+              Ich nehme mir Zeit für Ihre Gesundheitshistorie und stelle sicher, dass alle Angaben korrekt und vollständig sind. So vermeiden wir Probleme im Leistungsfall. Gemeinsam finden wir einen Tarif, der zu Ihrem Beruf, Ihrer Gesundheit und Ihrem Budget passt.
+            </p>
+            <p>
+              Als unabhängiger Berater habe ich Zugang zu allen relevanten Anbietern – auch zu Tarifen, die Sie nicht direkt online abschließen können.
+            </p>
+          </div>
+
+          <div class="article__cta">
+            <p class="article__cta-title">Schützen Sie Ihre Arbeitskraft</p>
+            <p class="article__cta-text">Lassen Sie uns gemeinsam prüfen, wie Sie sich optimal absichern können.</p>
+            <a href={`${base}#section-4`} class="article__cta-btn">Beratungstermin vereinbaren</a>
+          </div>
+        </article>
+      </main>
+
+      <footer class="page-footer">
+        <p class="page-footer__copyright">© 2024 Helmut Emmert Versicherungen</p>
+        <a href={`${base}#section-7`} class="page-footer__link">Impressum</a>
+      </footer>
+    </div>
+  </body>
+</html>
