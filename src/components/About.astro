@@ -5,20 +5,19 @@ import Heading from "./elements/Heading.astro";
 import Text from './elements/Text.astro';
 import Label from './elements/Label.astro';
 import Stat from './elements/Stat.astro';
-// custom attributes: id="ueber"
 ---
-<!-- About -->
-<PageSection>
-    <Grid columns={2} gap="4rem" align="center" class="about">
+
+<PageSection variant="gray">
+    <Grid columns={2} gap="4rem" align="center">
       <div class="about__image">
         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=700&fit=crop" alt="Helmut Emmert">
       </div>
-      <div class="about__content">
+      <div>
         <Label class="mb-4">Über mich</Label>
         <Heading as="h2" size="3xl" serif class="mb-6">Helmut Emmert</Heading>
-        <Text class="about__text mb-4">Mit über 25 Jahren Erfahrung in der Versicherungsbranche habe ich es mir zur Aufgabe gemacht, Menschen dabei zu helfen, die richtige Absicherung für sich und ihre Familien zu finden.</Text>
-        <Text class="about__text mb-4">Meine Philosophie ist einfach: Ich höre zu, verstehe Ihre individuelle Situation und finde gemeinsam mit Ihnen die optimale Lösung. Keine Standardprodukte, keine unnötigen Policen.</Text>
-        <Text class="about__text mb-4">Als unabhängiger Versicherungsberater bin ich keiner Gesellschaft verpflichtet. Das bedeutet für Sie: objektive Beratung und Zugang zu den besten Angeboten am Markt.</Text>
+        <Text class="mb-4">Mit über 25 Jahren Erfahrung in der Versicherungsbranche habe ich es mir zur Aufgabe gemacht, Menschen dabei zu helfen, die richtige Absicherung für sich und ihre Familien zu finden.</Text>
+        <Text class="mb-4">Meine Philosophie ist einfach: Ich höre zu, verstehe Ihre individuelle Situation und finde gemeinsam mit Ihnen die optimale Lösung. Keine Standardprodukte, keine unnötigen Policen.</Text>
+        <Text class="mb-4">Als unabhängiger Versicherungsberater bin ich keiner Gesellschaft verpflichtet. Das bedeutet für Sie: objektive Beratung und Zugang zu den besten Angeboten am Markt.</Text>
         <div class="about__credentials">
           <Stat value="25+" label="Jahre Erfahrung" />
           <Stat value="1.500+" label="Zufriedene Kunden" />
