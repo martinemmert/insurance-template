@@ -1,0 +1,26 @@
+---
+const { src, alt, height, aspectRatio, radius = 'lg', class: className, ...rest } = Astro.props;
+const radiusClass = radius ? `image--radius-${radius}` : '';
+
+const imgStyle = [
+  height && `height: ${height}`,
+  aspectRatio && `aspect-ratio: ${aspectRatio}`,
+].filter(Boolean).join('; ');
+---
+
+<div class:list={['image', radiusClass, className]} {...rest}>
+  <img src={src} alt={alt} style={imgStyle || undefined} />
+</div>
+
+<style>
+  .image {
+    overflow: hidden;
+  }
+  .image--radius-lg {
+    border-radius: var(--radius-lg);
+  }
+  .image img {
+    width: 100%;
+    object-fit: cover;
+  }
+</style>

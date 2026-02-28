@@ -1,0 +1,18 @@
+---
+import Text from './Text.astro';
+
+const { class: className, ...rest } = Astro.props;
+---
+
+<Text class:list={['paragraph', className]} {...rest}>
+  <slot />
+</Text>
+
+<style>
+  .paragraph {
+    margin-bottom: 1rem;
+  }
+  .paragraph:last-child {
+    margin-bottom: 0;
+  }
+</style>
