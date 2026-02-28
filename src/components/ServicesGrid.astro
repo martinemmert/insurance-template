@@ -1,5 +1,9 @@
 ---
 import PageSection from "./PageSection.astro";
+import Grid from './Grid.astro';
+import Heading from './elements/Heading.astro';
+import Text from './elements/Text.astro';
+import Link from './elements/Link.astro';
 // custom attributes: id="leistungen"
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 ---
@@ -7,56 +11,51 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 <!-- Services -->
 <PageSection variant="gray" label="Leistungen" title="Rundum abgesichert">
     <Fragment slot="header-subtitle">Von der Lebensversicherung bis zur Altersvorsorge – ich berate Sie unabhängig und finde die optimale Lösung für Ihre Situation.</Fragment>
-    <div class="services-grid">
+    <Grid columns={3}>
       <article class="service-card">
         <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=400&fit=crop" alt="Familie" class="service-card__image">
         <div class="service-card__content">
-          <h3 class="service-card__title">Lebensversicherung</h3>
-          <p class="service-card__text">Sichern Sie die Zukunft Ihrer Familie ab. Mit einer maßgeschneiderten Lebensversicherung schützen Sie Ihre Liebsten vor finanziellen Sorgen.</p>
-          <a href={`${base}leistungen/lebensversicherung`} class="service-card__link">Mehr erfahren →</a>
+          <Heading as="h3" size="xl" class="mb-3">Lebensversicherung</Heading>
+          <Text size="sm" muted class="service-card__text mb-4">Sichern Sie die Zukunft Ihrer Familie ab. Mit einer maßgeschneiderten Lebensversicherung schützen Sie Ihre Liebsten vor finanziellen Sorgen.</Text>
+          <Link variant="action" href={`${base}leistungen/lebensversicherung`}>Mehr erfahren →</Link>
         </div>
       </article>
       <article class="service-card">
         <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&h=400&fit=crop" alt="Beruf" class="service-card__image">
         <div class="service-card__content">
-          <h3 class="service-card__title">Berufsunfähigkeit</h3>
-          <p class="service-card__text">Ihre Arbeitskraft ist Ihr wertvollstes Gut. Eine BU-Versicherung sichert Ihren Lebensstandard, wenn Sie nicht mehr arbeiten können.</p>
-          <a href={`${base}leistungen/berufsunfaehigkeit`} class="service-card__link">Mehr erfahren →</a>
+          <Heading as="h3" size="xl" class="mb-3">Berufsunfähigkeit</Heading>
+          <Text size="sm" muted class="service-card__text mb-4">Ihre Arbeitskraft ist Ihr wertvollstes Gut. Eine BU-Versicherung sichert Ihren Lebensstandard, wenn Sie nicht mehr arbeiten können.</Text>
+          <Link variant="action" href={`${base}leistungen/berufsunfaehigkeit`}>Mehr erfahren →</Link>
         </div>
       </article>
       <article class="service-card">
         <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop" alt="Gesundheit" class="service-card__image">
         <div class="service-card__content">
-          <h3 class="service-card__title">Private Krankenversicherung</h3>
-          <p class="service-card__text">Erstklassige medizinische Versorgung, kurze Wartezeiten und Zugang zu Spezialisten. Die PKV bietet mehr als nur Komfort.</p>
-          <a href={`${base}leistungen/krankenversicherung`} class="service-card__link">Mehr erfahren →</a>
+          <Heading as="h3" size="xl" class="mb-3">Private Krankenversicherung</Heading>
+          <Text size="sm" muted class="service-card__text mb-4">Erstklassige medizinische Versorgung, kurze Wartezeiten und Zugang zu Spezialisten. Die PKV bietet mehr als nur Komfort.</Text>
+          <Link variant="action" href={`${base}leistungen/krankenversicherung`}>Mehr erfahren →</Link>
         </div>
       </article>
       <article class="service-card">
         <img src="https://images.unsplash.com/photo-1447005497901-b3e9ee359928?w=600&h=400&fit=crop" alt="Ruhestand" class="service-card__image">
         <div class="service-card__content">
-          <h3 class="service-card__title">Altersvorsorge</h3>
-          <p class="service-card__text">Die gesetzliche Rente reicht nicht. Planen Sie heute für einen sorgenfreien Ruhestand mit der richtigen Strategie.</p>
-          <a href={`${base}leistungen/altersvorsorge`} class="service-card__link">Mehr erfahren →</a>
+          <Heading as="h3" size="xl" class="mb-3">Altersvorsorge</Heading>
+          <Text size="sm" muted class="service-card__text mb-4">Die gesetzliche Rente reicht nicht. Planen Sie heute für einen sorgenfreien Ruhestand mit der richtigen Strategie.</Text>
+          <Link variant="action" href={`${base}leistungen/altersvorsorge`}>Mehr erfahren →</Link>
         </div>
       </article>
       <article class="service-card">
         <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop" alt="Haus" class="service-card__image">
         <div class="service-card__content">
-          <h3 class="service-card__title">Sachversicherungen</h3>
-          <p class="service-card__text">Haus, Auto, Haftpflicht – schützen Sie Ihr Eigentum vor unerwarteten Schäden. Transparente Beratung, faire Tarife.</p>
-          <a href={`${base}leistungen/sachversicherungen`} class="service-card__link">Mehr erfahren →</a>
+          <Heading as="h3" size="xl" class="mb-3">Sachversicherungen</Heading>
+          <Text size="sm" muted class="service-card__text mb-4">Haus, Auto, Haftpflicht – schützen Sie Ihr Eigentum vor unerwarteten Schäden. Transparente Beratung, faire Tarife.</Text>
+          <Link variant="action" href={`${base}leistungen/sachversicherungen`}>Mehr erfahren →</Link>
         </div>
       </article>
-    </div>
+    </Grid>
 </PageSection>
 
 <style>
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 2rem;
-  }
   .service-card {
     background: var(--color-white);
     border-radius: var(--radius-lg);
@@ -76,22 +75,4 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   .service-card__content {
     padding: 1.5rem;
   }
-  .service-card__title {
-    font-size: var(--text-xl);
-    font-weight: var(--font-bold);
-    margin-bottom: 0.75rem;
-  }
-  .service-card__text {
-    font-size: 0.9375rem;
-    color: var(--color-text-muted);
-    margin-bottom: 1rem;
-    line-height: var(--leading-normal);
-  }
-  .service-card__link {
-    font-size: 0.9375rem;
-    font-weight: var(--font-semibold);
-    color: var(--color-primary);
-    text-decoration: none;
-  }
-  .service-card__link:hover { text-decoration: underline; }
 </style>

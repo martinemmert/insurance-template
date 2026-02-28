@@ -1,15 +1,19 @@
 ---
 import PageSection from "./PageSection.astro";
+import Heading from './elements/Heading.astro';
+import Text from './elements/Text.astro';
+import Button from './elements/Button.astro';
+import Grid from './Grid.astro';
 ---
 
 <!-- Service Packages -->
 <PageSection variant="gray" label="Beratungsangebote" title="Wählen Sie Ihr Paket">
     <Fragment slot="header-subtitle">Für jeden Bedarf das passende Angebot – von der Einzelfrage bis zur Komplettbetreuung.</Fragment>
-    <div class="pricing-grid">
+    <Grid columns={3}>
       <div class="pricing-card">
         <div class="pricing-card__label">Einstieg</div>
-        <h3 class="pricing-card__title">Versicherungs-Check</h3>
-        <p class="pricing-card__desc">Schnelle Analyse Ihrer bestehenden Verträge mit konkreten Empfehlungen.</p>
+        <Heading as="h3" size="xl" serif class="mb-4">Versicherungs-Check</Heading>
+        <Text size="sm" muted class="pricing-card__desc mb-6">Schnelle Analyse Ihrer bestehenden Verträge mit konkreten Empfehlungen.</Text>
         <ul class="pricing-card__features">
           <li>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -24,12 +28,12 @@ import PageSection from "./PageSection.astro";
             Schriftlicher Bericht mit Empfehlungen
           </li>
         </ul>
-        <a href="#kontakt" class="pricing-card__btn pricing-card__btn--outline">Anfragen</a>
+        <Button href="#kontakt" variant="secondary">Anfragen</Button>
       </div>
       <div class="pricing-card pricing-card--featured">
         <div class="pricing-card__label">Empfohlen</div>
-        <h3 class="pricing-card__title">Rundum-Beratung</h3>
-        <p class="pricing-card__desc">Komplette Analyse und Neuaufstellung Ihres Versicherungsschutzes.</p>
+        <Heading as="h3" size="xl" serif class="mb-4">Rundum-Beratung</Heading>
+        <Text size="sm" muted class="pricing-card__desc mb-6">Komplette Analyse und Neuaufstellung Ihres Versicherungsschutzes.</Text>
         <ul class="pricing-card__features">
           <li>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -48,12 +52,12 @@ import PageSection from "./PageSection.astro";
             Jährliche Überprüfung
           </li>
         </ul>
-        <a href="#kontakt" class="pricing-card__btn pricing-card__btn--solid">Termin vereinbaren</a>
+        <Button href="#kontakt" variant="inverted">Termin vereinbaren</Button>
       </div>
       <div class="pricing-card">
         <div class="pricing-card__label">Premium</div>
-        <h3 class="pricing-card__title">VIP-Betreuung</h3>
-        <p class="pricing-card__desc">Exklusive Betreuung für anspruchsvolle Kunden mit komplexen Anforderungen.</p>
+        <Heading as="h3" size="xl" serif class="mb-4">VIP-Betreuung</Heading>
+        <Text size="sm" muted class="pricing-card__desc mb-6">Exklusive Betreuung für anspruchsvolle Kunden mit komplexen Anforderungen.</Text>
         <ul class="pricing-card__features">
           <li>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -72,17 +76,12 @@ import PageSection from "./PageSection.astro";
             Familien-Mitbetreuung
           </li>
         </ul>
-        <a href="#kontakt" class="pricing-card__btn pricing-card__btn--outline">Anfragen</a>
+        <Button href="#kontakt" variant="secondary">Anfragen</Button>
       </div>
-    </div>
+    </Grid>
 </PageSection>
 
 <style>
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
   .pricing-card {
     background: var(--color-white);
     border-radius: var(--radius-lg);
@@ -114,18 +113,7 @@ import PageSection from "./PageSection.astro";
   .pricing-card--featured .pricing-card__label {
     color: var(--color-primary-light);
   }
-  .pricing-card__title {
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-    font-weight: var(--font-bold);
-    margin-bottom: 1rem;
-  }
-  .pricing-card__desc {
-    font-size: 0.9375rem;
-    color: var(--color-text-muted);
-    margin-bottom: 1.5rem;
-  }
-  .pricing-card--featured .pricing-card__desc {
+  .pricing-card--featured :global(.text) {
     color: rgba(255,255,255,0.7);
   }
   .pricing-card__features {
@@ -151,33 +139,13 @@ import PageSection from "./PageSection.astro";
   .pricing-card--featured .pricing-card__features li svg {
     color: var(--color-primary-light);
   }
-  .pricing-card__btn {
+  .pricing-card :global(.btn) {
     display: block;
     padding: 1rem;
-    font-size: var(--text-base);
-    font-weight: var(--font-semibold);
-    text-decoration: none;
-    border-radius: var(--radius-sm);
-    transition: all var(--transition-fast);
-  }
-  .pricing-card__btn--outline {
-    border: 2px solid var(--color-primary);
-    color: var(--color-primary);
-  }
-  .pricing-card__btn--outline:hover {
-    background: var(--color-primary);
-    color: var(--color-white);
-  }
-  .pricing-card__btn--solid {
-    background: var(--color-white);
-    color: var(--color-primary);
-  }
-  .pricing-card__btn--solid:hover {
-    background: var(--color-bg-light);
+    text-align: center;
   }
 
   @media (max-width: 1024px) {
-    .pricing-grid { grid-template-columns: 1fr; }
     .pricing-card--featured { transform: none; }
     .pricing-card--featured:hover { transform: translateY(-4px); }
   }

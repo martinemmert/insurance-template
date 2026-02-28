@@ -1,0 +1,21 @@
+---
+const { as: Tag = 'p', size = 'md', muted = false, ...rest } = Astro.props;
+---
+
+<Tag class:list={['text', `text--${size}`, { 'text--muted': muted }]} {...rest}>
+  <slot />
+</Tag>
+
+<style>
+  .text {
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+  .text--lg { font-size: var(--text-lg); }
+  .text--md { font-size: var(--text-md); }
+  .text--sm { font-size: var(--text-body); }
+  .text--muted {
+    color: var(--color-text-muted);
+    line-height: var(--leading-normal);
+  }
+</style>

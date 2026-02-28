@@ -1,0 +1,41 @@
+---
+interface Props {
+  columns?: 2 | 3 | 4 | 5;
+  gap?: string;
+  mobileColumns?: 1 | 2;
+  align?: 'center';
+  [key: string]: any;
+}
+
+const { columns = 3, gap = '2rem', mobileColumns = 1, align, ...rest } = Astro.props;
+---
+
+<div
+  class:list={[
+    'grid',
+    `grid--${columns}`,
+    `grid--mobile-${mobileColumns}`,
+    align && `grid--align-${align}`,
+  ]}
+  style={gap !== '2rem' ? `--grid-gap: ${gap}` : undefined}
+  {...rest}
+>
+  <slot />
+</div>
+
+<style>
+  .grid {
+    display: grid;
+    gap: var(--grid-gap, 2rem);
+  }
+  .grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .grid--4 { grid-template-columns: repeat(4, 1fr); }
+  .grid--5 { grid-template-columns: repeat(5, 1fr); }
+  .grid--align-center { align-items: center; }
+
+  @media (max-width: 1024px) {
+    .grid--mobile-1 { grid-template-columns: 1fr; }
+    .grid--mobile-2 { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

@@ -1,4 +1,5 @@
 ---
+import Heading from './elements/Heading.astro';
 const {variant = 'white', label = null, title = null} = Astro.props;
 const hasSubtitle = Astro.slots.has('header-subtitle');
 const hasHeader = label || title || hasSubtitle;
@@ -12,7 +13,7 @@ const hasHeader = label || title || hasSubtitle;
         {hasHeader &&
             <div class="section__header">
                 {label && <div class="section__label">{label}</div>}
-                {title && <h2 class="section__title">{title}</h2>}
+                {title && <Heading as="h2" size="section-title" serif class="mb-4">{title}</Heading>}
                 {hasSubtitle && <p class="section__subtitle"><slot name="header-subtitle" /></p>}
             </div>}
         <slot/>
@@ -53,13 +54,6 @@ const hasHeader = label || title || hasSubtitle;
         text-transform: uppercase;
         letter-spacing: var(--tracking-wide);
         color: var(--color-primary);
-        margin-bottom: 1rem;
-    }
-
-    .section__title {
-        font-family: var(--font-serif);
-        font-size: var(--text-section-title);
-        font-weight: var(--font-bold);
         margin-bottom: 1rem;
     }
 

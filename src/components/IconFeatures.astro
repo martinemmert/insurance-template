@@ -1,46 +1,44 @@
 ---
 import PageSection from "./PageSection.astro";
+import Heading from './elements/Heading.astro';
+import Text from './elements/Text.astro';
+import Grid from './Grid.astro';
 ---
 
 <PageSection variant="gray" label="Mein Versprechen" title="Was mich von anderen unterscheidet">
-    <div class="icon-grid">
+    <Grid columns={4} mobileColumns={2}>
       <div class="icon-feature">
         <div class="icon-feature__icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
         </div>
-        <h3 class="icon-feature__title">100% Unabhängig</h3>
-        <p class="icon-feature__text">Keine Bindung an Versicherungsgesellschaften – nur Ihren Interessen verpflichtet.</p>
+        <Heading as="h3" size="lg" class="mb-2">100% Unabhängig</Heading>
+        <Text size="sm" muted class="icon-feature__text">Keine Bindung an Versicherungsgesellschaften – nur Ihren Interessen verpflichtet.</Text>
       </div>
       <div class="icon-feature">
         <div class="icon-feature__icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
         </div>
-        <h3 class="icon-feature__title">Schnelle Reaktion</h3>
-        <p class="icon-feature__text">Erreichbar wenn Sie mich brauchen – besonders im Schadensfall.</p>
+        <Heading as="h3" size="lg" class="mb-2">Schnelle Reaktion</Heading>
+        <Text size="sm" muted class="icon-feature__text">Erreichbar wenn Sie mich brauchen – besonders im Schadensfall.</Text>
       </div>
       <div class="icon-feature">
         <div class="icon-feature__icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
         </div>
-        <h3 class="icon-feature__title">Transparente Dokumentation</h3>
-        <p class="icon-feature__text">Alle Empfehlungen schriftlich und nachvollziehbar begründet.</p>
+        <Heading as="h3" size="lg" class="mb-2">Transparente Dokumentation</Heading>
+        <Text size="sm" muted class="icon-feature__text">Alle Empfehlungen schriftlich und nachvollziehbar begründet.</Text>
       </div>
       <div class="icon-feature">
         <div class="icon-feature__icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
         </div>
-        <h3 class="icon-feature__title">Persönliche Betreuung</h3>
-        <p class="icon-feature__text">Kein Callcenter – Sie sprechen immer direkt mit mir.</p>
+        <Heading as="h3" size="lg" class="mb-2">Persönliche Betreuung</Heading>
+        <Text size="sm" muted class="icon-feature__text">Kein Callcenter – Sie sprechen immer direkt mit mir.</Text>
       </div>
-    </div>
+    </Grid>
 </PageSection>
 
 <style>
-  .icon-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-  }
   .icon-feature {
     text-align: center;
     padding: 2rem 1.5rem;
@@ -56,18 +54,5 @@ import PageSection from "./PageSection.astro";
     margin: 0 auto 1.25rem;
     color: var(--color-primary);
   }
-  .icon-feature__title {
-    font-size: var(--text-lg);
-    font-weight: var(--font-bold);
-    margin-bottom: 0.5rem;
-  }
-  .icon-feature__text {
-    font-size: 0.9375rem;
-    color: var(--color-text-muted);
-    line-height: var(--leading-snug);
-  }
 
-  @media (max-width: 1024px) {
-    .icon-grid { grid-template-columns: repeat(2, 1fr); }
-  }
 </style>

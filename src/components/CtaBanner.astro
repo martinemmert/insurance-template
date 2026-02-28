@@ -1,15 +1,17 @@
 ---
 import PageSection from "./PageSection.astro";
+import Heading from './elements/Heading.astro';
+import Button from './elements/Button.astro';
 // custom styles: padding-top: 0;
 ---
 <!-- CTA Banner -->
 <PageSection>
     <div class="cta-banner">
       <div class="cta-banner__content">
-        <h3>Unsicher, welche Versicherung Sie brauchen?</h3>
+        <Heading as="h3" size="2xl" serif class="mb-2">Unsicher, welche Versicherung Sie brauchen?</Heading>
         <p>In einem kostenlosen Erstgespräch analysiere ich Ihre Situation und zeige Ihnen, wo Sie gut abgesichert sind – und wo nicht.</p>
       </div>
-      <a href="#kontakt" class="cta-banner__btn">Jetzt Termin vereinbaren</a>
+      <Button href="#kontakt" variant="inverted">Jetzt Termin vereinbaren</Button>
     </div>
 </PageSection>
 
@@ -23,31 +25,15 @@ import PageSection from "./PageSection.astro";
     padding: 3rem;
     border-radius: 1.5rem;
   }
-  .cta-banner__content h3 {
-    font-family: var(--font-serif);
-    font-size: var(--text-2xl);
-    font-weight: var(--font-bold);
+  .cta-banner__content :global(.heading) {
     color: var(--color-white);
-    margin-bottom: 0.5rem;
   }
   .cta-banner__content p {
     color: rgba(255,255,255,0.8);
     font-size: var(--text-md);
   }
-  .cta-banner__btn {
+  .cta-banner :global(.btn) {
     flex-shrink: 0;
-    padding: 1rem 2rem;
-    background: var(--color-white);
-    color: var(--color-primary);
-    font-size: var(--text-base);
-    font-weight: var(--font-semibold);
-    border-radius: var(--radius-sm);
-    text-decoration: none;
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-  }
-  .cta-banner__btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   }
 
   @media (max-width: 1024px) {

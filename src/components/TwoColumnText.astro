@@ -1,49 +1,35 @@
 ---
+import Grid from './Grid.astro';
 import PageSection from "./PageSection.astro";
+import Heading from './elements/Heading.astro';
+import Text from './elements/Text.astro';
 ---
 
 <!-- Two Column Text -->
 <PageSection variant="white" label="Philosophie" title="Warum ich diesen Beruf liebe">
-    <div class="two-column-text">
+    <Grid columns={2} gap="4rem" class="two-column-text">
       <div class="two-column-text__col">
-        <h3 class="two-column-text__heading">Der Mensch im Mittelpunkt</h3>
-        <p>Versicherungen sind für viele Menschen ein notwendiges Übel. Formulare, Kleingedrucktes, komplizierte Bedingungen – das alles schreckt ab. Ich verstehe das.</p>
-        <p>Deshalb habe ich mir zur Aufgabe gemacht, das Thema Versicherung menschlich zu gestalten. Bei mir geht es nicht um Produkte, sondern um Menschen. Um Ihre Sorgen, Ihre Wünsche, Ihre Lebenssituation.</p>
+        <Heading as="h3" size="2xl" serif class="mb-6">Der Mensch im Mittelpunkt</Heading>
+        <Text class="mb-6">Versicherungen sind für viele Menschen ein notwendiges Übel. Formulare, Kleingedrucktes, komplizierte Bedingungen – das alles schreckt ab. Ich verstehe das.</Text>
+        <Text>Deshalb habe ich mir zur Aufgabe gemacht, das Thema Versicherung menschlich zu gestalten. Bei mir geht es nicht um Produkte, sondern um Menschen. Um Ihre Sorgen, Ihre Wünsche, Ihre Lebenssituation.</Text>
       </div>
       <div class="two-column-text__col">
-        <h3 class="two-column-text__heading">Vertrauen durch Kompetenz</h3>
-        <p>In über 25 Jahren habe ich gelernt, dass gute Beratung Zeit braucht. Zeit zum Zuhören, Zeit zum Erklären, Zeit für die richtige Lösung. Diese Zeit nehme ich mir.</p>
-        <p>Mein Wissen halte ich durch regelmäßige Weiterbildungen aktuell. Denn der Versicherungsmarkt verändert sich ständig – und Sie verdienen einen Berater, der auf dem neuesten Stand ist.</p>
+        <Heading as="h3" size="2xl" serif class="mb-6">Vertrauen durch Kompetenz</Heading>
+        <Text class="mb-6">In über 25 Jahren habe ich gelernt, dass gute Beratung Zeit braucht. Zeit zum Zuhören, Zeit zum Erklären, Zeit für die richtige Lösung. Diese Zeit nehme ich mir.</Text>
+        <Text>Mein Wissen halte ich durch regelmäßige Weiterbildungen aktuell. Denn der Versicherungsmarkt verändert sich ständig – und Sie verdienen einen Berater, der auf dem neuesten Stand ist.</Text>
       </div>
-    </div>
+    </Grid>
 </PageSection>
 
 <style>
-  .two-column-text {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-  }
-  .two-column-text__col {
-    font-size: var(--text-md);
-    color: var(--color-text-secondary);
-    line-height: 1.8;
-  }
-  .two-column-text__col p {
-    margin-bottom: 1.5rem;
-  }
-  .two-column-text__col p:last-child {
+  .two-column-text__col :global(.text):last-child {
     margin-bottom: 0;
   }
-  .two-column-text__heading {
-    font-family: var(--font-serif);
-    font-size: 1.75rem;
-    font-weight: var(--font-bold);
+  .two-column-text__col :global(.heading) {
     color: var(--color-text);
-    margin-bottom: 1.5rem;
   }
 
   @media (max-width: 1024px) {
-    .two-column-text { grid-template-columns: 1fr; gap: 2rem; }
+    .two-column-text { --grid-gap: 2rem; }
   }
 </style>

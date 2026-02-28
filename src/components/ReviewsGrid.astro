@@ -1,11 +1,12 @@
 ---
 import PageSection from "./PageSection.astro";
+import Grid from './Grid.astro';
 // custom attributes: id="bewertungen"
 ---
 
 <PageSection variant="dark" label="Kundenstimmen" title="Was meine Kunden sagen">
     <Fragment slot="header-subtitle">4.9 von 5 Sternen basierend auf 47 Google-Bewertungen</Fragment>
-    <div class="reviews-grid">
+    <Grid columns={3}>
       <div class="review-card">
         <div class="review-card__stars">★★★★★</div>
         <p class="review-card__text">"Herr Emmert hat sich viel Zeit genommen, um meine Situation zu verstehen. Die Beratung war kompetent und ohne Verkaufsdruck. Absolute Empfehlung!"</p>
@@ -24,15 +25,10 @@ import PageSection from "./PageSection.astro";
         <div class="review-card__author">Thomas B.</div>
         <div class="review-card__date">vor 5 Monaten</div>
       </div>
-    </div>
+    </Grid>
 </PageSection>
 
 <style>
-  .reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
   .review-card {
     background: var(--color-bg-dark-card);
     padding: 2rem;
@@ -57,7 +53,4 @@ import PageSection from "./PageSection.astro";
     color: var(--color-text-subtle);
   }
 
-  @media (max-width: 1024px) {
-    .reviews-grid { grid-template-columns: 1fr; }
-  }
 </style>

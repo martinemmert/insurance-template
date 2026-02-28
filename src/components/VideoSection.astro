@@ -1,10 +1,13 @@
 ---
+import Grid from './Grid.astro';
 import PageSection from "./PageSection.astro";
+import Heading from './elements/Heading.astro';
+import Text from './elements/Text.astro';
 ---
 
 <!-- Video Section -->
 <PageSection variant="white">
-    <div class="video-section">
+    <Grid columns={2} gap="4rem" align="center" class="video-section">
       <div class="video-placeholder">
         <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=450&fit=crop" alt="Beratungsvideo" class="video-placeholder__image">
         <div class="video-placeholder__play">
@@ -12,8 +15,8 @@ import PageSection from "./PageSection.astro";
         </div>
       </div>
       <div class="video-content">
-        <h2 class="video-content__title">Lernen Sie mich kennen</h2>
-        <p class="video-content__text">In diesem kurzen Video erkläre ich Ihnen, wie ich arbeite und warum unabhängige Beratung einen echten Unterschied macht.</p>
+        <Heading as="h2" size="2xl" serif class="mb-4">Lernen Sie mich kennen</Heading>
+        <Text class="video-content__text mb-6">In diesem kurzen Video erkläre ich Ihnen, wie ich arbeite und warum unabhängige Beratung einen echten Unterschied macht.</Text>
         <ul class="video-content__list">
           <li>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -29,15 +32,12 @@ import PageSection from "./PageSection.astro";
           </li>
         </ul>
       </div>
-    </div>
+    </Grid>
 </PageSection>
 
 <style>
-  .video-section {
-    display: grid;
+  :global(.grid--2).video-section {
     grid-template-columns: 1.2fr 1fr;
-    gap: 4rem;
-    align-items: center;
   }
   .video-placeholder {
     position: relative;
@@ -75,18 +75,6 @@ import PageSection from "./PageSection.astro";
     margin-left: 4px;
     color: var(--color-primary);
   }
-  .video-content__title {
-    font-family: var(--font-serif);
-    font-size: 2.25rem;
-    font-weight: var(--font-bold);
-    margin-bottom: 1rem;
-  }
-  .video-content__text {
-    font-size: var(--text-md);
-    color: var(--color-text-secondary);
-    margin-bottom: 1.5rem;
-    line-height: var(--leading-relaxed);
-  }
   .video-content__list {
     list-style: none;
   }
@@ -103,7 +91,4 @@ import PageSection from "./PageSection.astro";
     flex-shrink: 0;
   }
 
-  @media (max-width: 1024px) {
-    .video-section { grid-template-columns: 1fr; }
-  }
 </style>

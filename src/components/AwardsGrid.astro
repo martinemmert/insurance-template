@@ -1,46 +1,43 @@
 ---
 import PageSection from "./PageSection.astro";
+import Heading from './elements/Heading.astro';
+import Grid from './Grid.astro';
 ---
 
 <PageSection variant="gray" label="Auszeichnungen" title="Qualität, die anerkannt wird">
-    <div class="awards-grid">
+    <Grid columns={4} mobileColumns={2}>
       <div class="award-card">
         <div class="award-card__icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
         </div>
-        <h3 class="award-card__title">Top Versicherungsmakler</h3>
+        <Heading as="h3" size="md" class="mb-1">Top Versicherungsmakler</Heading>
         <p class="award-card__year">Focus Money 2023</p>
       </div>
       <div class="award-card">
         <div class="award-card__icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
         </div>
-        <h3 class="award-card__title">Exzellente Beratung</h3>
+        <Heading as="h3" size="md" class="mb-1">Exzellente Beratung</Heading>
         <p class="award-card__year">TÜV Rheinland</p>
       </div>
       <div class="award-card">
         <div class="award-card__icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
         </div>
-        <h3 class="award-card__title">Kundenzufriedenheit</h3>
+        <Heading as="h3" size="md" class="mb-1">Kundenzufriedenheit</Heading>
         <p class="award-card__year">ProvenExpert 2024</p>
       </div>
       <div class="award-card">
         <div class="award-card__icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
         </div>
-        <h3 class="award-card__title">IHK Zertifizierung</h3>
+        <Heading as="h3" size="md" class="mb-1">IHK Zertifizierung</Heading>
         <p class="award-card__year">Fachwirt (IHK)</p>
       </div>
-    </div>
+    </Grid>
 </PageSection>
 
 <style>
-  .awards-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-  }
   .award-card {
     text-align: center;
     padding: 2rem;
@@ -59,16 +56,9 @@ import PageSection from "./PageSection.astro";
     justify-content: center;
     color: var(--color-white);
   }
-  .award-card__title {
-    font-weight: var(--font-bold);
-    margin-bottom: 0.25rem;
-  }
   .award-card__year {
     font-size: var(--text-sm);
     color: var(--color-text-muted);
   }
 
-  @media (max-width: 1024px) {
-    .awards-grid { grid-template-columns: repeat(2, 1fr); }
-  }
 </style>

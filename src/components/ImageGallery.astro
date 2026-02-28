@@ -1,10 +1,11 @@
 ---
 import PageSection from "./PageSection.astro";
+import Grid from './Grid.astro';
 ---
 
 <!-- Image Gallery -->
 <PageSection variant="gray" label="Einblicke" title="Mein Büro & meine Arbeit">
-    <div class="gallery-grid">
+    <Grid columns={4} mobileColumns={2} gap="1rem" class="gallery-grid">
       <div class="gallery-item">
         <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop" alt="Büro">
       </div>
@@ -29,15 +30,10 @@ import PageSection from "./PageSection.astro";
       <div class="gallery-item">
         <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=400&h=300&fit=crop" alt="Kundengespräch">
       </div>
-    </div>
+    </Grid>
 </PageSection>
 
 <style>
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-  }
   .gallery-grid--masonry {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -60,7 +56,6 @@ import PageSection from "./PageSection.astro";
   }
 
   @media (max-width: 1024px) {
-    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
     .gallery-grid--masonry { grid-template-columns: 1fr; }
     .gallery-item--tall img { height: 200px; }
   }

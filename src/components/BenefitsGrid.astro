@@ -1,17 +1,20 @@
 ---
 import PageSection from "./PageSection.astro";
+import Heading from './elements/Heading.astro';
+import Text from './elements/Text.astro';
+import Grid from './Grid.astro';
 ---
 
 <PageSection variant="white" label="Ihre Vorteile" title="Warum Sie bei mir richtig sind">
     <Fragment slot="header-subtitle">Unabhängige Beratung bedeutet: Ihre Interessen stehen immer an erster Stelle.</Fragment>
-    <div class="benefits-grid">
+    <Grid columns={2}>
       <div class="benefit-item">
         <div class="benefit-item__icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
         </div>
         <div>
-          <h4 class="benefit-item__title">Zeitersparnis</h4>
-          <p class="benefit-item__text">Ich übernehme den kompletten Anbietervergleich und die Kommunikation mit den Versicherungen. Sie bekommen nur das Ergebnis.</p>
+          <Heading as="h4" size="md" class="mb-2">Zeitersparnis</Heading>
+          <Text size="sm" muted class="benefit-item__text">Ich übernehme den kompletten Anbietervergleich und die Kommunikation mit den Versicherungen. Sie bekommen nur das Ergebnis.</Text>
         </div>
       </div>
       <div class="benefit-item">
@@ -19,8 +22,8 @@ import PageSection from "./PageSection.astro";
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
         </div>
         <div>
-          <h4 class="benefit-item__title">Marktüberblick</h4>
-          <p class="benefit-item__text">Zugang zu über 100 Versicherungsgesellschaften. Ich finde die beste Kombination aus Leistung und Preis für Sie.</p>
+          <Heading as="h4" size="md" class="mb-2">Marktüberblick</Heading>
+          <Text size="sm" muted class="benefit-item__text">Zugang zu über 100 Versicherungsgesellschaften. Ich finde die beste Kombination aus Leistung und Preis für Sie.</Text>
         </div>
       </div>
       <div class="benefit-item">
@@ -28,8 +31,8 @@ import PageSection from "./PageSection.astro";
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
         </div>
         <div>
-          <h4 class="benefit-item__title">Persönlicher Ansprechpartner</h4>
-          <p class="benefit-item__text">Kein Callcenter, keine Warteschleifen. Sie erreichen mich direkt – auch im Schadensfall, wenn es schnell gehen muss.</p>
+          <Heading as="h4" size="md" class="mb-2">Persönlicher Ansprechpartner</Heading>
+          <Text size="sm" muted class="benefit-item__text">Kein Callcenter, keine Warteschleifen. Sie erreichen mich direkt – auch im Schadensfall, wenn es schnell gehen muss.</Text>
         </div>
       </div>
       <div class="benefit-item">
@@ -37,8 +40,8 @@ import PageSection from "./PageSection.astro";
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
         </div>
         <div>
-          <h4 class="benefit-item__title">Keine versteckten Kosten</h4>
-          <p class="benefit-item__text">Meine Beratung ist für Sie kostenlos. Ich werde von den Versicherungen vergütet – transparent und ohne Aufpreis für Sie.</p>
+          <Heading as="h4" size="md" class="mb-2">Keine versteckten Kosten</Heading>
+          <Text size="sm" muted class="benefit-item__text">Meine Beratung ist für Sie kostenlos. Ich werde von den Versicherungen vergütet – transparent und ohne Aufpreis für Sie.</Text>
         </div>
       </div>
       <div class="benefit-item">
@@ -46,8 +49,8 @@ import PageSection from "./PageSection.astro";
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
         </div>
         <div>
-          <h4 class="benefit-item__title">Schadensregulierung</h4>
-          <p class="benefit-item__text">Im Schadensfall kämpfe ich für Sie. Mit meiner Erfahrung weiß ich, wie Ansprüche erfolgreich durchgesetzt werden.</p>
+          <Heading as="h4" size="md" class="mb-2">Schadensregulierung</Heading>
+          <Text size="sm" muted class="benefit-item__text">Im Schadensfall kämpfe ich für Sie. Mit meiner Erfahrung weiß ich, wie Ansprüche erfolgreich durchgesetzt werden.</Text>
         </div>
       </div>
       <div class="benefit-item">
@@ -55,19 +58,14 @@ import PageSection from "./PageSection.astro";
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
         </div>
         <div>
-          <h4 class="benefit-item__title">Regelmäßige Überprüfung</h4>
-          <p class="benefit-item__text">Ihr Leben ändert sich, Ihr Schutz sollte es auch. Ich überprüfe jährlich, ob Ihre Absicherung noch passt.</p>
+          <Heading as="h4" size="md" class="mb-2">Regelmäßige Überprüfung</Heading>
+          <Text size="sm" muted class="benefit-item__text">Ihr Leben ändert sich, Ihr Schutz sollte es auch. Ich überprüfe jährlich, ob Ihre Absicherung noch passt.</Text>
         </div>
       </div>
-    </div>
+    </Grid>
 </PageSection>
 
 <style>
-  .benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
   .benefit-item {
     display: flex;
     gap: 1.25rem;
@@ -87,18 +85,5 @@ import PageSection from "./PageSection.astro";
     justify-content: center;
     color: var(--color-primary);
   }
-  .benefit-item__title {
-    font-weight: var(--font-bold);
-    font-size: var(--text-md);
-    margin-bottom: 0.375rem;
-  }
-  .benefit-item__text {
-    font-size: 0.9375rem;
-    color: var(--color-text-muted);
-    line-height: var(--leading-snug);
-  }
 
-  @media (max-width: 1024px) {
-    .benefits-grid { grid-template-columns: 1fr; }
-  }
 </style>

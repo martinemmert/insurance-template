@@ -1,33 +1,33 @@
 ---
 import PageSection from "./PageSection.astro";
+import Heading from './elements/Heading.astro';
+import Text from './elements/Text.astro';
+import Grid from './Grid.astro';
 ---
 
 <!-- Offset Cards -->
 <PageSection variant="white" label="Fakten" title="Zahlen, die für sich sprechen">
-    <div class="offset-cards">
+    <Grid columns={3} class="offset-cards">
       <div class="offset-card">
         <div class="offset-card__number">97%</div>
-        <h3 class="offset-card__title">Erfolgsquote</h3>
-        <p class="offset-card__text">bei der Durchsetzung von Schadensfällen gegenüber Versicherungen.</p>
+        <Heading as="h3" size="xl" class="mb-2">Erfolgsquote</Heading>
+        <Text size="sm" muted class="offset-card__text">bei der Durchsetzung von Schadensfällen gegenüber Versicherungen.</Text>
       </div>
       <div class="offset-card">
         <div class="offset-card__number">24h</div>
-        <h3 class="offset-card__title">Reaktionszeit</h3>
-        <p class="offset-card__text">im Schadensfall – schnelle Hilfe, wenn Sie sie am meisten brauchen.</p>
+        <Heading as="h3" size="xl" class="mb-2">Reaktionszeit</Heading>
+        <Text size="sm" muted class="offset-card__text">im Schadensfall – schnelle Hilfe, wenn Sie sie am meisten brauchen.</Text>
       </div>
       <div class="offset-card">
         <div class="offset-card__number">∅ 18%</div>
-        <h3 class="offset-card__title">Ersparnis</h3>
-        <p class="offset-card__text">sparen meine Kunden durchschnittlich bei gleicher oder besserer Leistung.</p>
+        <Heading as="h3" size="xl" class="mb-2">Ersparnis</Heading>
+        <Text size="sm" muted class="offset-card__text">sparen meine Kunden durchschnittlich bei gleicher oder besserer Leistung.</Text>
       </div>
-    </div>
+    </Grid>
 </PageSection>
 
 <style>
   .offset-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
     padding-top: 2rem;
   }
   .offset-card {
@@ -53,19 +53,8 @@ import PageSection from "./PageSection.astro";
     color: var(--color-primary);
     margin-bottom: 1rem;
   }
-  .offset-card__title {
-    font-size: var(--text-xl);
-    font-weight: var(--font-bold);
-    margin-bottom: 0.5rem;
-  }
-  .offset-card__text {
-    font-size: 0.9375rem;
-    color: var(--color-text-muted);
-    line-height: var(--leading-normal);
-  }
 
   @media (max-width: 1024px) {
-    .offset-cards { grid-template-columns: 1fr; }
     .offset-card:nth-child(2) { transform: none; }
     .offset-card:nth-child(2):hover { transform: translateY(-0.5rem); }
   }

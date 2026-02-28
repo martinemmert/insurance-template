@@ -1,40 +1,38 @@
 ---
 import PageSection from "./PageSection.astro";
+import Heading from './elements/Heading.astro';
+import Text from './elements/Text.astro';
+import Grid from './Grid.astro';
 ---
 
 <!-- Feature Cards -->
 <PageSection variant="white" label="Schwerpunkte" title="Meine Kernkompetenzen">
-    <div class="feature-cards">
+    <Grid columns={3}>
       <div class="feature-card">
         <div class="feature-card__icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
         </div>
-        <h3 class="feature-card__title">Privatkundenberatung</h3>
-        <p class="feature-card__text">Individuelle Lösungen für Familien, Singles und Paare – von der Grundabsicherung bis zur Vermögensplanung.</p>
+        <Heading as="h3" size="xl" class="mb-3">Privatkundenberatung</Heading>
+        <Text size="sm" muted class="feature-card__text">Individuelle Lösungen für Familien, Singles und Paare – von der Grundabsicherung bis zur Vermögensplanung.</Text>
       </div>
       <div class="feature-card">
         <div class="feature-card__icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
         </div>
-        <h3 class="feature-card__title">Gewerbeversicherung</h3>
-        <p class="feature-card__text">Maßgeschneiderte Absicherung für Selbstständige, Freiberufler und kleine Unternehmen.</p>
+        <Heading as="h3" size="xl" class="mb-3">Gewerbeversicherung</Heading>
+        <Text size="sm" muted class="feature-card__text">Maßgeschneiderte Absicherung für Selbstständige, Freiberufler und kleine Unternehmen.</Text>
       </div>
       <div class="feature-card">
         <div class="feature-card__icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
         </div>
-        <h3 class="feature-card__title">Schadensmanagement</h3>
-        <p class="feature-card__text">Professionelle Unterstützung bei der Schadensmeldung und Durchsetzung Ihrer Ansprüche.</p>
+        <Heading as="h3" size="xl" class="mb-3">Schadensmanagement</Heading>
+        <Text size="sm" muted class="feature-card__text">Professionelle Unterstützung bei der Schadensmeldung und Durchsetzung Ihrer Ansprüche.</Text>
       </div>
-    </div>
+    </Grid>
 </PageSection>
 
 <style>
-  .feature-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
   .feature-card {
     padding: 2.5rem;
     background: var(--color-white);
@@ -58,18 +56,5 @@ import PageSection from "./PageSection.astro";
     justify-content: center;
     color: var(--color-primary);
   }
-  .feature-card__title {
-    font-size: var(--text-xl);
-    font-weight: var(--font-bold);
-    margin-bottom: 0.75rem;
-  }
-  .feature-card__text {
-    font-size: 0.9375rem;
-    color: var(--color-text-muted);
-    line-height: var(--leading-normal);
-  }
 
-  @media (max-width: 1024px) {
-    .feature-cards { grid-template-columns: 1fr; }
-  }
 </style>

@@ -1,9 +1,9 @@
 ---
-
+import Heading from '../elements/Heading.astro';
 ---
 
 <div class="related-content">
-  <h3 class="related-content__title">Das könnte Sie auch interessieren</h3>
+  <Heading as="h3" size="lg">Das könnte Sie auch interessieren</Heading>
   <div class="related-content__grid">
     <a href="#" class="related-card">
       <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=200&h=200&fit=crop" alt="Altersvorsorge" class="related-card__image">
@@ -30,9 +30,7 @@
     background: var(--color-bg-warm);
     border-radius: var(--radius-lg);
   }
-  .related-content__title {
-    font-size: var(--text-lg);
-    font-weight: var(--font-bold);
+  .related-content :global(.heading) {
     margin-bottom: 1.5rem;
   }
   .related-content__grid {

@@ -1,13 +1,17 @@
 ---
+import Grid from './Grid.astro';
 import PageSection from "./PageSection.astro";
+import Heading from './elements/Heading.astro';
+import Text from './elements/Text.astro';
+import Button from './elements/Button.astro';
 // custom attributes: id="kontakt"
 ---
 <!-- Contact -->
 <PageSection>
-    <div class="contact">
+    <Grid columns={2} gap="4rem" class="contact">
       <div class="contact__info">
-        <h3>Lassen Sie uns sprechen</h3>
-        <p>Vereinbaren Sie jetzt Ihr kostenloses Erstgespräch. Ich freue mich darauf, Sie kennenzulernen.</p>
+        <Heading as="h3" size="2xl" serif class="mb-4">Lassen Sie uns sprechen</Heading>
+        <Text muted class="mb-8">Vereinbaren Sie jetzt Ihr kostenloses Erstgespräch. Ich freue mich darauf, Sie kennenzulernen.</Text>
         <div class="contact__item">
           <div class="contact__icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
@@ -55,26 +59,12 @@ import PageSection from "./PageSection.astro";
           <label for="message">Nachricht</label>
           <textarea id="message" name="message" placeholder="Wie kann ich Ihnen helfen?"></textarea>
         </div>
-        <button type="submit" class="btn btn--primary" style="width: 100%;">Nachricht senden</button>
+        <Button type="submit" style="width: 100%;">Nachricht senden</Button>
       </form>
-    </div>
+    </Grid>
 </PageSection>
 
 <style>
-  .contact {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-  }
-  .contact__info h3 {
-    font-family: var(--font-serif);
-    font-size: var(--text-2xl);
-    margin-bottom: 1rem;
-  }
-  .contact__info p {
-    color: var(--color-text-muted);
-    margin-bottom: 2rem;
-  }
   .contact__item {
     display: flex;
     align-items: center;
@@ -141,7 +131,6 @@ import PageSection from "./PageSection.astro";
   }
 
   @media (max-width: 1024px) {
-    .contact { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
   }
 </style>

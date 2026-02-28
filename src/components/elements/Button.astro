@@ -1,0 +1,67 @@
+---
+const {as, variant = 'primary', size = 'default', href, ...rest} = Astro.props;
+const Tag = as ?? (href ? 'a' : 'button');
+---
+<Tag class:list={['btn', `btn--${variant}`, size !== 'default' && `btn--${size}`]}
+     {...(Tag === 'a' ? { href } : {})}
+     {...rest}
+>
+    <slot/>
+</Tag>
+
+<style>
+    .btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        font-size: var(--text-base);
+        font-weight: var(--font-semibold);
+        text-decoration: none;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+        border: none;
+        font-family: inherit;
+    }
+
+    /* Primary */
+    .btn--primary {
+        background-color: var(--color-primary);
+        color: var(--color-white);
+    }
+
+    .btn--primary:hover {
+        background-color: var(--color-primary-hover);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-primary);
+    }
+
+    /* Secondary */
+    .btn--secondary {
+        background-color: transparent;
+        color: var(--color-primary);
+        border: 2px solid var(--color-primary);
+    }
+
+    .btn--secondary:hover {
+        background-color: var(--color-primary);
+        color: var(--color-white);
+        transform: translateY(-2px);
+    }
+
+    /* Inverted */
+    .btn--inverted {
+        background-color: var(--color-white);
+        color: var(--color-primary);
+    }
+
+    .btn--inverted:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Size: small */
+    .btn--small {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9375rem;
+    }
+</style>

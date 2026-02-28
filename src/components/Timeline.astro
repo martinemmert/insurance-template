@@ -1,5 +1,6 @@
 ---
 import PageSection from "./PageSection.astro";
+import Heading from './elements/Heading.astro';
 ---
 
 <!-- Timeline -->
@@ -8,27 +9,27 @@ import PageSection from "./PageSection.astro";
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-item__year">1998</div>
-        <h3 class="timeline-item__title">Start in der Branche</h3>
+        <Heading as="h3" size="lg" class="mb-2">Start in der Branche</Heading>
         <p class="timeline-item__text">Ausbildung zum Versicherungskaufmann bei einer großen deutschen Versicherung.</p>
       </div>
       <div class="timeline-item">
         <div class="timeline-item__year">2003</div>
-        <h3 class="timeline-item__title">Spezialisierung</h3>
+        <Heading as="h3" size="lg" class="mb-2">Spezialisierung</Heading>
         <p class="timeline-item__text">Weiterbildung zum Fachwirt für Versicherungen und Finanzen (IHK).</p>
       </div>
       <div class="timeline-item">
         <div class="timeline-item__year">2008</div>
-        <h3 class="timeline-item__title">Schritt in die Selbstständigkeit</h3>
+        <Heading as="h3" size="lg" class="mb-2">Schritt in die Selbstständigkeit</Heading>
         <p class="timeline-item__text">Gründung des eigenen Maklerbüros in Aschaffenburg.</p>
       </div>
       <div class="timeline-item">
         <div class="timeline-item__year">2015</div>
-        <h3 class="timeline-item__title">1.000 Kunden</h3>
+        <Heading as="h3" size="lg" class="mb-2">1.000 Kunden</Heading>
         <p class="timeline-item__text">Meilenstein: Über 1.000 zufriedene Kunden vertrauen meiner Beratung.</p>
       </div>
       <div class="timeline-item">
         <div class="timeline-item__year">Heute</div>
-        <h3 class="timeline-item__title">Unabhängig & persönlich</h3>
+        <Heading as="h3" size="lg" class="mb-2">Unabhängig & persönlich</Heading>
         <p class="timeline-item__text">Weiterhin für Sie da – mit der gleichen Leidenschaft wie am ersten Tag.</p>
       </div>
     </div>
@@ -83,11 +84,6 @@ import PageSection from "./PageSection.astro";
     font-weight: var(--font-bold);
     color: var(--color-primary);
     margin-bottom: 0.5rem;
-  }
-  .timeline-item__title {
-    font-size: var(--text-lg);
-    font-weight: var(--font-bold);
-    margin-bottom: 0.375rem;
   }
   .timeline-item__text {
     font-size: 0.9375rem;

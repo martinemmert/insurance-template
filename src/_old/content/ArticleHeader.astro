@@ -1,4 +1,5 @@
 ---
+import Heading from '../elements/Heading.astro';
 ---
 
 <header class="article-header">
@@ -10,7 +11,7 @@
     <span>Berufsunfähigkeit</span>
   </nav>
   <span class="article-header__category">Berufsunfähigkeit</span>
-  <h1 class="article-header__title">Berufsunfähigkeitsversicherung: Der komplette Ratgeber für 2024</h1>
+  <Heading as="h1" size="section-title" serif>Berufsunfähigkeitsversicherung: Der komplette Ratgeber für 2024</Heading>
   <p class="article-header__subtitle">Alles, was Sie wissen müssen, um die richtige BU-Versicherung zu finden – von den Grundlagen bis zu den wichtigsten Klauseln.</p>
   <div class="article-header__meta">
     <div class="article-header__author">
@@ -61,10 +62,7 @@
     border-radius: 2rem;
     margin-bottom: 1rem;
   }
-  .article-header__title {
-    font-family: var(--font-serif);
-    font-size: var(--text-section-title);
-    font-weight: var(--font-bold);
+  .article-header :global(.heading) {
     line-height: 1.2;
     margin-bottom: 1rem;
   }

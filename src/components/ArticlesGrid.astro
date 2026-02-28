@@ -1,5 +1,8 @@
 ---
 import PageSection from "./PageSection.astro";
+import Heading from './elements/Heading.astro';
+import Text from './elements/Text.astro';
+import Grid from './Grid.astro';
 
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 ---
@@ -7,13 +10,13 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 <!-- Blog/Articles -->
 <PageSection variant="white" label="Wissen" title="Aktuelle Ratgeber & Tipps">
     <Fragment slot="header-subtitle">Bleiben Sie informiert mit meinen neuesten Artikeln zu Versicherungen und Vorsorge.</Fragment>
-    <div class="articles-grid">
+    <Grid columns={3}>
       <article class="article-card">
         <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop" alt="Steuererklärung" class="article-card__image">
         <div class="article-card__content">
           <span class="article-card__category">Steuern</span>
-          <h3 class="article-card__title">Diese Versicherungen können Sie von der Steuer absetzen</h3>
-          <p class="article-card__excerpt">Viele wissen nicht, dass bestimmte Versicherungsbeiträge steuerlich absetzbar sind. Ein Überblick.</p>
+          <Heading as="h3" size="lg" class="mb-2">Diese Versicherungen können Sie von der Steuer absetzen</Heading>
+          <Text size="sm" muted class="article-card__excerpt mb-4">Viele wissen nicht, dass bestimmte Versicherungsbeiträge steuerlich absetzbar sind. Ein Überblick.</Text>
           <span class="article-card__meta">15. Januar 2024 &bull; 5 Min. Lesezeit</span>
         </div>
       </article>
@@ -21,8 +24,8 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=600&h=400&fit=crop" alt="Berufsunfähigkeit" class="article-card__image">
         <div class="article-card__content">
           <span class="article-card__category">Berufsunfähigkeit</span>
-          <h3 class="article-card__title">BU-Versicherung: Die 5 häufigsten Fehler beim Abschluss</h3>
-          <p class="article-card__excerpt">Worauf Sie achten müssen, damit die BU im Ernstfall auch wirklich zahlt.</p>
+          <Heading as="h3" size="lg" class="mb-2">BU-Versicherung: Die 5 häufigsten Fehler beim Abschluss</Heading>
+          <Text size="sm" muted class="article-card__excerpt mb-4">Worauf Sie achten müssen, damit die BU im Ernstfall auch wirklich zahlt.</Text>
           <span class="article-card__meta">8. Januar 2024 &bull; 7 Min. Lesezeit</span>
         </div>
       </article>
@@ -30,20 +33,15 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=600&h=400&fit=crop" alt="Altersvorsorge" class="article-card__image">
         <div class="article-card__content">
           <span class="article-card__category">Altersvorsorge</span>
-          <h3 class="article-card__title">Rentenlücke berechnen: So viel fehlt Ihnen wirklich</h3>
-          <p class="article-card__excerpt">Eine einfache Methode, um herauszufinden, wie viel Sie für die Rente zurücklegen sollten.</p>
+          <Heading as="h3" size="lg" class="mb-2">Rentenlücke berechnen: So viel fehlt Ihnen wirklich</Heading>
+          <Text size="sm" muted class="article-card__excerpt mb-4">Eine einfache Methode, um herauszufinden, wie viel Sie für die Rente zurücklegen sollten.</Text>
           <span class="article-card__meta">2. Januar 2024 &bull; 6 Min. Lesezeit</span>
         </div>
       </article>
-    </div>
+    </Grid>
 </PageSection>
 
 <style>
-  .articles-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
   .article-card {
     background: var(--color-white);
     border-radius: var(--radius-lg);
@@ -75,24 +73,12 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     border-radius: var(--radius-lg);
     margin-bottom: 0.75rem;
   }
-  .article-card__title {
-    font-size: var(--text-lg);
-    font-weight: var(--font-bold);
-    margin-bottom: 0.5rem;
+  .article-card__content :global(.heading) {
     line-height: 1.4;
-  }
-  .article-card__excerpt {
-    font-size: 0.9375rem;
-    color: var(--color-text-muted);
-    margin-bottom: 1rem;
-    line-height: var(--leading-snug);
   }
   .article-card__meta {
     font-size: var(--text-xs);
     color: var(--color-text-faint);
   }
 
-  @media (max-width: 1024px) {
-    .articles-grid { grid-template-columns: 1fr; }
-  }
 </style>

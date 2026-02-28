@@ -1,16 +1,18 @@
 ---
+import Grid from './Grid.astro';
 import PageSection from "./PageSection.astro";
+import Heading from './elements/Heading.astro';
 ---
 
 <!-- Problem / Solution -->
 <PageSection variant="white" label="Die Herausforderung" title="Versicherungen sind kompliziert. Das muss nicht sein.">
-    <div class="problem-solution">
+    <Grid columns={2} gap="3rem" class="problem-solution">
       <div class="problem-card">
         <div class="problem-card__label">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
           Das Problem
         </div>
-        <h3 class="problem-card__title">Ohne unabhängige Beratung</h3>
+        <Heading as="h3" size="xl" serif class="mb-4">Ohne unabhängige Beratung</Heading>
         <ul class="problem-card__list">
           <li>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -35,7 +37,7 @@ import PageSection from "./PageSection.astro";
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
           Die Lösung
         </div>
-        <h3 class="solution-card__title">Mit Helmut Emmert</h3>
+        <Heading as="h3" size="xl" serif class="mb-4">Mit Helmut Emmert</Heading>
         <ul class="solution-card__list">
           <li>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -55,15 +57,10 @@ import PageSection from "./PageSection.astro";
           </li>
         </ul>
       </div>
-    </div>
+    </Grid>
 </PageSection>
 
 <style>
-  .problem-solution {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-  }
   .problem-card, .solution-card {
     padding: 2.5rem;
     border-radius: var(--radius-lg);
@@ -92,12 +89,6 @@ import PageSection from "./PageSection.astro";
   .solution-card__label {
     color: #059669;
   }
-  .problem-card__title, .solution-card__title {
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-    font-weight: var(--font-bold);
-    margin-bottom: 1rem;
-  }
   .problem-card__list, .solution-card__list {
     list-style: none;
   }
@@ -119,7 +110,4 @@ import PageSection from "./PageSection.astro";
     margin-top: 0.125rem;
   }
 
-  @media (max-width: 1024px) {
-    .problem-solution { grid-template-columns: 1fr; }
-  }
 </style>

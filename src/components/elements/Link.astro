@@ -1,0 +1,30 @@
+---
+const { variant = 'inline', href, ...rest } = Astro.props;
+---
+
+<a class:list={['link', `link--${variant}`]} href={href} {...rest}>
+  <slot />
+</a>
+
+<style>
+  .link {
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  .link--inline {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .link--inline:hover {
+    color: var(--color-primary-hover);
+  }
+  .link--action {
+    font-size: var(--text-body);
+    font-weight: var(--font-semibold);
+    color: var(--color-primary);
+  }
+  .link--action:hover {
+    text-decoration: underline;
+  }
+</style>

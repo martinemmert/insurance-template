@@ -1,0 +1,18 @@
+---
+const { as: Tag = 'h2', size = '2xl', serif = false, class: className, ...rest } = Astro.props;
+---
+<Tag class:list={['heading', `heading--${size}`, { 'heading--serif': serif }, className]} {...rest}>
+    <slot />
+</Tag>
+
+<style>
+    .heading { font-weight: var(--font-bold); }
+    .heading--serif { font-family: var(--font-serif); }
+    .heading--hero { font-size: var(--text-hero); }
+    .heading--section-title { font-size: var(--text-section-title); }
+    .heading--3xl { font-size: var(--text-3xl); }
+    .heading--2xl { font-size: var(--text-2xl); }
+    .heading--xl { font-size: var(--text-xl); }
+    .heading--lg { font-size: var(--text-lg); }
+    .heading--md { font-size: var(--text-md); }
+</style>

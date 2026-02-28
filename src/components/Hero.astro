@@ -1,17 +1,21 @@
 ---
+import Grid from './Grid.astro';
+import Heading from './elements/Heading.astro';
+import Text from './elements/Text.astro';
+import Button from './elements/Button.astro';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 ---
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero__container">
+  <Grid columns={2} gap="4rem" align="center" class="hero__container">
     <div class="hero__content">
       <span class="hero__label">Versicherungsmakler in Aschaffenburg</span>
-      <h1 class="hero__title">Schutz für das, was Ihnen wichtig ist</h1>
-      <p class="hero__text">Persönliche Versicherungsberatung ohne Verkaufsdruck. Ich finde die Absicherung, die wirklich zu Ihrem Leben passt – transparent, unabhängig und fair.</p>
+      <Heading as="h1" size="hero" serif class="mb-6">Schutz für das, was Ihnen wichtig ist</Heading>
+      <Text size="lg" class="hero__text mb-8">Persönliche Versicherungsberatung ohne Verkaufsdruck. Ich finde die Absicherung, die wirklich zu Ihrem Leben passt – transparent, unabhängig und fair.</Text>
       <div class="hero__buttons">
-        <a href="#kontakt" class="btn btn--primary">Kostenloses Erstgespräch</a>
-        <a href="#leistungen" class="btn btn--secondary">Leistungen entdecken</a>
+        <Button href="#kontakt">Kostenloses Erstgespräch</Button>
+        <Button href="#leistungen" variant="secondary">Leistungen entdecken</Button>
       </div>
     </div>
     <div class="hero__image">
@@ -27,7 +31,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         </div>
       </div>
     </div>
-  </div>
+  </Grid>
 </section>
 
 <style>
@@ -41,10 +45,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   .hero__container {
     max-width: var(--container-max);
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
   }
   .hero__label {
     display: inline-block;
@@ -55,17 +55,10 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     color: var(--color-primary);
     margin-bottom: 1rem;
   }
-  .hero__title {
-    font-family: var(--font-serif);
-    font-size: var(--text-hero);
-    font-weight: var(--font-bold);
+  .hero__content :global(.heading) {
     line-height: var(--leading-tight);
-    margin-bottom: 1.5rem;
   }
   .hero__text {
-    font-size: var(--text-xl);
-    color: var(--color-text-secondary);
-    margin-bottom: 2rem;
     max-width: 500px;
   }
   .hero__buttons {
@@ -105,7 +98,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
   @media (max-width: 1024px) {
     .hero { padding: 6rem 2rem 4rem; }
-    .hero__container { grid-template-columns: 1fr; }
     .hero__image { display: none; }
     .hero__buttons { flex-direction: column; }
   }

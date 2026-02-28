@@ -1,17 +1,19 @@
 ---
 import PageSection from "./PageSection.astro";
+import Text from './elements/Text.astro';
+import Grid from './Grid.astro';
 ---
 
 <PageSection variant="gray" label="Kostenlose Ressourcen" title="Nützliche Ratgeber zum Download">
     <Fragment slot="header-subtitle">Informieren Sie sich vorab – alle Guides sind kostenlos und unverbindlich.</Fragment>
-    <div class="resources-grid">
+    <Grid columns={3}>
       <a href="#" class="resource-card">
         <div class="resource-card__icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
         </div>
         <div>
           <h4 class="resource-card__title">BU-Versicherung verstehen</h4>
-          <p class="resource-card__desc">Alles, was Sie über die Berufsunfähigkeitsversicherung wissen müssen.</p>
+          <Text size="sm" muted class="resource-card__desc mb-2">Alles, was Sie über die Berufsunfähigkeitsversicherung wissen müssen.</Text>
           <span class="resource-card__meta">PDF &bull; 12 Seiten</span>
         </div>
       </a>
@@ -21,7 +23,7 @@ import PageSection from "./PageSection.astro";
         </div>
         <div>
           <h4 class="resource-card__title">Checkliste Erstgespräch</h4>
-          <p class="resource-card__desc">Diese Unterlagen sollten Sie zum ersten Beratungstermin mitbringen.</p>
+          <Text size="sm" muted class="resource-card__desc mb-2">Diese Unterlagen sollten Sie zum ersten Beratungstermin mitbringen.</Text>
           <span class="resource-card__meta">PDF &bull; 2 Seiten</span>
         </div>
       </a>
@@ -31,19 +33,14 @@ import PageSection from "./PageSection.astro";
         </div>
         <div>
           <h4 class="resource-card__title">Altersvorsorge-Rechner</h4>
-          <p class="resource-card__desc">Berechnen Sie Ihre Rentenlücke und den Sparbedarf.</p>
+          <Text size="sm" muted class="resource-card__desc mb-2">Berechnen Sie Ihre Rentenlücke und den Sparbedarf.</Text>
           <span class="resource-card__meta">Excel &bull; Interaktiv</span>
         </div>
       </a>
-    </div>
+    </Grid>
 </PageSection>
 
 <style>
-  .resources-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
   .resource-card {
     background: var(--color-white);
     border-radius: var(--radius-lg);
@@ -75,17 +72,9 @@ import PageSection from "./PageSection.astro";
     font-weight: var(--font-bold);
     margin-bottom: 0.375rem;
   }
-  .resource-card__desc {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    margin-bottom: 0.5rem;
-  }
   .resource-card__meta {
     font-size: 0.75rem;
     color: var(--color-text-faint);
   }
 
-  @media (max-width: 1024px) {
-    .resources-grid { grid-template-columns: 1fr; }
-  }
 </style>

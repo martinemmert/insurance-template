@@ -1,5 +1,5 @@
 ---
-
+import Button from '../elements/Button.astro';
 ---
 
 <div class="download-box">
@@ -10,7 +10,7 @@
     <h4 class="download-box__title">BU-Checkliste zum Download</h4>
     <p class="download-box__meta">PDF • 2 Seiten • 156 KB</p>
   </div>
-  <a href="#" class="download-box__btn">Herunterladen</a>
+  <Button href="#" size="small">Herunterladen</Button>
 </div>
 
 <style>
@@ -47,16 +47,7 @@
     font-size: var(--text-xs);
     color: var(--color-text-muted);
   }
-  .download-box__btn {
+  .download-box :global(.btn) {
     flex-shrink: 0;
-    padding: 0.75rem 1.5rem;
-    background: var(--color-primary);
-    color: var(--color-white);
-    font-size: 0.9375rem;
-    font-weight: var(--font-semibold);
-    border-radius: var(--radius-sm);
-    text-decoration: none;
-    transition: background var(--transition-fast);
   }
-  .download-box__btn:hover { background: var(--color-primary-hover); }
 </style>

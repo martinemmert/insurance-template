@@ -1,14 +1,17 @@
 ---
+import Grid from './Grid.astro';
 import PageSection from "./PageSection.astro";
+import Heading from './elements/Heading.astro';
+import Text from './elements/Text.astro';
 ---
 
 <!-- Checklist Section -->
 <PageSection variant="white">
-    <div class="checklist-section">
+    <Grid columns={2} gap="4rem" align="center" class="checklist-section">
       <div>
         <div class="section__label">Erstgespräch</div>
-        <h2 class="split-content__title">Was Sie zum ersten Termin mitbringen sollten</h2>
-        <p class="split-content__text">Je besser ich Ihre aktuelle Situation verstehe, desto gezielter kann ich Sie beraten. Diese Unterlagen helfen dabei:</p>
+        <Heading as="h2" size="2xl" serif class="mb-4">Was Sie zum ersten Termin mitbringen sollten</Heading>
+        <Text class="split-content__text mb-6">Je besser ich Ihre aktuelle Situation verstehe, desto gezielter kann ich Sie beraten. Diese Unterlagen helfen dabei:</Text>
         <ul class="checklist">
           <li class="checklist__item">
             <div class="checklist__icon">
@@ -42,16 +45,10 @@ import PageSection from "./PageSection.astro";
       <div class="split-content__image">
         <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=500&fit=crop" alt="Dokumente vorbereiten">
       </div>
-    </div>
+    </Grid>
 </PageSection>
 
 <style>
-  .checklist-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
   .checklist {
     list-style: none;
   }
@@ -92,20 +89,5 @@ import PageSection from "./PageSection.astro";
     height: 400px;
     object-fit: cover;
   }
-  .split-content__title {
-    font-family: var(--font-serif);
-    font-size: var(--text-2xl);
-    font-weight: var(--font-bold);
-    margin-bottom: 1rem;
-  }
-  .split-content__text {
-    font-size: var(--text-md);
-    color: var(--color-text-secondary);
-    margin-bottom: 1.5rem;
-    line-height: var(--leading-relaxed);
-  }
 
-  @media (max-width: 1024px) {
-    .checklist-section { grid-template-columns: 1fr; }
-  }
 </style>
