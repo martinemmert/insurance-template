@@ -3,6 +3,8 @@ import Grid from './Grid.astro';
 import Heading from './elements/Heading.astro';
 import Text from './elements/Text.astro';
 import Button from './elements/Button.astro';
+import Label from './elements/Label.astro';
+import Stat from './elements/Stat.astro';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 ---
 
@@ -10,7 +12,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 <section class="hero">
   <Grid columns={2} gap="4rem" align="center" class="hero__container">
     <div class="hero__content">
-      <span class="hero__label">Versicherungsmakler in Aschaffenburg</span>
+      <Label class="mb-4">Versicherungsmakler in Aschaffenburg</Label>
       <Heading as="h1" size="hero" serif class="mb-6">Schutz für das, was Ihnen wichtig ist</Heading>
       <Text size="lg" class="hero__text mb-8">Persönliche Versicherungsberatung ohne Verkaufsdruck. Ich finde die Absicherung, die wirklich zu Ihrem Leben passt – transparent, unabhängig und fair.</Text>
       <div class="hero__buttons">
@@ -21,14 +23,8 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     <div class="hero__image">
       <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=800&h=600&fit=crop" alt="Beratungsgespräch">
       <div class="hero__stats">
-        <div class="stat">
-          <div class="stat__number">25+</div>
-          <div class="stat__label">Jahre Erfahrung</div>
-        </div>
-        <div class="stat">
-          <div class="stat__number">1.500+</div>
-          <div class="stat__label">Zufriedene Kunden</div>
-        </div>
+        <Stat value="25+" label="Jahre Erfahrung" />
+        <Stat value="1.500+" label="Zufriedene Kunden" />
       </div>
     </div>
   </Grid>
@@ -45,15 +41,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
   .hero__container {
     max-width: var(--container-max);
     margin: 0 auto;
-  }
-  .hero__label {
-    display: inline-block;
-    font-size: var(--text-sm);
-    font-weight: var(--font-semibold);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wide);
-    color: var(--color-primary);
-    margin-bottom: 1rem;
   }
   .hero__content :global(.heading) {
     line-height: var(--leading-tight);
@@ -85,15 +72,6 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
     padding: 1.5rem 2rem;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
-  }
-  .stat__number {
-    font-size: var(--text-2xl);
-    font-weight: var(--font-extrabold);
-    color: var(--color-primary);
-  }
-  .stat__label {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
   }
 
   @media (max-width: 1024px) {

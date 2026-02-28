@@ -4,6 +4,7 @@ import Heading from './elements/Heading.astro';
 import Text from './elements/Text.astro';
 import Button from './elements/Button.astro';
 import Card from './elements/Card.astro';
+import IconList from './elements/IconList.astro';
 import Grid from './Grid.astro';
 ---
 
@@ -15,68 +16,35 @@ import Grid from './Grid.astro';
         <div class="pricing-card__label">Einstieg</div>
         <Heading as="h3" size="xl" serif class="mb-4">Versicherungs-Check</Heading>
         <Text size="sm" muted class="pricing-card__desc mb-6">Schnelle Analyse Ihrer bestehenden Verträge mit konkreten Empfehlungen.</Text>
-        <ul class="pricing-card__features">
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Prüfung aller bestehenden Policen
-          </li>
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Identifikation von Versicherungslücken
-          </li>
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Schriftlicher Bericht mit Empfehlungen
-          </li>
-        </ul>
+        <IconList class="pricing-card__features" items={[
+          'Prüfung aller bestehenden Policen',
+          'Identifikation von Versicherungslücken',
+          'Schriftlicher Bericht mit Empfehlungen',
+        ]} />
         <Button href="#kontakt" variant="secondary">Anfragen</Button>
       </Card>
       <Card shadow="md" hover="lift" class="pricing-card pricing-card--featured p-10 text-center">
         <div class="pricing-card__label">Empfohlen</div>
         <Heading as="h3" size="xl" serif class="mb-4">Rundum-Beratung</Heading>
         <Text size="sm" muted class="pricing-card__desc mb-6">Komplette Analyse und Neuaufstellung Ihres Versicherungsschutzes.</Text>
-        <ul class="pricing-card__features">
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Alles aus dem Versicherungs-Check
-          </li>
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Detaillierter Marktvergleich
-          </li>
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Vertragsverhandlung & Abschluss
-          </li>
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Jährliche Überprüfung
-          </li>
-        </ul>
+        <IconList class="pricing-card__features" items={[
+          'Alles aus dem Versicherungs-Check',
+          'Detaillierter Marktvergleich',
+          'Vertragsverhandlung & Abschluss',
+          'Jährliche Überprüfung',
+        ]} />
         <Button href="#kontakt" variant="inverted">Termin vereinbaren</Button>
       </Card>
       <Card shadow="md" hover="lift" class="pricing-card p-10 text-center">
         <div class="pricing-card__label">Premium</div>
         <Heading as="h3" size="xl" serif class="mb-4">VIP-Betreuung</Heading>
         <Text size="sm" muted class="pricing-card__desc mb-6">Exklusive Betreuung für anspruchsvolle Kunden mit komplexen Anforderungen.</Text>
-        <ul class="pricing-card__features">
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Alles aus der Rundum-Beratung
-          </li>
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Prioritäre Erreichbarkeit
-          </li>
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Hausbesuche nach Vereinbarung
-          </li>
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Familien-Mitbetreuung
-          </li>
-        </ul>
+        <IconList class="pricing-card__features" items={[
+          'Alles aus der Rundum-Beratung',
+          'Prioritäre Erreichbarkeit',
+          'Hausbesuche nach Vereinbarung',
+          'Familien-Mitbetreuung',
+        ]} />
         <Button href="#kontakt" variant="secondary">Anfragen</Button>
       </Card>
     </Grid>
@@ -106,26 +74,17 @@ import Grid from './Grid.astro';
     color: rgba(255,255,255,0.7);
   }
   .pricing-card__features {
-    list-style: none;
     text-align: left;
     margin-bottom: 2rem;
   }
-  .pricing-card__features li {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+  .pricing-card__features :global(li) {
     padding: 0.625rem 0;
-    font-size: 0.9375rem;
     border-bottom: 1px solid var(--color-border-subtle);
   }
-  .pricing-card--featured .pricing-card__features li {
+  .pricing-card--featured .pricing-card__features :global(li) {
     border-color: rgba(255,255,255,0.1);
   }
-  .pricing-card__features li svg {
-    color: var(--color-primary);
-    flex-shrink: 0;
-  }
-  .pricing-card--featured .pricing-card__features li svg {
+  .pricing-card--featured .pricing-card__features :global(svg) {
     color: var(--color-primary-light);
   }
   .pricing-card :global(.btn) {

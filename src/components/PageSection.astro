@@ -1,5 +1,6 @@
 ---
 import Heading from './elements/Heading.astro';
+import Label from './elements/Label.astro';
 const {variant = 'white', label = null, title = null} = Astro.props;
 const hasSubtitle = Astro.slots.has('header-subtitle');
 const hasHeader = label || title || hasSubtitle;
@@ -12,7 +13,7 @@ const hasHeader = label || title || hasSubtitle;
     <div class="section__container">
         {hasHeader &&
             <div class="section__header">
-                {label && <div class="section__label">{label}</div>}
+                {label && <Label class="mb-4">{label}</Label>}
                 {title && <Heading as="h2" size="section-title" serif class="mb-4">{title}</Heading>}
                 {hasSubtitle && <p class="section__subtitle"><slot name="header-subtitle" /></p>}
             </div>}
@@ -48,15 +49,6 @@ const hasHeader = label || title || hasSubtitle;
         margin-bottom: 4rem;
     }
 
-    .section__label {
-        font-size: var(--text-sm);
-        font-weight: var(--font-semibold);
-        text-transform: uppercase;
-        letter-spacing: var(--tracking-wide);
-        color: var(--color-primary);
-        margin-bottom: 1rem;
-    }
-
     .section__subtitle {
         font-size: var(--text-lg);
         color: var(--color-text-muted);
@@ -64,19 +56,11 @@ const hasHeader = label || title || hasSubtitle;
         margin: 0 auto;
     }
 
-    .section--dark .section__label {
+    .section--dark :global(.label) {
         color: var(--color-primary-light);
     }
 
     .section--dark .section__subtitle {
-        color: var(--color-text-faint);
-    }
-
-    .section--dark :global(.section__label) {
-        color: var(--color-primary-light);
-    }
-
-    .section--dark :global(.section__subtitle) {
         color: var(--color-text-faint);
     }
 

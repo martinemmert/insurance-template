@@ -4,6 +4,7 @@ import PageSection from "./PageSection.astro";
 import Heading from './elements/Heading.astro';
 import Text from './elements/Text.astro';
 import Button from './elements/Button.astro';
+import FormField from './elements/FormField.astro';
 // custom attributes: id="kontakt"
 ---
 <!-- Contact -->
@@ -42,23 +43,11 @@ import Button from './elements/Button.astro';
       </div>
       <form class="contact__form">
         <div class="form-row">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Ihr Name" required>
-          </div>
-          <div class="form-group">
-            <label for="phone">Telefon</label>
-            <input type="tel" id="phone" name="phone" placeholder="Ihre Telefonnummer">
-          </div>
+          <FormField label="Name" id="name" name="name" placeholder="Ihr Name" required />
+          <FormField label="Telefon" type="tel" id="phone" name="phone" placeholder="Ihre Telefonnummer" />
         </div>
-        <div class="form-group">
-          <label for="email">E-Mail</label>
-          <input type="email" id="email" name="email" placeholder="Ihre E-Mail-Adresse" required>
-        </div>
-        <div class="form-group">
-          <label for="message">Nachricht</label>
-          <textarea id="message" name="message" placeholder="Wie kann ich Ihnen helfen?"></textarea>
-        </div>
+        <FormField label="E-Mail" type="email" id="email" name="email" placeholder="Ihre E-Mail-Adresse" required />
+        <FormField label="Nachricht" type="textarea" id="message" name="message" placeholder="Wie kann ich Ihnen helfen?" />
         <Button type="submit" style="width: 100%;">Nachricht senden</Button>
       </form>
     </Grid>
@@ -98,38 +87,6 @@ import Button from './elements/Button.astro';
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
-  .form-group {
-    margin-bottom: 1rem;
-  }
-  .form-group label {
-    display: block;
-    font-size: var(--text-sm);
-    font-weight: var(--font-medium);
-    margin-bottom: 0.5rem;
-    color: #333;
-  }
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 0.875rem 1rem;
-    border: 1px solid var(--color-border-light);
-    border-radius: var(--radius-sm);
-    font-size: var(--text-base);
-    font-family: inherit;
-    background: var(--color-white);
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-  }
-  .form-group input:focus,
-  .form-group textarea:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: var(--shadow-focus);
-  }
-  .form-group textarea {
-    min-height: 120px;
-    resize: vertical;
-  }
-
   @media (max-width: 1024px) {
     .form-row { grid-template-columns: 1fr; }
   }

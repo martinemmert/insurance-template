@@ -1,27 +1,22 @@
 ---
 import PageSection from "./PageSection.astro";
+import Stars from './elements/Stars.astro';
 // custom styles: padding: 2rem 4rem;
 ---
 <!-- Social Proof Bar -->
 <PageSection variant="gray">
     <div class="social-proof">
       <div class="social-proof__item">
-        <div class="social-proof__rating">
-          <div class="social-proof__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <div class="social-proof__text">4.9/5 bei Google (47 Bewertungen)</div>
-        </div>
+        <Stars count={5} />
+        <div class="social-proof__text">4.9/5 bei Google (47 Bewertungen)</div>
       </div>
       <div class="social-proof__item">
-        <div class="social-proof__rating">
-          <div class="social-proof__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <div class="social-proof__text">5.0/5 bei ProvenExpert</div>
-        </div>
+        <Stars count={5} />
+        <div class="social-proof__text">5.0/5 bei ProvenExpert</div>
       </div>
       <div class="social-proof__item">
-        <div class="social-proof__rating">
-          <div class="social-proof__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <div class="social-proof__text">98% Weiterempfehlung</div>
-        </div>
+        <Stars count={5} />
+        <div class="social-proof__text">98% Weiterempfehlung</div>
       </div>
     </div>
 </PageSection>
@@ -36,20 +31,7 @@ import PageSection from "./PageSection.astro";
   }
   .social-proof__item {
     display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .social-proof__logo {
-    height: 2rem;
-    opacity: 0.7;
-  }
-  .social-proof__rating {
-    display: flex;
     flex-direction: column;
-  }
-  .social-proof__stars {
-    color: var(--color-star);
-    font-size: var(--text-lg);
   }
   .social-proof__text {
     font-size: var(--text-xs);

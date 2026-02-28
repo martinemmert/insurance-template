@@ -1,12 +1,13 @@
 ---
 import PageSection from "./PageSection.astro";
+import Stars from './elements/Stars.astro';
 ---
 
 <PageSection variant="gray">
     <div class="testimonial-large">
       <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop" alt="Sabine Müller" class="testimonial-large__image">
       <div>
-        <div class="testimonial-large__stars">★★★★★</div>
+        <Stars count={5} size="lg" class="mb-6" />
         <p class="testimonial-large__text">"Nach einem schweren Unfall war ich monatelang arbeitsunfähig. Herr Emmert hat sich nicht nur um die Schadensregulierung gekümmert, sondern mich auch persönlich unterstützt. Dank seiner Hartnäckigkeit wurde mein Anspruch vollständig anerkannt. So einen Einsatz hatte ich nicht erwartet."</p>
         <div class="testimonial-large__author">Sabine Müller</div>
         <div class="testimonial-large__role">Kundin seit 2016 • Berufsunfähigkeitsfall</div>
@@ -30,11 +31,6 @@ import PageSection from "./PageSection.astro";
     aspect-ratio: 1;
     object-fit: cover;
     border-radius: var(--radius-lg);
-  }
-  .testimonial-large__stars {
-    color: var(--color-star);
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
   }
   .testimonial-large__text {
     font-size: 1.375rem;

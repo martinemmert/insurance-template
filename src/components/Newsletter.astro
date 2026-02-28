@@ -2,6 +2,7 @@
 import PageSection from "./PageSection.astro";
 import Heading from './elements/Heading.astro';
 import Button from './elements/Button.astro';
+import FormField from './elements/FormField.astro';
 ---
 
 <!-- Newsletter -->
@@ -10,7 +11,7 @@ import Button from './elements/Button.astro';
       <Heading as="h2" size="2xl" serif class="mb-4">Bleiben Sie informiert</Heading>
       <p class="newsletter__text">Erhalten Sie regelmäßig wertvolle Tipps zu Versicherungen, Vorsorge und Finanzen – direkt in Ihr Postfach. Kein Spam, versprochen.</p>
       <form class="newsletter__form">
-        <input type="email" class="newsletter__input" placeholder="Ihre E-Mail-Adresse" required>
+        <FormField type="email" placeholder="Ihre E-Mail-Adresse" required class="newsletter__field" />
         <Button type="submit">Anmelden</Button>
       </form>
     </div>
@@ -33,17 +34,9 @@ import Button from './elements/Button.astro';
     max-width: 500px;
     margin: 0 auto;
   }
-  .newsletter__input {
+  .newsletter__field {
     flex: 1;
-    padding: 1rem 1.25rem;
-    font-size: var(--text-base);
-    border: 1px solid var(--color-border-light);
-    border-radius: var(--radius-sm);
-    font-family: inherit;
-  }
-  .newsletter__input:focus {
-    outline: none;
-    border-color: var(--color-primary);
+    margin-bottom: 0;
   }
   @media (max-width: 1024px) {
     .newsletter__form { flex-direction: column; }

@@ -3,6 +3,8 @@ import Grid from './Grid.astro';
 import PageSection from "./PageSection.astro";
 import Heading from "./elements/Heading.astro";
 import Text from './elements/Text.astro';
+import Label from './elements/Label.astro';
+import Stat from './elements/Stat.astro';
 // custom attributes: id="ueber"
 ---
 <!-- About -->
@@ -12,24 +14,15 @@ import Text from './elements/Text.astro';
         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=700&fit=crop" alt="Helmut Emmert">
       </div>
       <div class="about__content">
-        <div class="section__label">Über mich</div>
+        <Label class="mb-4">Über mich</Label>
         <Heading as="h2" size="3xl" serif class="mb-6">Helmut Emmert</Heading>
         <Text class="about__text mb-4">Mit über 25 Jahren Erfahrung in der Versicherungsbranche habe ich es mir zur Aufgabe gemacht, Menschen dabei zu helfen, die richtige Absicherung für sich und ihre Familien zu finden.</Text>
         <Text class="about__text mb-4">Meine Philosophie ist einfach: Ich höre zu, verstehe Ihre individuelle Situation und finde gemeinsam mit Ihnen die optimale Lösung. Keine Standardprodukte, keine unnötigen Policen.</Text>
         <Text class="about__text mb-4">Als unabhängiger Versicherungsberater bin ich keiner Gesellschaft verpflichtet. Das bedeutet für Sie: objektive Beratung und Zugang zu den besten Angeboten am Markt.</Text>
         <div class="about__credentials">
-          <div class="credential">
-            <div class="credential__number">25+</div>
-            <div class="credential__label">Jahre Erfahrung</div>
-          </div>
-          <div class="credential">
-            <div class="credential__number">1.500+</div>
-            <div class="credential__label">Zufriedene Kunden</div>
-          </div>
-          <div class="credential">
-            <div class="credential__number">100%</div>
-            <div class="credential__label">Unabhängig</div>
-          </div>
+          <Stat value="25+" label="Jahre Erfahrung" />
+          <Stat value="1.500+" label="Zufriedene Kunden" />
+          <Stat value="100%" label="Unabhängig" />
         </div>
       </div>
     </Grid>
@@ -51,15 +44,6 @@ import Text from './elements/Text.astro';
     margin-top: 2rem;
     padding-top: 2rem;
     border-top: 1px solid var(--color-border);
-  }
-  .credential__number {
-    font-size: var(--text-2xl);
-    font-weight: var(--font-extrabold);
-    color: var(--color-primary);
-  }
-  .credential__label {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
   }
 
 </style>

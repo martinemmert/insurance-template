@@ -1,0 +1,45 @@
+---
+const { label, type = 'text', id, name, placeholder, required = false, class: className, ...rest } = Astro.props;
+const isTextarea = type === 'textarea';
+---
+
+<div class:list={['form-field', className]} {...rest}>
+  {label && <label for={id} class="form-field__label">{label}</label>}
+  {isTextarea ? (
+    <textarea id={id} name={name} placeholder={placeholder} required={required} class="form-field__input form-field__input--textarea"></textarea>
+  ) : (
+    <input type={type} id={id} name={name} placeholder={placeholder} required={required} class="form-field__input" />
+  )}
+</div>
+
+<style>
+  .form-field {
+    margin-bottom: 1rem;
+  }
+  .form-field__label {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  .form-field__input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-base);
+    font-family: inherit;
+    background: var(--color-white);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  .form-field__input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-focus);
+  }
+  .form-field__input--textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+</style>
