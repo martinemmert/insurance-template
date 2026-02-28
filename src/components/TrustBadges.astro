@@ -1,0 +1,76 @@
+<!-- Trust Badges -->
+<section class="section section--white" style="padding-top: 3rem; padding-bottom: 3rem; border-bottom: 1px solid #f0f0f0;">
+  <div class="section__container">
+    <div class="trust-bar">
+      <div class="trust-badge">
+        <div class="trust-badge__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </div>
+        <div class="trust-badge__text">IHK-zertifiziert</div>
+        <div class="trust-badge__subtext">Geprüfter Versicherungsmakler</div>
+      </div>
+      <div class="trust-badge">
+        <div class="trust-badge__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+        </div>
+        <div class="trust-badge__text">Top-Bewertet</div>
+        <div class="trust-badge__subtext">4.9 von 5 Sternen</div>
+      </div>
+      <div class="trust-badge">
+        <div class="trust-badge__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        </div>
+        <div class="trust-badge__text">1.500+ Kunden</div>
+        <div class="trust-badge__subtext">Vertrauen uns</div>
+      </div>
+      <div class="trust-badge">
+        <div class="trust-badge__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div class="trust-badge__text">100% Unabhängig</div>
+        <div class="trust-badge__subtext">Keine Gesellschaftsbindung</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .trust-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+  .trust-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+  }
+  .trust-badge__icon {
+    width: 4rem;
+    height: 4rem;
+    background: var(--color-white);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+    color: var(--color-primary);
+  }
+  .trust-badge__text {
+    font-size: 0.9375rem;
+    font-weight: var(--font-semibold);
+    color: #333;
+  }
+  .trust-badge__subtext {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 1024px) {
+    .trust-bar { gap: 2rem; }
+  }
+</style>

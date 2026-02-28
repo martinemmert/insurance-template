@@ -1,0 +1,51 @@
+---
+
+---
+
+<div class="sources">
+  <h4 class="sources__title">Quellen und weiterführende Links</h4>
+  <ul class="sources__list">
+    <li><a href="#">GDV: Berufsunfähigkeitsversicherung Statistiken 2023</a></li>
+    <li><a href="#">Stiftung Warentest: BU-Versicherung im Test (Finanztest 12/2023)</a></li>
+    <li><a href="#">Deutsche Rentenversicherung: Informationen zur Erwerbsminderungsrente</a></li>
+    <li><a href="#">Bundesanstalt für Finanzdienstleistungsaufsicht (BaFin): Verbraucherinformationen</a></li>
+  </ul>
+</div>
+
+<style>
+  /* Sources / References */
+  .sources {
+    margin: 2.5rem 1.5rem;
+    padding: 2rem 2.5rem;
+    background: var(--color-bg-warm);
+    border-radius: var(--radius-md);
+  }
+  .sources__title {
+    font-size: 0.9375rem;
+    font-weight: var(--font-bold);
+    margin-bottom: 1rem;
+  }
+  .sources__list {
+    list-style: none;
+  }
+  .sources__list li {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    position: relative;
+  }
+  .sources__list li::before {
+    content: '\2192';
+    position: absolute;
+    left: 0;
+    color: var(--color-text-faint);
+  }
+  .sources__list a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  .sources__list a:hover {
+    text-decoration: underline;
+  }
+</style>

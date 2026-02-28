@@ -1,0 +1,58 @@
+<!-- Split Content -->
+<section class="section section--gray">
+  <div class="section__container">
+    <div class="split-content split-content--reverse">
+      <div class="split-content__image">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop" alt="Schadensfall Bearbeitung">
+      </div>
+      <div>
+        <div class="section__label">Im Schadensfall</div>
+        <h2 class="split-content__title">Ihr Anwalt bei der Versicherung</h2>
+        <p class="split-content__text">Wenn der Ernstfall eintritt, zeigt sich der wahre Wert einer guten Beratung. Während Sie sich auf Ihre Genesung konzentrieren, kümmere ich mich um die komplette Schadensabwicklung.</p>
+        <p class="split-content__text">Ich kenne die Tricks der Versicherungen und weiß, wie Ansprüche erfolgreich durchgesetzt werden. Mit mir an Ihrer Seite bekommen Sie, was Ihnen zusteht.</p>
+        <a href="#kontakt" class="btn btn--primary">Jetzt absichern</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .split-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .split-content--reverse {
+    direction: rtl;
+  }
+  .split-content--reverse > * {
+    direction: ltr;
+  }
+  .split-content__image {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .split-content__image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+  .split-content__title {
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    margin-bottom: 1rem;
+  }
+  .split-content__text {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: var(--leading-relaxed);
+  }
+
+  @media (max-width: 1024px) {
+    .split-content { grid-template-columns: 1fr; }
+    .split-content--reverse { direction: ltr; }
+  }
+</style>

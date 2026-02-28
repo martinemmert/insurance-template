@@ -1,0 +1,112 @@
+---
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+---
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero__container">
+    <div class="hero__content">
+      <span class="hero__label">Versicherungsmakler in Aschaffenburg</span>
+      <h1 class="hero__title">Schutz für das, was Ihnen wichtig ist</h1>
+      <p class="hero__text">Persönliche Versicherungsberatung ohne Verkaufsdruck. Ich finde die Absicherung, die wirklich zu Ihrem Leben passt – transparent, unabhängig und fair.</p>
+      <div class="hero__buttons">
+        <a href="#kontakt" class="btn btn--primary">Kostenloses Erstgespräch</a>
+        <a href="#leistungen" class="btn btn--secondary">Leistungen entdecken</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=800&h=600&fit=crop" alt="Beratungsgespräch">
+      <div class="hero__stats">
+        <div class="stat">
+          <div class="stat__number">25+</div>
+          <div class="stat__label">Jahre Erfahrung</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number">1.500+</div>
+          <div class="stat__label">Zufriedene Kunden</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 4rem 6rem;
+    background: linear-gradient(135deg, var(--color-bg-warm) 0%, var(--color-bg-warm-alt) 100%);
+  }
+  .hero__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero__label {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+  .hero__title {
+    font-family: var(--font-serif);
+    font-size: var(--text-hero);
+    font-weight: var(--font-bold);
+    line-height: var(--leading-tight);
+    margin-bottom: 1.5rem;
+  }
+  .hero__text {
+    font-size: var(--text-xl);
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+    max-width: 500px;
+  }
+  .hero__buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  .hero__image {
+    position: relative;
+  }
+  .hero__image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+  }
+  .hero__stats {
+    position: absolute;
+    bottom: -2rem;
+    left: -2rem;
+    display: flex;
+    gap: 1.5rem;
+    background: var(--color-white);
+    padding: 1.5rem 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+  .stat__number {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-extrabold);
+    color: var(--color-primary);
+  }
+  .stat__label {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 1024px) {
+    .hero { padding: 6rem 2rem 4rem; }
+    .hero__container { grid-template-columns: 1fr; }
+    .hero__image { display: none; }
+    .hero__buttons { flex-direction: column; }
+  }
+</style>

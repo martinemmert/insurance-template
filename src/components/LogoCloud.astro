@@ -1,0 +1,49 @@
+---
+---
+
+<section class="section section--gray" style="padding: 3rem 4rem;">
+  <div class="section__container">
+    <div class="logo-cloud">
+      <p class="logo-cloud__text">Ich arbeite mit über 100 Versicherungsgesellschaften zusammen, darunter:</p>
+      <div class="logo-cloud__logos">
+        <span class="logo-cloud__partner">Allianz</span>
+        <span class="logo-cloud__partner">AXA</span>
+        <span class="logo-cloud__partner">HUK-Coburg</span>
+        <span class="logo-cloud__partner">ERGO</span>
+        <span class="logo-cloud__partner">Generali</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .logo-cloud {
+    text-align: center;
+  }
+  .logo-cloud__text {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+  .logo-cloud__logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .logo-cloud__partner {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    color: var(--color-text-muted);
+    padding: 0.5rem 1rem;
+    background: var(--color-white);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  @media (max-width: 1024px) {
+    .logo-cloud__logos { gap: 1rem; }
+    .logo-cloud__partner { font-size: var(--text-base); padding: 0.375rem 0.75rem; }
+  }
+</style>

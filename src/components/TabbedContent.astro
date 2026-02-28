@@ -1,0 +1,124 @@
+<!-- Tabbed Content -->
+<section class="section section--gray">
+  <div class="section__container">
+    <div class="section__header">
+      <div class="section__label">Lebensphasen</div>
+      <h2 class="section__title">Für jede Situation die richtige Absicherung</h2>
+    </div>
+    <div class="tabs">
+      <div class="tabs__nav">
+        <button class="tabs__btn active" data-tab="berufsstart">Berufsstart</button>
+        <button class="tabs__btn" data-tab="familie">Familienplanung</button>
+        <button class="tabs__btn" data-tab="immobilie">Immobilienkauf</button>
+        <button class="tabs__btn" data-tab="ruhestand">Ruhestand</button>
+      </div>
+      <div class="tabs__panel active" id="berufsstart">
+        <div class="tabs__content">
+          <h4>Der Einstieg ins Berufsleben</h4>
+          <p>Mit dem ersten Job beginnt ein neuer Lebensabschnitt. Jetzt ist der ideale Zeitpunkt, die Weichen für eine solide Absicherung zu stellen. Eine Berufsunfähigkeitsversicherung ist in jungen Jahren besonders günstig und schützt Ihr wichtigstes Kapital: Ihre Arbeitskraft. Auch eine private Haftpflichtversicherung gehört zur Grundausstattung.</p>
+          <p>Gemeinsam analysieren wir, welche Absicherungen für Ihren Berufsstart sinnvoll sind – ohne Sie zu überlasten.</p>
+        </div>
+      </div>
+      <div class="tabs__panel" id="familie">
+        <div class="tabs__content">
+          <h4>Wenn aus zwei mehr werden</h4>
+          <p>Mit der Gründung einer Familie ändern sich die Prioritäten. Plötzlich tragen Sie Verantwortung für andere. Eine Risikolebensversicherung sichert Ihre Familie ab, falls Ihnen etwas zustößt. Auch die Krankenversicherung für Kinder und die Absicherung des Hauptverdieners gewinnen an Bedeutung.</p>
+          <p>Ich helfe Ihnen, den Überblick zu behalten und die richtigen Entscheidungen für Ihre Familie zu treffen.</p>
+        </div>
+      </div>
+      <div class="tabs__panel" id="immobilie">
+        <div class="tabs__content">
+          <h4>Der Traum vom Eigenheim</h4>
+          <p>Eine Immobilie ist für die meisten Menschen die größte Investition ihres Lebens. Neben der Finanzierung ist der richtige Versicherungsschutz entscheidend: Wohngebäudeversicherung, Hausratversicherung und eine Absicherung der Darlehensraten bei Arbeitsunfähigkeit gehören auf die Checkliste.</p>
+          <p>Als Ihr Berater sorge ich dafür, dass Ihr Traum vom Eigenheim nicht zum finanziellen Risiko wird.</p>
+        </div>
+      </div>
+      <div class="tabs__panel" id="ruhestand">
+        <div class="tabs__content">
+          <h4>Den Ruhestand genießen</h4>
+          <p>Sie haben Ihr Leben lang gearbeitet – jetzt soll die Rente reichen. Eine gute Altersvorsorge ist kein Zufall, sondern das Ergebnis kluger Planung. Ob Riester, Rürup oder private Rentenversicherung: Ich zeige Ihnen, welche Bausteine für Ihre Situation am besten passen.</p>
+          <p>Auch die Absicherung im Pflegefall wird mit zunehmendem Alter wichtiger. Sprechen Sie mich an.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tabs {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .tabs__nav {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+  .tabs__btn {
+    padding: 1rem 1.5rem;
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    color: var(--color-text-muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: color var(--transition-fast);
+  }
+  .tabs__btn:hover { color: var(--color-primary); }
+  .tabs__btn.active {
+    color: var(--color-primary);
+  }
+  .tabs__btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-primary);
+  }
+  .tabs__panel {
+    display: none;
+    animation: fadeIn var(--transition-normal) ease;
+  }
+  .tabs__panel.active {
+    display: block;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .tabs__content {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+  }
+  .tabs__content h4 {
+    font-size: var(--text-xl);
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 1024px) {
+    .tabs__nav { flex-wrap: wrap; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.tabs__btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const tabId = button.dataset.tab;
+      const tabsContainer = button.closest('.tabs');
+
+      // Remove active from all buttons and panels
+      tabsContainer.querySelectorAll('.tabs__btn').forEach(btn => btn.classList.remove('active'));
+      tabsContainer.querySelectorAll('.tabs__panel').forEach(panel => panel.classList.remove('active'));
+
+      // Add active to clicked button and corresponding panel
+      button.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    });
+  });
+</script>

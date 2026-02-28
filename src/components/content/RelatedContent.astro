@@ -1,0 +1,74 @@
+---
+
+---
+
+<div class="related-content">
+  <h3 class="related-content__title">Das könnte Sie auch interessieren</h3>
+  <div class="related-content__grid">
+    <a href="#" class="related-card">
+      <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=200&h=200&fit=crop" alt="Altersvorsorge" class="related-card__image">
+      <div>
+        <p class="related-card__category">Altersvorsorge</p>
+        <h4 class="related-card__title">Rentenlücke berechnen: So viel fehlt Ihnen wirklich</h4>
+      </div>
+    </a>
+    <a href="#" class="related-card">
+      <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=200&h=200&fit=crop" alt="Krankenversicherung" class="related-card__image">
+      <div>
+        <p class="related-card__category">Krankenversicherung</p>
+        <h4 class="related-card__title">PKV vs. GKV: Welche Versicherung passt zu Ihnen?</h4>
+      </div>
+    </a>
+  </div>
+</div>
+
+<style>
+  /* Related Content */
+  .related-content {
+    margin: 3rem 1.5rem;
+    padding: 2rem 2.5rem;
+    background: var(--color-bg-warm);
+    border-radius: var(--radius-lg);
+  }
+  .related-content__title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    margin-bottom: 1.5rem;
+  }
+  .related-content__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .related-card {
+    display: flex;
+    gap: 1rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform var(--transition-fast);
+  }
+  .related-card:hover { transform: translateX(4px); }
+  .related-card__image {
+    flex-shrink: 0;
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+  }
+  .related-card__category {
+    font-size: 0.75rem;
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 0.25rem;
+  }
+  .related-card__title {
+    font-weight: var(--font-semibold);
+    font-size: 0.9375rem;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 768px) {
+    .related-content__grid { grid-template-columns: 1fr; }
+  }
+</style>

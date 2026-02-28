@@ -1,0 +1,76 @@
+<!-- Icon Features -->
+<section class="section section--gray">
+  <div class="section__container">
+    <div class="section__header">
+      <div class="section__label">Mein Versprechen</div>
+      <h2 class="section__title">Was mich von anderen unterscheidet</h2>
+    </div>
+    <div class="icon-grid">
+      <div class="icon-feature">
+        <div class="icon-feature__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </div>
+        <h3 class="icon-feature__title">100% Unabhängig</h3>
+        <p class="icon-feature__text">Keine Bindung an Versicherungsgesellschaften – nur Ihren Interessen verpflichtet.</p>
+      </div>
+      <div class="icon-feature">
+        <div class="icon-feature__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        </div>
+        <h3 class="icon-feature__title">Schnelle Reaktion</h3>
+        <p class="icon-feature__text">Erreichbar wenn Sie mich brauchen – besonders im Schadensfall.</p>
+      </div>
+      <div class="icon-feature">
+        <div class="icon-feature__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+        </div>
+        <h3 class="icon-feature__title">Transparente Dokumentation</h3>
+        <p class="icon-feature__text">Alle Empfehlungen schriftlich und nachvollziehbar begründet.</p>
+      </div>
+      <div class="icon-feature">
+        <div class="icon-feature__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        </div>
+        <h3 class="icon-feature__title">Persönliche Betreuung</h3>
+        <p class="icon-feature__text">Kein Callcenter – Sie sprechen immer direkt mit mir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  .icon-feature {
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+  .icon-feature__icon {
+    width: 4rem;
+    height: 4rem;
+    background: var(--color-primary-bg);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    color: var(--color-primary);
+  }
+  .icon-feature__title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    margin-bottom: 0.5rem;
+  }
+  .icon-feature__text {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: var(--leading-snug);
+  }
+
+  @media (max-width: 1024px) {
+    .icon-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

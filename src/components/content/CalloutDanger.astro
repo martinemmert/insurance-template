@@ -1,0 +1,44 @@
+---
+
+---
+<div class="callout callout--danger">
+  <svg class="callout__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+  <div class="callout__content">
+    <div class="callout__title">Wichtiger Hinweis</div>
+    <p class="callout__text">Dieser Artikel ersetzt keine individuelle Beratung. Die richtige BU-Versicherung hängt von Ihrer persönlichen Situation ab. Lassen Sie sich von einem unabhängigen Berater helfen.</p>
+  </div>
+</div>
+
+<style>
+  .callout {
+    margin: 2rem 1.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    gap: 1rem;
+  }
+  .callout__icon {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 0.125rem;
+  }
+  .callout__content {
+    flex: 1;
+  }
+  .callout__title {
+    font-weight: var(--font-bold);
+    margin-bottom: 0.25rem;
+  }
+  .callout__text {
+    font-size: 0.9375rem;
+    line-height: var(--leading-normal);
+  }
+  .callout--danger {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+  }
+  .callout--danger .callout__icon { color: #dc2626; }
+  .callout--danger .callout__title { color: #991b1b; }
+  .callout--danger .callout__text { color: #991b1b; }
+</style>

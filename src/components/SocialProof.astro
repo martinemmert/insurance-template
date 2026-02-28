@@ -1,0 +1,60 @@
+<!-- Social Proof Bar -->
+<section class="section section--gray" style="padding: 2rem 4rem;">
+  <div class="section__container">
+    <div class="social-proof">
+      <div class="social-proof__item">
+        <div class="social-proof__rating">
+          <div class="social-proof__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="social-proof__text">4.9/5 bei Google (47 Bewertungen)</div>
+        </div>
+      </div>
+      <div class="social-proof__item">
+        <div class="social-proof__rating">
+          <div class="social-proof__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="social-proof__text">5.0/5 bei ProvenExpert</div>
+        </div>
+      </div>
+      <div class="social-proof__item">
+        <div class="social-proof__rating">
+          <div class="social-proof__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="social-proof__text">98% Weiterempfehlung</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .social-proof {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+  .social-proof__item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .social-proof__logo {
+    height: 2rem;
+    opacity: 0.7;
+  }
+  .social-proof__rating {
+    display: flex;
+    flex-direction: column;
+  }
+  .social-proof__stars {
+    color: var(--color-star);
+    font-size: var(--text-lg);
+  }
+  .social-proof__text {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 1024px) {
+    .social-proof { gap: 2rem; }
+  }
+</style>

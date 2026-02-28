@@ -1,0 +1,88 @@
+@import './tokens.css';
+
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  font-weight: var(--font-regular);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+  line-height: var(--leading-normal);
+}
+
+/* Section base */
+.section {
+  padding: 6rem 4rem;
+}
+.section--gray { background: var(--color-bg-warm); }
+.section--white { background: var(--color-white); }
+.section--dark { background: var(--color-bg-dark); color: var(--color-white); }
+.section__container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+.section__header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.section__label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+.section--dark .section__label { color: var(--color-primary-light); }
+.section__title {
+  font-family: var(--font-serif);
+  font-size: var(--text-section-title);
+  font-weight: var(--font-bold);
+  margin-bottom: 1rem;
+}
+.section__subtitle {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  max-width: var(--container-text);
+  margin: 0 auto;
+}
+.section--dark .section__subtitle { color: var(--color-text-faint); }
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  border: none;
+  font-family: inherit;
+}
+.btn--primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+.btn--primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-primary);
+}
+.btn--secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+.btn--secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .section { padding: 4rem 2rem; }
+}

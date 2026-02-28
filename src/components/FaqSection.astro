@@ -1,0 +1,132 @@
+<!-- FAQ -->
+<section class="section section--white">
+  <div class="section__container">
+    <div class="section__header">
+      <div class="section__label">Häufige Fragen</div>
+      <h2 class="section__title">Das werde ich oft gefragt</h2>
+      <p class="section__subtitle">Hier finden Sie Antworten auf die wichtigsten Fragen zur Zusammenarbeit.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Wie wird Ihre Beratung bezahlt?</span>
+          <svg class="faq-question__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        </button>
+        <div class="faq-answer">
+          <p class="faq-answer__content">Meine Beratung ist für Sie komplett kostenlos. Als Makler erhalte ich eine Courtage von der Versicherungsgesellschaft, sobald ein Vertrag zustande kommt. Diese Courtage ist in den regulären Versicherungsbeiträgen bereits enthalten – Sie zahlen also nicht mehr als bei einem Direktabschluss.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Was unterscheidet Sie von einem Versicherungsvertreter?</span>
+          <svg class="faq-question__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        </button>
+        <div class="faq-answer">
+          <p class="faq-answer__content">Ein Versicherungsvertreter ist an eine bestimmte Gesellschaft gebunden und kann nur deren Produkte anbieten. Als unabhängiger Makler bin ich keiner Gesellschaft verpflichtet und arbeite ausschließlich in Ihrem Interesse. Ich vergleiche die Angebote aller relevanten Anbieter und empfehle Ihnen nur das, was wirklich zu Ihrer Situation passt.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Kann ich meine bestehenden Versicherungen zu Ihnen übertragen?</span>
+          <svg class="faq-question__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        </button>
+        <div class="faq-answer">
+          <p class="faq-answer__content">Ja, das ist in den meisten Fällen problemlos möglich. Mit einer Maklervollmacht kann ich die Betreuung Ihrer bestehenden Verträge übernehmen, ohne dass Sie kündigen oder wechseln müssen. So haben Sie einen Ansprechpartner für alle Ihre Versicherungen.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Wie läuft ein Erstgespräch ab?</span>
+          <svg class="faq-question__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        </button>
+        <div class="faq-answer">
+          <p class="faq-answer__content">Im Erstgespräch nehme ich mir Zeit, Ihre aktuelle Lebenssituation und Ihre Wünsche zu verstehen. Bringen Sie gerne Ihre bestehenden Versicherungsunterlagen mit – dann kann ich direkt prüfen, wo eventuell Lücken oder Optimierungspotenzial bestehen. Das Gespräch dauert in der Regel 60-90 Minuten und ist völlig unverbindlich.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Was passiert im Schadensfall?</span>
+          <svg class="faq-question__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        </button>
+        <div class="faq-answer">
+          <p class="faq-answer__content">Im Schadensfall bin ich Ihr erster Ansprechpartner. Ich unterstütze Sie bei der Schadensmeldung, prüfe die Regulierung und setze mich bei Bedarf für Ihre Ansprüche ein. Mein Ziel ist es, dass Sie schnell und unkompliziert zu Ihrem Recht kommen.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-list {
+    max-width: var(--container-narrow);
+    margin: 0 auto;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--color-border);
+  }
+  .faq-item:last-child {
+    border-bottom: none;
+  }
+  .faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    color: var(--color-text);
+    transition: color var(--transition-fast);
+  }
+  .faq-question:hover { color: var(--color-primary); }
+  .faq-question__icon {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--color-primary);
+    transition: transform var(--transition-normal);
+  }
+  .faq-item.open .faq-question__icon {
+    transform: rotate(45deg);
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-normal) ease-out;
+  }
+  .faq-item.open .faq-answer {
+    max-height: 300px;
+  }
+  .faq-answer__content {
+    padding-bottom: 1.5rem;
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+</style>
+
+<script>
+  // FAQ Accordion
+  document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+      const item = button.parentElement;
+      const wasOpen = item.classList.contains('open');
+
+      // Close all other items
+      document.querySelectorAll('.faq-item').forEach(faq => {
+        faq.classList.remove('open');
+      });
+
+      // Toggle current item
+      if (!wasOpen) {
+        item.classList.add('open');
+      }
+    });
+  });
+</script>

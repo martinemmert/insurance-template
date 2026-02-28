@@ -1,0 +1,77 @@
+---
+
+---
+
+<div class="content-timeline">
+  <div class="timeline-entry">
+    <div class="timeline-entry__date">Januar 2024</div>
+    <h4 class="timeline-entry__title">Erstgespräch und Bedarfsanalyse</h4>
+    <p class="timeline-entry__text">Im ersten Schritt lernen wir Ihre Situation kennen und identifizieren Ihren individuellen Absicherungsbedarf.</p>
+  </div>
+  <div class="timeline-entry">
+    <div class="timeline-entry__date">Februar 2024</div>
+    <h4 class="timeline-entry__title">Marktanalyse und Angebotsvergleich</h4>
+    <p class="timeline-entry__text">Wir vergleichen die Angebote verschiedener Versicherer und erstellen eine übersichtliche Gegenüberstellung.</p>
+  </div>
+  <div class="timeline-entry">
+    <div class="timeline-entry__date">März 2024</div>
+    <h4 class="timeline-entry__title">Vertragsabschluss</h4>
+    <p class="timeline-entry__text">Nach Ihrer Entscheidung kümmern wir uns um die gesamte Abwicklung und den Papierkram.</p>
+  </div>
+  <div class="timeline-entry">
+    <div class="timeline-entry__date">Laufend</div>
+    <h4 class="timeline-entry__title">Kontinuierliche Betreuung</h4>
+    <p class="timeline-entry__text">Wir bleiben Ihr Ansprechpartner und prüfen regelmäßig, ob Ihr Schutz noch passt.</p>
+  </div>
+</div>
+
+<style>
+  /* Content Timeline */
+  .content-timeline {
+    margin: 2rem 0;
+    position: relative;
+    padding-left: 2rem;
+  }
+  .content-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.375rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-border);
+  }
+  .timeline-entry {
+    position: relative;
+    padding-bottom: 2rem;
+  }
+  .timeline-entry:last-child {
+    padding-bottom: 0;
+  }
+  .timeline-entry::before {
+    content: '';
+    position: absolute;
+    left: -1.625rem;
+    top: 0.375rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    background: var(--color-primary);
+    border-radius: var(--radius-full);
+    border: 2px solid var(--color-white);
+    box-shadow: 0 0 0 2px var(--color-primary);
+  }
+  .timeline-entry__date {
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    color: var(--color-primary);
+    margin-bottom: 0.375rem;
+  }
+  .timeline-entry__title {
+    font-weight: var(--font-bold);
+    margin-bottom: 0.375rem;
+  }
+  .timeline-entry__text {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+  }
+</style>

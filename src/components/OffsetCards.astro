@@ -1,0 +1,74 @@
+<!-- Offset Cards -->
+<section class="section section--white">
+  <div class="section__container">
+    <div class="section__header">
+      <div class="section__label">Fakten</div>
+      <h2 class="section__title">Zahlen, die für sich sprechen</h2>
+    </div>
+    <div class="offset-cards">
+      <div class="offset-card">
+        <div class="offset-card__number">97%</div>
+        <h3 class="offset-card__title">Erfolgsquote</h3>
+        <p class="offset-card__text">bei der Durchsetzung von Schadensfällen gegenüber Versicherungen.</p>
+      </div>
+      <div class="offset-card">
+        <div class="offset-card__number">24h</div>
+        <h3 class="offset-card__title">Reaktionszeit</h3>
+        <p class="offset-card__text">im Schadensfall – schnelle Hilfe, wenn Sie sie am meisten brauchen.</p>
+      </div>
+      <div class="offset-card">
+        <div class="offset-card__number">∅ 18%</div>
+        <h3 class="offset-card__title">Ersparnis</h3>
+        <p class="offset-card__text">sparen meine Kunden durchschnittlich bei gleicher oder besserer Leistung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .offset-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-top: 2rem;
+  }
+  .offset-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    transition: transform var(--transition-normal);
+  }
+  .offset-card:nth-child(2) {
+    transform: translateY(-2rem);
+  }
+  .offset-card:hover {
+    transform: translateY(-0.5rem);
+  }
+  .offset-card:nth-child(2):hover {
+    transform: translateY(-2.5rem);
+  }
+  .offset-card__number {
+    font-family: var(--font-serif);
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+  .offset-card__title {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    margin-bottom: 0.5rem;
+  }
+  .offset-card__text {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: var(--leading-normal);
+  }
+
+  @media (max-width: 1024px) {
+    .offset-cards { grid-template-columns: 1fr; }
+    .offset-card:nth-child(2) { transform: none; }
+    .offset-card:nth-child(2):hover { transform: translateY(-0.5rem); }
+  }
+</style>

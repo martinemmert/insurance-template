@@ -1,0 +1,224 @@
+@import './tokens.css';
+
+/* Content Body (applied to body or wrapper in content pages) */
+.content-body {
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+}
+
+/* Content Layout Grid */
+.content-layout {
+  display: grid;
+  grid-template-columns: 1fr min(720px, 100%) 1fr;
+  padding-top: 5rem;
+}
+.content-layout > * {
+  grid-column: 2;
+}
+.content-layout > .prose,
+.content-layout > .lead,
+.content-layout > p,
+.content-layout > h1,
+.content-layout > h2,
+.content-layout > h3,
+.content-layout > h4,
+.content-layout > .section-heading,
+.content-layout > .subsection-heading,
+.content-layout > .divider,
+.content-layout > .footnotes,
+.content-layout > .share-buttons,
+.content-layout > .pagination,
+.content-layout > .styled-list,
+.content-layout > .checklist,
+.content-layout > .steps-list,
+.content-layout > .definition-list,
+.content-layout > .content-timeline,
+.content-layout > .interview-item,
+.content-layout > .multi-column,
+.content-layout > .two-column-content {
+  padding: 0 1.5rem;
+}
+.content-layout > .full-width {
+  grid-column: 1 / -1;
+  padding: 0;
+}
+.content-layout > .wide {
+  grid-column: 1 / -1;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Prose / Body Text */
+.prose {
+  margin: 1.5rem 0;
+}
+.prose p {
+  margin-bottom: 1.5rem;
+}
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+/* Lead Paragraph */
+.lead {
+  font-size: var(--text-xl);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  margin: 2rem 0;
+}
+
+/* Drop Cap */
+.drop-cap::first-letter {
+  float: left;
+  font-family: var(--font-serif);
+  font-size: 4.5rem;
+  line-height: 0.8;
+  padding-right: 0.75rem;
+  padding-top: 0.25rem;
+  color: var(--color-primary);
+  font-weight: var(--font-bold);
+}
+
+/* Section Headings */
+.section-heading {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: var(--font-bold);
+  margin: 3rem 0 1.5rem;
+  padding-top: 1rem;
+}
+.section-heading--numbered {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+.section-heading__number {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  color: var(--color-primary);
+  background: var(--color-primary-bg);
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.375rem;
+}
+
+.subsection-heading {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  margin: 2rem 0 1rem;
+}
+
+/* Image with Caption */
+.content-image {
+  margin: 2.5rem 1.5rem;
+}
+.content-image img {
+  width: 100%;
+  border-radius: var(--radius-md);
+}
+.content-image figcaption {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-top: 0.75rem;
+  padding: 0 0.5rem;
+}
+
+/* Image Float */
+.image-float {
+  margin: 1.5rem 0;
+}
+.image-float--left {
+  float: left;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+  max-width: 300px;
+}
+.image-float--right {
+  float: right;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  max-width: 300px;
+}
+.image-float img {
+  width: 100%;
+  border-radius: var(--radius-md);
+}
+.image-float figcaption {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+}
+
+/* Inline Code */
+code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.875em;
+  background: var(--color-bg-light);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  color: #c7254e;
+}
+
+/* Footnote Reference */
+.footnote-ref {
+  font-size: 0.75rem;
+  vertical-align: super;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: var(--font-semibold);
+}
+
+/* Dividers */
+.divider {
+  margin: 3rem 0;
+  border: none;
+  border-top: 1px solid var(--color-border);
+}
+.divider--dots {
+  border: none;
+  text-align: center;
+}
+.divider--dots::before {
+  content: '• • •';
+  color: var(--color-text-on-dark);
+  letter-spacing: 0.5rem;
+}
+.divider--gradient {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .content-layout > .prose,
+  .content-layout > .lead,
+  .content-layout > p,
+  .content-layout > h1,
+  .content-layout > h2,
+  .content-layout > h3,
+  .content-layout > h4,
+  .content-layout > .section-heading,
+  .content-layout > .subsection-heading,
+  .content-layout > .divider,
+  .content-layout > .footnotes,
+  .content-layout > .share-buttons,
+  .content-layout > .pagination,
+  .content-layout > .styled-list,
+  .content-layout > .checklist,
+  .content-layout > .steps-list,
+  .content-layout > .definition-list,
+  .content-layout > .content-timeline,
+  .content-layout > .interview-item,
+  .content-layout > .multi-column,
+  .content-layout > .two-column-content { padding: 0 1rem; }
+  .image-float--left,
+  .image-float--right {
+    float: none;
+    max-width: 100%;
+    margin: 1.5rem 0;
+  }
+  .multi-column { column-count: 1; }
+  .two-column-content { grid-template-columns: 1fr; }
+}

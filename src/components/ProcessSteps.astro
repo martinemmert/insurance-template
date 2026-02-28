@@ -1,0 +1,86 @@
+<!-- Process -->
+<section class="section section--gray" id="ablauf">
+  <div class="section__container">
+    <div class="section__header">
+      <div class="section__label">So funktioniert's</div>
+      <h2 class="section__title">Ihr Weg zur besseren Absicherung</h2>
+      <p class="section__subtitle">In fünf einfachen Schritten zu Ihrem optimalen Versicherungsschutz.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step__number">1</div>
+        <h3 class="step__title">Erstgespräch</h3>
+        <p class="step__text">Wir lernen uns kennen und ich höre Ihnen zu.</p>
+      </div>
+      <div class="step">
+        <div class="step__number">2</div>
+        <h3 class="step__title">Bedarfsanalyse</h3>
+        <p class="step__text">Ich analysiere Ihren aktuellen Schutz und identifiziere Lücken.</p>
+      </div>
+      <div class="step">
+        <div class="step__number">3</div>
+        <h3 class="step__title">Angebotsvergleich</h3>
+        <p class="step__text">Sie erhalten eine transparente Gegenüberstellung der besten Angebote.</p>
+      </div>
+      <div class="step">
+        <div class="step__number">4</div>
+        <h3 class="step__title">Vertragsabschluss</h3>
+        <p class="step__text">Ich kümmere mich um den gesamten Papierkram.</p>
+      </div>
+      <div class="step">
+        <div class="step__number">5</div>
+        <h3 class="step__title">Betreuung</h3>
+        <p class="step__text">Ich begleite Sie langfristig und stehe im Schadensfall bereit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+  }
+  .step {
+    text-align: center;
+    position: relative;
+  }
+  .step::after {
+    content: '';
+    position: absolute;
+    top: 2rem;
+    right: -1rem;
+    width: calc(100% - 4rem);
+    height: 2px;
+    background: var(--color-border);
+  }
+  .step:last-child::after { display: none; }
+  .step__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    border-radius: var(--radius-full);
+    margin-bottom: 1.5rem;
+  }
+  .step__title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    margin-bottom: 0.5rem;
+  }
+  .step__text {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 1024px) {
+    .steps { grid-template-columns: 1fr; }
+    .step::after { display: none; }
+  }
+</style>

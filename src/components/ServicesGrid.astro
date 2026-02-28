@@ -1,0 +1,101 @@
+---
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+---
+
+<!-- Services -->
+<section class="section section--gray" id="leistungen">
+  <div class="section__container">
+    <div class="section__header">
+      <div class="section__label">Leistungen</div>
+      <h2 class="section__title">Rundum abgesichert</h2>
+      <p class="section__subtitle">Von der Lebensversicherung bis zur Altersvorsorge – ich berate Sie unabhängig und finde die optimale Lösung für Ihre Situation.</p>
+    </div>
+    <div class="services-grid">
+      <article class="service-card">
+        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=400&fit=crop" alt="Familie" class="service-card__image">
+        <div class="service-card__content">
+          <h3 class="service-card__title">Lebensversicherung</h3>
+          <p class="service-card__text">Sichern Sie die Zukunft Ihrer Familie ab. Mit einer maßgeschneiderten Lebensversicherung schützen Sie Ihre Liebsten vor finanziellen Sorgen.</p>
+          <a href={`${base}leistungen/lebensversicherung`} class="service-card__link">Mehr erfahren →</a>
+        </div>
+      </article>
+      <article class="service-card">
+        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&h=400&fit=crop" alt="Beruf" class="service-card__image">
+        <div class="service-card__content">
+          <h3 class="service-card__title">Berufsunfähigkeit</h3>
+          <p class="service-card__text">Ihre Arbeitskraft ist Ihr wertvollstes Gut. Eine BU-Versicherung sichert Ihren Lebensstandard, wenn Sie nicht mehr arbeiten können.</p>
+          <a href={`${base}leistungen/berufsunfaehigkeit`} class="service-card__link">Mehr erfahren →</a>
+        </div>
+      </article>
+      <article class="service-card">
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop" alt="Gesundheit" class="service-card__image">
+        <div class="service-card__content">
+          <h3 class="service-card__title">Private Krankenversicherung</h3>
+          <p class="service-card__text">Erstklassige medizinische Versorgung, kurze Wartezeiten und Zugang zu Spezialisten. Die PKV bietet mehr als nur Komfort.</p>
+          <a href={`${base}leistungen/krankenversicherung`} class="service-card__link">Mehr erfahren →</a>
+        </div>
+      </article>
+      <article class="service-card">
+        <img src="https://images.unsplash.com/photo-1447005497901-b3e9ee359928?w=600&h=400&fit=crop" alt="Ruhestand" class="service-card__image">
+        <div class="service-card__content">
+          <h3 class="service-card__title">Altersvorsorge</h3>
+          <p class="service-card__text">Die gesetzliche Rente reicht nicht. Planen Sie heute für einen sorgenfreien Ruhestand mit der richtigen Strategie.</p>
+          <a href={`${base}leistungen/altersvorsorge`} class="service-card__link">Mehr erfahren →</a>
+        </div>
+      </article>
+      <article class="service-card">
+        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop" alt="Haus" class="service-card__image">
+        <div class="service-card__content">
+          <h3 class="service-card__title">Sachversicherungen</h3>
+          <p class="service-card__text">Haus, Auto, Haftpflicht – schützen Sie Ihr Eigentum vor unerwarteten Schäden. Transparente Beratung, faire Tarife.</p>
+          <a href={`${base}leistungen/sachversicherungen`} class="service-card__link">Mehr erfahren →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+  }
+  .service-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+  }
+  .service-card__image {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+  }
+  .service-card__content {
+    padding: 1.5rem;
+  }
+  .service-card__title {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    margin-bottom: 0.75rem;
+  }
+  .service-card__text {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    line-height: var(--leading-normal);
+  }
+  .service-card__link {
+    font-size: 0.9375rem;
+    font-weight: var(--font-semibold);
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  .service-card__link:hover { text-decoration: underline; }
+</style>

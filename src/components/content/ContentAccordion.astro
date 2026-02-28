@@ -1,0 +1,112 @@
+---
+
+---
+
+<!-- Accordion -->
+<div class="accordion">
+  <div class="accordion-item">
+    <button class="accordion-trigger">
+      <span>Kann ich später noch wechseln?</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-content__inner">
+        <p>Ein Wechsel ist grundsätzlich möglich, aber oft nicht sinnvoll. Mit zunehmendem Alter steigen die Beiträge, und zwischenzeitlich aufgetretene Erkrankungen können zu Ausschlüssen oder Risikozuschlägen führen. Prüfen Sie vor einem Wechsel immer, ob Sie zum gleichen Preis vergleichbare Leistungen bekommen.</p>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-trigger">
+      <span>Was passiert bei Beitragsrückständen?</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-content__inner">
+        <p>Bei Zahlungsschwierigkeiten sollten Sie unbedingt mit Ihrer Versicherung sprechen. Oft sind Stundungen oder eine vorübergehende Beitragsreduzierung möglich. Eine Kündigung sollte der letzte Ausweg sein, da Sie dann Ihren Schutz verlieren und später möglicherweise keinen neuen Vertrag mehr bekommen.</p>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-trigger">
+      <span>Brauche ich als Beamter eine BU?</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-content__inner">
+        <p>Beamte haben zwar eine Dienstunfähigkeitsabsicherung durch den Dienstherrn, aber auch hier kann eine private BU sinnvoll sein. Die Dienstunfähigkeitspension deckt oft nicht die gesamte Versorgungslücke ab, insbesondere wenn Sie noch nicht lange verbeamtet sind.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.accordion-trigger').forEach(button => {
+    button.addEventListener('click', () => {
+      const item = button.parentElement;
+      const wasOpen = item.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.accordion-item').forEach(acc => {
+        acc.classList.remove('open');
+      });
+
+      // Toggle current
+      if (!wasOpen) {
+        item.classList.add('open');
+      }
+    });
+  });
+</script>
+
+<style>
+  /* Accordion */
+  .accordion {
+    margin: 2rem 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .accordion-item {
+    border-bottom: 1px solid var(--color-border);
+  }
+  .accordion-item:last-child {
+    border-bottom: none;
+  }
+  .accordion-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    background: var(--color-white);
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    text-align: left;
+    transition: background var(--transition-fast);
+  }
+  .accordion-trigger:hover { background: var(--color-bg-hover); }
+  .accordion-trigger svg {
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+    transition: transform var(--transition-normal);
+  }
+  .accordion-item.open .accordion-trigger svg {
+    transform: rotate(180deg);
+  }
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-normal) ease-out;
+  }
+  .accordion-item.open .accordion-content {
+    max-height: 500px;
+  }
+  .accordion-content__inner {
+    padding: 0 1.5rem 1.5rem;
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+  }
+</style>

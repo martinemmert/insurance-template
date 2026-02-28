@@ -1,38 +1,32 @@
 ---
-interface Props {
-  cite?: string;
-  class?: string;
-}
 
-const { cite, class: className } = Astro.props;
 ---
 
-<aside class:list={['pull-quote', className]}>
-  <p><slot /></p>
-  {cite && <cite>— {cite}</cite>}
+<aside class="pull-quote">
+  <p>"Eine gute BU-Versicherung kostet Geld. Keine BU-Versicherung kann Sie alles kosten."</p>
+  <cite>— Helmut Emmert, Versicherungsmakler</cite>
 </aside>
 
 <style>
+  /* Pull Quote */
   .pull-quote {
     margin: 3rem 1.5rem;
     text-align: center;
     padding: 2rem;
   }
-
   .pull-quote p {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: var(--font-serif);
     font-size: 1.75rem;
-    font-weight: 500;
+    font-weight: var(--font-medium);
     font-style: italic;
-    color: #1a4d2e;
+    color: var(--color-primary);
     line-height: 1.4;
   }
-
   .pull-quote cite {
     display: block;
     margin-top: 1rem;
     font-size: 0.9375rem;
     font-style: normal;
-    color: #666;
+    color: var(--color-text-muted);
   }
 </style>

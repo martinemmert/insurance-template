@@ -1,0 +1,66 @@
+<!-- Newsletter -->
+<section class="section section--gray">
+  <div class="section__container">
+    <div class="newsletter">
+      <h2 class="newsletter__title">Bleiben Sie informiert</h2>
+      <p class="newsletter__text">Erhalten Sie regelmäßig wertvolle Tipps zu Versicherungen, Vorsorge und Finanzen – direkt in Ihr Postfach. Kein Spam, versprochen.</p>
+      <form class="newsletter__form">
+        <input type="email" class="newsletter__input" placeholder="Ihre E-Mail-Adresse" required>
+        <button type="submit" class="newsletter__btn">Anmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .newsletter {
+    text-align: center;
+    max-width: var(--container-text);
+    margin: 0 auto;
+  }
+  .newsletter__title {
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    margin-bottom: 1rem;
+  }
+  .newsletter__text {
+    font-size: var(--text-md);
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+  .newsletter__form {
+    display: flex;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .newsletter__input {
+    flex: 1;
+    padding: 1rem 1.25rem;
+    font-size: var(--text-base);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+  }
+  .newsletter__input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+  .newsletter__btn {
+    padding: 1rem 2rem;
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    color: var(--color-white);
+    background: var(--color-primary);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+  }
+  .newsletter__btn:hover { background: var(--color-primary-hover); }
+
+  @media (max-width: 1024px) {
+    .newsletter__form { flex-direction: column; }
+  }
+</style>

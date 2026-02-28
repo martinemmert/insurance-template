@@ -1,0 +1,127 @@
+<!-- Problem / Solution -->
+<section class="section section--white">
+  <div class="section__container">
+    <div class="section__header">
+      <div class="section__label">Die Herausforderung</div>
+      <h2 class="section__title">Versicherungen sind kompliziert. Das muss nicht sein.</h2>
+    </div>
+    <div class="problem-solution">
+      <div class="problem-card">
+        <div class="problem-card__label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+          Das Problem
+        </div>
+        <h3 class="problem-card__title">Ohne unabhängige Beratung</h3>
+        <ul class="problem-card__list">
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            Stundenlange Recherche und Vergleiche im Internet
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            Vertreter, die nur ihre eigenen Produkte verkaufen
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            Unübersichtliche Tarife und versteckte Klauseln
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            Im Schadensfall allein gegen die Versicherung
+          </li>
+        </ul>
+      </div>
+      <div class="solution-card">
+        <div class="solution-card__label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          Die Lösung
+        </div>
+        <h3 class="solution-card__title">Mit Helmut Emmert</h3>
+        <ul class="solution-card__list">
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Ein Ansprechpartner, der den Markt für Sie durchsucht
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Unabhängige Empfehlungen ohne Verkaufsdruck
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Verständliche Erklärungen in klarer Sprache
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Ihr Anwalt im Schadensfall – auf Ihrer Seite
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .problem-solution {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  .problem-card, .solution-card {
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+  }
+  .problem-card {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+  }
+  .solution-card {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+  }
+  .problem-card__label, .solution-card__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+  .problem-card__label {
+    color: #dc2626;
+  }
+  .solution-card__label {
+    color: #059669;
+  }
+  .problem-card__title, .solution-card__title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: var(--font-bold);
+    margin-bottom: 1rem;
+  }
+  .problem-card__list, .solution-card__list {
+    list-style: none;
+  }
+  .problem-card__list li, .solution-card__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.9375rem;
+  }
+  .problem-card__list li svg {
+    color: #dc2626;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+  }
+  .solution-card__list li svg {
+    color: #059669;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+  }
+
+  @media (max-width: 1024px) {
+    .problem-solution { grid-template-columns: 1fr; }
+  }
+</style>

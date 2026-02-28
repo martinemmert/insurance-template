@@ -1,0 +1,59 @@
+---
+---
+
+<section class="section section--gray">
+  <div class="section__container">
+    <div class="testimonial-large">
+      <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop" alt="Sabine Müller" class="testimonial-large__image">
+      <div>
+        <div class="testimonial-large__stars">★★★★★</div>
+        <p class="testimonial-large__text">"Nach einem schweren Unfall war ich monatelang arbeitsunfähig. Herr Emmert hat sich nicht nur um die Schadensregulierung gekümmert, sondern mich auch persönlich unterstützt. Dank seiner Hartnäckigkeit wurde mein Anspruch vollständig anerkannt. So einen Einsatz hatte ich nicht erwartet."</p>
+        <div class="testimonial-large__author">Sabine Müller</div>
+        <div class="testimonial-large__role">Kundin seit 2016 • Berufsunfähigkeitsfall</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonial-large {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 4rem;
+    align-items: center;
+    background: var(--color-white);
+    border-radius: 1.5rem;
+    padding: 3rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  }
+  .testimonial-large__image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+  }
+  .testimonial-large__stars {
+    color: var(--color-star);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .testimonial-large__text {
+    font-size: 1.375rem;
+    line-height: var(--leading-normal);
+    color: #333;
+    margin-bottom: 2rem;
+  }
+  .testimonial-large__author {
+    font-weight: var(--font-bold);
+    font-size: var(--text-lg);
+  }
+  .testimonial-large__role {
+    color: var(--color-text-muted);
+    font-size: 0.9375rem;
+  }
+
+  @media (max-width: 1024px) {
+    .testimonial-large { grid-template-columns: 1fr; padding: 2rem; }
+    .testimonial-large__image { max-width: 200px; margin: 0 auto; }
+  }
+</style>

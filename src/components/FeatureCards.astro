@@ -1,0 +1,77 @@
+<!-- Feature Cards -->
+<section class="section section--white">
+  <div class="section__container">
+    <div class="section__header">
+      <div class="section__label">Schwerpunkte</div>
+      <h2 class="section__title">Meine Kernkompetenzen</h2>
+    </div>
+    <div class="feature-cards">
+      <div class="feature-card">
+        <div class="feature-card__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        </div>
+        <h3 class="feature-card__title">Privatkundenberatung</h3>
+        <p class="feature-card__text">Individuelle Lösungen für Familien, Singles und Paare – von der Grundabsicherung bis zur Vermögensplanung.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+        </div>
+        <h3 class="feature-card__title">Gewerbeversicherung</h3>
+        <p class="feature-card__text">Maßgeschneiderte Absicherung für Selbstständige, Freiberufler und kleine Unternehmen.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        </div>
+        <h3 class="feature-card__title">Schadensmanagement</h3>
+        <p class="feature-card__text">Professionelle Unterstützung bei der Schadensmeldung und Durchsetzung Ihrer Ansprüche.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .feature-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .feature-card {
+    padding: 2.5rem;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    text-align: center;
+  }
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+  }
+  .feature-card__icon {
+    width: 5rem;
+    height: 5rem;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--color-primary-bg) 0%, #d0e8d9 100%);
+    border-radius: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+  }
+  .feature-card__title {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    margin-bottom: 0.75rem;
+  }
+  .feature-card__text {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: var(--leading-normal);
+  }
+
+  @media (max-width: 1024px) {
+    .feature-cards { grid-template-columns: 1fr; }
+  }
+</style>

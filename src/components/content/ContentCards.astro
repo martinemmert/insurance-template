@@ -1,0 +1,79 @@
+---
+
+---
+
+<!-- Content Cards Grid -->
+<div class="content-cards">
+  <div class="content-card">
+    <div class="content-card__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+    </div>
+    <h4 class="content-card__title">Risikolebensversicherung</h4>
+    <p class="content-card__text">Schützen Sie Ihre Familie mit einer günstigen Absicherung im Todesfall.</p>
+  </div>
+  <div class="content-card">
+    <div class="content-card__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+    </div>
+    <h4 class="content-card__title">Pflegeversicherung</h4>
+    <p class="content-card__text">Sorgen Sie vor für den Fall, dass Sie auf Pflege angewiesen sind.</p>
+  </div>
+  <div class="content-card">
+    <div class="content-card__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+    </div>
+    <h4 class="content-card__title">Betriebliche Altersvorsorge</h4>
+    <p class="content-card__text">Nutzen Sie die Vorteile der bAV für Ihre Altersvorsorge.</p>
+  </div>
+  <div class="content-card">
+    <div class="content-card__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+    </div>
+    <h4 class="content-card__title">Wohngebäudeversicherung</h4>
+    <p class="content-card__text">Schützen Sie Ihr Eigenheim vor Feuer, Sturm und anderen Gefahren.</p>
+  </div>
+</div>
+
+<style>
+  /* Content Cards Grid */
+  .content-cards {
+    margin: 2rem 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .content-card {
+    padding: 1.75rem 2rem;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  .content-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  .content-card__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--color-primary-bg);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+  .content-card__title {
+    font-weight: var(--font-bold);
+    margin-bottom: 0.375rem;
+  }
+  .content-card__text {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 768px) {
+    .content-cards { grid-template-columns: 1fr; }
+  }
+</style>

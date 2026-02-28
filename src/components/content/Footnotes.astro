@@ -1,0 +1,50 @@
+---
+
+---
+
+<div class="footnotes">
+  <h4 class="footnotes__title">Anmerkungen</h4>
+  <ol class="footnotes__list">
+    <li>Statistik basiert auf Daten des Gesamtverbands der Deutschen Versicherungswirtschaft (GDV) 2023</li>
+    <li>Durchschnittliche Erwerbsminderungsrente nach Angaben der Deutschen Rentenversicherung 2023</li>
+    <li>Beispielhafte Beiträge für einen Nichtraucher ohne Vorerkrankungen</li>
+  </ol>
+</div>
+
+<style>
+  /* Footnotes */
+  .footnote-ref {
+    font-size: 0.75rem;
+    vertical-align: super;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: var(--font-semibold);
+  }
+  .footnotes {
+    margin: 3rem 0 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .footnotes__title {
+    font-size: 0.9375rem;
+    font-weight: var(--font-bold);
+    margin-bottom: 1rem;
+  }
+  .footnotes__list {
+    list-style: none;
+    counter-reset: footnotes;
+  }
+  .footnotes__list li {
+    counter-increment: footnotes;
+    display: flex;
+    gap: 0.75rem;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+  }
+  .footnotes__list li::before {
+    content: counter(footnotes) ".";
+    font-weight: var(--font-semibold);
+    color: var(--color-primary);
+  }
+</style>

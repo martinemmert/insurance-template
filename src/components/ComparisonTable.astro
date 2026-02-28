@@ -1,0 +1,108 @@
+<!-- Comparison Table -->
+<section class="section section--gray">
+  <div class="section__container">
+    <div class="section__header">
+      <div class="section__label">Im Vergleich</div>
+      <h2 class="section__title">Makler vs. Vertreter vs. Online-Portal</h2>
+      <p class="section__subtitle">Warum ein unabhängiger Makler oft die bessere Wahl ist.</p>
+    </div>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Unabhängiger Makler</th>
+          <th>Versicherungsvertreter</th>
+          <th>Online-Vergleichsportal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Zugang zu allen Anbietern</td>
+          <td><span class="check">&#10003;</span></td>
+          <td><span class="cross">&#10007;</span> Nur eigene Gesellschaft</td>
+          <td><span class="check">&#10003;</span> Nur Kooperationspartner</td>
+        </tr>
+        <tr>
+          <td>Persönliche Beratung vor Ort</td>
+          <td><span class="check">&#10003;</span></td>
+          <td><span class="check">&#10003;</span></td>
+          <td><span class="cross">&#10007;</span></td>
+        </tr>
+        <tr>
+          <td>Unterstützung im Schadensfall</td>
+          <td><span class="check">&#10003;</span> Auf Ihrer Seite</td>
+          <td><span class="cross">&#10007;</span> Vertritt die Gesellschaft</td>
+          <td><span class="cross">&#10007;</span> Keine Hilfe</td>
+        </tr>
+        <tr>
+          <td>Langfristige Betreuung</td>
+          <td><span class="check">&#10003;</span></td>
+          <td><span class="check">&#10003;</span></td>
+          <td><span class="cross">&#10007;</span></td>
+        </tr>
+        <tr>
+          <td>Individuelle Tarifgestaltung</td>
+          <td><span class="check">&#10003;</span></td>
+          <td><span class="check">&#10003;</span> Begrenzt</td>
+          <td><span class="cross">&#10007;</span> Standardtarife</td>
+        </tr>
+        <tr>
+          <td>Kostenlose Beratung</td>
+          <td><span class="check">&#10003;</span></td>
+          <td><span class="check">&#10003;</span></td>
+          <td><span class="check">&#10003;</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<style>
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+  .comparison-table th,
+  .comparison-table td {
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+  .comparison-table th {
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-weight: var(--font-semibold);
+    font-size: 0.9375rem;
+  }
+  .comparison-table th:first-child {
+    border-radius: 1rem 0 0 0;
+  }
+  .comparison-table th:last-child {
+    border-radius: 0 1rem 0 0;
+  }
+  .comparison-table tr:last-child td {
+    border-bottom: none;
+  }
+  .comparison-table tr:hover td {
+    background: var(--color-bg-hover);
+  }
+  .comparison-table td:first-child {
+    font-weight: var(--font-semibold);
+  }
+  .comparison-table .check {
+    color: var(--color-primary);
+    font-size: var(--text-xl);
+  }
+  .comparison-table .cross {
+    color: var(--color-text-on-dark);
+  }
+
+  @media (max-width: 1024px) {
+    .comparison-table { font-size: var(--text-sm); }
+    .comparison-table th, .comparison-table td { padding: 1rem; }
+  }
+</style>

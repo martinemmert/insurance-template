@@ -1,0 +1,109 @@
+<!-- Checklist Section -->
+<section class="section section--white">
+  <div class="section__container">
+    <div class="checklist-section">
+      <div>
+        <div class="section__label">Erstgespräch</div>
+        <h2 class="split-content__title">Was Sie zum ersten Termin mitbringen sollten</h2>
+        <p class="split-content__text">Je besser ich Ihre aktuelle Situation verstehe, desto gezielter kann ich Sie beraten. Diese Unterlagen helfen dabei:</p>
+        <ul class="checklist">
+          <li class="checklist__item">
+            <div class="checklist__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div>
+              <div class="checklist__title">Bestehende Versicherungspolicen</div>
+              <p class="checklist__text">Alle aktuellen Verträge, die Sie haben – auch wenn Sie unsicher sind, ob sie relevant sind.</p>
+            </div>
+          </li>
+          <li class="checklist__item">
+            <div class="checklist__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div>
+              <div class="checklist__title">Gehaltsnachweis oder Einkommensbescheid</div>
+              <p class="checklist__text">Für die Berechnung der optimalen Absicherungshöhe und Beiträge.</p>
+            </div>
+          </li>
+          <li class="checklist__item">
+            <div class="checklist__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div>
+              <div class="checklist__title">Fragen und Anliegen</div>
+              <p class="checklist__text">Notieren Sie sich vorab, was Ihnen wichtig ist und welche Fragen Sie haben.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="split-content__image">
+        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=500&fit=crop" alt="Dokumente vorbereiten">
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .checklist-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .checklist {
+    list-style: none;
+  }
+  .checklist__item {
+    display: flex;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .checklist__item:last-child {
+    border-bottom: none;
+  }
+  .checklist__icon {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    background: var(--color-primary-bg);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+  }
+  .checklist__title {
+    font-weight: var(--font-bold);
+    margin-bottom: 0.25rem;
+  }
+  .checklist__text {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+  }
+  .split-content__image {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .split-content__image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+  .split-content__title {
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    margin-bottom: 1rem;
+  }
+  .split-content__text {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: var(--leading-relaxed);
+  }
+
+  @media (max-width: 1024px) {
+    .checklist-section { grid-template-columns: 1fr; }
+  }
+</style>

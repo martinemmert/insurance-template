@@ -1,0 +1,100 @@
+---
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+---
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer__container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">Helmut Emmert</div>
+        <p class="footer__text">Ihr unabhängiger Versicherungsmakler in Aschaffenburg. Persönliche Beratung, transparente Lösungen.</p>
+      </div>
+      <div>
+        <div class="footer__title">Leistungen</div>
+        <ul class="footer__links">
+          <li><a href={`${base}leistungen/lebensversicherung`} class="footer__link">Lebensversicherung</a></li>
+          <li><a href={`${base}leistungen/berufsunfaehigkeit`} class="footer__link">Berufsunfähigkeit</a></li>
+          <li><a href={`${base}leistungen/krankenversicherung`} class="footer__link">Krankenversicherung</a></li>
+          <li><a href={`${base}leistungen/altersvorsorge`} class="footer__link">Altersvorsorge</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__title">Kontakt</div>
+        <ul class="footer__links">
+          <li><a href="tel:+49123456789" class="footer__link">+49 123 456 789</a></li>
+          <li><a href="mailto:info@emmert-versicherungen.de" class="footer__link">info@emmert-versicherungen.de</a></li>
+          <li><span class="footer__link">Musterstraße 123</span></li>
+          <li><span class="footer__link">63739 Aschaffenburg</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__title">Rechtliches</div>
+        <ul class="footer__links">
+          <li><a href="#impressum" class="footer__link">Impressum</a></li>
+          <li><a href="#datenschutz" class="footer__link">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2024 Helmut Emmert Versicherungen. Alle Rechte vorbehalten.</span>
+      <span>Made with care in Aschaffenburg</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-bg-footer);
+    color: var(--color-white);
+    padding: 4rem 4rem 2rem;
+  }
+  .footer__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+  .footer__brand {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    margin-bottom: 1rem;
+  }
+  .footer__text {
+    color: var(--color-text-subtle);
+    font-size: 0.9375rem;
+    line-height: var(--leading-relaxed);
+  }
+  .footer__title {
+    font-weight: var(--font-bold);
+    margin-bottom: 1rem;
+  }
+  .footer__links {
+    list-style: none;
+  }
+  .footer__link {
+    color: var(--color-text-subtle);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    display: block;
+    margin-bottom: 0.75rem;
+    transition: color var(--transition-fast);
+  }
+  .footer__link:hover { color: var(--color-white); }
+  .footer__bottom {
+    padding-top: 2rem;
+    border-top: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  @media (max-width: 1024px) {
+    .footer__grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>

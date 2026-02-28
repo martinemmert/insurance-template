@@ -1,0 +1,69 @@
+<!-- Image Gallery -->
+<section class="section section--gray">
+  <div class="section__container">
+    <div class="section__header">
+      <div class="section__label">Einblicke</div>
+      <h2 class="section__title">Mein Büro & meine Arbeit</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop" alt="Büro">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&h=300&fit=crop" alt="Beratung">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Team Meeting">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=300&fit=crop" alt="Handschlag">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=300&fit=crop" alt="Präsentation">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&h=300&fit=crop" alt="Dokumente">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=300&fit=crop" alt="Besprechung">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=400&h=300&fit=crop" alt="Kundengespräch">
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .gallery-grid--masonry {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .gallery-item {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+  }
+  .gallery-item:hover img {
+    transform: scale(1.05);
+  }
+  .gallery-item--tall img {
+    height: 416px;
+  }
+
+  @media (max-width: 1024px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid--masonry { grid-template-columns: 1fr; }
+    .gallery-item--tall img { height: 200px; }
+  }
+</style>

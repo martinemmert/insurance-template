@@ -1,0 +1,70 @@
+---
+
+---
+
+<ol class="steps-list">
+  <li>
+    <div class="step-content">
+      <h3 class="step-content__title">Richtige Rentenhöhe wählen</h3>
+      <p class="step-content__text">Empfohlen werden 70-80% Ihres Nettoeinkommens. Bedenken Sie: Im BU-Fall fallen zwar einige Kosten weg, aber Sie haben auch keinen Arbeitgeberanteil zur Sozialversicherung mehr.</p>
+    </div>
+  </li>
+  <li>
+    <div class="step-content">
+      <h3 class="step-content__title">Laufzeit bis zum Rentenalter</h3>
+      <p class="step-content__text">Die BU-Rente sollte mindestens bis zum 67. Lebensjahr gezahlt werden. Eine kürzere Laufzeit spart zwar Beiträge, lässt Sie aber im schlimmsten Fall ohne Schutz.</p>
+    </div>
+  </li>
+  <li>
+    <div class="step-content">
+      <h3 class="step-content__title">Verzicht auf abstrakte Verweisung</h3>
+      <p class="step-content__text">Die Versicherung darf Sie nicht auf einen anderen Beruf verweisen. Achten Sie auf den "echten Verzicht auf abstrakte Verweisung".</p>
+    </div>
+  </li>
+  <li>
+    <div class="step-content">
+      <h3 class="step-content__title">Nachversicherungsgarantie sichern</h3>
+      <p class="step-content__text">Mit dieser Klausel können Sie die BU-Rente später erhöhen, ohne erneute Gesundheitsprüfung – etwa bei Gehaltserhöhung oder Familienzuwachs.</p>
+    </div>
+  </li>
+</ol>
+
+<style>
+  /* Ordered Steps */
+  .steps-list {
+    margin: 2rem 0;
+    list-style: none;
+    counter-reset: steps;
+  }
+  .steps-list li {
+    counter-increment: steps;
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .steps-list li:last-child {
+    border-bottom: none;
+  }
+  .steps-list li::before {
+    content: counter(steps);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-weight: var(--font-bold);
+    border-radius: var(--radius-full);
+  }
+  .step-content__title {
+    font-weight: var(--font-bold);
+    margin-bottom: 0.25rem;
+  }
+  .step-content__text {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+  }
+</style>

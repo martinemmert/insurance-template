@@ -1,0 +1,754 @@
+---
+import '../styles/global.css';
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="icon" href={`${base}favicon.ico`} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Helmut Emmert Versicherungen</title>
+  </head>
+  <body>
+    <header class="nav" id="nav">
+      <div class="nav__brand">Helmut Emmert <span class="nav__brand-subtitle">Ihr Versicherungsmakler</span></div>
+      <nav class="nav__menu">
+        <a href="#section-1" class="nav__link nav__link--active" data-section="1">Start</a>
+        <a href="#section-2" class="nav__link" data-section="2">Leistungen</a>
+        <a href="#section-3" class="nav__link" data-section="3">Ihr Weg</a>
+        <a href="#section-4" class="nav__link" data-section="4">Kontakt</a>
+        <a href="#section-5" class="nav__link" data-section="5">Über mich</a>
+        <a href="#section-6" class="nav__link" data-section="6">Bewertungen</a>
+        <a href="#section-7" class="nav__link" data-section="7">Impressum</a>
+      </nav>
+      <a href="#section-4" class="nav__cta btn btn-primary">Beratung</a>
+    </header>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="sidebar-mosaic" id="sidebar-mosaic"></div>
+        <div class="sidebar-content">
+          <div class="sidebar-panel" data-section="1" style={`background-image: url('${base}images/castle.jpg');`}>
+            <h2 class="sidebar-panel__title">Willkommen</h2>
+          </div>
+          <div class="sidebar-panel" data-section="2" style={`background-image: url('${base}images/meeting-conversation.jpg');`}>
+            <h2 class="sidebar-panel__title">Leistungen</h2>
+          </div>
+          <div class="sidebar-panel" data-section="3" style="background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=1200&fit=crop');">
+            <h2 class="sidebar-panel__title">Ihr Weg</h2>
+          </div>
+          <div class="sidebar-panel" data-section="4" style="background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&h=1200&fit=crop');">
+            <h2 class="sidebar-panel__title">Kontakt</h2>
+          </div>
+          <div class="sidebar-panel" data-section="5" style={`background-image: url('${base}images/meeting-office.jpg');`}>
+            <h2 class="sidebar-panel__title">Über mich</h2>
+          </div>
+          <div class="sidebar-panel" data-section="6" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=1200&fit=crop');">
+            <h2 class="sidebar-panel__title">Bewertungen</h2>
+          </div>
+          <div class="sidebar-panel" data-section="7" style="background-image: url('https://images.unsplash.com/photo-1548372290-8d01b6c8e78c?w=800&h=1200&fit=crop');">
+            <h2 class="sidebar-panel__title">Impressum</h2>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content">
+        <section class="section hero" id="section-1">
+          <div class="hero-content">
+            <span class="hero-label">Versicherungsberater</span>
+            <h1 class="hero-name">Helmut Emmert</h1>
+            <p class="hero-tagline">Schutz für das, was Ihnen und Ihrer Familie am wichtigsten ist. Persönliche Versicherungsberatung, der Sie vertrauen können.</p>
+
+            <h2 class="hero-heading">Ihr Partner für Sicherheit</h2>
+            <p class="hero-description">Seit über zwei Jahrzehnten helfe ich Familien und Einzelpersonen, sich in der komplexen Welt der Versicherungen zurechtzufinden. Mein Ansatz ist einfach: zuhören, Ihre Bedürfnisse verstehen und dann den perfekten Schutz finden, der zu Ihrem Leben und Budget passt.</p>
+
+            <div class="hero-buttons">
+              <a href="#kontakt" class="btn btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                Termin vereinbaren
+              </a>
+              <a href="#leistungen" class="btn btn-secondary">Mehr erfahren</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section-horizontal section--fullwidth" id="section-2">
+          <div class="horizontal-sticky">
+            <div class="horizontal-track">
+              <div class="horizontal-card">
+                <img
+                  class="horizontal-card__image"
+                  src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=400&fit=crop"
+                  alt="Glückliche Familie am Strand"
+                  loading="lazy"
+                />
+                <div class="horizontal-card__content">
+                  <span class="horizontal-card__number">01</span>
+                  <h3 class="horizontal-card__title">Lebensversicherung</h3>
+                  <p class="horizontal-card__description">Sichern Sie die Zukunft Ihrer Familie ab. Mit einer maßgeschneiderten Lebensversicherung schützen Sie Ihre Liebsten vor finanziellen Sorgen – egal was passiert. Ob Risikolebensversicherung für den Ernstfall oder kapitalbildende Varianten für den Vermögensaufbau: Gemeinsam finden wir die Lösung, die zu Ihrem Leben passt.</p>
+                  <a href={`${base}leistungen/lebensversicherung`} class="horizontal-card__link">Mehr erfahren →</a>
+                </div>
+              </div>
+              <div class="horizontal-card">
+                <img
+                  class="horizontal-card__image"
+                  src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&h=400&fit=crop"
+                  alt="Professionelles Team bei der Arbeit"
+                  loading="lazy"
+                />
+                <div class="horizontal-card__content">
+                  <span class="horizontal-card__number">02</span>
+                  <h3 class="horizontal-card__title">Berufsunfähigkeit</h3>
+                  <p class="horizontal-card__description">Ihre Arbeitskraft ist Ihr wertvollstes Gut – und oft unterschätzt. Statistisch wird jeder vierte Berufstätige vor dem Rentenalter berufsunfähig. Eine gute BU-Versicherung sichert Ihren Lebensstandard, wenn Sie durch Krankheit oder Unfall nicht mehr arbeiten können. Ich helfe Ihnen, Fallstricke zu vermeiden und den optimalen Schutz zu finden.</p>
+                  <a href={`${base}leistungen/berufsunfaehigkeit`} class="horizontal-card__link">Mehr erfahren →</a>
+                </div>
+              </div>
+              <div class="horizontal-card">
+                <img
+                  class="horizontal-card__image"
+                  src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop"
+                  alt="Arzt bei der Patientenberatung"
+                  loading="lazy"
+                />
+                <div class="horizontal-card__content">
+                  <span class="horizontal-card__number">03</span>
+                  <h3 class="horizontal-card__title">Private Krankenversicherung</h3>
+                  <p class="horizontal-card__description">Erstklassige medizinische Versorgung, kurze Wartezeiten und Zugang zu Spezialisten. Die private Krankenversicherung bietet mehr als nur Komfort – sie gibt Ihnen Sicherheit bei Ihrer Gesundheit. Ob Vollversicherung oder Zusatzversicherung: Ich analysiere Ihre Situation und finde den Tarif, der wirklich zu Ihnen passt.</p>
+                  <a href={`${base}leistungen/krankenversicherung`} class="horizontal-card__link">Mehr erfahren →</a>
+                </div>
+              </div>
+              <div class="horizontal-card">
+                <img
+                  class="horizontal-card__image"
+                  src="https://images.unsplash.com/photo-1447005497901-b3e9ee359928?w=600&h=400&fit=crop"
+                  alt="Glückliches Seniorenpaar"
+                  loading="lazy"
+                />
+                <div class="horizontal-card__content">
+                  <span class="horizontal-card__number">04</span>
+                  <h3 class="horizontal-card__title">Altersvorsorge</h3>
+                  <p class="horizontal-card__description">Die gesetzliche Rente allein reicht längst nicht mehr aus. Planen Sie heute für einen sorgenfreien Ruhestand – mit der richtigen Strategie aus privater Rente, betrieblicher Altersvorsorge und staatlicher Förderung. Ich zeige Ihnen, wie Sie auch mit kleinen Beiträgen langfristig ein solides Polster aufbauen.</p>
+                  <a href={`${base}leistungen/altersvorsorge`} class="horizontal-card__link">Mehr erfahren →</a>
+                </div>
+              </div>
+              <div class="horizontal-card">
+                <img
+                  class="horizontal-card__image"
+                  src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop"
+                  alt="Modernes Einfamilienhaus"
+                  loading="lazy"
+                />
+                <div class="horizontal-card__content">
+                  <span class="horizontal-card__number">05</span>
+                  <h3 class="horizontal-card__title">Sachversicherungen</h3>
+                  <p class="horizontal-card__description">Haus, Auto, Haftpflicht – schützen Sie Ihr Eigentum und sich selbst vor unerwarteten Schäden. Von der Wohngebäudeversicherung über die Hausrat bis zur privaten Haftpflicht: Ich sorge dafür, dass Sie optimal abgesichert sind, ohne für unnötigen Schutz zu bezahlen. Transparente Beratung, faire Tarife.</p>
+                  <a href={`${base}leistungen/sachversicherungen`} class="horizontal-card__link">Mehr erfahren →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section-steps section--fullwidth" id="section-3">
+          <div class="steps-sticky">
+            <div class="steps-header">
+              <span class="steps-label">So funktioniert's</span>
+              <h2 class="steps-title">Ihr Weg zur besseren Absicherung</h2>
+              <p class="steps-intro">In fünf einfachen Schritten zu Ihrem optimalen Versicherungsschutz – persönlich, transparent und auf Ihre Bedürfnisse zugeschnitten.</p>
+            </div>
+            <div class="steps-timeline">
+              <div class="steps-line"></div>
+              <div class="step" data-step="1">
+                <div class="step__marker">
+                  <span class="step__number">01</span>
+                </div>
+                <div class="step__content">
+                  <h3 class="step__title">Erstgespräch</h3>
+                  <p class="step__description">In einem unverbindlichen Gespräch lernen wir uns kennen. Sie erzählen mir von Ihrer Lebenssituation, Ihren Wünschen und Sorgen. Ich höre zu und stelle die richtigen Fragen, um ein vollständiges Bild zu bekommen.</p>
+                </div>
+              </div>
+              <div class="step" data-step="2">
+                <div class="step__marker">
+                  <span class="step__number">02</span>
+                </div>
+                <div class="step__content">
+                  <h3 class="step__title">Bedarfsanalyse</h3>
+                  <p class="step__description">Gemeinsam analysieren wir Ihren aktuellen Versicherungsschutz und identifizieren Lücken. Welche Risiken sind abgedeckt? Wo besteht Handlungsbedarf? Diese Analyse bildet das Fundament für alle weiteren Empfehlungen.</p>
+                </div>
+              </div>
+              <div class="step" data-step="3">
+                <div class="step__marker">
+                  <span class="step__number">03</span>
+                </div>
+                <div class="step__content">
+                  <h3 class="step__title">Angebotsvergleich</h3>
+                  <p class="step__description">Als unabhängiger Berater vergleiche ich für Sie die Angebote verschiedener Versicherungsgesellschaften. Sie erhalten eine übersichtliche Gegenüberstellung mit allen Vor- und Nachteilen – transparent und nachvollziehbar.</p>
+                </div>
+              </div>
+              <div class="step" data-step="4">
+                <div class="step__marker">
+                  <span class="step__number">04</span>
+                </div>
+                <div class="step__content">
+                  <h3 class="step__title">Vertragsabschluss</h3>
+                  <p class="step__description">Haben Sie sich für ein Angebot entschieden, kümmere ich mich um den gesamten Papierkram. Von der Antragstellung bis zur Policierung – Sie müssen sich um nichts kümmern außer Ihre Unterschrift.</p>
+                </div>
+              </div>
+              <div class="step" data-step="5">
+                <div class="step__marker">
+                  <span class="step__number">05</span>
+                </div>
+                <div class="step__content">
+                  <h3 class="step__title">Laufende Betreuung</h3>
+                  <p class="step__description">Meine Arbeit endet nicht mit dem Vertragsabschluss. Ich begleite Sie langfristig, prüfe regelmäßig Ihren Schutz und passe ihn an veränderte Lebensumstände an. Im Schadensfall stehe ich Ihnen zur Seite.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section-contact section--fullwidth" id="section-4">
+          <div class="contact-container">
+            <div class="contact-info">
+              <span class="contact-label">Kontakt</span>
+              <h2 class="contact-title">Lassen Sie uns sprechen</h2>
+              <p class="contact-intro">Vereinbaren Sie jetzt Ihr kostenloses Erstgespräch. Ich freue mich darauf, Sie kennenzulernen und gemeinsam die beste Lösung für Sie zu finden.</p>
+
+              <div class="contact-details">
+                <div class="contact-item">
+                  <svg class="contact-item__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  <div class="contact-item__details">
+                    <strong class="contact-item__label">Telefon</strong>
+                    <span class="contact-item__value">+49 123 456 789</span>
+                  </div>
+                </div>
+                <div class="contact-item">
+                  <svg class="contact-item__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  <div class="contact-item__details">
+                    <strong class="contact-item__label">E-Mail</strong>
+                    <span class="contact-item__value">info@emmert-versicherungen.de</span>
+                  </div>
+                </div>
+                <div class="contact-item">
+                  <svg class="contact-item__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  <div class="contact-item__details">
+                    <strong class="contact-item__label">Adresse</strong>
+                    <span class="contact-item__value">Musterstraße 123, 12345 Musterstadt</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <form class="contact-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-group__label" for="name">Name</label>
+                  <input class="form-group__input" type="text" id="name" name="name" placeholder="Ihr Name" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-group__label" for="phone">Telefon</label>
+                  <input class="form-group__input" type="tel" id="phone" name="phone" placeholder="Ihre Telefonnummer">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-group__label" for="email">E-Mail</label>
+                <input class="form-group__input" type="email" id="email" name="email" placeholder="Ihre E-Mail-Adresse" required>
+              </div>
+              <div class="form-group">
+                <label class="form-group__label" for="message">Nachricht</label>
+                <textarea class="form-group__textarea" id="message" name="message" rows="5" placeholder="Wie kann ich Ihnen helfen?"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                Nachricht senden
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <section class="section section-about" id="section-5">
+          <div class="about">
+            <div class="about__image">
+              <div class="about__image-placeholder"></div>
+            </div>
+            <div class="about__content">
+              <span class="about__label">Über mich</span>
+              <h2 class="about__title">Helmut Emmert</h2>
+              <p class="about__text">Mit über 25 Jahren Erfahrung in der Versicherungsbranche habe ich es mir zur Aufgabe gemacht, Menschen dabei zu helfen, die richtige Absicherung für sich und ihre Familien zu finden.</p>
+              <p class="about__text">Meine Philosophie ist einfach: Ich höre zu, verstehe Ihre individuelle Situation und finde gemeinsam mit Ihnen die optimale Lösung. Keine Standardprodukte, keine unnötigen Policen – nur das, was Sie wirklich brauchen.</p>
+              <p class="about__text">Als unabhängiger Versicherungsberater bin ich keiner Gesellschaft verpflichtet. Das bedeutet für Sie: objektive Beratung und Zugang zu den besten Angeboten am Markt.</p>
+
+              <div class="about__credentials">
+                <div class="about__credential">
+                  <span class="about__credential-number">25+</span>
+                  <span class="about__credential-label">Jahre Erfahrung</span>
+                </div>
+                <div class="about__credential">
+                  <span class="about__credential-number">1.500+</span>
+                  <span class="about__credential-label">Zufriedene Kunden</span>
+                </div>
+                <div class="about__credential">
+                  <span class="about__credential-number">100%</span>
+                  <span class="about__credential-label">Unabhängig</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section-reviews section--fullwidth" id="section-6">
+          <div class="reviews">
+            <div class="reviews__header">
+              <span class="reviews__label">Kundenstimmen</span>
+              <h2 class="reviews__title">Was meine Kunden sagen</h2>
+              <div class="reviews__rating">
+                <div class="reviews__stars">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <span class="reviews__score">4.9 von 5 Sternen</span>
+                <span class="reviews__count">basierend auf 47 Google-Bewertungen</span>
+              </div>
+            </div>
+            <div class="reviews__grid">
+              <div class="review-card">
+                <div class="review-card__header">
+                  <div class="review-card__avatar">M</div>
+                  <div class="review-card__meta">
+                    <span class="review-card__name">Michael S.</span>
+                    <span class="review-card__date">vor 2 Monaten</span>
+                  </div>
+                </div>
+                <div class="review-card__stars">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <p class="review-card__text">Herr Emmert hat sich viel Zeit genommen, um meine Situation zu verstehen. Die Beratung war kompetent und ohne Verkaufsdruck. Absolute Empfehlung!</p>
+              </div>
+              <div class="review-card">
+                <div class="review-card__header">
+                  <div class="review-card__avatar">S</div>
+                  <div class="review-card__meta">
+                    <span class="review-card__name">Sandra K.</span>
+                    <span class="review-card__date">vor 3 Monaten</span>
+                  </div>
+                </div>
+                <div class="review-card__stars">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <p class="review-card__text">Endlich jemand, der Versicherungen verständlich erklärt! Herr Emmert hat mir geholfen, meinen Versicherungsschutz zu optimieren und dabei sogar Geld zu sparen.</p>
+              </div>
+              <div class="review-card">
+                <div class="review-card__header">
+                  <div class="review-card__avatar">T</div>
+                  <div class="review-card__meta">
+                    <span class="review-card__name">Thomas B.</span>
+                    <span class="review-card__date">vor 5 Monaten</span>
+                  </div>
+                </div>
+                <div class="review-card__stars">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <p class="review-card__text">Bei einem Schadensfall hat Herr Emmert sich sofort um alles gekümmert. Die Abwicklung war unkompliziert und schnell. So stelle ich mir Service vor!</p>
+              </div>
+              <div class="review-card">
+                <div class="review-card__header">
+                  <div class="review-card__avatar">A</div>
+                  <div class="review-card__meta">
+                    <span class="review-card__name">Anna M.</span>
+                    <span class="review-card__date">vor 6 Monaten</span>
+                  </div>
+                </div>
+                <div class="review-card__stars">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <p class="review-card__text">Als junge Familie waren wir unsicher, welche Versicherungen wir wirklich brauchen. Herr Emmert hat uns geduldig alles erklärt und einen perfekten Schutz zusammengestellt.</p>
+              </div>
+              <div class="review-card">
+                <div class="review-card__header">
+                  <div class="review-card__avatar">K</div>
+                  <div class="review-card__meta">
+                    <span class="review-card__name">Klaus W.</span>
+                    <span class="review-card__date">vor 7 Monaten</span>
+                  </div>
+                </div>
+                <div class="review-card__stars">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <p class="review-card__text">Ich bin seit über 10 Jahren Kunde und habe es nie bereut. Herr Emmert ist immer erreichbar und kümmert sich um alle Anliegen schnell und zuverlässig.</p>
+              </div>
+              <div class="review-card">
+                <div class="review-card__header">
+                  <div class="review-card__avatar">L</div>
+                  <div class="review-card__meta">
+                    <span class="review-card__name">Lisa F.</span>
+                    <span class="review-card__date">vor 8 Monaten</span>
+                  </div>
+                </div>
+                <div class="review-card__stars">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <p class="review-card__text">Transparente Beratung ohne versteckte Kosten. Herr Emmert erklärt alles verständlich und nimmt sich die Zeit, die man braucht. Sehr empfehlenswert!</p>
+              </div>
+            </div>
+            <a href="https://www.google.com/maps" target="_blank" rel="noopener" class="reviews__link">
+              Alle Bewertungen auf Google ansehen
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+        </section>
+
+        <section class="section section-imprint section--fullwidth" id="section-7">
+          <div class="imprint">
+            <h2 class="imprint__title">Impressum</h2>
+
+            <div class="imprint__grid">
+              <div class="imprint__section">
+                <h3 class="imprint__heading">Angaben gemäß § 5 TMG</h3>
+                <p class="imprint__text">
+                  Helmut Emmert<br>
+                  Versicherungsberater<br>
+                  Musterstraße 123<br>
+                  12345 Musterstadt
+                </p>
+              </div>
+
+              <div class="imprint__section">
+                <h3 class="imprint__heading">Kontakt</h3>
+                <p class="imprint__text">
+                  Telefon: +49 123 456 789<br>
+                  E-Mail: info@emmert-versicherungen.de
+                </p>
+              </div>
+
+              <div class="imprint__section">
+                <h3 class="imprint__heading">Berufsbezeichnung und Aufsichtsbehörde</h3>
+                <p class="imprint__text">
+                  Berufsbezeichnung: Versicherungsberater<br>
+                  Zuständige Aufsichtsbehörde: IHK Musterstadt<br>
+                  Registernummer: D-XXXX-XXXXX-XX
+                </p>
+              </div>
+
+              <div class="imprint__section">
+                <h3 class="imprint__heading">Berufshaftpflichtversicherung</h3>
+                <p class="imprint__text">
+                  Muster Versicherung AG<br>
+                  Versicherungsstraße 1<br>
+                  12345 Versicherungsstadt<br>
+                  Geltungsraum: Deutschland
+                </p>
+              </div>
+
+              <div class="imprint__section imprint__section--wide">
+                <h3 class="imprint__heading">Streitschlichtung</h3>
+                <p class="imprint__text">
+                  Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+                  <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a><br>
+                  Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+                </p>
+              </div>
+            </div>
+
+            <p class="imprint__copyright">© 2024 Helmut Emmert Versicherungen. Alle Rechte vorbehalten.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script>
+      import gsap from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+      import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+      gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+      const content = document.querySelector('.content');
+      const sidebar = document.querySelector('.sidebar');
+      const mosaic = document.getElementById('sidebar-mosaic');
+      const panels = document.querySelectorAll('.sidebar-panel');
+      const nav = document.getElementById('nav');
+      const navLinks = document.querySelectorAll('.nav__link');
+      const sections = document.querySelectorAll('.section[id^="section-"]');
+
+      // Mosaic configuration
+      const COLS = 8;
+      const ROWS = 10;
+
+      // Section background colors
+      const sectionColors = {
+        '1': '#1a1a2e',
+        '2': '#2e1a1a',
+        '3': '#1a2e1a',
+        '4': '#2e2e1a',
+        '5': '#1a2e2e',
+        '6': '#2e1a2e',
+        '7': '#1a1a1a',
+      };
+
+      let currentColor = sectionColors['1'];
+      let currentSectionNumber = '1';
+      let isAnimating = false;
+      let targetSectionNumber = '1'; // Track what section user is actually viewing
+      let isJumping = false; // Flag for programmatic scroll (skip intermediate sections)
+
+      // Generate mosaic tiles
+      const tiles = [];
+      for (let row = 0; row < ROWS; row++) {
+        for (let col = 0; col < COLS; col++) {
+          const tile = document.createElement('div');
+          tile.className = 'mosaic-tile';
+          tile.dataset.row = row;
+          tile.dataset.col = col;
+
+          mosaic.appendChild(tile);
+          tiles.push(tile);
+        }
+      }
+
+      // Sort tiles by row for stagger effect
+      const getTilesByDirection = (scrollingDown) => {
+        return [...tiles].sort((a, b) => {
+          const rowA = parseInt(a.dataset.row);
+          const rowB = parseInt(b.dataset.row);
+          // Scrolling down: bottom to top (high rows first)
+          // Scrolling up: top to bottom (low rows first)
+          return scrollingDown ? rowB - rowA : rowA - rowB;
+        });
+      };
+
+      const triggerTransition = (newSectionNumber, scrollingDown) => {
+        const newColor = sectionColors[newSectionNumber] || sectionColors['1'];
+
+        // If same section, do nothing
+        if (newSectionNumber === currentSectionNumber) return;
+
+        // If animating, just update target - we'll sync when animation ends
+        if (isAnimating) {
+          return;
+        }
+
+        isAnimating = true;
+
+        const sortedTiles = getTilesByDirection(scrollingDown);
+        const tl = gsap.timeline();
+
+        // Phase 1: Cover - tiles fade in with current color
+        tl.to(sortedTiles, {
+          opacity: 1,
+          backgroundColor: currentColor,
+          filter: () => `brightness(${1 + (Math.random() * 0.3 - 0.1)})`,
+          duration: 0.12,
+          ease: 'power3.out',
+          stagger: {
+            each: 0.006,
+            from: 'start',
+          },
+        });
+
+        // At peak: switch the background and panel
+        tl.call(() => {
+          sidebar.style.backgroundColor = newColor;
+          updatePanel(newSectionNumber);
+        });
+
+        // Phase 2: Reveal - tiles fade out with new color
+        tl.to(sortedTiles, {
+          opacity: 0,
+          backgroundColor: newColor,
+          filter: () => `brightness(${1 + (Math.random() * 0.3 - 0.1)})`,
+          duration: 0.12,
+          ease: 'power3.in',
+          stagger: {
+            each: 0.006,
+            from: 'start',
+          },
+        });
+
+        // Cleanup
+        tl.call(() => {
+          currentColor = newColor;
+          currentSectionNumber = newSectionNumber;
+          isAnimating = false;
+
+          // If user scrolled to a different section during animation, sync to it
+          if (targetSectionNumber !== currentSectionNumber) {
+            const nextScrollingDown = parseInt(targetSectionNumber) > parseInt(currentSectionNumber);
+            triggerTransition(targetSectionNumber, nextScrollingDown);
+          }
+        });
+      };
+
+      const updatePanel = (sectionNumber) => {
+        panels.forEach((panel) => {
+          const panelSection = panel.getAttribute('data-section');
+          panel.classList.toggle('sidebar-panel--active', panelSection === sectionNumber);
+        });
+      };
+
+      const updateNavLink = (sectionNumber) => {
+        navLinks.forEach((link) => {
+          const linkSection = link.getAttribute('data-section');
+          link.classList.toggle('nav__link--active', linkSection === sectionNumber);
+        });
+      };
+
+      // Sections that should show the sidebar (1 and 5)
+      const sidebarSections = ['1', '5'];
+
+      const updateSidebar = (sectionNumber, direction) => {
+        // Skip if we're doing a programmatic jump
+        if (isJumping) return;
+
+        // Always update target and nav immediately
+        targetSectionNumber = sectionNumber;
+        updateNavLink(sectionNumber);
+
+        // Show/hide sidebar based on section
+        const shouldShowSidebar = sidebarSections.includes(sectionNumber);
+        sidebar.classList.toggle('is-hidden', !shouldShowSidebar);
+
+        // Only trigger mosaic transition for sidebar sections
+        if (shouldShowSidebar) {
+          const scrollingDown = direction === 1;
+          triggerTransition(sectionNumber, scrollingDown);
+        }
+      };
+
+      // Setup GSAP ScrollTrigger for each section
+      sections.forEach((section) => {
+        const sectionNumber = section.id.replace('section-', '');
+
+        ScrollTrigger.create({
+          trigger: section,
+          scroller: content,
+          start: 'top center',
+          end: 'bottom center',
+          onEnter: () => updateSidebar(sectionNumber, 1),
+          onEnterBack: () => updateSidebar(sectionNumber, -1),
+        });
+      });
+
+      // Horizontal section opacity based on active state
+      const horizontalSection = document.querySelector('.section-horizontal');
+      if (horizontalSection) {
+        ScrollTrigger.create({
+          trigger: horizontalSection,
+          scroller: content,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          onEnter: () => horizontalSection.classList.add('is-active'),
+          onLeave: () => horizontalSection.classList.remove('is-active'),
+          onEnterBack: () => horizontalSection.classList.add('is-active'),
+          onLeaveBack: () => horizontalSection.classList.remove('is-active'),
+        });
+      }
+
+      // Nav visibility on scroll
+      content.addEventListener('scroll', () => {
+        const scrollTop = content.scrollTop;
+        if (scrollTop > 100) {
+          nav.classList.add('nav--visible', 'nav--scrolled');
+        } else {
+          nav.classList.remove('nav--visible', 'nav--scrolled');
+        }
+      });
+
+      // Smooth scroll with blur effect
+      const scrollToSection = (target) => {
+        if (!target) return;
+
+        const currentScroll = content.scrollTop;
+        const targetScroll = target.offsetTop;
+        const isScrollingUp = targetScroll < currentScroll;
+        const sectionNumber = target.id.replace('section-', '');
+        const scrollingDown = !isScrollingUp;
+
+        // Set jumping flag to skip intermediate sidebar updates
+        isJumping = true;
+
+        // Directly update sidebar to target section
+        targetSectionNumber = sectionNumber;
+        updateNavLink(sectionNumber);
+
+        // Show/hide sidebar based on target section
+        const shouldShowSidebar = sidebarSections.includes(sectionNumber);
+        sidebar.classList.toggle('is-hidden', !shouldShowSidebar);
+
+        // Only trigger mosaic transition for sidebar sections
+        if (shouldShowSidebar) {
+          triggerTransition(sectionNumber, scrollingDown);
+        }
+
+        // Scrolling up: instant jump (skip interactive sections)
+        // Scrolling down: smooth animated scroll
+        if (isScrollingUp) {
+          content.classList.add('is-scrolling');
+          content.scrollTo({ top: targetScroll, behavior: 'instant' });
+          setTimeout(() => {
+            content.classList.remove('is-scrolling');
+            isJumping = false;
+          }, 150);
+        } else {
+          content.classList.add('is-scrolling');
+          gsap.to(content, {
+            duration: 0.6,
+            scrollTo: { y: target, autoKill: false },
+            ease: 'power2.out',
+            onComplete: () => {
+              content.classList.remove('is-scrolling');
+              isJumping = false;
+            },
+          });
+        }
+      };
+
+      // Handle nav link clicks for smooth scroll
+      navLinks.forEach((link) => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('href');
+          const target = document.querySelector(targetId);
+          scrollToSection(target);
+        });
+      });
+
+      // Also handle CTA button click
+      document.querySelector('.nav__cta')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector('#section-4');
+        scrollToSection(target);
+      });
+    </script>
+  </body>
+</html>
