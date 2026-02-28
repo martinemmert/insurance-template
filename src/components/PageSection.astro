@@ -1,7 +1,7 @@
 ---
 import Heading from './elements/Heading.astro';
 import Label from './elements/Label.astro';
-const {variant = 'white', label = null, title = null} = Astro.props;
+const {variant = 'white', label = null, title = null, contentWidth = null} = Astro.props;
 const hasSubtitle = Astro.slots.has('header-subtitle');
 const hasHeader = label || title || hasSubtitle;
 ---
@@ -17,7 +17,12 @@ const hasHeader = label || title || hasSubtitle;
                 {title && <Heading as="h2" size="section-title" serif class="mb-4">{title}</Heading>}
                 {hasSubtitle && <p class="section__subtitle"><slot name="header-subtitle" /></p>}
             </div>}
-        <slot/>
+        <div class:list={[{
+            'section__content--narrow': contentWidth === 'narrow',
+            'section__content--text': contentWidth === 'text',
+        }]}>
+            <slot/>
+        </div>
     </div>
 </section>
 
@@ -41,6 +46,16 @@ const hasHeader = label || title || hasSubtitle;
 
     .section__container {
         max-width: var(--container-max);
+        margin: 0 auto;
+    }
+
+    .section__content--narrow {
+        max-width: var(--container-narrow);
+        margin: 0 auto;
+    }
+
+    .section__content--text {
+        max-width: var(--container-text);
         margin: 0 auto;
     }
 

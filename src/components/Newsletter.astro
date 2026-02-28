@@ -6,7 +6,7 @@ import FormField from './elements/FormField.astro';
 ---
 
 <!-- Newsletter -->
-<PageSection variant="gray">
+<PageSection variant="gray" contentWidth="text">
     <div class="newsletter">
       <Heading as="h2" size="2xl" serif class="mb-4">Bleiben Sie informiert</Heading>
       <p class="newsletter__text">Erhalten Sie regelmäßig wertvolle Tipps zu Versicherungen, Vorsorge und Finanzen – direkt in Ihr Postfach. Kein Spam, versprochen.</p>
@@ -20,8 +20,6 @@ import FormField from './elements/FormField.astro';
 <style>
   .newsletter {
     text-align: center;
-    max-width: var(--container-text);
-    margin: 0 auto;
   }
   .newsletter__text {
     font-size: var(--text-md);

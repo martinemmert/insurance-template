@@ -1,0 +1,40 @@
+---
+import Heading from './Heading.astro';
+import Text from './Text.astro';
+
+const { number, title, description, class: className, ...rest } = Astro.props;
+---
+
+<div class:list={['numbered-item', className]} {...rest}>
+  <div class="numbered-item__number">{number}</div>
+  <div>
+    <Heading as="h3" size="xl" class="mb-2">{title}</Heading>
+    <Text muted>{description}</Text>
+  </div>
+</div>
+
+<style>
+  .numbered-item {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .numbered-item:last-child {
+    border-bottom: none;
+  }
+  .numbered-item__number {
+    flex-shrink: 0;
+    font-family: var(--font-serif);
+    font-size: var(--text-5xl);
+    font-weight: var(--font-bold);
+    color: var(--color-primary);
+    opacity: 0.3;
+    line-height: 1;
+  }
+
+  @media (max-width: 1024px) {
+    .numbered-item { flex-direction: column; gap: 1rem; }
+    .numbered-item__number { font-size: var(--text-4xl); }
+  }
+</style>

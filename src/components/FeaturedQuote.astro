@@ -3,7 +3,7 @@ import PageSection from "./PageSection.astro";
 ---
 
 <!-- Featured Quote -->
-<PageSection variant="gray">
+<PageSection variant="gray" contentWidth="narrow">
     <div class="quote-block">
       <div class="quote-block__icon">"</div>
       <p class="quote-block__text">Herr Emmert hat mir nicht einfach eine Versicherung verkauft – er hat sich die Zeit genommen, meine gesamte Lebenssituation zu verstehen. Das Ergebnis: Ein Schutz, der wirklich zu mir passt, ohne überteuerte Extras.</p>
@@ -20,8 +20,6 @@ import PageSection from "./PageSection.astro";
 <style>
   .quote-block {
     text-align: center;
-    max-width: 900px;
-    margin: 0 auto;
   }
   .quote-block__icon {
     font-size: var(--text-5xl);

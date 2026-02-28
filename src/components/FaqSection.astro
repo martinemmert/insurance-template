@@ -2,9 +2,8 @@
 import PageSection from "./PageSection.astro";
 ---
 
-<PageSection variant="white" label="Häufige Fragen" title="Das werde ich oft gefragt">
+<PageSection variant="white" label="Häufige Fragen" title="Das werde ich oft gefragt" contentWidth="narrow">
     <Fragment slot="header-subtitle">Hier finden Sie Antworten auf die wichtigsten Fragen zur Zusammenarbeit.</Fragment>
-    <div class="faq-list">
       <div class="faq-item">
         <button class="faq-question">
           <span>Wie wird Ihre Beratung bezahlt?</span>
@@ -50,14 +49,9 @@ import PageSection from "./PageSection.astro";
           <p class="faq-answer__content">Im Schadensfall bin ich Ihr erster Ansprechpartner. Ich unterstütze Sie bei der Schadensmeldung, prüfe die Regulierung und setze mich bei Bedarf für Ihre Ansprüche ein. Mein Ziel ist es, dass Sie schnell und unkompliziert zu Ihrem Recht kommen.</p>
         </div>
       </div>
-    </div>
 </PageSection>
 
 <style>
-  .faq-list {
-    max-width: var(--container-narrow);
-    margin: 0 auto;
-  }
   .faq-item {
     border-bottom: 1px solid var(--color-border);
   }

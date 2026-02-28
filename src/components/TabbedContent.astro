@@ -2,7 +2,7 @@
 import PageSection from "./PageSection.astro";
 ---
 
-<PageSection variant="gray" label="Lebensphasen" title="Für jede Situation die richtige Absicherung">
+<PageSection variant="gray" label="Lebensphasen" title="Für jede Situation die richtige Absicherung" contentWidth="narrow">
     <div class="tabs">
       <div class="tabs__nav">
         <button class="tabs__btn active" data-tab="berufsstart">Berufsstart</button>
@@ -42,10 +42,7 @@ import PageSection from "./PageSection.astro";
 </PageSection>
 
 <style>
-  .tabs {
-    max-width: 900px;
-    margin: 0 auto;
-  }
+  .tabs {}
   .tabs__nav {
     display: flex;
     gap: 0.5rem;

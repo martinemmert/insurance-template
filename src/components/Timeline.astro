@@ -4,7 +4,7 @@ import Heading from './elements/Heading.astro';
 ---
 
 <!-- Timeline -->
-<PageSection variant="white" label="Mein Weg" title="25 Jahre Erfahrung für Sie">
+<PageSection variant="white" label="Mein Weg" title="25 Jahre Erfahrung für Sie" contentWidth="narrow">
     <Fragment slot="header-subtitle">Ein Blick auf meinen beruflichen Werdegang.</Fragment>
     <div class="timeline">
       <div class="timeline-item">
@@ -38,8 +38,6 @@ import Heading from './elements/Heading.astro';
 <style>
   .timeline {
     position: relative;
-    max-width: var(--container-narrow);
-    margin: 0 auto;
   }
   .timeline::before {
     content: '';

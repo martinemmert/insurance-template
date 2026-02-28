@@ -1,0 +1,20 @@
+---
+import Footer from '../components/Footer.astro';
+import '../styles/base.css';
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>{Astro.props.title ?? 'Helmut Emmert - Ihr Versicherungsmakler in Aschaffenburg'}</title>
+    <meta name="description" content={Astro.props.description ?? 'Unabhängige Versicherungsberatung für Lebensversicherung, Berufsunfähigkeit, Krankenversicherung und Altersvorsorge. Persönlich. Transparent. Fair.'}>
+  </head>
+  <body>
+    <slot />
+    <Footer />
+  </body>
+</html>
