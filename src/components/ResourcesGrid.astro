@@ -1,11 +1,9 @@
-<!-- Resources / Downloads -->
-<section class="section section--gray">
-  <div class="section__container">
-    <div class="section__header">
-      <div class="section__label">Kostenlose Ressourcen</div>
-      <h2 class="section__title">Nützliche Ratgeber zum Download</h2>
-      <p class="section__subtitle">Informieren Sie sich vorab – alle Guides sind kostenlos und unverbindlich.</p>
-    </div>
+---
+import PageSection from "./PageSection.astro";
+---
+
+<PageSection variant="gray" label="Kostenlose Ressourcen" title="Nützliche Ratgeber zum Download">
+    <Fragment slot="header-subtitle">Informieren Sie sich vorab – alle Guides sind kostenlos und unverbindlich.</Fragment>
     <div class="resources-grid">
       <a href="#" class="resource-card">
         <div class="resource-card__icon">
@@ -38,8 +36,7 @@
         </div>
       </a>
     </div>
-  </div>
-</section>
+</PageSection>
 
 <style>
   .resources-grid {

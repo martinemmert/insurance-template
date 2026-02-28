@@ -1,10 +1,9 @@
+---
+import PageSection from "./PageSection.astro";
+---
+
 <!-- Offset Cards -->
-<section class="section section--white">
-  <div class="section__container">
-    <div class="section__header">
-      <div class="section__label">Fakten</div>
-      <h2 class="section__title">Zahlen, die für sich sprechen</h2>
-    </div>
+<PageSection variant="white" label="Fakten" title="Zahlen, die für sich sprechen">
     <div class="offset-cards">
       <div class="offset-card">
         <div class="offset-card__number">97%</div>
@@ -22,8 +21,7 @@
         <p class="offset-card__text">sparen meine Kunden durchschnittlich bei gleicher oder besserer Leistung.</p>
       </div>
     </div>
-  </div>
-</section>
+</PageSection>
 
 <style>
   .offset-cards {

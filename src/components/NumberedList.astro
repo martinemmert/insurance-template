@@ -1,12 +1,8 @@
 ---
+import PageSection from "./PageSection.astro";
 ---
 
-<section class="section section--white">
-  <div class="section__container">
-    <div class="section__header">
-      <div class="section__label">Grundprinzipien</div>
-      <h2 class="section__title">Meine Beratungsphilosophie</h2>
-    </div>
+<PageSection variant="white" label="Grundprinzipien" title="Meine Beratungsphilosophie">
     <div class="numbered-list">
       <div class="numbered-item">
         <div class="numbered-item__number">01</div>
@@ -37,8 +33,7 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
+</PageSection>
 
 <style>
   .numbered-list {

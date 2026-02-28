@@ -1,11 +1,9 @@
-<!-- Benefits -->
-<section class="section section--white">
-  <div class="section__container">
-    <div class="section__header">
-      <div class="section__label">Ihre Vorteile</div>
-      <h2 class="section__title">Warum Sie bei mir richtig sind</h2>
-      <p class="section__subtitle">Unabhängige Beratung bedeutet: Ihre Interessen stehen immer an erster Stelle.</p>
-    </div>
+---
+import PageSection from "./PageSection.astro";
+---
+
+<PageSection variant="white" label="Ihre Vorteile" title="Warum Sie bei mir richtig sind">
+    <Fragment slot="header-subtitle">Unabhängige Beratung bedeutet: Ihre Interessen stehen immer an erster Stelle.</Fragment>
     <div class="benefits-grid">
       <div class="benefit-item">
         <div class="benefit-item__icon">
@@ -62,8 +60,7 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
+</PageSection>
 
 <style>
   .benefits-grid {

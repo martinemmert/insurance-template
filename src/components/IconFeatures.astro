@@ -1,10 +1,8 @@
-<!-- Icon Features -->
-<section class="section section--gray">
-  <div class="section__container">
-    <div class="section__header">
-      <div class="section__label">Mein Versprechen</div>
-      <h2 class="section__title">Was mich von anderen unterscheidet</h2>
-    </div>
+---
+import PageSection from "./PageSection.astro";
+---
+
+<PageSection variant="gray" label="Mein Versprechen" title="Was mich von anderen unterscheidet">
     <div class="icon-grid">
       <div class="icon-feature">
         <div class="icon-feature__icon">
@@ -35,8 +33,7 @@
         <p class="icon-feature__text">Kein Callcenter – Sie sprechen immer direkt mit mir.</p>
       </div>
     </div>
-  </div>
-</section>
+</PageSection>
 
 <style>
   .icon-grid {

@@ -1,10 +1,8 @@
-<!-- Tabbed Content -->
-<section class="section section--gray">
-  <div class="section__container">
-    <div class="section__header">
-      <div class="section__label">Lebensphasen</div>
-      <h2 class="section__title">Für jede Situation die richtige Absicherung</h2>
-    </div>
+---
+import PageSection from "./PageSection.astro";
+---
+
+<PageSection variant="gray" label="Lebensphasen" title="Für jede Situation die richtige Absicherung">
     <div class="tabs">
       <div class="tabs__nav">
         <button class="tabs__btn active" data-tab="berufsstart">Berufsstart</button>
@@ -41,8 +39,7 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
+</PageSection>
 
 <style>
   .tabs {

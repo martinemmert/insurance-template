@@ -1,11 +1,10 @@
+---
+import PageSection from "./PageSection.astro";
+---
+
 <!-- Service Packages -->
-<section class="section section--gray">
-  <div class="section__container">
-    <div class="section__header">
-      <div class="section__label">Beratungsangebote</div>
-      <h2 class="section__title">Wählen Sie Ihr Paket</h2>
-      <p class="section__subtitle">Für jeden Bedarf das passende Angebot – von der Einzelfrage bis zur Komplettbetreuung.</p>
-    </div>
+<PageSection variant="gray" label="Beratungsangebote" title="Wählen Sie Ihr Paket">
+    <Fragment slot="header-subtitle">Für jeden Bedarf das passende Angebot – von der Einzelfrage bis zur Komplettbetreuung.</Fragment>
     <div class="pricing-grid">
       <div class="pricing-card">
         <div class="pricing-card__label">Einstieg</div>
@@ -76,8 +75,7 @@
         <a href="#kontakt" class="pricing-card__btn pricing-card__btn--outline">Anfragen</a>
       </div>
     </div>
-  </div>
-</section>
+</PageSection>
 
 <style>
   .pricing-grid {

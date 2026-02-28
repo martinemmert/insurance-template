@@ -1,12 +1,8 @@
 ---
+import PageSection from "./PageSection.astro";
 ---
 
-<section class="section section--gray">
-  <div class="section__container">
-    <div class="section__header">
-      <div class="section__label">Auszeichnungen</div>
-      <h2 class="section__title">Qualität, die anerkannt wird</h2>
-    </div>
+<PageSection variant="gray" label="Auszeichnungen" title="Qualität, die anerkannt wird">
     <div class="awards-grid">
       <div class="award-card">
         <div class="award-card__icon">
@@ -37,8 +33,7 @@
         <p class="award-card__year">Fachwirt (IHK)</p>
       </div>
     </div>
-  </div>
-</section>
+</PageSection>
 
 <style>
   .awards-grid {

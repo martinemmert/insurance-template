@@ -1,11 +1,10 @@
+---
+import PageSection from "./PageSection.astro";
+---
+
 <!-- Comparison Table -->
-<section class="section section--gray">
-  <div class="section__container">
-    <div class="section__header">
-      <div class="section__label">Im Vergleich</div>
-      <h2 class="section__title">Makler vs. Vertreter vs. Online-Portal</h2>
-      <p class="section__subtitle">Warum ein unabhängiger Makler oft die bessere Wahl ist.</p>
-    </div>
+<PageSection variant="gray" label="Im Vergleich" title="Makler vs. Vertreter vs. Online-Portal">
+    <Fragment slot="header-subtitle">Warum ein unabhängiger Makler oft die bessere Wahl ist.</Fragment>
     <table class="comparison-table">
       <thead>
         <tr>
@@ -54,8 +53,7 @@
         </tr>
       </tbody>
     </table>
-  </div>
-</section>
+</PageSection>
 
 <style>
   .comparison-table {

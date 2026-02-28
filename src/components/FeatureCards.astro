@@ -1,10 +1,9 @@
+---
+import PageSection from "./PageSection.astro";
+---
+
 <!-- Feature Cards -->
-<section class="section section--white">
-  <div class="section__container">
-    <div class="section__header">
-      <div class="section__label">Schwerpunkte</div>
-      <h2 class="section__title">Meine Kernkompetenzen</h2>
-    </div>
+<PageSection variant="white" label="Schwerpunkte" title="Meine Kernkompetenzen">
     <div class="feature-cards">
       <div class="feature-card">
         <div class="feature-card__icon">
@@ -28,8 +27,7 @@
         <p class="feature-card__text">Professionelle Unterstützung bei der Schadensmeldung und Durchsetzung Ihrer Ansprüche.</p>
       </div>
     </div>
-  </div>
-</section>
+</PageSection>
 
 <style>
   .feature-cards {

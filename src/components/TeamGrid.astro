@@ -1,11 +1,10 @@
+---
+import PageSection from "./PageSection.astro";
+---
+
 <!-- Team Section -->
-<section class="section section--gray">
-  <div class="section__container">
-    <div class="section__header">
-      <div class="section__label">Netzwerk</div>
-      <h2 class="section__title">Meine Kooperationspartner</h2>
-      <p class="section__subtitle">Für spezialisierte Fragen arbeite ich mit erfahrenen Experten zusammen.</p>
-    </div>
+<PageSection variant="gray" label="Netzwerk" title="Meine Kooperationspartner">
+    <Fragment slot="header-subtitle">Für spezialisierte Fragen arbeite ich mit erfahrenen Experten zusammen.</Fragment>
     <div class="team-grid">
       <div class="team-card">
         <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop" alt="Dr. Thomas Richter" class="team-card__image">
@@ -44,8 +43,7 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
+</PageSection>
 
 <style>
   .team-grid {

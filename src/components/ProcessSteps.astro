@@ -1,11 +1,10 @@
+---
+import PageSection from "./PageSection.astro";
+// custom attributes: id="ablauf"
+---
 <!-- Process -->
-<section class="section section--gray" id="ablauf">
-  <div class="section__container">
-    <div class="section__header">
-      <div class="section__label">So funktioniert's</div>
-      <h2 class="section__title">Ihr Weg zur besseren Absicherung</h2>
-      <p class="section__subtitle">In fünf einfachen Schritten zu Ihrem optimalen Versicherungsschutz.</p>
-    </div>
+<PageSection variant="gray" label="So funktioniert's" title="Ihr Weg zur besseren Absicherung">
+    <Fragment slot="header-subtitle">In fünf einfachen Schritten zu Ihrem optimalen Versicherungsschutz.</Fragment>
     <div class="steps">
       <div class="step">
         <div class="step__number">1</div>
@@ -33,8 +32,7 @@
         <p class="step__text">Ich begleite Sie langfristig und stehe im Schadensfall bereit.</p>
       </div>
     </div>
-  </div>
-</section>
+</PageSection>
 
 <style>
   .steps {

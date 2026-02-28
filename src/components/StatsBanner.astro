@@ -1,8 +1,8 @@
 ---
+import PageSection from "./PageSection.astro";
+// custom styles: padding: 4rem;
 ---
-
-<section class="section section--dark" style="padding: 4rem;">
-  <div class="section__container">
+<PageSection variant="dark">
     <div class="stats-banner">
       <div class="stats-banner__item">
         <div class="stats-banner__number">25+</div>
@@ -21,8 +21,7 @@
         <div class="stats-banner__label">Weiterempfehlungsrate</div>
       </div>
     </div>
-  </div>
-</section>
+</PageSection>
 
 <style>
   .stats-banner {

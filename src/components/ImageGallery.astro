@@ -1,10 +1,9 @@
+---
+import PageSection from "./PageSection.astro";
+---
+
 <!-- Image Gallery -->
-<section class="section section--gray">
-  <div class="section__container">
-    <div class="section__header">
-      <div class="section__label">Einblicke</div>
-      <h2 class="section__title">Mein Büro & meine Arbeit</h2>
-    </div>
+<PageSection variant="gray" label="Einblicke" title="Mein Büro & meine Arbeit">
     <div class="gallery-grid">
       <div class="gallery-item">
         <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop" alt="Büro">
@@ -31,8 +30,7 @@
         <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=400&h=300&fit=crop" alt="Kundengespräch">
       </div>
     </div>
-  </div>
-</section>
+</PageSection>
 
 <style>
   .gallery-grid {

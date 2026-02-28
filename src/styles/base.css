@@ -11,21 +11,7 @@ body {
   line-height: var(--leading-normal);
 }
 
-/* Section base */
-.section {
-  padding: 6rem 4rem;
-}
-.section--gray { background: var(--color-bg-warm); }
-.section--white { background: var(--color-white); }
-.section--dark { background: var(--color-bg-dark); color: var(--color-white); }
-.section__container {
-  max-width: var(--container-max);
-  margin: 0 auto;
-}
-.section__header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
+/* Section label (used inline by About, SplitContent, ChecklistSection) */
 .section__label {
   font-size: var(--text-sm);
   font-weight: var(--font-semibold);
@@ -34,20 +20,6 @@ body {
   color: var(--color-primary);
   margin-bottom: 1rem;
 }
-.section--dark .section__label { color: var(--color-primary-light); }
-.section__title {
-  font-family: var(--font-serif);
-  font-size: var(--text-section-title);
-  font-weight: var(--font-bold);
-  margin-bottom: 1rem;
-}
-.section__subtitle {
-  font-size: var(--text-lg);
-  color: var(--color-text-muted);
-  max-width: var(--container-text);
-  margin: 0 auto;
-}
-.section--dark .section__subtitle { color: var(--color-text-faint); }
 
 /* Buttons */
 .btn {
@@ -80,9 +52,4 @@ body {
   background-color: var(--color-primary);
   color: var(--color-white);
   transform: translateY(-2px);
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .section { padding: 4rem 2rem; }
 }

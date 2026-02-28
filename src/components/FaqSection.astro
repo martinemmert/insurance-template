@@ -1,11 +1,9 @@
-<!-- FAQ -->
-<section class="section section--white">
-  <div class="section__container">
-    <div class="section__header">
-      <div class="section__label">Häufige Fragen</div>
-      <h2 class="section__title">Das werde ich oft gefragt</h2>
-      <p class="section__subtitle">Hier finden Sie Antworten auf die wichtigsten Fragen zur Zusammenarbeit.</p>
-    </div>
+---
+import PageSection from "./PageSection.astro";
+---
+
+<PageSection variant="white" label="Häufige Fragen" title="Das werde ich oft gefragt">
+    <Fragment slot="header-subtitle">Hier finden Sie Antworten auf die wichtigsten Fragen zur Zusammenarbeit.</Fragment>
     <div class="faq-list">
       <div class="faq-item">
         <button class="faq-question">
@@ -53,8 +51,7 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
+</PageSection>
 
 <style>
   .faq-list {

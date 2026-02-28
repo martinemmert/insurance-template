@@ -1,15 +1,12 @@
 ---
+import PageSection from "./PageSection.astro";
+
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 ---
 
 <!-- Blog/Articles -->
-<section class="section section--white">
-  <div class="section__container">
-    <div class="section__header">
-      <div class="section__label">Wissen</div>
-      <h2 class="section__title">Aktuelle Ratgeber & Tipps</h2>
-      <p class="section__subtitle">Bleiben Sie informiert mit meinen neuesten Artikeln zu Versicherungen und Vorsorge.</p>
-    </div>
+<PageSection variant="white" label="Wissen" title="Aktuelle Ratgeber & Tipps">
+    <Fragment slot="header-subtitle">Bleiben Sie informiert mit meinen neuesten Artikeln zu Versicherungen und Vorsorge.</Fragment>
     <div class="articles-grid">
       <article class="article-card">
         <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop" alt="Steuererklärung" class="article-card__image">
@@ -39,8 +36,7 @@ const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
         </div>
       </article>
     </div>
-  </div>
-</section>
+</PageSection>
 
 <style>
   .articles-grid {

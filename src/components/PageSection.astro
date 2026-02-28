@@ -1,0 +1,94 @@
+---
+const {variant = 'white', label = null, title = null} = Astro.props;
+const hasSubtitle = Astro.slots.has('header-subtitle');
+const hasHeader = label || title || hasSubtitle;
+---
+<section class:list={['section', {
+    'section--white': variant === 'white',
+    'section--gray': variant === 'gray',
+    'section--dark': variant === 'dark',
+}]}>
+    <div class="section__container">
+        {hasHeader &&
+            <div class="section__header">
+                {label && <div class="section__label">{label}</div>}
+                {title && <h2 class="section__title">{title}</h2>}
+                {hasSubtitle && <p class="section__subtitle"><slot name="header-subtitle" /></p>}
+            </div>}
+        <slot/>
+    </div>
+</section>
+
+<style>
+    .section {
+        padding: 6rem 4rem;
+    }
+
+    .section--gray {
+        background: var(--color-bg-warm);
+    }
+
+    .section--white {
+        background: var(--color-white);
+    }
+
+    .section--dark {
+        background: var(--color-bg-dark);
+        color: var(--color-white);
+    }
+
+    .section__container {
+        max-width: var(--container-max);
+        margin: 0 auto;
+    }
+
+    .section__header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .section__label {
+        font-size: var(--text-sm);
+        font-weight: var(--font-semibold);
+        text-transform: uppercase;
+        letter-spacing: var(--tracking-wide);
+        color: var(--color-primary);
+        margin-bottom: 1rem;
+    }
+
+    .section__title {
+        font-family: var(--font-serif);
+        font-size: var(--text-section-title);
+        font-weight: var(--font-bold);
+        margin-bottom: 1rem;
+    }
+
+    .section__subtitle {
+        font-size: var(--text-lg);
+        color: var(--color-text-muted);
+        max-width: var(--container-text);
+        margin: 0 auto;
+    }
+
+    .section--dark .section__label {
+        color: var(--color-primary-light);
+    }
+
+    .section--dark .section__subtitle {
+        color: var(--color-text-faint);
+    }
+
+    .section--dark :global(.section__label) {
+        color: var(--color-primary-light);
+    }
+
+    .section--dark :global(.section__subtitle) {
+        color: var(--color-text-faint);
+    }
+
+    @media (max-width: 1024px) {
+        .section {
+            padding: 4rem 2rem;
+        }
+    }
+</style>

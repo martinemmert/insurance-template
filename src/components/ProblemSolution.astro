@@ -1,10 +1,9 @@
+---
+import PageSection from "./PageSection.astro";
+---
+
 <!-- Problem / Solution -->
-<section class="section section--white">
-  <div class="section__container">
-    <div class="section__header">
-      <div class="section__label">Die Herausforderung</div>
-      <h2 class="section__title">Versicherungen sind kompliziert. Das muss nicht sein.</h2>
-    </div>
+<PageSection variant="white" label="Die Herausforderung" title="Versicherungen sind kompliziert. Das muss nicht sein.">
     <div class="problem-solution">
       <div class="problem-card">
         <div class="problem-card__label">
@@ -57,8 +56,7 @@
         </ul>
       </div>
     </div>
-  </div>
-</section>
+</PageSection>
 
 <style>
   .problem-solution {

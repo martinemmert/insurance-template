@@ -1,10 +1,9 @@
+---
+import PageSection from "./PageSection.astro";
+---
+
 <!-- Two Column Text -->
-<section class="section section--white">
-  <div class="section__container">
-    <div class="section__header">
-      <div class="section__label">Philosophie</div>
-      <h2 class="section__title">Warum ich diesen Beruf liebe</h2>
-    </div>
+<PageSection variant="white" label="Philosophie" title="Warum ich diesen Beruf liebe">
     <div class="two-column-text">
       <div class="two-column-text__col">
         <h3 class="two-column-text__heading">Der Mensch im Mittelpunkt</h3>
@@ -17,8 +16,7 @@
         <p>Mein Wissen halte ich durch regelmäßige Weiterbildungen aktuell. Denn der Versicherungsmarkt verändert sich ständig – und Sie verdienen einen Berater, der auf dem neuesten Stand ist.</p>
       </div>
     </div>
-  </div>
-</section>
+</PageSection>
 
 <style>
   .two-column-text {
