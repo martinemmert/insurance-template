@@ -7,7 +7,7 @@ interface Props {
   [key: string]: any;
 }
 
-const { columns = 3, gap = '2rem', mobileColumns = 1, align, ...rest } = Astro.props;
+const { columns = 3, gap = '2rem', mobileColumns = 1, align, class: className, ...rest } = Astro.props;
 ---
 
 <div
@@ -16,6 +16,7 @@ const { columns = 3, gap = '2rem', mobileColumns = 1, align, ...rest } = Astro.p
     `grid--${columns}`,
     `grid--mobile-${mobileColumns}`,
     align && `grid--align-${align}`,
+    className,
   ]}
   style={gap !== '2rem' ? `--grid-gap: ${gap}` : undefined}
   {...rest}

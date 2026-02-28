@@ -1,0 +1,15 @@
+---
+import MediaCard from './MediaCard.astro';
+import Heading from './Heading.astro';
+import Text from './Text.astro';
+import Link from './Link.astro';
+
+const { title, description, image, imageAlt, href, class: className, ...rest } = Astro.props;
+---
+
+<MediaCard as="article" shadow="md" hover="lift" class={className} {...rest}>
+  <img slot="media" src={image} alt={imageAlt}>
+  <Heading slot="heading" as="h3" size="xl" class="mb-3">{title}</Heading>
+  <Text size="sm" muted class="mb-4">{description}</Text>
+  <Link slot="action" variant="action" href={href}>Mehr erfahren →</Link>
+</MediaCard>

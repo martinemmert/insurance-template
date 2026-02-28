@@ -1,0 +1,43 @@
+---
+import Card from './Card.astro';
+
+const {
+  iconSize = '3rem',
+  iconBg = 'var(--color-primary-bg)',
+  iconColor = 'var(--color-primary)',
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<Card class:list={['icon-row-card', className]} {...rest}>
+  <div
+    class="icon-row-card__icon"
+    style={`width: ${iconSize}; height: ${iconSize}; background: ${iconBg}; color: ${iconColor};`}
+  >
+    <slot name="icon" />
+  </div>
+  <div class="icon-row-card__body">
+    <slot name="heading" />
+    <slot />
+    <slot name="meta" />
+  </div>
+</Card>
+
+<style>
+  .icon-row-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+  .icon-row-card__icon {
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-row-card__body {
+    min-width: 0;
+  }
+</style>

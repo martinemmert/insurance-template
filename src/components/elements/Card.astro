@@ -1,0 +1,43 @@
+---
+const { as, href, shadow, hover, class: className, ...rest } = Astro.props;
+const Tag = as ?? (href ? 'a' : 'div');
+---
+<Tag
+  class:list={[
+    'card',
+    shadow && `card--shadow-${shadow}`,
+    hover && `card--hover-${hover}`,
+    { 'card--link': !!href },
+    className,
+  ]}
+  href={href}
+  {...rest}
+>
+  <slot />
+</Tag>
+
+<style>
+  .card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+  }
+
+  /* Shadow variants */
+  .card--shadow-xs { box-shadow: var(--shadow-xs); }
+  .card--shadow-md { box-shadow: var(--shadow-md); }
+
+  /* Hover variants */
+  .card--hover-lift {
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  }
+  .card--hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* Link card resets */
+  .card--link {
+    text-decoration: none;
+    color: inherit;
+  }
+</style>

@@ -1,8 +1,8 @@
 ---
-const { as: Tag = 'p', size = 'md', muted = false, ...rest } = Astro.props;
+const { as: Tag = 'p', size = 'md', muted = false, faint = false, ...rest } = Astro.props;
 ---
 
-<Tag class:list={['text', `text--${size}`, { 'text--muted': muted }]} {...rest}>
+<Tag class:list={['text', `text--${size}`, { 'text--muted': muted, 'text--faint': faint }]} {...rest}>
   <slot />
 </Tag>
 
@@ -14,8 +14,13 @@ const { as: Tag = 'p', size = 'md', muted = false, ...rest } = Astro.props;
   .text--lg { font-size: var(--text-lg); }
   .text--md { font-size: var(--text-md); }
   .text--sm { font-size: var(--text-body); }
+  .text--xs { font-size: var(--text-xs); }
   .text--muted {
     color: var(--color-text-muted);
+    line-height: var(--leading-normal);
+  }
+  .text--faint {
+    color: var(--color-text-faint);
     line-height: var(--leading-normal);
   }
 </style>

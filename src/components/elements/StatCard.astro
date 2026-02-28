@@ -1,0 +1,23 @@
+---
+import Card from './Card.astro';
+import Heading from './Heading.astro';
+import Text from './Text.astro';
+
+const { stat, title, description, class: className, ...rest } = Astro.props;
+---
+
+<Card class:list={['stat-card', className]} {...rest}>
+  <div class="stat-card__number">{stat}</div>
+  <Heading as="h3" size="xl" class="mb-2">{title}</Heading>
+  <Text size="sm" muted>{description}</Text>
+</Card>
+
+<style>
+  .stat-card__number {
+    font-family: var(--font-serif);
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+</style>

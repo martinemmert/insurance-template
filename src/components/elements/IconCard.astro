@@ -1,0 +1,43 @@
+---
+import Card from './Card.astro';
+
+const {
+  iconSize = '4rem',
+  iconShape = 'circle',
+  iconBg = 'var(--color-primary-bg)',
+  iconColor = 'var(--color-primary)',
+  class: className,
+  ...rest
+} = Astro.props;
+
+const shapeClass = iconShape === 'rounded' ? 'icon-card__icon--rounded' : 'icon-card__icon--circle';
+---
+
+<Card class:list={['icon-card', className]} {...rest}>
+  <div
+    class:list={['icon-card__icon', shapeClass]}
+    style={`width: ${iconSize}; height: ${iconSize}; background: ${iconBg}; color: ${iconColor};`}
+  >
+    <slot name="icon" />
+  </div>
+  <slot name="heading" />
+  <slot />
+</Card>
+
+<style>
+  .icon-card {
+    text-align: center;
+  }
+  .icon-card__icon {
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-card__icon--circle {
+    border-radius: var(--radius-full);
+  }
+  .icon-card__icon--rounded {
+    border-radius: 1.25rem;
+  }
+</style>

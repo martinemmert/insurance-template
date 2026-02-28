@@ -1,0 +1,21 @@
+---
+import IconCard from './IconCard.astro';
+import Heading from './Heading.astro';
+import Text from './Text.astro';
+
+const { title, value, href, class: className, ...rest } = Astro.props;
+---
+
+<IconCard
+  href={href}
+  shadow="xs"
+  hover="lift"
+  class:list={['p-8', className]}
+  iconSize="3.5rem"
+  iconShape="circle"
+  {...rest}
+>
+  <slot name="icon" slot="icon" />
+  <Heading slot="heading" as="h3" size="md" class="mb-1">{title}</Heading>
+  <Text size="sm" muted>{value}</Text>
+</IconCard>

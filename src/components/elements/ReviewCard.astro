@@ -1,0 +1,36 @@
+---
+import Card from './Card.astro';
+
+const { stars = 5, author, date, class: className, ...rest } = Astro.props;
+---
+
+<Card class:list={['review-card', className]} {...rest}>
+  <div class="review-card__stars">{'★'.repeat(stars)}</div>
+  <p class="review-card__text"><slot /></p>
+  <div class="review-card__author">{author}</div>
+  <div class="review-card__date">{date}</div>
+</Card>
+
+<style>
+  .review-card {
+    background: var(--color-bg-dark-card);
+  }
+  .review-card__stars {
+    color: var(--color-star);
+    margin-bottom: 1rem;
+  }
+  .review-card__text {
+    font-size: var(--text-base);
+    color: var(--color-text-on-dark);
+    margin-bottom: 1.5rem;
+    line-height: var(--leading-relaxed);
+  }
+  .review-card__author {
+    font-weight: var(--font-semibold);
+    color: var(--color-white);
+  }
+  .review-card__date {
+    font-size: var(--text-sm);
+    color: var(--color-text-subtle);
+  }
+</style>

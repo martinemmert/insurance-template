@@ -3,6 +3,7 @@ import PageSection from "./PageSection.astro";
 import Heading from './elements/Heading.astro';
 import Text from './elements/Text.astro';
 import Button from './elements/Button.astro';
+import Card from './elements/Card.astro';
 import Grid from './Grid.astro';
 ---
 
@@ -10,7 +11,7 @@ import Grid from './Grid.astro';
 <PageSection variant="gray" label="Beratungsangebote" title="Wählen Sie Ihr Paket">
     <Fragment slot="header-subtitle">Für jeden Bedarf das passende Angebot – von der Einzelfrage bis zur Komplettbetreuung.</Fragment>
     <Grid columns={3}>
-      <div class="pricing-card">
+      <Card shadow="md" hover="lift" class="pricing-card p-10 text-center">
         <div class="pricing-card__label">Einstieg</div>
         <Heading as="h3" size="xl" serif class="mb-4">Versicherungs-Check</Heading>
         <Text size="sm" muted class="pricing-card__desc mb-6">Schnelle Analyse Ihrer bestehenden Verträge mit konkreten Empfehlungen.</Text>
@@ -29,8 +30,8 @@ import Grid from './Grid.astro';
           </li>
         </ul>
         <Button href="#kontakt" variant="secondary">Anfragen</Button>
-      </div>
-      <div class="pricing-card pricing-card--featured">
+      </Card>
+      <Card shadow="md" hover="lift" class="pricing-card pricing-card--featured p-10 text-center">
         <div class="pricing-card__label">Empfohlen</div>
         <Heading as="h3" size="xl" serif class="mb-4">Rundum-Beratung</Heading>
         <Text size="sm" muted class="pricing-card__desc mb-6">Komplette Analyse und Neuaufstellung Ihres Versicherungsschutzes.</Text>
@@ -53,8 +54,8 @@ import Grid from './Grid.astro';
           </li>
         </ul>
         <Button href="#kontakt" variant="inverted">Termin vereinbaren</Button>
-      </div>
-      <div class="pricing-card">
+      </Card>
+      <Card shadow="md" hover="lift" class="pricing-card p-10 text-center">
         <div class="pricing-card__label">Premium</div>
         <Heading as="h3" size="xl" serif class="mb-4">VIP-Betreuung</Heading>
         <Text size="sm" muted class="pricing-card__desc mb-6">Exklusive Betreuung für anspruchsvolle Kunden mit komplexen Anforderungen.</Text>
@@ -77,23 +78,11 @@ import Grid from './Grid.astro';
           </li>
         </ul>
         <Button href="#kontakt" variant="secondary">Anfragen</Button>
-      </div>
+      </Card>
     </Grid>
 </PageSection>
 
 <style>
-  .pricing-card {
-    background: var(--color-white);
-    border-radius: var(--radius-lg);
-    padding: 2.5rem;
-    text-align: center;
-    box-shadow: var(--shadow-md);
-    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
-  }
-  .pricing-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-card-hover);
-  }
   .pricing-card--featured {
     background: var(--color-primary);
     color: var(--color-white);

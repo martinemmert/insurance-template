@@ -1,0 +1,19 @@
+---
+import IconCard from './IconCard.astro';
+import Heading from './Heading.astro';
+import Text from './Text.astro';
+
+const { title, subtitle, class: className, ...rest } = Astro.props;
+---
+
+<IconCard
+  shadow="xs"
+  class:list={['p-8', className]}
+  iconBg="linear-gradient(135deg, var(--color-star) 0%, #f59e0b 100%)"
+  iconColor="var(--color-white)"
+  {...rest}
+>
+  <slot name="icon" slot="icon" />
+  <Heading slot="heading" as="h3" size="md" class="mb-1">{title}</Heading>
+  <Text size="sm" muted>{subtitle}</Text>
+</IconCard>
