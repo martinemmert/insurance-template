@@ -1,0 +1,17 @@
+---
+const { spacing = '2rem', color, class: className, ...rest } = Astro.props;
+const style = [
+  `--divider-spacing: ${spacing}`,
+  color && `--divider-color: ${color}`,
+].filter(Boolean).join('; ');
+---
+
+<hr class:list={['divider', className]} style={style} {...rest} />
+
+<style>
+  .divider {
+    border: none;
+    border-top: 1px solid var(--divider-color, var(--color-border));
+    margin: var(--divider-spacing) 0;
+  }
+</style>

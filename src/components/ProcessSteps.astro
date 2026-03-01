@@ -1,71 +1,75 @@
 ---
+import { getCollection, render } from 'astro:content';
 import PageSection from "./PageSection.astro";
 import Heading from './elements/Heading.astro';
 import Text from './elements/Text.astro';
-import Grid from './Grid.astro';
-// custom attributes: id="ablauf"
+
+const onboarding = (await getCollection('onboarding')).sort((a, b) =>
+    a.data.number.localeCompare(b.data.number)
+);
 ---
-<!-- Process -->
-<PageSection variant="gray" label="So funktioniert's" title="Ihr Weg zur besseren Absicherung">
+
+<PageSection variant="gray" label="So funktioniert's" title="Ihr Weg zur besseren Absicherung" contentWidth="narrow">
     <Fragment slot="header-subtitle">In fünf einfachen Schritten zu Ihrem optimalen Versicherungsschutz.</Fragment>
-    <Grid columns={5} class="steps">
-      <div class="step">
-        <div class="step__number">1</div>
-        <Heading as="h3" size="lg" class="mb-2">Erstgespräch</Heading>
-        <Text size="sm" muted class="step__text">Wir lernen uns kennen und ich höre Ihnen zu.</Text>
-      </div>
-      <div class="step">
-        <div class="step__number">2</div>
-        <Heading as="h3" size="lg" class="mb-2">Bedarfsanalyse</Heading>
-        <Text size="sm" muted class="step__text">Ich analysiere Ihren aktuellen Schutz und identifiziere Lücken.</Text>
-      </div>
-      <div class="step">
-        <div class="step__number">3</div>
-        <Heading as="h3" size="lg" class="mb-2">Angebotsvergleich</Heading>
-        <Text size="sm" muted class="step__text">Sie erhalten eine transparente Gegenüberstellung der besten Angebote.</Text>
-      </div>
-      <div class="step">
-        <div class="step__number">4</div>
-        <Heading as="h3" size="lg" class="mb-2">Vertragsabschluss</Heading>
-        <Text size="sm" muted class="step__text">Ich kümmere mich um den gesamten Papierkram.</Text>
-      </div>
-      <div class="step">
-        <div class="step__number">5</div>
-        <Heading as="h3" size="lg" class="mb-2">Betreuung</Heading>
-        <Text size="sm" muted class="step__text">Ich begleite Sie langfristig und stehe im Schadensfall bereit.</Text>
-      </div>
-    </Grid>
+    <div class="steps">
+      {onboarding.map(async (entry) => {
+        const { Content } = await render(entry);
+        return (
+          <div class="step">
+            <div class="step__marker">
+              <div class="step__number">{entry.data.number}</div>
+            </div>
+            <div class="step__content">
+              <Heading as="h3" size="lg" class="mb-2">{entry.data.title}</Heading>
+              <Text size="sm" muted><Content /></Text>
+            </div>
+          </div>
+        );
+      })}
+    </div>
 </PageSection>
 
 <style>
+  .steps {
+    display: flex;
+    flex-direction: column;
+  }
   .step {
-    text-align: center;
-    position: relative;
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    gap: 2rem;
   }
-  .step::after {
-    content: '';
-    position: absolute;
-    top: 2rem;
-    right: -1rem;
-    width: calc(100% - 4rem);
-    height: 2px;
-    background: var(--color-border);
+  .step__marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  .step:last-child::after { display: none; }
   .step__number {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 4rem;
-    height: 4rem;
+    width: 3.5rem;
+    height: 3.5rem;
     background: var(--color-primary);
     color: var(--color-white);
-    font-size: var(--text-xl);
+    font-size: var(--text-lg);
     font-weight: var(--font-bold);
     border-radius: var(--radius-full);
-    margin-bottom: 1.5rem;
+    flex-shrink: 0;
   }
-  @media (max-width: 1024px) {
-    .step::after { display: none; }
+  .step__marker::after {
+    content: '';
+    width: 2px;
+    flex: 1;
+    background: var(--color-border);
+  }
+  .step:last-child .step__marker::after {
+    background: transparent;
+  }
+  .step__content {
+    padding-bottom: 2rem;
+  }
+  .step:last-child .step__content {
+    padding-bottom: 0;
   }
 </style>

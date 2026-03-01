@@ -1,4 +1,5 @@
 ---
+import { render, getEntry } from 'astro:content';
 import Grid from './Grid.astro';
 import PageSection from "./PageSection.astro";
 import Heading from "./elements/Heading.astro";
@@ -6,39 +7,25 @@ import Label from './elements/Label.astro';
 import Stat from './elements/Stat.astro';
 import Paragraph from "./elements/Paragraph.astro";
 import Image from "./elements/Image.astro";
+import Divider from "./elements/Divider.astro";
+
+const entry = await getEntry('sections', 'about');
+const { Content } = await render(entry);
 ---
 
 <PageSection variant="gray">
     <Grid columns={2} gap="4rem" align="center">
         <Image src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=700&fit=crop" alt="Helmut Emmert" height="500px" />
         <div>
-            <Label>Über mich</Label>
-            <Heading as="h2" size="3xl" serif class="mb-2">Helmut Emmert</Heading>
-            <Paragraph>Mit über 25 Jahren Erfahrung in der Versicherungsbranche habe ich es mir zur Aufgabe gemacht,
-                Menschen dabei zu helfen, die richtige Absicherung für sich und ihre Familien zu finden.
-            </Paragraph>
-            <Paragraph>Meine Philosophie ist einfach: Ich höre zu, verstehe Ihre individuelle Situation und finde
-                gemeinsam mit Ihnen die optimale Lösung. Keine Standardprodukte, keine unnötigen Policen.
-            </Paragraph>
-            <Paragraph>Als unabhängiger Versicherungsberater bin ich keiner Gesellschaft verpflichtet. Das bedeutet für
-                Sie: objektive Beratung und Zugang zu den besten Angeboten am Markt.
-            </Paragraph>
-            <div class="about__credentials">
+            {entry.data.label && <Label>{entry.data.label}</Label>}
+            {entry.data.title && <Heading as="h2" size="3xl" serif class="mb-2">{entry.data.title}</Heading>}
+            <Content components={{ p: Paragraph }} />
+            <Divider />
+            <Grid columns={3} gap="2rem">
                 <Stat value="25+" label="Jahre Erfahrung"/>
                 <Stat value="1.500+" label="Zufriedene Kunden"/>
                 <Stat value="100%" label="Unabhängig"/>
-            </div>
+            </Grid>
         </div>
     </Grid>
 </PageSection>
-
-<style>
-    .about__credentials {
-        display: flex;
-        gap: 2rem;
-        margin-top: 2rem;
-        padding-top: 2rem;
-        border-top: 1px solid var(--color-border);
-    }
-
-</style>

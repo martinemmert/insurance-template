@@ -2,14 +2,14 @@
 import Heading from './Heading.astro';
 import Text from './Text.astro';
 
-const { number, title, description, class: className, ...rest } = Astro.props;
+const { number, title, class: className, ...rest } = Astro.props;
 ---
 
 <div class:list={['numbered-item', className]} {...rest}>
   <div class="numbered-item__number">{number}</div>
   <div>
     <Heading as="h3" size="xl" class="mb-2">{title}</Heading>
-    <Text muted>{description}</Text>
+    <Text muted><slot /></Text>
   </div>
 </div>
 

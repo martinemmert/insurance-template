@@ -1,11 +1,20 @@
 ---
+import {getCollection, render} from 'astro:content';
 import PageSection from "./PageSection.astro";
 import NumberedItem from "./elements/NumberedItem.astro";
+
+const onboarding = (await getCollection('onboarding')).sort((a, b) =>
+    a.data.number.localeCompare(b.data.number)
+);
 ---
 
-<PageSection label="Grundprinzipien" title="Meine Beratungsphilosophie" contentWidth="narrow">
-      <NumberedItem number="01" title="Zuhören statt verkaufen" description="Jedes Gespräch beginnt damit, dass ich Ihnen zuhöre. Nur wenn ich Ihre Situation wirklich verstehe, kann ich die richtigen Empfehlungen geben." />
-      <NumberedItem number="02" title="Unabhängigkeit bewahren" description="Ich bin keiner Versicherungsgesellschaft verpflichtet. Das bedeutet: Meine Empfehlungen orientieren sich ausschließlich an Ihren Bedürfnissen." />
-      <NumberedItem number="03" title="Transparenz schaffen" description="Sie verstehen genau, warum ich was empfehle. Keine Fachbegriffe, keine versteckten Klauseln – klare Sprache und nachvollziehbare Begründungen." />
-      <NumberedItem number="04" title="Langfristig denken" description="Eine gute Absicherung wächst mit Ihrem Leben. Deshalb bleibe ich Ihr Ansprechpartner – heute, morgen und in 20 Jahren." />
+<PageSection label="So funktioniert's" title="Ihr Weg zur besseren Absicherung" contentWidth="narrow">
+    {onboarding.map(async (entry) => {
+        const {Content} = await render(entry);
+        return (
+                <NumberedItem number={entry.data.number} title={entry.data.title}>
+                    <Content/>
+                </NumberedItem>
+        );
+    })}
 </PageSection>
