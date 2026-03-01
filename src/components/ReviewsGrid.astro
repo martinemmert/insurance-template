@@ -2,14 +2,13 @@
 import PageSection from "./PageSection.astro";
 import ReviewCard from './elements/ReviewCard.astro';
 import Grid from './Grid.astro';
-// custom attributes: id="bewertungen"
 ---
 
 <PageSection variant="dark" label="Kundenstimmen" title="Was meine Kunden sagen">
-    <Fragment slot="header-subtitle">4.9 von 5 Sternen basierend auf 47 Google-Bewertungen</Fragment>
+    <Fragment slot="header-subtitle">5,0 von 5 Sternen bei 30 Google-Bewertungen</Fragment>
     <Grid columns={3}>
-      <ReviewCard class="p-8" author="Michael S." date="vor 2 Monaten">"Herr Emmert hat sich viel Zeit genommen, um meine Situation zu verstehen. Die Beratung war kompetent und ohne Verkaufsdruck. Absolute Empfehlung!"</ReviewCard>
-      <ReviewCard class="p-8" author="Sandra K." date="vor 3 Monaten">"Endlich jemand, der Versicherungen verständlich erklärt! Herr Emmert hat mir geholfen, meinen Versicherungsschutz zu optimieren und dabei sogar Geld zu sparen."</ReviewCard>
-      <ReviewCard class="p-8" author="Thomas B." date="vor 5 Monaten">"Bei einem Schadensfall hat Herr Emmert sich sofort um alles gekümmert. Die Abwicklung war unkompliziert und schnell. So stelle ich mir Service vor!"</ReviewCard>
+      <ReviewCard class="p-8" author="Nicole Jung-Feil" date="vor 4 Monaten">Die Beratung war äußerst kompetent, umfassend und auf meine individuellen Fragen und Bedürfnisse zugeschnitten. Ich kann Herrn Emmert uneingeschränkt weiterempfehlen.</ReviewCard>
+      <ReviewCard class="p-8" author="Jonas LMk" date="vor einem Monat">Mein Besuch bei Herr Emmert hat sich auf jeden Fall gelohnt. Dank der tollen Beratung und Hilfe spare ich aktuell um die 300 Euro.</ReviewCard>
+      <ReviewCard class="p-8" author="Anna Jenschur" date="vor einem Jahr">Endlich habe ich meine Versicherungen auf einem Blick. Herr Emmert geht auf meine Wünsche ein und kümmert sich super schnell um meine Anliegen.</ReviewCard>
     </Grid>
 </PageSection>

@@ -4,26 +4,19 @@ import BenefitCard from './elements/BenefitCard.astro';
 import Grid from './Grid.astro';
 ---
 
-<PageSection variant="white" label="Ihre Vorteile" title="Warum Sie bei mir richtig sind">
-    <Fragment slot="header-subtitle">Unabhängige Beratung bedeutet: Ihre Interessen stehen immer an erster Stelle.</Fragment>
+<PageSection variant="white" label="Warum ich" title="Was Sie bei mir anders erleben">
     <Grid columns={2}>
-      <BenefitCard title="Zeitersparnis" description="Ich übernehme den kompletten Anbietervergleich und die Kommunikation mit den Versicherungen. Sie bekommen nur das Ergebnis.">
+      <BenefitCard title="Kein Tarifdschungel" description="Ich vergleiche für Sie und übersetze das Kleingedruckte in klare Empfehlungen. Sie entscheiden  - ohne Fragezeichen.">
         <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
       </BenefitCard>
-      <BenefitCard title="Marktüberblick" description="Zugang zu über 100 Versicherungsgesellschaften. Ich finde die beste Kombination aus Leistung und Preis für Sie.">
+      <BenefitCard title="Ihr Tarif, nicht meiner" description="Über 300 Produktpartner, kein Hausversicherer. Ich bin keinem Anbieter verpflichtet und empfehle nur, was zu Ihrer Situation passt.">
         <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
       </BenefitCard>
-      <BenefitCard title="Persönlicher Ansprechpartner" description="Kein Callcenter, keine Warteschleifen. Sie erreichen mich direkt – auch im Schadensfall, wenn es schnell gehen muss.">
+      <BenefitCard title="Persönlich erreichbar" description="Videocall, Telefon oder Büro in Aschaffenburg  - Sie wählen den Weg. Und wenn es drauf ankommt, bin ich direkt erreichbar. Nicht ein Callcenter.">
         <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
       </BenefitCard>
-      <BenefitCard title="Keine versteckten Kosten" description="Meine Beratung ist für Sie kostenlos. Ich werde von den Versicherungen vergütet – transparent und ohne Aufpreis für Sie.">
-        <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-      </BenefitCard>
-      <BenefitCard title="Schadensregulierung" description="Im Schadensfall kämpfe ich für Sie. Mit meiner Erfahrung weiß ich, wie Ansprüche erfolgreich durchgesetzt werden.">
+      <BenefitCard title="Auch nach Vertragsschluss" description="Ich prüfe Ihren Schutz jährlich, begleite Schadensfälle und bin bei Lebensereignissen wie Nachwuchs, Jobwechsel oder Hausbau Ihr erster Ansprechpartner.">
         <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-      </BenefitCard>
-      <BenefitCard title="Regelmäßige Überprüfung" description="Ihr Leben ändert sich, Ihr Schutz sollte es auch. Ich überprüfe jährlich, ob Ihre Absicherung noch passt.">
-        <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
       </BenefitCard>
     </Grid>
 </PageSection>

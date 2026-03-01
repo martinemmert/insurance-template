@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Default.astro';
+import Navigation from '../../components/Navigation.astro';
+import PageSection from '../../components/PageSection.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import Heading from '../../components/elements/Heading.astro';
+import Text from '../../components/elements/Text.astro';
+import Grid from '../../components/Grid.astro';
+import Image from '../../components/elements/Image.astro';
+---
+
+<Layout title="Chefarzt & Zweibettzimmer - Helmut Emmert" description="Wahlleistungen im Krankenhaus: Chefarztbehandlung und Zweibettzimmer für Ihre Absicherung. Unabhängige Beratung in Aschaffenburg.">
+    <Navigation />
+    <PageSection variant="white">
+        <Grid columns={2} gap="4rem" align="center">
+            <div>
+                <Heading as="h1" size="3xl" serif class="mb-4">Chefarzt & Zweibettzimmer</Heading>
+                <Text size="lg" class="mb-6">Im Krankenhaus zählt Vertrauen. Mit Wahlleistungen entscheiden Sie selbst, wer Sie behandelt und wie Sie untergebracht sind.</Text>
+                <Text muted class="mb-4">Chefarztbehandlung bedeutet: Der erfahrenste Arzt der Abteilung kümmert sich persönlich um Ihren Fall. Gerade bei planbaren Eingriffen oder komplexen Diagnosen kann das einen entscheidenden Unterschied machen.</Text>
+                <Text muted class="mb-4">Ein Zweibettzimmer bietet Ihnen die Ruhe, die Sie zur Genesung brauchen. Kein Mehrbettzimmer, keine unnötigen Störungen.</Text>
+                <Text muted>Ich zeige Ihnen, welche Tarife Wahlleistungen zuverlässig abdecken - und worauf Sie bei den Bedingungen achten sollten, damit im Ernstfall alles reibungslos läuft.</Text>
+            </div>
+            <Image src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&h=500&fit=crop" alt="Krankenhaus" height="500px" />
+        </Grid>
+    </PageSection>
+    <ContactForm />
+</Layout>

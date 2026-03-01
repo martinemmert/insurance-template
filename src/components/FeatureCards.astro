@@ -1,21 +1,31 @@
 ---
 import PageSection from "./PageSection.astro";
 import FeatureCard from './elements/FeatureCard.astro';
+import Text from './elements/Text.astro';
 import Grid from './Grid.astro';
 ---
 
-<!-- Feature Cards -->
-<PageSection variant="gray" label="Für wen?" title="wer kann sich privat kranken Versichern?">
-  <Fragment slot="header-subtitle">Grundsätzlich jeder, der eine gesetzliche Krankenversicherung (GKV) hat.</Fragment>
+<!-- Für Wen -->
+<PageSection variant="gray" label="Für wen" title="Ist die PKV das Richtige für Sie?">
+  <Fragment slot="header-subtitle">Drei Wege in die private Krankenversicherung:</Fragment>
     <Grid columns={3}>
-      <FeatureCard title="Selbstständige & Unternehmer" description="Selbstständige, Unternehmer und Freiberufler, die berufliche und private Risiken sauber trennen und absichern wollen.">
+      <FeatureCard title="Selbstständige & Unternehmer" description="Sie bestimmen selbst über Ihr Einkommen  - und ab sofort auch über Ihre Versorgung. Ich finde den Tarif, der berufliche und private Risiken sauber trennt und langfristig bezahlbar bleibt.">
         <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
       </FeatureCard>
-      <FeatureCard title="Beamte" description="Optimale Quotentarife Ergänzung der Beihilfe Anwartschaften">
+      <FeatureCard title="Beamte & Anwärter" description="Ihre Beihilfe deckt nur einen Teil. Den Rest gestalte ich passgenau  - mit günstigen Anwärtertarifen, gesichertem Übergang ohne erneute Gesundheitsprüfung und Absicherung der Dienstunfähigkeit.">
         <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
       </FeatureCard>
-      <FeatureCard title="Schadensmanagement" description="Professionelle Unterstützung bei der Schadensmeldung und Durchsetzung Ihrer Ansprüche.">
-        <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+      <FeatureCard title="Angestellte über der Versicherungspflichtgrenze" description="Sie zahlen GKV-Höchstbeitrag und fragen sich, ob das noch Sinn ergibt? Oft bekommen Sie in der PKV bessere Leistungen zu einem niedrigeren Beitrag.">
+        <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
       </FeatureCard>
     </Grid>
+    <Text muted class="feature-cards__hint">Bereits privat versichert? Ich betreue auch bestehende PKV-Verträge  - egal, bei welchem Anbieter.</Text>
 </PageSection>
+
+<style>
+  .feature-cards__hint {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-style: italic;
+  }
+</style>

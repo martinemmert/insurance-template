@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Default.astro';
+import Navigation from '../../components/Navigation.astro';
+import PageSection from '../../components/PageSection.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import Heading from '../../components/elements/Heading.astro';
+import Text from '../../components/elements/Text.astro';
+import Grid from '../../components/Grid.astro';
+import Image from '../../components/elements/Image.astro';
+---
+
+<Layout title="Zahnzusatzversicherung - Helmut Emmert" description="Zahnzusatzversicherung mit bis zu 100% Erstattung für Zahnersatz, Implantate und professionelle Zahnreinigung. Beratung in Aschaffenburg.">
+    <Navigation />
+    <PageSection variant="white">
+        <Grid columns={2} gap="4rem" align="center">
+            <div>
+                <Heading as="h1" size="3xl" serif class="mb-4">Zahnzusatz</Heading>
+                <Text size="lg" class="mb-6">Gesunde Zähne - ohne Angst vor der Rechnung. Bis zu 100 % Erstattung für Zahnersatz, Implantate und professionelle Zahnreinigung.</Text>
+                <Text muted class="mb-4">Eine Krone kann schnell 500 Euro kosten, ein Implantat mehrere Tausend. Die gesetzliche Krankenversicherung übernimmt nur einen Bruchteil. Mit der richtigen Zahnzusatzversicherung schließen Sie diese Lücke.</Text>
+                <Text muted class="mb-4">Ich finde für Sie einen Tarif, der zu Ihrem Zahnstatus passt - auch wenn bereits Behandlungen anstehen. Dabei vergleiche ich Wartezeiten, Erstattungsgrenzen und Ausschlüsse, damit Sie im Ernstfall keine bösen Überraschungen erleben.</Text>
+                <Text muted>Professionelle Zahnreinigung ist bei vielen Tarifen inklusive - ein Baustein, der sich jedes Jahr auszahlt.</Text>
+            </div>
+            <Image src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&h=500&fit=crop" alt="Zahnbehandlung" height="500px" />
+        </Grid>
+    </PageSection>
+    <ContactForm />
+</Layout>

@@ -2,48 +2,46 @@
 import PageSection from "./PageSection.astro";
 import Grid from './Grid.astro';
 import ServiceCard from './elements/ServiceCard.astro';
-// custom attributes: id="leistungen"
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 ---
 
-<!-- Services -->
-<PageSection label="Leistungen" title="Rundum abgesichert">
-    <Fragment slot="header-subtitle">Von der Lebensversicherung bis zur Altersvorsorge – ich berate Sie unabhängig und finde die optimale Lösung für Ihre Situation.</Fragment>
+<!-- Produkte -->
+<PageSection label="Leistungen" title="Ihr Schutz  - Baustein für Baustein" id="leistungen">
     <Grid columns={3}>
       <ServiceCard
-        title="Lebensversicherung"
-        description="Sichern Sie die Zukunft Ihrer Familie ab. Mit einer maßgeschneiderten Lebensversicherung schützen Sie Ihre Liebsten vor finanziellen Sorgen."
-        image="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=400&fit=crop"
-        imageAlt="Familie"
-        href={`${base}leistungen/lebensversicherung`}
-      />
-      <ServiceCard
-        title="Berufsunfähigkeit"
-        description="Ihre Arbeitskraft ist Ihr wertvollstes Gut. Eine BU-Versicherung sichert Ihren Lebensstandard, wenn Sie nicht mehr arbeiten können."
-        image="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&h=400&fit=crop"
-        imageAlt="Beruf"
-        href={`${base}leistungen/berufsunfaehigkeit`}
-      />
-      <ServiceCard
-        title="Private Krankenversicherung"
-        description="Erstklassige medizinische Versorgung, kurze Wartezeiten und Zugang zu Spezialisten. Die PKV bietet mehr als nur Komfort."
+        title="Kranken-Vollversicherung"
+        description="Freie Arztwahl, kurze Wartezeiten und ein Tarif, der langfristig zu Ihrem Leben passt  - nicht nur im ersten Jahr."
         image="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop"
-        imageAlt="Gesundheit"
-        href={`${base}leistungen/krankenversicherung`}
+        imageAlt="Arztgespräch"
+        href={`${base}leistungen/kranken-vollversicherung`}
       />
       <ServiceCard
-        title="Altersvorsorge"
-        description="Die gesetzliche Rente reicht nicht. Planen Sie heute für einen sorgenfreien Ruhestand mit der richtigen Strategie."
-        image="https://images.unsplash.com/photo-1447005497901-b3e9ee359928?w=600&h=400&fit=crop"
-        imageAlt="Ruhestand"
-        href={`${base}leistungen/altersvorsorge`}
+        title="Zahnzusatz"
+        description="Bis zu 100 % Erstattung für Zahnersatz, Implantate und professionelle Zahnreinigung. Damit der nächste Zahnarztbesuch keine Kostenfrage wird."
+        image="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&h=400&fit=crop"
+        imageAlt="Zahnbehandlung"
+        href={`${base}leistungen/zahnzusatz`}
       />
       <ServiceCard
-        title="Sachversicherungen"
-        description="Haus, Auto, Haftpflicht – schützen Sie Ihr Eigentum vor unerwarteten Schäden. Transparente Beratung, faire Tarife."
-        image="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop"
-        imageAlt="Haus"
-        href={`${base}leistungen/sachversicherungen`}
+        title="Chefarzt & Zweibettzimmer"
+        description="Im Krankenhaus zählt Vertrauen. Mit Wahlleistungen entscheiden Sie selbst, wer Sie behandelt und wie Sie untergebracht sind."
+        image="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&h=400&fit=crop"
+        imageAlt="Krankenhaus"
+        href={`${base}leistungen/wahlleistungen-krankenhaus`}
+      />
+      <ServiceCard
+        title="Brillen & Heilpraktiker"
+        description="Sehhilfen, Kontaktlinsen, alternative Heilmethoden  - Leistungen, bei denen die GKV oft passen muss. Privat sinnvoll ergänzt."
+        image="https://images.unsplash.com/photo-1577400983943-874919eca6ce?w=600&h=400&fit=crop"
+        imageAlt="Brille und Sehhilfe"
+        href={`${base}leistungen/brillen-heilpraktiker`}
+      />
+      <ServiceCard
+        title="Pflegeabsicherung"
+        description="Damit Sie im Pflegefall nicht auf die Grundversorgung angewiesen sind, sondern selbst entscheiden, wie und wo Sie betreut werden."
+        image="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=600&h=400&fit=crop"
+        imageAlt="Pflegevorsorge"
+        href={`${base}leistungen/pflegeabsicherung`}
       />
     </Grid>
 </PageSection>

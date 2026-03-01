@@ -1,7 +1,5 @@
 ---
 number: "01"
-title: Der Klarheits-Check
+title: Kurzes Erstgespräch
 ---
-**Ob Telefon oder Video:**
-Wir analysieren kurz Ihren Bedarf (PKV, BU etc.) und prüfen, ob wir zueinander passen.
-Die Chemie stimmt? Dann skizziere ich Ihnen direkt im Anschluss den konkreten Fahrplan. 
+15 Minuten per Telefon oder Video. Wir klären Ihren Bedarf und ob wir zueinander passen. Kostenlos und unverbindlich.

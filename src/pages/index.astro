@@ -2,26 +2,23 @@
 import Layout from '../layouts/Default.astro';
 import Navigation from "../components/Navigation.astro";
 import Hero from "../components/Hero.astro";
-import TrustBadges from "../components/TrustBadges.astro";
+import FeatureCards from "../components/FeatureCards.astro";
+import About from "../components/About.astro";
 import ServicesGrid from "../components/ServicesGrid.astro";
 import BenefitsGrid from "../components/BenefitsGrid.astro";
-import About from "../components/About.astro";
-import NumberedList from "../components/NumberedList.astro";
 import ReviewsGrid from "../components/ReviewsGrid.astro";
-import FeatureCards from "../components/FeatureCards.astro";
-import ContactForm from "../components/ContactForm.astro";
 import ProcessSteps from "../components/ProcessSteps.astro";
+import ContactForm from "../components/ContactForm.astro";
 ---
 
 <Layout>
     <Navigation/>
     <Hero/>
-    <ProcessSteps />
     <FeatureCards/>
-    <ServicesGrid/>
     <About/>
+    <ServicesGrid/>
     <BenefitsGrid/>
     <ReviewsGrid/>
+    <ProcessSteps />
     <ContactForm/>
-    <TrustBadges/>
 </Layout>

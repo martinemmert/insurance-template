@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Default.astro';
+import Navigation from '../../components/Navigation.astro';
+import PageSection from '../../components/PageSection.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import Heading from '../../components/elements/Heading.astro';
+import Text from '../../components/elements/Text.astro';
+import Grid from '../../components/Grid.astro';
+import Image from '../../components/elements/Image.astro';
+---
+
+<Layout title="Kranken-Vollversicherung - Helmut Emmert" description="Private Kranken-Vollversicherung: freie Arztwahl, starke Leistungen und ein Tarif, der langfristig zu Ihnen passt. Unabhängige Beratung in Aschaffenburg.">
+    <Navigation />
+    <PageSection variant="white">
+        <Grid columns={2} gap="4rem" align="center">
+            <div>
+                <Heading as="h1" size="3xl" serif class="mb-4">Kranken-Vollversicherung</Heading>
+                <Text size="lg" class="mb-6">Freie Arztwahl, kurze Wartezeiten und ein Tarif, der langfristig zu Ihrem Leben passt - nicht nur im ersten Jahr.</Text>
+                <Text muted class="mb-4">Als Privatpatient genießen Sie Zugang zu Spezialisten, bevorzugte Terminvergabe und eine Versorgung, die sich an Ihren Bedürfnissen orientiert - nicht am Budget Ihrer Krankenkasse.</Text>
+                <Text muted class="mb-4">Ich vergleiche für Sie Tarife von über 300 Produktpartnern und finde die Lösung, die zu Ihrer Lebenssituation passt. Ob Einsteigertarif mit Selbstbeteiligung oder Premiumschutz ohne Kompromisse.</Text>
+                <Text muted>Dabei achte ich besonders auf Beitragsstabilität im Alter - damit Ihr Tarif auch in 20 Jahren noch bezahlbar bleibt.</Text>
+            </div>
+            <Image src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=500&fit=crop" alt="Arztgespräch" height="500px" />
+        </Grid>
+    </PageSection>
+    <ContactForm />
+</Layout>

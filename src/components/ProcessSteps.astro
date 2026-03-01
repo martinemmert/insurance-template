@@ -9,8 +9,7 @@ const onboarding = (await getCollection('onboarding')).sort((a, b) =>
 );
 ---
 
-<PageSection variant="gray" label="So funktioniert's" title="Ihr Weg zur besseren Absicherung" contentWidth="narrow">
-    <Fragment slot="header-subtitle">In fünf einfachen Schritten zu Ihrem optimalen Versicherungsschutz.</Fragment>
+<PageSection variant="gray" label="So funktioniert's" title="In fünf Schritten zur besseren Absicherung" contentWidth="narrow">
     <div class="steps">
       {onboarding.map(async (entry) => {
         const { Content } = await render(entry);

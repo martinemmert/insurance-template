@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Default.astro';
+import Navigation from '../../components/Navigation.astro';
+import PageSection from '../../components/PageSection.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import Heading from '../../components/elements/Heading.astro';
+import Text from '../../components/elements/Text.astro';
+import Grid from '../../components/Grid.astro';
+import Image from '../../components/elements/Image.astro';
+---
+
+<Layout title="Brillen & Heilpraktiker - Helmut Emmert" description="Sehhilfen, Kontaktlinsen und alternative Heilmethoden privat absichern. Unabhängige Beratung in Aschaffenburg.">
+    <Navigation />
+    <PageSection variant="white">
+        <Grid columns={2} gap="4rem" align="center">
+            <div>
+                <Heading as="h1" size="3xl" serif class="mb-4">Brillen & Heilpraktiker</Heading>
+                <Text size="lg" class="mb-6">Sehhilfen, Kontaktlinsen, alternative Heilmethoden - Leistungen, bei denen die GKV oft passen muss. Privat sinnvoll ergänzt.</Text>
+                <Text muted class="mb-4">Eine Gleitsichtbrille kostet schnell 800 Euro oder mehr. Die gesetzliche Kasse zahlt in vielen Fällen nichts. Mit dem richtigen Tarif gehören Überraschungen beim Optiker der Vergangenheit an.</Text>
+                <Text muted class="mb-4">Auch Heilpraktikerbehandlungen, Osteopathie oder Akupunktur werden von der GKV nur selten übernommen. Privat lassen sich diese Leistungen gezielt absichern - für alle, die auf ganzheitliche Medizin setzen.</Text>
+                <Text muted>Ich prüfe für Sie, welche Tarife diese Bausteine sinnvoll abdecken und wie sich der Schutz in Ihre bestehende Versicherung integrieren lässt.</Text>
+            </div>
+            <Image src="https://images.unsplash.com/photo-1577400983943-874919eca6ce?w=600&h=500&fit=crop" alt="Brille und Sehhilfe" height="500px" />
+        </Grid>
+    </PageSection>
+    <ContactForm />
+</Layout>
