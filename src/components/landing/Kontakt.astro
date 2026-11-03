@@ -1,20 +1,20 @@
 ---
 import { Image } from 'astro:assets';
-import buero from '../../assets/photos/helmut-buero.jpeg';
+import profil from '../../assets/photos/helmut-profil.jpg';
 import { kontakt } from '../../data/kontakt';
 ---
 
 <section class="section contact" id="kontakt" aria-labelledby="contact-title">
   <div class="wrap contact__grid">
     <div class="contact__info">
-      <h2 id="contact-title">15 Minuten, die sich lohnen.</h2>
+      <h2 id="contact-title">Der erste Schritt dauert 15 Minuten.</h2>
       <p class="contact__intro">
-        Kostenlos, unverbindlich, per Telefon oder Video. Danach wissen Sie, was zu Ihnen passt.
+        Kostenlos, unverbindlich, per Telefon oder Video. Danach wissen Sie, wohin die Reise geht.
       </p>
 
       <div class="contact__person">
-        <Image src={buero} alt="" width={480} class="contact__avatar" />
-        <p>Sie sprechen direkt mit mir. Kein Callcenter.</p>
+        <Image src={profil} alt="Helmut Emmert" width={160} class="contact__avatar" />
+        <p>Sie sprechen direkt mit mir. Ich freue mich auf Sie.</p>
       </div>
 
       <a href={kontakt.telefonLink} class="contact__phone">{kontakt.telefonAnzeige}</a>
@@ -133,7 +133,6 @@ import { kontakt } from '../../data/kontakt';
     height: 4.5rem;
     border-radius: 50%;
     object-fit: cover;
-    object-position: 77% 22%;
     box-shadow: var(--shadow);
   }
 

@@ -2,4 +2,4 @@
 number: "03"
 title: Ihr Tarifvergleich
 ---
-Ich vergleiche, lese das Kleingedruckte und gebe Ihnen eine klare Empfehlung. Mit Wissen, das Sie online nicht finden.
+Ich vergleiche passende Tarife und übersetze sie in eine klare Empfehlung. Verständlich, auf den Punkt, mit Erfahrung aus 25 Jahren.
