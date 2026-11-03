@@ -3,7 +3,8 @@ import { kontakt } from '../../data/kontakt';
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
-const zusatz = [
+const leistungen = [
+  { titel: 'Private Krankenversicherung', href: `${base}leistungen/kranken-vollversicherung` },
   { titel: 'Zahnzusatz', href: `${base}leistungen/zahnzusatz` },
   { titel: 'Chefarzt & Zweibettzimmer', href: `${base}leistungen/wahlleistungen-krankenhaus` },
   { titel: 'Brillen & Heilpraktiker', href: `${base}leistungen/brillen-heilpraktiker` },
@@ -15,11 +16,11 @@ const zusatz = [
   <div class="wrap">
     <div class="footer__extra">
       <p>
-        <strong>Gesetzlich versichert und das soll so bleiben?</strong>
-        Mit einer Zusatzversicherung bekommen Sie einzelne Privatleistungen dazu.
+        <strong>{kontakt.name}</strong>
+        Ihr unabhängiger Versicherungsmakler in Aschaffenburg. Persönliche Beratung, ehrliche Empfehlungen.
       </p>
       <ul>
-        {zusatz.map((z) => (
+        {leistungen.map((z) => (
           <li><a href={z.href}>{z.titel}</a></li>
         ))}
       </ul>

@@ -10,8 +10,8 @@ import { kontakt } from '../../data/kontakt';
     </a>
     <nav class="header__nav" aria-label="Seitenbereiche">
       <a href="#pkv-check">PKV-Check</a>
+      <a href="#leistungen">Leistungen</a>
       <a href="#ueber-mich">Über mich</a>
-      <a href="#fragen">Fragen</a>
     </nav>
     <div class="header__actions">
       <a href={kontakt.telefonLink} class="header__phone" aria-label={`Anrufen: ${kontakt.telefonAnzeige}`}>
@@ -40,6 +40,7 @@ import { kontakt } from '../../data/kontakt';
   }
 
   .header__brand {
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -65,6 +66,7 @@ import { kontakt } from '../../data/kontakt';
 
   .header__nav a {
     text-decoration: none;
+    white-space: nowrap;
     color: var(--ink-soft);
   }
 
@@ -90,11 +92,12 @@ import { kontakt } from '../../data/kontakt';
   }
 
   .header__cta {
+    white-space: nowrap;
     min-height: 2.75rem;
     padding-block: 0.5rem;
   }
 
-  @media (max-width: 64rem) {
+  @media (max-width: 75rem) {
     .header__nav {
       display: none;
     }

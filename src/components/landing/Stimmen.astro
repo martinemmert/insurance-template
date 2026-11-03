@@ -1,44 +1,51 @@
 ---
 import { bewertungen } from '../../data/kontakt';
 
-const hauptstimme = {
-  text: 'Mein Besuch bei Herr Emmert hat sich auf jeden Fall gelohnt. Dank der tollen Beratung und Hilfe spare ich aktuell um die 300 Euro.',
-  autor: 'Jonas LMk',
-};
-
+// Google reviews, quoted verbatim
 const stimmen = [
+  {
+    text: 'Mein Besuch bei Herr Emmert hat sich auf jeden Fall gelohnt. Dank der tollen Beratung und Hilfe spare ich aktuell um die 300 Euro.',
+    autor: 'Jonas LMk',
+    wann: 'vor einem Monat',
+  },
   {
     text: 'Die Beratung war äußerst kompetent, umfassend und auf meine individuellen Fragen und Bedürfnisse zugeschnitten. Ich kann Herrn Emmert uneingeschränkt weiterempfehlen.',
     autor: 'Nicole Jung-Feil',
+    wann: 'vor 4 Monaten',
   },
   {
     text: 'Endlich habe ich meine Versicherungen auf einem Blick. Herr Emmert geht auf meine Wünsche ein und kümmert sich super schnell um meine Anliegen.',
     autor: 'Anna Jenschur',
+    wann: 'vor einem Jahr',
   },
 ];
 ---
 
-<section class="section section--sky voices" aria-labelledby="voices-title">
+<section class="section voices" aria-labelledby="voices-title">
   <div class="wrap">
     <div class="voices__head">
-      <h2 id="voices-title">Was Kunden über die Beratung sagen</h2>
-      <p>{bewertungen.sterne} von 5 Sternen bei {bewertungen.anzahl} Bewertungen auf Google</p>
+      <h2 id="voices-title">Was meine Kunden sagen</h2>
+      <p>{bewertungen.sterne} von 5 Sternen bei {bewertungen.anzahl} Google-Bewertungen</p>
     </div>
 
-    <figure class="voices__main">
-      <blockquote>
-        <p>{hauptstimme.text}</p>
-      </blockquote>
-      <figcaption>{hauptstimme.autor}, auf Google</figcaption>
-    </figure>
-
-    <div class="voices__more">
+    <div class="voices__grid">
       {stimmen.map((s) => (
-        <figure>
+        <figure class="voices__card">
+          <span class="voices__stars" aria-label="5 von 5 Sternen">
+            {[0, 1, 2, 3, 4].map(() => (
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.94 6.24 6.81.82-5.03 4.67 1.33 6.73L12 17.6l-6.05 3.36 1.33-6.73L2.25 9.56l6.81-.82z"/></svg>
+            ))}
+          </span>
           <blockquote>
-            <p>{s.text}</p>
+            <p>„{s.text}“</p>
           </blockquote>
-          <figcaption>{s.autor}, auf Google</figcaption>
+          <figcaption>
+            <span class="voices__avatar" aria-hidden="true">{s.autor.charAt(0)}</span>
+            <span>
+              <strong>{s.autor}</strong>
+              <span class="voices__when">{s.wann} auf Google</span>
+            </span>
+          </figcaption>
         </figure>
       ))}
     </div>
@@ -46,65 +53,82 @@ const stimmen = [
 </section>
 
 <style>
+  .voices {
+    background: var(--green);
+    color: var(--paper);
+  }
+
   .voices__head {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 0.5rem 2rem;
-    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    text-align: center;
+    margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  }
+
+  .voices__head h2 {
+    margin-bottom: 0.6rem;
   }
 
   .voices__head p {
-    color: var(--ink-soft);
+    margin-inline: auto;
+    color: var(--green-tint);
   }
 
-  .voices__main {
-    max-width: 52rem;
-    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  .voices__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
   }
 
-  .voices__main blockquote p {
-    max-width: none;
+  .voices__card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-lg);
+  }
+
+  .voices__stars {
+    display: flex;
+    gap: 2px;
+    color: var(--sand);
+  }
+
+  .voices__card blockquote p {
     font-family: var(--font-display);
-    font-size: var(--step-4);
-    font-weight: 500;
-    line-height: 1.12;
-    text-indent: -0.4em;
+    font-style: italic;
+    font-size: var(--step-1);
+    line-height: 1.5;
   }
 
-  .voices__main blockquote p::before {
-    content: '„';
-  }
-
-  .voices__main blockquote p::after {
-    content: '“';
-  }
-
-  figcaption {
-    margin-top: 1rem;
-    color: var(--ink-soft);
+  .voices__card figcaption {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: auto;
     font-size: var(--step--1);
   }
 
-  .voices__more {
+  .voices__avatar {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2rem 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--line);
+    place-items: center;
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: var(--green-light);
+    color: var(--green-dark);
+    font-weight: 700;
   }
 
-  .voices__more blockquote p::before {
-    content: '„';
+  .voices__when {
+    display: block;
+    color: var(--green-tint);
+    opacity: 0.8;
   }
 
-  .voices__more blockquote p::after {
-    content: '“';
-  }
-
-  @media (max-width: 48rem) {
-    .voices__more {
+  @media (max-width: 56rem) {
+    .voices__grid {
       grid-template-columns: 1fr;
     }
   }

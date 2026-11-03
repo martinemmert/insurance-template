@@ -6,7 +6,7 @@ const schritte = (await getCollection('onboarding')).sort((a, b) =>
 );
 ---
 
-<section class="section steps" id="ablauf" aria-labelledby="steps-title">
+<section class="section section--warm steps" id="ablauf" aria-labelledby="steps-title">
   <div class="wrap">
     <h2 id="steps-title" class="steps__title">So läuft die Beratung ab</h2>
     <ol class="steps__list">
@@ -52,16 +52,12 @@ const schritte = (await getCollection('onboarding')).sort((a, b) =>
     place-items: center;
     width: 2.2rem;
     height: 2.2rem;
-    background: var(--paper);
-    border: 2px solid var(--ink);
+    background: var(--green);
+    color: var(--paper);
+    border: 3px solid var(--warm);
     border-radius: 50%;
     font-weight: 600;
     font-size: var(--step--1);
-  }
-
-  .steps__item:first-child .steps__number {
-    background: var(--ink);
-    color: var(--paper);
   }
 
   .steps__item h3 {
