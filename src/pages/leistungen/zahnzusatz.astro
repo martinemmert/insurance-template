@@ -1,27 +1,66 @@
 ---
-import Layout from '../../layouts/Default.astro';
-import Navigation from '../../components/Navigation.astro';
-import PageSection from '../../components/PageSection.astro';
-import ContactForm from '../../components/ContactForm.astro';
-import Heading from '../../components/elements/Heading.astro';
-import Text from '../../components/elements/Text.astro';
-import Grid from '../../components/Grid.astro';
-import Image from '../../components/elements/Image.astro';
+import Leistungsseite from '../../layouts/Leistungsseite.astro';
+import Fragen, { type Frage } from '../../components/landing/Fragen.astro';
+
+const fragen: Frage[] = [
+  {
+    frage: 'Kann ich abschließen, wenn schon eine Behandlung ansteht?',
+    antwort:
+      'Bereits geplante oder angeratene Behandlungen sind in der Regel nicht versichert. Für alles, was danach kommt, finden wir trotzdem einen passenden Tarif. Am besten sprechen wir offen über Ihren Zahnstatus.',
+  },
+  {
+    frage: 'Gibt es Wartezeiten?',
+    antwort:
+      'Das ist von Tarif zu Tarif verschieden. Manche Tarife leisten sofort, andere nach einigen Monaten. Ich zeige Ihnen, welche Variante zu Ihnen passt.',
+  },
+  {
+    frage: 'Ist die professionelle Zahnreinigung dabei?',
+    antwort: 'Bei vielen Tarifen ja. Ein Baustein, der sich jedes Jahr auszahlt.',
+  },
+];
 ---
 
-<Layout title="Zahnzusatzversicherung - Helmut Emmert" description="Zahnzusatzversicherung mit bis zu 100% Erstattung für Zahnersatz, Implantate und professionelle Zahnreinigung. Beratung in Aschaffenburg.">
-    <Navigation />
-    <PageSection variant="white">
-        <Grid columns={2} gap="4rem" align="center">
-            <div>
-                <Heading as="h1" size="3xl" serif class="mb-4">Zahnzusatz</Heading>
-                <Text size="lg" class="mb-6">Gesunde Zähne - ohne Angst vor der Rechnung. Bis zu 100 % Erstattung für Zahnersatz, Implantate und professionelle Zahnreinigung.</Text>
-                <Text muted class="mb-4">Eine Krone kann schnell 500 Euro kosten, ein Implantat mehrere Tausend. Die gesetzliche Krankenversicherung übernimmt nur einen Bruchteil. Mit der richtigen Zahnzusatzversicherung schließen Sie diese Lücke.</Text>
-                <Text muted class="mb-4">Ich finde für Sie einen Tarif, der zu Ihrem Zahnstatus passt - auch wenn bereits Behandlungen anstehen. Dabei vergleiche ich Wartezeiten, Erstattungsgrenzen und Ausschlüsse, damit Sie im Ernstfall keine bösen Überraschungen erleben.</Text>
-                <Text muted>Professionelle Zahnreinigung ist bei vielen Tarifen inklusive - ein Baustein, der sich jedes Jahr auszahlt.</Text>
-            </div>
-            <Image src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&h=500&fit=crop" alt="Zahnbehandlung" height="500px" />
-        </Grid>
-    </PageSection>
-    <ContactForm />
-</Layout>
+<Leistungsseite
+  title="Zahnzusatzversicherung in Aschaffenburg | Helmut Emmert"
+  description="Zahnzusatzversicherung mit bis zu 100 % Erstattung für Zahnersatz, Implantate und professionelle Zahnreinigung. Persönliche Beratung in Aschaffenburg."
+  name="Zahnzusatz"
+  headline="Zahnzusatz: Gesunde Zähne, entspannt beim Zahnarzt."
+  lead="Bis zu 100 % Erstattung für Zahnersatz, Implantate und professionelle Zahnreinigung. Damit Sie sich für die beste Behandlung entscheiden können."
+  anliegen="zusatz"
+>
+  <section class="section">
+    <div class="wrap leistung-split">
+      <div class="leistung-text">
+        <h2>Warum sich Zahnzusatz lohnt</h2>
+        <p>
+          Eine Krone kann schnell 500 Euro kosten, ein Implantat mehrere Tausend. Die gesetzliche Kasse
+          übernimmt davon einen Teil, mit der richtigen Zahnzusatzversicherung ist auch der Rest gut abgedeckt.
+        </p>
+        <p>
+          Ich finde für Sie einen Tarif, der zu Ihrem Zahnstatus passt, und erkläre Ihnen verständlich,
+          was er leistet.
+        </p>
+      </div>
+
+      <div>
+        <h2>Worauf ich für Sie achte</h2>
+        <ul class="leistung-checks">
+          <li>
+            <strong>Hohe Erstattung</strong>
+            <span>Für Zahnersatz, Implantate und Inlays, damit Sie frei wählen können.</span>
+          </li>
+          <li>
+            <strong>Wartezeiten und Erstattungsgrenzen</strong>
+            <span>Wir wählen einen Tarif, der früh und verlässlich leistet.</span>
+          </li>
+          <li>
+            <strong>Prophylaxe inklusive</strong>
+            <span>Professionelle Zahnreinigung ist bei vielen Tarifen dabei.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <Fragen fragen={fragen} />
+</Leistungsseite>

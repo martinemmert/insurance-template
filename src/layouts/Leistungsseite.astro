@@ -212,6 +212,11 @@ const home = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     line-height: 1.6;
   }
 
+  :global(.leistung-note) {
+    margin-top: 1.25rem;
+    color: var(--ink-soft);
+  }
+
   :global(.leistung-cards) {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));

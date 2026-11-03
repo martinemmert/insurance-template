@@ -1,27 +1,56 @@
 ---
-import Layout from '../../layouts/Default.astro';
-import Navigation from '../../components/Navigation.astro';
-import PageSection from '../../components/PageSection.astro';
-import ContactForm from '../../components/ContactForm.astro';
-import Heading from '../../components/elements/Heading.astro';
-import Text from '../../components/elements/Text.astro';
-import Grid from '../../components/Grid.astro';
-import Image from '../../components/elements/Image.astro';
+import Leistungsseite from '../../layouts/Leistungsseite.astro';
+import PkvCheck from '../../components/landing/PkvCheck.astro';
+import Fragen from '../../components/landing/Fragen.astro';
 ---
 
-<Layout title="Kranken-Vollversicherung - Helmut Emmert" description="Private Kranken-Vollversicherung: freie Arztwahl, starke Leistungen und ein Tarif, der langfristig zu Ihnen passt. Unabhängige Beratung in Aschaffenburg.">
-    <Navigation />
-    <PageSection variant="white">
-        <Grid columns={2} gap="4rem" align="center">
-            <div>
-                <Heading as="h1" size="3xl" serif class="mb-4">Kranken-Vollversicherung</Heading>
-                <Text size="lg" class="mb-6">Freie Arztwahl, kurze Wartezeiten und ein Tarif, der langfristig zu Ihrem Leben passt - nicht nur im ersten Jahr.</Text>
-                <Text muted class="mb-4">Als Privatpatient genießen Sie Zugang zu Spezialisten, bevorzugte Terminvergabe und eine Versorgung, die sich an Ihren Bedürfnissen orientiert - nicht am Budget Ihrer Krankenkasse.</Text>
-                <Text muted class="mb-4">Ich vergleiche für Sie Tarife von über 300 Produktpartnern und finde die Lösung, die zu Ihrer Lebenssituation passt. Ob Einsteigertarif mit Selbstbeteiligung oder Premiumschutz ohne Kompromisse.</Text>
-                <Text muted>Dabei achte ich besonders auf Beitragsstabilität im Alter - damit Ihr Tarif auch in 20 Jahren noch bezahlbar bleibt.</Text>
-            </div>
-            <Image src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=500&fit=crop" alt="Arztgespräch" height="500px" />
-        </Grid>
-    </PageSection>
-    <ContactForm />
-</Layout>
+<Leistungsseite
+  title="Private Krankenversicherung in Aschaffenburg | Helmut Emmert"
+  description="Private Kranken-Vollversicherung: freie Arztwahl, starke Leistungen und ein Tarif, der langfristig zu Ihnen passt. Unabhängige Beratung in Aschaffenburg."
+  name="Private Krankenversicherung"
+  headline="Private Krankenversicherung: Versorgung, die zu Ihrem Leben passt."
+  lead="Freie Arztwahl, schnelle Termine und ein Tarif, der nicht nur im ersten Jahr passt, sondern auch in zwanzig Jahren noch. Ich begleite Sie von der ersten Frage bis zum passenden Tarif und darüber hinaus."
+  anliegen="angestellt"
+>
+  <section class="section">
+    <div class="wrap leistung-split">
+      <div class="leistung-text">
+        <h2>Was die PKV Ihnen bietet</h2>
+        <p>
+          Als Privatpatient haben Sie Zugang zu Spezialisten, bekommen oft schneller einen Termin und
+          eine Versorgung, die sich an Ihren Bedürfnissen orientiert.
+        </p>
+        <p>
+          Ich vergleiche für Sie Tarife von über 300 Versicherern und finde die Lösung, die zu Ihrer
+          Lebenssituation passt: vom Einsteigertarif mit Selbstbeteiligung bis zum umfassenden Premiumschutz.
+        </p>
+      </div>
+
+      <div>
+        <h2>Worauf ich für Sie achte</h2>
+        <ul class="leistung-checks">
+          <li>
+            <strong>Stabile Beiträge im Alter</strong>
+            <span>Damit Ihr Tarif auch in 20 Jahren noch gut zu stemmen ist, planen wir Beitragsentlastung von Anfang an mit.</span>
+          </li>
+          <li>
+            <strong>Leistungen, die Sie wirklich brauchen</strong>
+            <span>Ambulant, stationär, Zähne: Wir stellen Ihren Schutz so zusammen, dass er zu Ihrem Leben passt.</span>
+          </li>
+          <li>
+            <strong>Sorgfältige Gesundheitsfragen</strong>
+            <span>Ich begleite Sie durch den Antrag, damit alle Angaben vollständig sind und Ihr Schutz sicher greift.</span>
+          </li>
+          <li>
+            <strong>Betreuung nach dem Abschluss</strong>
+            <span>Jährlicher Check, Hilfe bei Erstattungen und Tarifwechsel, wenn sich etwas ändert.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <PkvCheck />
+
+  <Fragen />
+</Leistungsseite>

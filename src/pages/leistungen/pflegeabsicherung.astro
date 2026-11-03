@@ -1,27 +1,47 @@
 ---
-import Layout from '../../layouts/Default.astro';
-import Navigation from '../../components/Navigation.astro';
-import PageSection from '../../components/PageSection.astro';
-import ContactForm from '../../components/ContactForm.astro';
-import Heading from '../../components/elements/Heading.astro';
-import Text from '../../components/elements/Text.astro';
-import Grid from '../../components/Grid.astro';
-import Image from '../../components/elements/Image.astro';
+import Leistungsseite from '../../layouts/Leistungsseite.astro';
 ---
 
-<Layout title="Pflegeabsicherung - Helmut Emmert" description="Pflegevorsorge für Menschen mit Verantwortung. Wahlfreiheit im Pflegefall. Unabhängige Beratung in Aschaffenburg.">
-    <Navigation />
-    <PageSection variant="white">
-        <Grid columns={2} gap="4rem" align="center">
-            <div>
-                <Heading as="h1" size="3xl" serif class="mb-4">Pflegeabsicherung</Heading>
-                <Text size="lg" class="mb-6">Pflegevorsorge für Menschen mit Verantwortung - damit Sie im Pflegefall Wahlfreiheit behalten.</Text>
-                <Text muted class="mb-4">Die gesetzliche Pflegeversicherung deckt nur einen Teil der tatsächlichen Kosten. Je nach Pflegegrad und Versorgungsform bleibt eine Lücke von mehreren Hundert bis über Tausend Euro im Monat.</Text>
-                <Text muted class="mb-4">Mit einer privaten Pflegezusatzversicherung entscheiden Sie selbst, ob Sie zu Hause, in einer Wohngemeinschaft oder in einer Einrichtung Ihrer Wahl betreut werden - ohne auf die Grundversorgung angewiesen zu sein.</Text>
-                <Text muted>Ich berate Sie zu den verschiedenen Modellen - Pflegetagegeld, Pflegekostenversicherung oder Pflegerente - und finde die Lösung, die zu Ihrer familiären und finanziellen Situation passt.</Text>
-            </div>
-            <Image src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=600&h=500&fit=crop" alt="Pflegevorsorge" height="500px" />
-        </Grid>
-    </PageSection>
-    <ContactForm />
-</Layout>
+<Leistungsseite
+  title="Pflegeabsicherung in Aschaffenburg | Helmut Emmert"
+  description="Pflegevorsorge für Menschen mit Verantwortung: Wahlfreiheit im Pflegefall mit Pflegetagegeld, Pflegekosten- oder Pflegerentenversicherung. Beratung in Aschaffenburg."
+  name="Pflegeabsicherung"
+  headline="Pflegeabsicherung: Selbst bestimmen, wie Sie betreut werden."
+  lead="Pflegevorsorge für Menschen mit Verantwortung. Damit Sie und Ihre Familie im Pflegefall frei entscheiden können."
+  anliegen="zusatz"
+>
+  <section class="section">
+    <div class="wrap leistung-split">
+      <div class="leistung-text">
+        <h2>Warum Pflegevorsorge Freiheit schenkt</h2>
+        <p>
+          Die gesetzliche Pflegeversicherung trägt einen Teil der Kosten. Den Eigenanteil, je nach Pflegegrad
+          und Versorgungsform mehrere Hundert bis über Tausend Euro im Monat, sichern Sie privat ab.
+        </p>
+        <p>
+          So entscheiden Sie selbst, ob Sie zu Hause, in einer Wohngemeinschaft oder in einer Einrichtung
+          Ihrer Wahl betreut werden.
+        </p>
+      </div>
+
+      <div>
+        <h2>Drei Modelle, eine Beratung</h2>
+        <ul class="leistung-checks">
+          <li>
+            <strong>Pflegetagegeld</strong>
+            <span>Ein fester Betrag pro Tag, den Sie frei einsetzen können.</span>
+          </li>
+          <li>
+            <strong>Pflegekostenversicherung</strong>
+            <span>Erstattet nachgewiesene Kosten, die die gesetzliche Pflegeversicherung nicht trägt.</span>
+          </li>
+          <li>
+            <strong>Pflegerente</strong>
+            <span>Eine monatliche Rente im Pflegefall, abhängig vom Pflegegrad.</span>
+          </li>
+        </ul>
+        <p class="leistung-note">Gemeinsam finden wir das Modell, das zu Ihrer familiären und finanziellen Situation passt.</p>
+      </div>
+    </div>
+  </section>
+</Leistungsseite>
