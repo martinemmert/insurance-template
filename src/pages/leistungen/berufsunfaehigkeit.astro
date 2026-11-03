@@ -21,7 +21,7 @@ const fragen: Frage[] = [
   {
     frage: 'Was kostet eine Berufsunfähigkeitsversicherung?',
     antwort:
-      'Das hängt von Ihrem Alter, Beruf, Ihrer Gesundheit und der gewünschten Rente ab. Im Erstgespräch rechne ich Ihnen konkrete Beispiele aus, damit Sie ein gutes Gefühl für die Größenordnung bekommen.',
+      'Das hängt von Ihrem Alter, Beruf, Ihrer Gesundheit und der gewünschten Rente ab. Im Erstgespräch bekommen Sie konkrete Beispiele, damit Sie ein gutes Gefühl für die Größenordnung haben.',
   },
 ];
 ---
@@ -30,47 +30,52 @@ const fragen: Frage[] = [
   title="Berufsunfähigkeitsversicherung in Aschaffenburg | Helmut Emmert"
   description="Berufsunfähigkeitsversicherung mit persönlicher Beratung in Aschaffenburg. Für Angestellte, Selbstständige, Beamte und Berufseinsteiger. Erstgespräch kostenlos."
   name="Berufsunfähigkeit"
-  headline="Berufsunfähigkeit: Ihr Einkommen in guten Händen."
-  lead="Ihre Arbeitskraft trägt Ihr Leben: Wohnung, Familie, Pläne. Mit einer Berufsunfähigkeitsversicherung bleibt das so, auch wenn Sie Ihren Beruf einmal nicht mehr ausüben können."
+  headline="Ihr Einkommen bleibt, auch wenn Ihre Gesundheit einmal nicht mitspielt."
+  lead="Mit einer Berufsunfähigkeitsversicherung sind Miete, Familie und Pläne abgesichert. So können Sie sich im Ernstfall ganz aufs Gesundwerden konzentrieren."
+  situationen={[
+    'Ihre Familie verlässt sich auf Ihr Einkommen.',
+    'Jeden Monat sind Miete oder Kredit fällig.',
+    'Sie fragen sich, ob die gesetzliche Absicherung reicht.',
+  ]}
   anliegen="bu"
 >
   <section class="section">
     <div class="wrap leistung-split">
       <div class="leistung-text">
-        <h2>So funktioniert die BU</h2>
+        <h2>Ihre Arbeitskraft trägt Ihr Leben</h2>
         <p>
-          Können Sie Ihren Beruf aus gesundheitlichen Gründen nicht mehr ausüben, zahlt die BU Ihnen jeden
-          Monat eine vereinbarte Rente. In den meisten Tarifen gilt: Sie können Ihren zuletzt ausgeübten Beruf
-          voraussichtlich mindestens sechs Monate lang zu mindestens 50 Prozent nicht mehr ausüben.
+          Eine längere Krankheit oder ein Unfall kann jeden treffen. Die gesetzliche Erwerbsminderungsrente
+          fällt meist niedrig aus und greift erst, wenn Sie kaum noch arbeiten können.
         </p>
         <p>
-          So bleiben Miete, Kredit und Alltag bezahlt, und Sie können sich ganz darauf konzentrieren,
-          wieder gesund zu werden.
+          Die Berufsunfähigkeitsversicherung zahlt Ihnen jeden Monat eine vereinbarte Rente, sobald Sie Ihren Beruf
+          aus gesundheitlichen Gründen nicht mehr ausüben können. In den meisten Tarifen gilt: voraussichtlich
+          mindestens sechs Monate lang zu mindestens 50 Prozent.
         </p>
       </div>
 
       <div>
-        <h2>Worauf ich für Sie achte</h2>
+        <h2>Was Sie davon haben</h2>
         <ul class="leistung-checks">
           <li>
-            <strong>Die richtige Rentenhöhe</strong>
-            <span>Ihre BU-Rente soll einen großen Teil Ihres Nettoeinkommens abdecken, damit Ihr Alltag weiterläuft.</span>
+            <strong>Ihr Alltag läuft weiter</strong>
+            <span>Die BU-Rente deckt einen großen Teil Ihres Nettoeinkommens ab.</span>
           </li>
           <li>
-            <strong>Laufzeit bis zur Rente</strong>
-            <span>Der Schutz reicht bis zu Ihrem Rentenbeginn, damit keine Zeit ungeschützt bleibt.</span>
+            <strong>Schutz bis zur Rente</strong>
+            <span>Ihre Absicherung reicht durchgehend bis zum Rentenbeginn.</span>
           </li>
           <li>
-            <strong>Kein Verweis auf andere Berufe</strong>
-            <span>Gute Tarife verzichten auf die abstrakte Verweisung. Entscheidend ist Ihr eigener Beruf.</span>
+            <strong>Ihr eigener Beruf zählt</strong>
+            <span>Gute Tarife verweisen Sie nicht auf einen anderen Job, den Sie theoretisch noch machen könnten.</span>
           </li>
           <li>
-            <strong>Mitwachsen ohne neue Gesundheitsfragen</strong>
-            <span>Mit einer Nachversicherungsgarantie erhöhen Sie Ihre Rente bei Heirat, Nachwuchs oder Gehaltssprung.</span>
+            <strong>Ihr Schutz wächst mit</strong>
+            <span>Bei Heirat, Nachwuchs oder Gehaltssprung erhöhen Sie Ihre Rente ohne neue Gesundheitsfragen.</span>
           </li>
           <li>
-            <strong>Sorgfältige Gesundheitsfragen</strong>
-            <span>Ich begleite Sie durch den Antrag, damit alle Angaben vollständig sind und Ihr Schutz später sicher greift.</span>
+            <strong>Sicher durch den Antrag</strong>
+            <span>Sie gehen die Gesundheitsfragen nicht allein durch, damit Ihr Schutz später verlässlich greift.</span>
           </li>
         </ul>
       </div>
@@ -79,7 +84,7 @@ const fragen: Frage[] = [
 
   <section class="section section--warm">
     <div class="wrap">
-      <h2>Für wen die BU passt</h2>
+      <h2>Die passende Lösung für Ihre Situation</h2>
       <ul class="leistung-cards">
         <li>
           <span class="leistung-cards__tag">Angestellte</span>
@@ -89,17 +94,17 @@ const fragen: Frage[] = [
         <li>
           <span class="leistung-cards__tag">Selbstständige</span>
           <h3>Ihr Betrieb, Ihre Sicherheit</h3>
-          <p>Ohne Arbeitgeber im Rücken ist eine eigene Absicherung besonders wertvoll. Wir finden die passende Rentenhöhe für Sie.</p>
+          <p>Ohne Arbeitgeber im Rücken ist eine eigene Absicherung besonders wertvoll.</p>
         </li>
         <li>
           <span class="leistung-cards__tag">Beamte</span>
           <h3>Mit Dienstunfähigkeitsklausel</h3>
-          <p>Eine BU mit echter Dienstunfähigkeitsklausel ergänzt Ihre Versorgung, gerade in den ersten Dienstjahren.</p>
+          <p>Ergänzt Ihre Versorgung, gerade in den ersten Dienstjahren.</p>
         </li>
         <li>
           <span class="leistung-cards__tag">Berufseinsteiger</span>
           <h3>Früh starten, günstig bleiben</h3>
-          <p>Für Auszubildende und Studierende gibt es attraktive Einstiegstarife, die mit Ihnen mitwachsen.</p>
+          <p>Für Auszubildende und Studierende gibt es Einstiegstarife, die mit Ihnen mitwachsen.</p>
         </li>
       </ul>
     </div>

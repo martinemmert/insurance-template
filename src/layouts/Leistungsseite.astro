@@ -1,10 +1,8 @@
 ---
-import { Image } from 'astro:assets';
 import Landing from './Landing.astro';
 import Header from '../components/landing/Header.astro';
 import Kontakt from '../components/landing/Kontakt.astro';
 import Fusszeile from '../components/landing/Fusszeile.astro';
-import profil from '../assets/photos/helmut-profil.jpg';
 import { kontakt } from '../data/kontakt';
 
 interface Props {
@@ -13,11 +11,13 @@ interface Props {
   name: string;
   headline: string;
   lead: string;
+  /** Situations the visitor recognises themselves in, shown next to the headline */
+  situationen: string[];
   /** Topic preselected in the contact form */
   anliegen: string;
 }
 
-const { title, description, name, headline, lead, anliegen } = Astro.props;
+const { title, description, name, headline, lead, situationen, anliegen } = Astro.props;
 const home = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
@@ -42,11 +42,12 @@ const home = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           </div>
         </div>
 
-        <aside class="leistung-hero__person" aria-label="Ihr Ansprechpartner">
-          <Image src={profil} alt="Helmut Emmert" width={320} class="leistung-hero__avatar" />
-          <p class="leistung-hero__name">{kontakt.name}</p>
-          <p class="leistung-hero__role">Ihr Ansprechpartner in Aschaffenburg</p>
-          <p class="leistung-hero__note">„Ich nehme mir Zeit für Sie und finde die Absicherung, die zu Ihrem Leben passt.“</p>
+        <aside class="leistung-hero__situations" aria-labelledby="situationen-title">
+          <p class="leistung-hero__situations-title" id="situationen-title">Kennen Sie das?</p>
+          <ul>
+            {situationen.map((s) => <li>{s}</li>)}
+          </ul>
+          <p class="leistung-hero__situations-close">Dann sind Sie hier genau richtig.</p>
         </aside>
       </div>
     </section>
@@ -66,7 +67,7 @@ const home = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
   .leistung-hero__grid {
     display: grid;
-    grid-template-columns: 1.6fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     gap: clamp(2.5rem, 5vw, 4.5rem);
     align-items: center;
   }
@@ -111,42 +112,51 @@ const home = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     white-space: nowrap;
   }
 
-  .leistung-hero__person {
-    padding: 2rem;
+  .leistung-hero__situations {
+    padding: clamp(1.75rem, 3vw, 2.25rem);
     background: var(--paper);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
-    text-align: center;
   }
 
-  .leistung-hero__avatar {
-    width: 7rem;
-    height: 7rem;
-    margin: 0 auto 1rem;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-
-  .leistung-hero__name {
-    margin-inline: auto;
+  .leistung-hero__situations-title {
+    margin-bottom: 1.25rem;
     font-family: var(--font-display);
     font-size: var(--step-2);
     font-weight: 600;
     line-height: 1.2;
   }
 
-  .leistung-hero__role {
-    margin: 0.2rem auto 1.25rem;
-    font-size: var(--step--1);
-    color: var(--ink-soft);
+  .leistung-hero__situations ul {
+    display: grid;
+    gap: 0.9rem;
+    padding: 0;
+    list-style: none;
   }
 
-  .leistung-hero__note {
-    margin-inline: auto;
+  .leistung-hero__situations li {
+    display: grid;
+    grid-template-columns: 1.5rem 1fr;
+    gap: 0.75rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  .leistung-hero__situations li::before {
+    content: '';
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: var(--green-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a4d2e' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 0.8rem no-repeat;
+  }
+
+  .leistung-hero__situations-close {
+    margin-top: 1.5rem;
     padding-top: 1.25rem;
     border-top: 1px solid var(--line);
     font-family: var(--font-display);
     font-style: italic;
+    font-size: var(--step-1);
     color: var(--green);
   }
 
