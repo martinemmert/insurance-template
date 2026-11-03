@@ -1,5 +1,14 @@
 ---
-const fragen = [
+export interface Frage {
+  frage: string;
+  antwort: string;
+}
+
+interface Props {
+  fragen?: Frage[];
+}
+
+const pkvFragen: Frage[] = [
   {
     frage: 'Kann ich später zurück in die gesetzliche Kasse?',
     antwort:
@@ -30,6 +39,8 @@ const fragen = [
     antwort: 'Nichts. 15 Minuten, per Telefon oder Video, ohne Verpflichtung.',
   },
 ];
+
+const { fragen = pkvFragen } = Astro.props;
 ---
 
 <section class="section faq" id="fragen" aria-labelledby="faq-title">

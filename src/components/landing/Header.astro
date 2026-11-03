@@ -1,17 +1,20 @@
 ---
 import { kontakt } from '../../data/kontakt';
+
+// Links point at the homepage sections so they also work from service pages
+const home = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <header class="header">
   <div class="wrap header__inner">
-    <a href="#top" class="header__brand">
+    <a href={home} class="header__brand">
       <span class="header__name">{kontakt.name}</span>
       <span class="header__role">{kontakt.rolle}</span>
     </a>
-    <nav class="header__nav" aria-label="Seitenbereiche">
-      <a href="#pkv-check">PKV-Check</a>
-      <a href="#leistungen">Leistungen</a>
-      <a href="#ueber-mich">Über mich</a>
+    <nav class="header__nav" aria-label="Hauptnavigation">
+      <a href={`${home}#pkv-check`}>PKV-Check</a>
+      <a href={`${home}#leistungen`}>Leistungen</a>
+      <a href={`${home}#ueber-mich`}>Über mich</a>
     </nav>
     <div class="header__actions">
       <a href={kontakt.telefonLink} class="header__phone" aria-label={`Anrufen: ${kontakt.telefonAnzeige}`}>

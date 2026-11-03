@@ -1,0 +1,109 @@
+---
+import Leistungsseite from '../../layouts/Leistungsseite.astro';
+import Fragen, { type Frage } from '../../components/landing/Fragen.astro';
+
+const fragen: Frage[] = [
+  {
+    frage: 'Brauche ich eine BU, wenn ich im Büro arbeite?',
+    antwort:
+      'Ja, auch dann ist sie sinnvoll. Zu den häufigsten Gründen für eine Berufsunfähigkeit zählen psychische Erkrankungen und Beschwerden an Rücken und Gelenken. Das kann jeden treffen, unabhängig vom Beruf.',
+  },
+  {
+    frage: 'Gibt es nicht die gesetzliche Erwerbsminderungsrente?',
+    antwort:
+      'Die gibt es, sie fällt aber meist niedrig aus. Sie greift nur, wenn Sie kaum noch in irgendeinem Beruf arbeiten können, nicht schon dann, wenn Ihr eigener Beruf nicht mehr geht. Die BU ergänzt sie genau an dieser Stelle.',
+  },
+  {
+    frage: 'Wann sollte ich eine BU abschließen?',
+    antwort:
+      'Am besten früh. Je jünger und gesünder Sie beim Abschluss sind, desto günstiger ist in der Regel Ihr Beitrag. Für Auszubildende und Studierende gibt es besonders günstige Einstiegstarife.',
+  },
+  {
+    frage: 'Was kostet eine Berufsunfähigkeitsversicherung?',
+    antwort:
+      'Das hängt von Ihrem Alter, Beruf, Ihrer Gesundheit und der gewünschten Rente ab. Im Erstgespräch rechne ich Ihnen konkrete Beispiele aus, damit Sie ein gutes Gefühl für die Größenordnung bekommen.',
+  },
+];
+---
+
+<Leistungsseite
+  title="Berufsunfähigkeitsversicherung in Aschaffenburg | Helmut Emmert"
+  description="Berufsunfähigkeitsversicherung mit persönlicher Beratung in Aschaffenburg. Für Angestellte, Selbstständige, Beamte und Berufseinsteiger. Erstgespräch kostenlos."
+  name="Berufsunfähigkeit"
+  headline="Berufsunfähigkeit: Ihr Einkommen in guten Händen."
+  lead="Ihre Arbeitskraft trägt Ihr Leben: Wohnung, Familie, Pläne. Mit einer Berufsunfähigkeitsversicherung bleibt das so, auch wenn Sie Ihren Beruf einmal nicht mehr ausüben können."
+  anliegen="bu"
+>
+  <section class="section">
+    <div class="wrap leistung-split">
+      <div class="leistung-text">
+        <h2>So funktioniert die BU</h2>
+        <p>
+          Können Sie Ihren Beruf aus gesundheitlichen Gründen nicht mehr ausüben, zahlt die BU Ihnen jeden
+          Monat eine vereinbarte Rente. In den meisten Tarifen gilt: Sie können Ihren zuletzt ausgeübten Beruf
+          voraussichtlich mindestens sechs Monate lang zu mindestens 50 Prozent nicht mehr ausüben.
+        </p>
+        <p>
+          So bleiben Miete, Kredit und Alltag bezahlt, und Sie können sich ganz darauf konzentrieren,
+          wieder gesund zu werden.
+        </p>
+      </div>
+
+      <div>
+        <h2>Worauf ich für Sie achte</h2>
+        <ul class="leistung-checks">
+          <li>
+            <strong>Die richtige Rentenhöhe</strong>
+            <span>Ihre BU-Rente soll einen großen Teil Ihres Nettoeinkommens abdecken, damit Ihr Alltag weiterläuft.</span>
+          </li>
+          <li>
+            <strong>Laufzeit bis zur Rente</strong>
+            <span>Der Schutz reicht bis zu Ihrem Rentenbeginn, damit keine Zeit ungeschützt bleibt.</span>
+          </li>
+          <li>
+            <strong>Kein Verweis auf andere Berufe</strong>
+            <span>Gute Tarife verzichten auf die abstrakte Verweisung. Entscheidend ist Ihr eigener Beruf.</span>
+          </li>
+          <li>
+            <strong>Mitwachsen ohne neue Gesundheitsfragen</strong>
+            <span>Mit einer Nachversicherungsgarantie erhöhen Sie Ihre Rente bei Heirat, Nachwuchs oder Gehaltssprung.</span>
+          </li>
+          <li>
+            <strong>Sorgfältige Gesundheitsfragen</strong>
+            <span>Ich begleite Sie durch den Antrag, damit alle Angaben vollständig sind und Ihr Schutz später sicher greift.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--warm">
+    <div class="wrap">
+      <h2>Für wen die BU passt</h2>
+      <ul class="leistung-cards">
+        <li>
+          <span class="leistung-cards__tag">Angestellte</span>
+          <h3>Ihr Gehalt abgesichert</h3>
+          <p>Ihr Einkommen ist Ihr wichtigster Baustein. Die BU sorgt dafür, dass er stabil bleibt.</p>
+        </li>
+        <li>
+          <span class="leistung-cards__tag">Selbstständige</span>
+          <h3>Ihr Betrieb, Ihre Sicherheit</h3>
+          <p>Ohne Arbeitgeber im Rücken ist eine eigene Absicherung besonders wertvoll. Wir finden die passende Rentenhöhe für Sie.</p>
+        </li>
+        <li>
+          <span class="leistung-cards__tag">Beamte</span>
+          <h3>Mit Dienstunfähigkeitsklausel</h3>
+          <p>Eine BU mit echter Dienstunfähigkeitsklausel ergänzt Ihre Versorgung, gerade in den ersten Dienstjahren.</p>
+        </li>
+        <li>
+          <span class="leistung-cards__tag">Berufseinsteiger</span>
+          <h3>Früh starten, günstig bleiben</h3>
+          <p>Für Auszubildende und Studierende gibt es attraktive Einstiegstarife, die mit Ihnen mitwachsen.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <Fragen fragen={fragen} />
+</Leistungsseite>

@@ -6,7 +6,6 @@ interface Baustein {
   text: string;
   href: string;
   mehr: string;
-  anliegen?: string;
   icon: string;
 }
 
@@ -14,17 +13,15 @@ const weitere: Baustein[] = [
   {
     titel: 'Berufsunfähigkeit',
     text: 'Ihre Arbeitskraft ist Ihr wertvollstes Gut. Die BU-Rente sichert Ihr Einkommen, falls Sie Ihren Beruf einmal nicht mehr ausüben können. Für Beamte mit Dienstunfähigkeitsklausel.',
-    href: '#kontakt',
-    mehr: 'Beratung anfragen',
-    anliegen: 'bu',
+    href: `${base}leistungen/berufsunfaehigkeit`,
+    mehr: 'Mehr erfahren',
     icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z',
   },
   {
     titel: 'Altersvorsorge',
     text: 'Damit Ihr Ruhestand so wird, wie Sie ihn sich vorstellen. Gemeinsam planen wir Ihre Vorsorge: privat, betrieblich oder mit der Basisrente.',
-    href: '#kontakt',
-    mehr: 'Beratung anfragen',
-    anliegen: 'altersvorsorge',
+    href: `${base}leistungen/altersvorsorge`,
+    mehr: 'Mehr erfahren',
     icon: 'M3 3v18h18M7 15l4-4 3 3 6-6M15 8h5v5',
   },
   {
@@ -92,7 +89,7 @@ const weitere: Baustein[] = [
           <span class="services__icon" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d={w.icon} /></svg>
           </span>
-          <h3><a href={w.href} data-anliegen={w.anliegen}>{w.titel}</a></h3>
+          <h3><a href={w.href}>{w.titel}</a></h3>
           <p>{w.text}</p>
           <span class="services__more" aria-hidden="true">{w.mehr}</span>
         </article>

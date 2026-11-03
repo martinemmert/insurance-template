@@ -1,0 +1,98 @@
+---
+import Leistungsseite from '../../layouts/Leistungsseite.astro';
+import Fragen, { type Frage } from '../../components/landing/Fragen.astro';
+
+const fragen: Frage[] = [
+  {
+    frage: 'Ab wann sollte ich mit der Altersvorsorge anfangen?',
+    antwort:
+      'So früh wie möglich, denn je mehr Zeit Ihr Geld hat, desto mehr kann es wachsen. Aber auch mit 50 lohnt sich ein guter Plan. Wir schauen gemeinsam, was in Ihrer Situation am meisten bewirkt.',
+  },
+  {
+    frage: 'Ich habe schon Verträge. Lohnt sich trotzdem ein Gespräch?',
+    antwort:
+      'Ja, sehr gern. Ich verschaffe Ihnen einen Überblick über alles, was Sie schon haben, und prüfe, ob es noch zu Ihren Plänen passt.',
+  },
+  {
+    frage: 'Welche Form der Vorsorge ist die beste?',
+    antwort:
+      'Das hängt davon ab, ob Sie angestellt oder selbstständig sind, wie viel Sie verdienen und wie flexibel Sie bleiben möchten. Oft ist eine Kombination aus mehreren Bausteinen die beste Lösung.',
+  },
+  {
+    frage: 'Was kostet das Erstgespräch?',
+    antwort: 'Nichts. 15 Minuten, per Telefon oder Video, ohne Verpflichtung.',
+  },
+];
+---
+
+<Leistungsseite
+  title="Altersvorsorge in Aschaffenburg | Helmut Emmert"
+  description="Persönliche Beratung zur Altersvorsorge in Aschaffenburg: Basisrente, betriebliche Altersvorsorge und private Rentenversicherung. Erstgespräch kostenlos."
+  name="Altersvorsorge"
+  headline="Altersvorsorge: Ihr Ruhestand, so wie Sie ihn sich vorstellen."
+  lead="Reisen, Enkel, Garten oder einfach mehr Zeit: Was immer Sie vorhaben, mit einem guten Plan gehen Sie entspannt in den Ruhestand. Ich begleite Sie dabei, Schritt für Schritt."
+  anliegen="altersvorsorge"
+>
+  <section class="section">
+    <div class="wrap leistung-split">
+      <div class="leistung-text">
+        <h2>Ein Plan, der zu Ihrem Leben passt</h2>
+        <p>
+          Gute Altersvorsorge beginnt mit einem klaren Bild: Wo stehen Sie heute, was können Sie aus
+          gesetzlicher Rente und bestehenden Verträgen erwarten, und wie möchten Sie im Ruhestand leben?
+        </p>
+        <p>
+          Daraus entwickeln wir gemeinsam Ihren Plan. Verständlich, ohne Fachchinesisch und so flexibel,
+          dass er Ihre Lebensveränderungen mitmacht.
+        </p>
+      </div>
+
+      <div>
+        <h2>So gehen wir vor</h2>
+        <ul class="leistung-checks">
+          <li>
+            <strong>Bestandsaufnahme</strong>
+            <span>Wir sammeln, was schon da ist: gesetzliche Rente, Betriebsrente, private Verträge.</span>
+          </li>
+          <li>
+            <strong>Ihr Ziel</strong>
+            <span>Wir legen fest, mit welchem Einkommen Sie im Ruhestand gut leben möchten.</span>
+          </li>
+          <li>
+            <strong>Die passenden Bausteine</strong>
+            <span>Ich vergleiche Angebote von über 300 Versicherern und stelle Ihre Vorsorge zusammen.</span>
+          </li>
+          <li>
+            <strong>Jährlicher Blick</strong>
+            <span>Einmal im Jahr schauen wir gemeinsam, ob Ihr Plan noch zu Ihrem Leben passt.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--warm">
+    <div class="wrap">
+      <h2>Drei Wege, die sich gut ergänzen</h2>
+      <ul class="leistung-cards">
+        <li>
+          <span class="leistung-cards__tag">Steuerlich gefördert</span>
+          <h3>Basisrente</h3>
+          <p>Ihre Beiträge können Sie steuerlich absetzen. Besonders interessant für Selbstständige und Gutverdienende.</p>
+        </li>
+        <li>
+          <span class="leistung-cards__tag">Über den Arbeitgeber</span>
+          <h3>Betriebliche Altersvorsorge</h3>
+          <p>Sie sparen direkt aus Ihrem Bruttogehalt, oft mit einem Zuschuss Ihres Arbeitgebers.</p>
+        </li>
+        <li>
+          <span class="leistung-cards__tag">Flexibel</span>
+          <h3>Private Rentenversicherung</h3>
+          <p>Lebenslange Rente oder Auszahlung auf einen Schlag: Sie entscheiden, was zu Ihren Plänen passt.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <Fragen fragen={fragen} />
+</Leistungsseite>

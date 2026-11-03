@@ -1,0 +1,257 @@
+---
+import { Image } from 'astro:assets';
+import Landing from './Landing.astro';
+import Header from '../components/landing/Header.astro';
+import Kontakt from '../components/landing/Kontakt.astro';
+import Fusszeile from '../components/landing/Fusszeile.astro';
+import profil from '../assets/photos/helmut-profil.jpg';
+import { kontakt } from '../data/kontakt';
+
+interface Props {
+  title: string;
+  description: string;
+  name: string;
+  headline: string;
+  lead: string;
+  /** Topic preselected in the contact form */
+  anliegen: string;
+}
+
+const { title, description, name, headline, lead, anliegen } = Astro.props;
+const home = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+
+<Landing title={title} description={description}>
+  <Header />
+  <main class="leistung">
+    <section class="leistung-hero">
+      <div class="wrap leistung-hero__grid">
+        <div>
+          <nav class="leistung-hero__crumbs" aria-label="Brotkrumen">
+            <a href={home}>Startseite</a>
+            <span aria-hidden="true">/</span>
+            <a href={`${home}#leistungen`}>Leistungen</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">{name}</span>
+          </nav>
+          <h1>{headline}</h1>
+          <p class="lead">{lead}</p>
+          <div class="leistung-hero__actions">
+            <a href="#kontakt" class="button">Kostenloses Erstgespräch</a>
+            <a href={kontakt.telefonLink} class="leistung-hero__call">oder anrufen: <strong>{kontakt.telefonAnzeige}</strong></a>
+          </div>
+        </div>
+
+        <aside class="leistung-hero__person" aria-label="Ihr Ansprechpartner">
+          <Image src={profil} alt="Helmut Emmert" width={320} class="leistung-hero__avatar" />
+          <p class="leistung-hero__name">{kontakt.name}</p>
+          <p class="leistung-hero__role">Ihr Ansprechpartner in Aschaffenburg</p>
+          <p class="leistung-hero__note">„Ich nehme mir Zeit für Sie und finde die Absicherung, die zu Ihrem Leben passt.“</p>
+        </aside>
+      </div>
+    </section>
+
+    <slot />
+
+    <Kontakt anliegen={anliegen} />
+  </main>
+  <Fusszeile />
+</Landing>
+
+<style>
+  .leistung-hero {
+    padding-block: clamp(3rem, 6vw, 5rem);
+    background: linear-gradient(135deg, var(--warm) 0%, var(--warm-deep) 100%);
+  }
+
+  .leistung-hero__grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+    align-items: center;
+  }
+
+  .leistung-hero__crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+  }
+
+  .leistung-hero__crumbs a {
+    color: var(--green);
+    text-underline-offset: 0.2em;
+  }
+
+  .leistung-hero h1 {
+    font-size: var(--step-5);
+    margin-bottom: 1.25rem;
+  }
+
+  .leistung-hero .lead {
+    margin-bottom: 2rem;
+  }
+
+  .leistung-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
+  }
+
+  .leistung-hero__call {
+    text-decoration: none;
+    color: var(--ink-soft);
+  }
+
+  .leistung-hero__call strong {
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .leistung-hero__person {
+    padding: 2rem;
+    background: var(--paper);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+  }
+
+  .leistung-hero__avatar {
+    width: 7rem;
+    height: 7rem;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .leistung-hero__name {
+    margin-inline: auto;
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .leistung-hero__role {
+    margin: 0.2rem auto 1.25rem;
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+  }
+
+  .leistung-hero__note {
+    margin-inline: auto;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--green);
+  }
+
+  @media (max-width: 56rem) {
+    .leistung-hero__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Building blocks for the page bodies */
+  :global(.leistung-split) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem clamp(2.5rem, 6vw, 5rem);
+    align-items: start;
+  }
+
+  :global(.leistung-split h2) {
+    margin-bottom: 1.25rem;
+  }
+
+  :global(.leistung-split p + p) {
+    margin-top: 1rem;
+  }
+
+  :global(.leistung-text p) {
+    color: var(--ink-soft);
+  }
+
+  :global(.leistung-checks) {
+    display: grid;
+    gap: 0.9rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  :global(.leistung-checks li) {
+    display: grid;
+    grid-template-columns: 2.25rem 1fr;
+    gap: 0.25rem 1rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--paper);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+  }
+
+  :global(.leistung-checks li::before) {
+    content: '';
+    grid-row: span 2;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: var(--radius);
+    background: var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 1.1rem no-repeat;
+  }
+
+  :global(.leistung-checks strong) {
+    display: block;
+  }
+
+  :global(.leistung-checks span) {
+    color: var(--ink-soft);
+    font-size: var(--step--1);
+    line-height: 1.6;
+  }
+
+  :global(.leistung-cards) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1.25rem;
+    margin-top: clamp(2rem, 4vw, 3rem);
+    padding: 0;
+    list-style: none;
+  }
+
+  :global(.leistung-cards li) {
+    padding: 1.75rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+  }
+
+  :global(.leistung-cards h3) {
+    margin-bottom: 0.5rem;
+  }
+
+  :global(.leistung-cards p) {
+    color: var(--ink-soft);
+    font-size: var(--step--1);
+    line-height: 1.6;
+  }
+
+  :global(.leistung-cards .leistung-cards__tag) {
+    display: inline-block;
+    margin-bottom: 0.9rem;
+    padding: 0.25rem 0.75rem;
+    background: var(--green-tint);
+    color: var(--green);
+    border-radius: 999px;
+    font-size: var(--step--1);
+    font-weight: 600;
+  }
+
+  @media (max-width: 56rem) {
+    :global(.leistung-split) {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

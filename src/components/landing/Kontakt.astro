@@ -2,6 +2,34 @@
 import { Image } from 'astro:assets';
 import profil from '../../assets/photos/helmut-profil.jpg';
 import { kontakt } from '../../data/kontakt';
+
+interface Props {
+  /** Topic preselected in the form, e.g. on a service page */
+  anliegen?: string;
+}
+
+const { anliegen = 'angestellt' } = Astro.props;
+
+const themen = [
+  {
+    gruppe: 'Private Krankenversicherung',
+    optionen: [
+      { value: 'angestellt', label: 'PKV für Angestellte' },
+      { value: 'selbststaendig', label: 'PKV für Selbstständige' },
+      { value: 'beamt', label: 'PKV für Beamte und Anwärter' },
+      { value: 'privat', label: 'Meinen PKV-Beitrag prüfen' },
+    ],
+  },
+  {
+    gruppe: 'Weitere Leistungen',
+    optionen: [
+      { value: 'bu', label: 'Berufsunfähigkeit' },
+      { value: 'altersvorsorge', label: 'Altersvorsorge' },
+      { value: 'zusatz', label: 'Zusatzversicherung (Zahn, Krankenhaus, Pflege)' },
+      { value: 'anderes', label: 'Etwas anderes' },
+    ],
+  },
+];
 ---
 
 <section class="section contact" id="kontakt" aria-labelledby="contact-title">
@@ -52,18 +80,13 @@ import { kontakt } from '../../data/kontakt';
       <div class="field">
         <label for="k-anliegen">Worum geht es?</label>
         <select id="k-anliegen" name="anliegen">
-          <optgroup label="Private Krankenversicherung">
-            <option value="angestellt">PKV für Angestellte</option>
-            <option value="selbststaendig">PKV für Selbstständige</option>
-            <option value="beamt">PKV für Beamte und Anwärter</option>
-            <option value="privat">Meinen PKV-Beitrag prüfen</option>
-          </optgroup>
-          <optgroup label="Weitere Leistungen">
-            <option value="bu">Berufsunfähigkeit</option>
-            <option value="altersvorsorge">Altersvorsorge</option>
-            <option value="zusatz">Zusatzversicherung (Zahn, Krankenhaus, Pflege)</option>
-            <option value="anderes">Etwas anderes</option>
-          </optgroup>
+          {themen.map((t) => (
+            <optgroup label={t.gruppe}>
+              {t.optionen.map((o) => (
+                <option value={o.value} selected={o.value === anliegen}>{o.label}</option>
+              ))}
+            </optgroup>
+          ))}
         </select>
       </div>
 
