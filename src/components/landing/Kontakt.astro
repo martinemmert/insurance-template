@@ -1,0 +1,228 @@
+---
+import { kontakt } from '../../data/kontakt';
+---
+
+<section class="section contact" id="kontakt" aria-labelledby="contact-title">
+  <div class="wrap contact__grid">
+    <div class="contact__info">
+      <h2 id="contact-title">Sprechen wir 15 Minuten über Ihre Situation.</h2>
+      <p class="contact__intro">
+        Kostenlos und unverbindlich, per Telefon oder Video. Danach wissen Sie, ob sich die private
+        Krankenversicherung für Sie lohnt.
+      </p>
+
+      <a href={kontakt.telefonLink} class="contact__phone">{kontakt.telefonAnzeige}</a>
+      <dl class="contact__details">
+        <div>
+          <dt>E-Mail</dt>
+          <dd><a href={`mailto:${kontakt.email}`}>{kontakt.email}</a></dd>
+        </div>
+        <div>
+          <dt>Büro</dt>
+          <dd>{kontakt.strasse}, {kontakt.ort}</dd>
+        </div>
+      </dl>
+    </div>
+
+    <form class="contact__form" id="kontakt-formular">
+      <p class="contact__form-title">Oder lassen Sie sich zurückrufen</p>
+
+      <div class="field">
+        <label for="k-name">Name</label>
+        <input id="k-name" name="name" type="text" autocomplete="name" required />
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="k-telefon">Telefon</label>
+          <input id="k-telefon" name="telefon" type="tel" autocomplete="tel" required />
+        </div>
+        <div class="field">
+          <label for="k-email">E-Mail <span class="field__optional">(freiwillig)</span></label>
+          <input id="k-email" name="email" type="email" autocomplete="email" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="k-anliegen">Worum geht es?</label>
+        <select id="k-anliegen" name="anliegen">
+          <option value="angestellt">Als Angestellte/r in die PKV wechseln</option>
+          <option value="selbststaendig">Als Selbstständige/r in die PKV wechseln</option>
+          <option value="beamt">PKV für Beamte oder Anwärter</option>
+          <option value="privat">Meinen bestehenden PKV-Beitrag prüfen</option>
+          <option value="anderes">Etwas anderes</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="k-nachricht">Nachricht <span class="field__optional">(freiwillig)</span></label>
+        <textarea id="k-nachricht" name="nachricht" rows="3" placeholder="Zum Beispiel, wann Sie am besten erreichbar sind"></textarea>
+      </div>
+
+      <button type="submit" class="button contact__submit">Rückruf anfordern</button>
+      <p class="contact__privacy">
+        Ich nutze Ihre Angaben nur, um mich bei Ihnen zu melden. Mehr dazu in der <a href="#datenschutz">Datenschutzerklärung</a>.
+      </p>
+    </form>
+  </div>
+</section>
+
+<script>
+  // Carry the choice from the PKV check into the contact form
+  document.querySelectorAll<HTMLAnchorElement>('[data-anliegen]').forEach((link) => {
+    link.addEventListener('click', () => {
+      const select = document.querySelector<HTMLSelectElement>('#k-anliegen');
+      if (select && link.dataset.anliegen) {
+        select.value = link.dataset.anliegen;
+      }
+    });
+  });
+</script>
+
+<style>
+  .contact {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .contact__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem 5rem;
+    align-items: start;
+  }
+
+  .contact__info h2 {
+    margin-bottom: 1.25rem;
+  }
+
+  .contact__intro {
+    color: var(--sky-deep);
+    margin-bottom: 2.5rem;
+  }
+
+  .contact__phone {
+    display: inline-block;
+    margin-bottom: 2rem;
+    font-family: var(--font-display);
+    font-size: var(--step-5);
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .contact__phone:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.12em;
+  }
+
+  .contact__details {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .contact__details dt {
+    font-size: var(--step--1);
+    color: var(--sky-deep);
+  }
+
+  .contact__details dd {
+    margin: 0;
+  }
+
+  .contact :focus-visible {
+    outline-color: var(--sky);
+  }
+
+  .contact__form {
+    display: grid;
+    gap: 1.25rem;
+    padding: clamp(1.5rem, 3.5vw, 2.5rem);
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: var(--radius);
+  }
+
+  .contact__form :focus-visible {
+    outline-color: var(--loden);
+  }
+
+  .contact__form-title {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+    line-height: 1.1;
+  }
+
+  .field {
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .field label {
+    font-weight: 500;
+    font-size: var(--step--1);
+  }
+
+  .field__optional {
+    font-weight: 400;
+    color: var(--ink-soft);
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid var(--ink-soft);
+    border-radius: var(--radius);
+    background: var(--paper);
+    color: var(--ink);
+    font: inherit;
+  }
+
+  .field textarea {
+    resize: vertical;
+  }
+
+  .field input:focus-visible,
+  .field select:focus-visible,
+  .field textarea:focus-visible {
+    outline-offset: 0;
+    border-color: var(--loden);
+  }
+
+  .contact__submit {
+    width: 100%;
+  }
+
+  .contact__privacy {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 56rem) {
+    .contact__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 36rem) {
+    .field-row {
+      grid-template-columns: 1fr;
+    }
+
+    .contact__phone {
+      font-size: var(--step-4);
+    }
+  }
+</style>

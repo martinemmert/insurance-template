@@ -1,5 +1,5 @@
 ---
 number: "04"
-title: Maklermandat & Umzug
+title: Antrag & Wechsel
 ---
-Alle Anträge vorbereitet, letzte Fragen geklärt. Sie unterschreiben  - den Rest erledige ich. Kein Papierkram für Sie.
+Ich bereite alle Anträge vor und kläre die letzten Fragen mit Ihnen. Sie unterschreiben, um alles Weitere kümmere ich mich. Kein Papierkram für Sie.

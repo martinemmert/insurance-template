@@ -1,0 +1,111 @@
+---
+import { bewertungen } from '../../data/kontakt';
+
+const hauptstimme = {
+  text: 'Mein Besuch bei Herr Emmert hat sich auf jeden Fall gelohnt. Dank der tollen Beratung und Hilfe spare ich aktuell um die 300 Euro.',
+  autor: 'Jonas LMk',
+};
+
+const stimmen = [
+  {
+    text: 'Die Beratung war äußerst kompetent, umfassend und auf meine individuellen Fragen und Bedürfnisse zugeschnitten. Ich kann Herrn Emmert uneingeschränkt weiterempfehlen.',
+    autor: 'Nicole Jung-Feil',
+  },
+  {
+    text: 'Endlich habe ich meine Versicherungen auf einem Blick. Herr Emmert geht auf meine Wünsche ein und kümmert sich super schnell um meine Anliegen.',
+    autor: 'Anna Jenschur',
+  },
+];
+---
+
+<section class="section section--sky voices" aria-labelledby="voices-title">
+  <div class="wrap">
+    <div class="voices__head">
+      <h2 id="voices-title">Was Kunden über die Beratung sagen</h2>
+      <p>{bewertungen.sterne} von 5 Sternen bei {bewertungen.anzahl} Bewertungen auf Google</p>
+    </div>
+
+    <figure class="voices__main">
+      <blockquote>
+        <p>{hauptstimme.text}</p>
+      </blockquote>
+      <figcaption>{hauptstimme.autor}, auf Google</figcaption>
+    </figure>
+
+    <div class="voices__more">
+      {stimmen.map((s) => (
+        <figure>
+          <blockquote>
+            <p>{s.text}</p>
+          </blockquote>
+          <figcaption>{s.autor}, auf Google</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .voices__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 2rem;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .voices__head p {
+    color: var(--ink-soft);
+  }
+
+  .voices__main {
+    max-width: 52rem;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .voices__main blockquote p {
+    max-width: none;
+    font-family: var(--font-display);
+    font-size: var(--step-4);
+    font-weight: 500;
+    line-height: 1.12;
+    text-indent: -0.4em;
+  }
+
+  .voices__main blockquote p::before {
+    content: '„';
+  }
+
+  .voices__main blockquote p::after {
+    content: '“';
+  }
+
+  figcaption {
+    margin-top: 1rem;
+    color: var(--ink-soft);
+    font-size: var(--step--1);
+  }
+
+  .voices__more {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .voices__more blockquote p::before {
+    content: '„';
+  }
+
+  .voices__more blockquote p::after {
+    content: '“';
+  }
+
+  @media (max-width: 48rem) {
+    .voices__more {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

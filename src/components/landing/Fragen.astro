@@ -1,0 +1,109 @@
+---
+const fragen = [
+  {
+    frage: 'Kann ich später zurück in die gesetzliche Krankenversicherung?',
+    antwort:
+      'Nur unter bestimmten Voraussetzungen, zum Beispiel wenn Sie als Angestellte wieder unter die Versicherungspflichtgrenze fallen. Ab 55 ist der Weg zurück in der Regel verschlossen. Die Entscheidung für die PKV sollte deshalb gut überlegt sein, und genau dafür ist das Erstgespräch da.',
+  },
+  {
+    frage: 'Werden die Beiträge im Alter unbezahlbar?',
+    antwort:
+      'Ein Teil Ihres Beitrags fließt in Altersrückstellungen, die spätere Erhöhungen abfedern. Steigen werden die Beiträge trotzdem, weil Behandlungen teurer werden. Ich plane das von Anfang an mit ein: mit einem solide kalkulierten Tarif und mit Bausteinen, die Ihren Beitrag ab dem Rentenalter senken.',
+  },
+  {
+    frage: 'Was passiert mit meiner Familie?',
+    antwort:
+      'In der PKV braucht jedes Familienmitglied einen eigenen Vertrag. Eine beitragsfreie Familienversicherung wie in der gesetzlichen Kasse gibt es nicht. Ob Ihre Kinder privat oder gesetzlich versichert werden, hängt davon ab, wie Ihr Partner versichert ist und wer mehr verdient. Das rechne ich mit Ihnen durch.',
+  },
+  {
+    frage: 'Ich habe Vorerkrankungen. Lohnt sich die Anfrage überhaupt?',
+    antwort:
+      'Vorerkrankungen müssen Sie im Antrag vollständig angeben. Versicherer gehen sehr unterschiedlich damit um: Der eine verlangt einen Zuschlag, der andere schließt eine Leistung aus, der dritte lehnt ab. Aus meiner Zeit bei den Versicherern weiß ich, wo eine Anfrage Aussicht auf Erfolg hat.',
+  },
+  {
+    frage: 'Mein PKV-Beitrag ist stark gestiegen. Was kann ich tun?',
+    antwort:
+      'Sie können bei Ihrem Versicherer in einen anderen Tarif wechseln (§ 204 VVG) und behalten dabei Ihre Altersrückstellungen. Welche Tarife infrage kommen und was Sie dabei aufgeben würden, prüfe ich für Sie.',
+  },
+  {
+    frage: 'Was kostet das Erstgespräch?',
+    antwort:
+      'Nichts. Es dauert etwa 15 Minuten, per Telefon oder Video, und verpflichtet Sie zu nichts.',
+  },
+];
+---
+
+<section class="section section--sky faq" id="fragen" aria-labelledby="faq-title">
+  <div class="wrap faq__grid">
+    <h2 id="faq-title">Fragen, die mir oft gestellt werden</h2>
+    <div class="faq__list">
+      {fragen.map((f) => (
+        <details>
+          <summary>{f.frage}</summary>
+          <p>{f.antwort}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq__grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem 4rem;
+    align-items: start;
+  }
+
+  .faq__list {
+    border-top: 1px solid var(--ink);
+  }
+
+  details {
+    border-bottom: 1px solid var(--line);
+  }
+
+  summary {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+    font-weight: 500;
+    font-size: var(--step-0);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary::after {
+    content: '+';
+    flex-shrink: 0;
+    width: 1.5rem;
+    font-size: var(--step-1);
+    line-height: 1;
+    text-align: center;
+    color: var(--loden);
+  }
+
+  details[open] summary::after {
+    content: '–';
+  }
+
+  summary:hover {
+    color: var(--loden-dark);
+  }
+
+  details p {
+    padding-bottom: 1.5rem;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 56rem) {
+    .faq__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

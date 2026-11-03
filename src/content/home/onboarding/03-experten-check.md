@@ -1,5 +1,5 @@
 ---
 number: "03"
-title: Ihr Experten-Check
+title: Ihr Tarifvergleich
 ---
-Ich vergleiche Tarife, durchleuchte das Kleingedruckte und liefere Ihnen eine klare Entscheidungsvorlage  - mit Insider-Wissen, das Sie online nicht finden.
+Ich vergleiche Tarife, lese das Kleingedruckte und lege Ihnen eine klare Empfehlung vor. Mit dem Wissen aus 25 Jahren bei Versicherern, das Sie online nicht finden.

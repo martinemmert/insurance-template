@@ -1,0 +1,143 @@
+---
+import { Image } from 'astro:assets';
+import buero from '../../assets/photos/helmut-buero.jpeg';
+
+const zusagen = [
+  {
+    titel: 'Ich sage Ihnen, wenn die PKV nicht passt.',
+    text: 'Nicht jeder ist privat besser versichert. Wenn die gesetzliche Kasse für Sie die bessere Wahl ist, hören Sie das von mir.',
+  },
+  {
+    titel: 'Kein Hausversicherer.',
+    text: 'Ich arbeite mit über 300 Versicherern zusammen und bin keinem davon verpflichtet. Ich empfehle, was zu Ihnen passt.',
+  },
+  {
+    titel: 'Sie erreichen mich direkt.',
+    text: 'Telefon, Video oder mein Büro in Aschaffenburg. Kein Callcenter, keine Warteschleife.',
+  },
+  {
+    titel: 'Ich bleibe dran.',
+    text: 'Ich prüfe Ihren Vertrag jedes Jahr, helfe bei Ärger mit Erstattungen und bin da, wenn sich in Ihrem Leben etwas ändert.',
+  },
+];
+---
+
+<section class="section about" id="ueber-mich" aria-labelledby="about-title">
+  <div class="wrap about__grid">
+    <figure class="about__photo">
+      <Image
+        src={buero}
+        alt="Helmut Emmert in seinem Büro"
+        widths={[640, 960, 1280]}
+        sizes="(max-width: 56rem) 100vw, 55vw"
+      />
+    </figure>
+
+    <div class="about__text">
+      <h2 id="about-title">Ich kenne die Klauseln, weil ich sie jahrelang selbst angewendet habe.</h2>
+      <p>
+        25 Jahre war ich auf der anderen Seite, bei Allianz, Barmenia, Debeka, DEVK, DKV und SDK.
+        Ich weiß, wie Tarife kalkuliert werden und an welchen Stellen Versicherer im Leistungsfall genau hinschauen.
+      </p>
+      <p>
+        Seit fünf Jahren nutze ich dieses Wissen nur noch für meine Kunden: unabhängig, weisungsfrei
+        und mit Zugang zu über 300 Versicherern.
+      </p>
+      <p class="about__signature">Helmut Emmert</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <ul class="about__promises">
+      {zusagen.map((z) => (
+        <li>
+          <h3>{z.titel}</h3>
+          <p>{z.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .about__grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .about__photo {
+    grid-column: 1 / 8;
+  }
+
+  .about__photo img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: 80% 30%;
+  }
+
+  .about__text {
+    grid-column: 8 / -1;
+  }
+
+  .about__text h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .about__text p + p {
+    margin-top: 1rem;
+  }
+
+  .about__signature {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 500;
+    color: var(--loden);
+  }
+
+  .about__promises {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2rem;
+    margin-top: clamp(3rem, 6vw, 5rem);
+    padding: 0;
+    list-style: none;
+  }
+
+  .about__promises li {
+    padding-top: 1.25rem;
+    border-top: 3px solid var(--ink);
+  }
+
+  .about__promises h3 {
+    font-size: var(--step-1);
+    margin-bottom: 0.6rem;
+  }
+
+  .about__promises p {
+    color: var(--ink-soft);
+    font-size: var(--step--1);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 64rem) {
+    .about__promises {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 56rem) {
+    .about__photo,
+    .about__text {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 36rem) {
+    .about__promises {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,24 +1,26 @@
 ---
-import Layout from '../layouts/Default.astro';
-import Navigation from "../components/Navigation.astro";
-import Hero from "../components/Hero.astro";
-import FeatureCards from "../components/FeatureCards.astro";
-import About from "../components/About.astro";
-import ServicesGrid from "../components/ServicesGrid.astro";
-import BenefitsGrid from "../components/BenefitsGrid.astro";
-import ReviewsGrid from "../components/ReviewsGrid.astro";
-import ProcessSteps from "../components/ProcessSteps.astro";
-import ContactForm from "../components/ContactForm.astro";
+import Landing from '../layouts/Landing.astro';
+import Header from '../components/landing/Header.astro';
+import Hero from '../components/landing/Hero.astro';
+import PkvCheck from '../components/landing/PkvCheck.astro';
+import UeberMich from '../components/landing/UeberMich.astro';
+import Stimmen from '../components/landing/Stimmen.astro';
+import Ablauf from '../components/landing/Ablauf.astro';
+import Fragen from '../components/landing/Fragen.astro';
+import Kontakt from '../components/landing/Kontakt.astro';
+import Fusszeile from '../components/landing/Fusszeile.astro';
 ---
 
-<Layout>
-    <Navigation/>
-    <Hero/>
-    <FeatureCards/>
-    <About/>
-    <ServicesGrid/>
-    <BenefitsGrid/>
-    <ReviewsGrid/>
-    <ProcessSteps />
-    <ContactForm/>
-</Layout>
+<Landing>
+  <Header />
+  <main>
+    <Hero />
+    <PkvCheck />
+    <UeberMich />
+    <Stimmen />
+    <Ablauf />
+    <Fragen />
+    <Kontakt />
+  </main>
+  <Fusszeile />
+</Landing>

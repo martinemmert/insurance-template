@@ -1,0 +1,171 @@
+/* Landing page: private Krankenversicherung
+   Palette taken from the portrait photos: slate blazer, loden pocket square,
+   sky over Schloss Johannisburg, red Main sandstone. */
+
+:root {
+  --ink: #1e2b36;
+  --ink-soft: #4a5864;
+  --paper: #ffffff;
+  --sky: #e4ebf0;
+  --sky-deep: #d3dee6;
+  --line: #c5d0d8;
+  --loden: #3d5a35;
+  --loden-dark: #2f4729;
+  --sand: #9e4630;
+
+  --font: 'Fira Sans', system-ui, sans-serif;
+  --font-display: 'Fira Sans Extra Condensed', 'Fira Sans', system-ui, sans-serif;
+
+  /* Type scale, ratio 1.25 on an 18px base */
+  --step--1: 0.9rem;
+  --step-0: 1.125rem;
+  --step-1: 1.4rem;
+  --step-2: 1.75rem;
+  --step-3: clamp(1.9rem, 3.2vw, 2.2rem);
+  --step-4: clamp(2.2rem, 4.4vw, 2.75rem);
+  --step-5: clamp(2.5rem, 5vw, 3.9rem);
+
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --wide: 76rem;
+  --measure: 36rem;
+  --radius: 4px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  font-kerning: normal;
+  font-variant-numeric: proportional-nums;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--loden);
+  outline-offset: 3px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: var(--step-4);
+}
+
+h3 {
+  font-size: var(--step-2);
+  line-height: 1.15;
+}
+
+p {
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+.wrap {
+  width: min(100% - 2 * var(--gutter), var(--wide));
+  margin-inline: auto;
+}
+
+.lead {
+  font-size: var(--step-1);
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Buttons */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3.25rem;
+  padding: 0.8rem 1.5rem;
+  border: 2px solid var(--loden);
+  border-radius: var(--radius);
+  background: var(--loden);
+  color: var(--paper);
+  font: 500 var(--step-0) / 1.2 var(--font);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.button:hover {
+  background: var(--loden-dark);
+  border-color: var(--loden-dark);
+}
+
+.button--quiet {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.button--quiet:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+.button svg {
+  flex-shrink: 0;
+}
+
+.section {
+  padding-block: clamp(4rem, 9vw, 7.5rem);
+}
+
+.section--sky {
+  background: var(--sky);
+}

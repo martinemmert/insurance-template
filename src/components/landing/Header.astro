@@ -1,0 +1,124 @@
+---
+import { kontakt } from '../../data/kontakt';
+---
+
+<header class="header">
+  <div class="wrap header__inner">
+    <a href="#top" class="header__brand">
+      <span class="header__name">{kontakt.name}</span>
+      <span class="header__role">{kontakt.rolle}</span>
+    </a>
+    <nav class="header__nav" aria-label="Seitenbereiche">
+      <a href="#pkv-check">PKV-Check</a>
+      <a href="#ueber-mich">Über mich</a>
+      <a href="#fragen">Fragen</a>
+    </nav>
+    <div class="header__actions">
+      <a href={kontakt.telefonLink} class="header__phone" aria-label={`Anrufen: ${kontakt.telefonAnzeige}`}>
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>{kontakt.telefonAnzeige}</span>
+      </a>
+      <a href="#kontakt" class="button header__cta">Erstgespräch vereinbaren</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    min-height: 4.5rem;
+  }
+
+  .header__brand {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    line-height: 1.15;
+  }
+
+  .header__name {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+  }
+
+  .header__role {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+  }
+
+  .header__nav {
+    display: flex;
+    gap: 1.75rem;
+    margin-left: auto;
+  }
+
+  .header__nav a {
+    text-decoration: none;
+    color: var(--ink-soft);
+  }
+
+  .header__nav a:hover {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+
+  .header__actions {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .header__phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .header__cta {
+    min-height: 2.75rem;
+    padding-block: 0.5rem;
+  }
+
+  @media (max-width: 64rem) {
+    .header__nav {
+      display: none;
+    }
+
+    .header__actions {
+      margin-left: auto;
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .header__cta {
+      display: none;
+    }
+
+    .header__phone span {
+      display: none;
+    }
+
+    .header__phone {
+      width: 2.75rem;
+      height: 2.75rem;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+  }
+</style>
