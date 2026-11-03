@@ -1,29 +1,58 @@
 ---
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
-const weitere = [
+interface Baustein {
+  titel: string;
+  text: string;
+  href: string;
+  mehr: string;
+  anliegen?: string;
+  icon: string;
+}
+
+const weitere: Baustein[] = [
+  {
+    titel: 'Berufsunfähigkeit',
+    text: 'Ihre Arbeitskraft bringt Ihnen über die Jahre ein Vermögen ein. Fällt sie aus, ersetzt die BU-Rente Ihr Einkommen. Für Beamte mit Dienstunfähigkeitsklausel.',
+    href: '#kontakt',
+    mehr: 'Beratung anfragen',
+    anliegen: 'bu',
+    icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z',
+  },
+  {
+    titel: 'Altersvorsorge',
+    text: 'Die gesetzliche Rente allein reicht selten. Ich zeige Ihnen Ihre Lücke und wie Sie sie schließen: privat, betrieblich oder mit der Basisrente.',
+    href: '#kontakt',
+    mehr: 'Beratung anfragen',
+    anliegen: 'altersvorsorge',
+    icon: 'M3 3v18h18M7 15l4-4 3 3 6-6M15 8h5v5',
+  },
   {
     titel: 'Zahnzusatz',
-    text: 'Bis zu 100 % Erstattung für Zahnersatz, Implantate und professionelle Zahnreinigung. Damit der nächste Zahnarztbesuch keine Kostenfrage wird.',
+    text: 'Implantate, Zahnersatz, Prophylaxe: bis zu 100 % erstattet. Damit Sie beim Zahnarzt nicht übers Geld reden müssen.',
     href: `${base}leistungen/zahnzusatz`,
+    mehr: 'Mehr erfahren',
     icon: 'M12 3c-2.2 0-3.3 1-4.8 1C5 4 4 5.6 4 8c0 3 1.2 5 1.8 8.2.4 2.2 1 4.8 2.3 4.8 1.6 0 1.6-3.5 2.4-5.4.4-1 .9-1.6 1.5-1.6s1.1.6 1.5 1.6c.8 1.9.8 5.4 2.4 5.4 1.3 0 1.9-2.6 2.3-4.8C18.8 13 20 11 20 8c0-2.4-1-4-3.2-4-1.5 0-2.6-1-4.8-1z',
   },
   {
     titel: 'Chefarzt & Zweibettzimmer',
-    text: 'Im Krankenhaus zählt Vertrauen. Mit Wahlleistungen entscheiden Sie selbst, wer Sie behandelt und wie Sie untergebracht sind.',
+    text: 'Im Krankenhaus selbst entscheiden: wer Sie operiert und wie Sie liegen.',
     href: `${base}leistungen/wahlleistungen-krankenhaus`,
+    mehr: 'Mehr erfahren',
     icon: 'M3 21V8l9-5 9 5v13M9 21v-6h6v6M12 7v4M10 9h4',
   },
   {
     titel: 'Brillen & Heilpraktiker',
-    text: 'Sehhilfen, Kontaktlinsen, alternative Heilmethoden: Leistungen, bei denen die gesetzliche Kasse oft passen muss. Privat sinnvoll ergänzt.',
+    text: 'Brille, Kontaktlinsen, Heilpraktiker: Da zahlt die Kasse wenig oder nichts. Ein Zusatztarif schon.',
     href: `${base}leistungen/brillen-heilpraktiker`,
+    mehr: 'Mehr erfahren',
     icon: 'M2 14a4 4 0 1 0 8 0 4 4 0 1 0-8 0M14 14a4 4 0 1 0 8 0 4 4 0 1 0-8 0M10 14c.6-.8 1.3-1 2-1s1.4.2 2 1M2 14l2-7h2M22 14l-2-7h-2',
   },
   {
     titel: 'Pflegeabsicherung',
-    text: 'Damit Sie im Pflegefall nicht auf die Grundversorgung angewiesen sind, sondern selbst entscheiden, wie und wo Sie betreut werden.',
+    text: 'Pflege kostet schnell mehr, als die Pflegekasse zahlt. Sorgen Sie vor und bestimmen Sie selbst, wie und wo Sie betreut werden.',
     href: `${base}leistungen/pflegeabsicherung`,
+    mehr: 'Mehr erfahren',
     icon: 'M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z',
   },
 ];
@@ -34,8 +63,8 @@ const weitere = [
     <div class="services__head">
       <h2 id="services-title">Ihr Schutz, Baustein für Baustein</h2>
       <p class="lead">
-        Mein Schwerpunkt ist die private Krankenversicherung. Wer gesetzlich versichert bleibt,
-        bekommt bei mir die Zusatzversicherungen, die die Lücken der Kasse schließen.
+        Mein Schwerpunkt ist die private Krankenversicherung. Dazu alles, was Ihre Gesundheit,
+        Ihr Einkommen und Ihren Ruhestand absichert.
       </p>
     </div>
 
@@ -44,14 +73,13 @@ const weitere = [
         <p class="services__badge">Mein Schwerpunkt</p>
         <h3>Private Krankenversicherung</h3>
         <p>
-          Freie Arztwahl, kurze Wartezeiten und ein Tarif, der langfristig zu Ihrem Leben passt,
-          nicht nur im ersten Jahr. Für Selbstständige, Beamte und Angestellte über der Versicherungspflichtgrenze,
-          und für alle, deren PKV-Beitrag zu stark gestiegen ist.
+          Freie Arztwahl, schnelle Termine und ein Tarif, der auch in 20 Jahren noch passt.
+          Für Selbstständige, Beamte und Angestellte über der Versicherungspflichtgrenze.
         </p>
         <ul>
-          <li>Vergleich von über 300 Versicherern</li>
-          <li>Tarifwechsel bei Beitragserhöhung (§ 204 VVG)</li>
-          <li>Begleitung bei Erstattungen und Leistungsfällen</li>
+          <li>Über 300 Versicherer im Vergleich</li>
+          <li>Tarifwechsel, wenn der Beitrag steigt</li>
+          <li>Hilfe bei Erstattungen und Leistungsfällen</li>
         </ul>
         <div class="services__main-actions">
           <a class="button services__main-button" href="#pkv-check">Zum PKV-Check</a>
@@ -64,9 +92,9 @@ const weitere = [
           <span class="services__icon" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d={w.icon} /></svg>
           </span>
-          <h3><a href={w.href}>{w.titel}</a></h3>
+          <h3><a href={w.href} data-anliegen={w.anliegen}>{w.titel}</a></h3>
           <p>{w.text}</p>
-          <span class="services__more" aria-hidden="true">Mehr erfahren</span>
+          <span class="services__more" aria-hidden="true">{w.mehr}</span>
         </article>
       ))}
     </div>
@@ -85,12 +113,11 @@ const weitere = [
   .services__grid {
     display: grid;
     grid-template-columns: 1.3fr 1fr 1fr;
-    grid-template-rows: auto auto;
     gap: 1.25rem;
   }
 
   .services__main {
-    grid-row: span 2;
+    grid-row: span 3;
     display: flex;
     flex-direction: column;
     gap: 1.25rem;

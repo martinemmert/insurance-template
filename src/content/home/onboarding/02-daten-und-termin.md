@@ -2,4 +2,4 @@
 number: "02"
 title: Fragebogen & Termin
 ---
-Sie füllen einen kurzen Fragebogen aus. Ich bereite alles vor, damit wir im Beratungsgespräch keine Zeit verlieren.
+Ein kurzer Fragebogen, damit ich gut vorbereitet bin. So verlieren wir im Termin keine Zeit.

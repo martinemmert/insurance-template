@@ -2,10 +2,10 @@
 import { versicherungspflichtgrenze as vpg } from '../../data/kontakt';
 
 const optionen = [
-  { value: 'angestellt', titel: 'Ich bin angestellt', zusatz: 'mit gutem Gehalt' },
-  { value: 'selbststaendig', titel: 'Ich bin selbstständig', zusatz: 'oder Freiberufler' },
-  { value: 'beamt', titel: 'Ich bin verbeamtet', zusatz: 'oder im Vorbereitungsdienst' },
-  { value: 'privat', titel: 'Ich bin schon privat versichert', zusatz: 'und mein Beitrag steigt' },
+  { value: 'angestellt', titel: 'Angestellt', zusatz: 'mit gutem Gehalt' },
+  { value: 'selbststaendig', titel: 'Selbstständig', zusatz: 'oder freiberuflich' },
+  { value: 'beamt', titel: 'Verbeamtet', zusatz: 'oder Anwärter' },
+  { value: 'privat', titel: 'Schon privat versichert', zusatz: 'und der Beitrag steigt' },
 ];
 
 const naechsteGrenze = vpg.naechsterBetragBeschlossen
@@ -16,8 +16,8 @@ const naechsteGrenze = vpg.naechsterBetragBeschlossen
 <section class="section check" id="pkv-check" aria-labelledby="check-title">
   <div class="wrap">
     <div class="check__intro">
-      <h2 id="check-title">Kann ich in die private Krankenversicherung?</h2>
-      <p class="lead">Das hängt vor allem davon ab, wie Sie arbeiten. Wählen Sie aus, was auf Sie zutrifft.</p>
+      <h2 id="check-title">Passt die PKV zu Ihnen?</h2>
+      <p class="lead">Ein Klick, eine ehrliche Antwort.</p>
     </div>
 
     <fieldset class="check__options">
@@ -32,60 +32,60 @@ const naechsteGrenze = vpg.naechsterBetragBeschlossen
     </fieldset>
 
     <div class="check__answers" aria-live="polite">
-      <p class="check__empty" data-panel="leer">Ihre Antwort erscheint hier, sobald Sie eine Situation gewählt haben.</p>
+      <p class="check__empty" data-panel="leer">Wählen Sie oben Ihre Situation.</p>
 
       <article class="check__answer" data-panel="angestellt">
         <div>
-          <h3>Ja, wenn Ihr Gehalt über der Versicherungspflichtgrenze liegt.</h3>
+          <h3>Ja, sobald Ihr Gehalt über der Versicherungspflichtgrenze liegt.</h3>
           <p>
-            Die Grenze liegt {vpg.aktuellesJahr} bei {vpg.aktuellerBetrag} brutto im Jahr, {naechsteGrenze}.
-            Ihr Arbeitgeber zahlt auch in der PKV die Hälfte Ihres Beitrags, bis zu einem gesetzlichen Höchstbetrag.
+            {vpg.aktuellesJahr} sind das {vpg.aktuellerBetrag} brutto im Jahr, {naechsteGrenze}.
+            Ihr Arbeitgeber zahlt die Hälfte des Beitrags, bis zu einem Höchstbetrag.
           </p>
         </div>
         <div class="check__advice">
-          <p><strong>Worauf ich achte:</strong> Mit 35 ist fast jeder Tarif günstig. Entscheidend ist, was er mit 60 kostet und ob er dann noch leistet, was Sie brauchen. Das rechne ich mit Ihnen durch, bevor Sie wechseln.</p>
+          <p><strong>Worauf ich achte:</strong> Mit 35 ist fast jeder Tarif günstig. Die Frage ist: Was kostet er mit 60? Genau das rechne ich vorher durch.</p>
           <a class="button" href="#kontakt" data-anliegen="angestellt">Dazu beraten lassen</a>
         </div>
       </article>
 
       <article class="check__answer" data-panel="selbststaendig">
         <div>
-          <h3>Ja, unabhängig von Ihrem Einkommen.</h3>
+          <h3>Ja, egal wie viel Sie verdienen.</h3>
           <p>
-            Als Selbstständige zahlen Sie in der gesetzlichen Kasse den vollen Beitrag allein, und er steigt mit Ihrem Gewinn.
-            In der PKV richtet sich der Beitrag nicht nach dem Einkommen, sondern nach Alter, Gesundheit und Tarif.
+            In der Kasse zahlen Sie den vollen Beitrag allein, und er wächst mit Ihrem Gewinn.
+            In der PKV zählen Alter, Gesundheit und Tarif, nicht Ihr Einkommen.
           </p>
         </div>
         <div class="check__advice">
-          <p><strong>Worauf ich achte:</strong> Der Tarif muss auch in einem schwachen Jahr bezahlbar bleiben. Mit dem passenden Selbstbehalt und einem Baustein, der Ihren Beitrag im Rentenalter senkt, planen wir das von Anfang an ein.</p>
+          <p><strong>Worauf ich achte:</strong> Ihr Tarif muss auch ein schwaches Jahr aushalten. Selbstbehalt und Beitragsentlastung im Alter plane ich von Anfang an mit.</p>
           <a class="button" href="#kontakt" data-anliegen="selbststaendig">Dazu beraten lassen</a>
         </div>
       </article>
 
       <article class="check__answer" data-panel="beamt">
         <div>
-          <h3>Ja, und für Sie ist sie meist die günstigste Lösung.</h3>
+          <h3>Ja, und meist ist sie Ihre günstigste Wahl.</h3>
           <p>
-            Über die Beihilfe trägt Ihr Dienstherr einen großen Teil Ihrer Krankheitskosten, je nach Lebenssituation oft 50 bis 80 Prozent.
-            Den Rest versichern Sie privat. Für Anwärter gibt es besonders günstige Ausbildungstarife.
+            Die Beihilfe übernimmt je nach Lebenslage oft 50 bis 80 Prozent Ihrer Krankheitskosten.
+            Den Rest versichern Sie privat. Für Anwärter gibt es günstige Ausbildungstarife.
           </p>
         </div>
         <div class="check__advice">
-          <p><strong>Worauf ich achte:</strong> Dass Ihr Tarif genau die Lücken schließt, die Ihre Beihilfe lässt, und dass der Übergang vom Anwärter- in den Beamtentarif ohne neue Gesundheitsprüfung klappt.</p>
+          <p><strong>Worauf ich achte:</strong> Ihr Tarif schließt genau die Lücke der Beihilfe. Und der Wechsel vom Anwärter- in den Beamtentarif klappt ohne neue Gesundheitsprüfung.</p>
           <a class="button" href="#kontakt" data-anliegen="beamt">Dazu beraten lassen</a>
         </div>
       </article>
 
       <article class="check__answer" data-panel="privat">
         <div>
-          <h3>Sie müssen eine Beitragserhöhung nicht einfach hinnehmen.</h3>
+          <h3>Beitrag gestiegen? Das müssen Sie nicht schlucken.</h3>
           <p>
-            Sie haben das Recht, bei Ihrem Versicherer in einen anderen Tarif zu wechseln (§ 204 VVG).
-            Ihre Altersrückstellungen nehmen Sie dabei mit, eine neue Gesundheitsprüfung gibt es nur für Mehrleistungen.
+            Nach § 204 VVG dürfen Sie bei Ihrem Versicherer in einen anderen Tarif wechseln.
+            Ihre Altersrückstellungen bleiben Ihnen. Eine Gesundheitsprüfung gibt es nur für Mehrleistungen.
           </p>
         </div>
         <div class="check__advice">
-          <p><strong>Worauf ich achte:</strong> Versicherer haben oft Dutzende Tarife, von denen sie nur wenige aktiv anbieten. Ich kenne die Tarifwelten von innen und prüfe, wo Sie sparen, ohne wichtige Leistungen aufzugeben.</p>
+          <p><strong>Worauf ich achte:</strong> Versicherer haben Dutzende Tarife, aktiv angeboten werden nur wenige. Ich kenne sie von innen und finde Ihr Sparpotenzial, ohne dass wichtige Leistungen wegfallen.</p>
           <a class="button" href="#kontakt" data-anliegen="privat">Beitrag prüfen lassen</a>
         </div>
       </article>

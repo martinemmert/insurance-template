@@ -9,6 +9,8 @@ const leistungen = [
   { titel: 'Chefarzt & Zweibettzimmer', href: `${base}leistungen/wahlleistungen-krankenhaus` },
   { titel: 'Brillen & Heilpraktiker', href: `${base}leistungen/brillen-heilpraktiker` },
   { titel: 'Pflegeabsicherung', href: `${base}leistungen/pflegeabsicherung` },
+  { titel: 'Berufsunfähigkeit', href: '#leistungen' },
+  { titel: 'Altersvorsorge', href: '#leistungen' },
 ];
 ---
 
@@ -17,7 +19,7 @@ const leistungen = [
     <div class="footer__extra">
       <p>
         <strong>{kontakt.name}</strong>
-        Ihr unabhängiger Versicherungsmakler in Aschaffenburg. Persönliche Beratung, ehrliche Empfehlungen.
+        Unabhängiger Versicherungsmakler in Aschaffenburg. Persönlich, ehrlich, erreichbar.
       </p>
       <ul>
         {leistungen.map((z) => (

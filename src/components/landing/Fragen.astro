@@ -1,41 +1,40 @@
 ---
 const fragen = [
   {
-    frage: 'Kann ich später zurück in die gesetzliche Krankenversicherung?',
+    frage: 'Kann ich später zurück in die gesetzliche Kasse?',
     antwort:
-      'Nur unter bestimmten Voraussetzungen, zum Beispiel wenn Sie als Angestellte wieder unter die Versicherungspflichtgrenze fallen. Ab 55 ist der Weg zurück in der Regel verschlossen. Die Entscheidung für die PKV sollte deshalb gut überlegt sein, und genau dafür ist das Erstgespräch da.',
+      'Nur unter bestimmten Voraussetzungen, etwa wenn Ihr Gehalt als Angestellte wieder unter die Versicherungspflichtgrenze fällt. Ab 55 ist der Weg zurück meist zu. Deshalb gilt: erst gut beraten, dann wechseln.',
   },
   {
-    frage: 'Werden die Beiträge im Alter unbezahlbar?',
+    frage: 'Wird die PKV im Alter unbezahlbar?',
     antwort:
-      'Ein Teil Ihres Beitrags fließt in Altersrückstellungen, die spätere Erhöhungen abfedern. Steigen werden die Beiträge trotzdem, weil Behandlungen teurer werden. Ich plane das von Anfang an mit ein: mit einem solide kalkulierten Tarif und mit Bausteinen, die Ihren Beitrag ab dem Rentenalter senken.',
+      'Altersrückstellungen federn spätere Erhöhungen ab. Steigen werden die Beiträge trotzdem. Darum plane ich von Anfang an mit: ein solide kalkulierter Tarif plus Bausteine, die Ihren Beitrag im Ruhestand senken.',
   },
   {
-    frage: 'Was passiert mit meiner Familie?',
+    frage: 'Was ist mit meiner Familie?',
     antwort:
-      'In der PKV braucht jedes Familienmitglied einen eigenen Vertrag. Eine beitragsfreie Familienversicherung wie in der gesetzlichen Kasse gibt es nicht. Ob Ihre Kinder privat oder gesetzlich versichert werden, hängt davon ab, wie Ihr Partner versichert ist und wer mehr verdient. Das rechne ich mit Ihnen durch.',
+      'In der PKV braucht jeder einen eigenen Vertrag, eine kostenlose Familienversicherung gibt es nicht. Ob Ihre Kinder privat oder gesetzlich versichert werden, hängt davon ab, wie Ihr Partner versichert ist und wer mehr verdient. Das rechnen wir gemeinsam durch.',
   },
   {
-    frage: 'Ich habe Vorerkrankungen. Lohnt sich die Anfrage überhaupt?',
+    frage: 'Ich habe Vorerkrankungen. Lohnt sich das trotzdem?',
     antwort:
-      'Vorerkrankungen müssen Sie im Antrag vollständig angeben. Versicherer gehen sehr unterschiedlich damit um: Der eine verlangt einen Zuschlag, der andere schließt eine Leistung aus, der dritte lehnt ab. Aus meiner Zeit bei den Versicherern weiß ich, wo eine Anfrage Aussicht auf Erfolg hat.',
+      'Vorerkrankungen gehören vollständig in den Antrag. Versicherer reagieren darauf sehr unterschiedlich: mit Zuschlag, Leistungsausschluss oder Ablehnung. Aus 25 Jahren weiß ich, wo eine Anfrage Chancen hat.',
   },
   {
-    frage: 'Mein PKV-Beitrag ist stark gestiegen. Was kann ich tun?',
+    frage: 'Mein PKV-Beitrag ist stark gestiegen. Was tun?',
     antwort:
-      'Sie können bei Ihrem Versicherer in einen anderen Tarif wechseln (§ 204 VVG) und behalten dabei Ihre Altersrückstellungen. Welche Tarife infrage kommen und was Sie dabei aufgeben würden, prüfe ich für Sie.',
+      'Wechseln Sie bei Ihrem Versicherer den Tarif (§ 204 VVG). Ihre Altersrückstellungen nehmen Sie mit. Welche Tarife passen und was Sie dabei aufgeben würden, prüfe ich für Sie.',
   },
   {
     frage: 'Was kostet das Erstgespräch?',
-    antwort:
-      'Nichts. Es dauert etwa 15 Minuten, per Telefon oder Video, und verpflichtet Sie zu nichts.',
+    antwort: 'Nichts. 15 Minuten, per Telefon oder Video, ohne Verpflichtung.',
   },
 ];
 ---
 
 <section class="section faq" id="fragen" aria-labelledby="faq-title">
   <div class="wrap faq__grid">
-    <h2 id="faq-title">Fragen, die mir oft gestellt werden</h2>
+    <h2 id="faq-title">Häufige Fragen</h2>
     <div class="faq__list">
       {fragen.map((f) => (
         <details>

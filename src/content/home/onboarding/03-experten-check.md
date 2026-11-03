@@ -2,4 +2,4 @@
 number: "03"
 title: Ihr Tarifvergleich
 ---
-Ich vergleiche Tarife, lese das Kleingedruckte und lege Ihnen eine klare Empfehlung vor. Mit dem Wissen aus 25 Jahren bei Versicherern, das Sie online nicht finden.
+Ich vergleiche, lese das Kleingedruckte und gebe Ihnen eine klare Empfehlung. Mit Wissen, das Sie online nicht finden.

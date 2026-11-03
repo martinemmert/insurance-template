@@ -7,15 +7,14 @@ import { kontakt } from '../../data/kontakt';
 <section class="section contact" id="kontakt" aria-labelledby="contact-title">
   <div class="wrap contact__grid">
     <div class="contact__info">
-      <h2 id="contact-title">Sprechen wir 15 Minuten über Ihre Situation.</h2>
+      <h2 id="contact-title">15 Minuten, die sich lohnen.</h2>
       <p class="contact__intro">
-        Kostenlos und unverbindlich, per Telefon oder Video. Danach wissen Sie, ob sich die private
-        Krankenversicherung für Sie lohnt, oder welche Zusatzversicherung Ihnen wirklich hilft.
+        Kostenlos, unverbindlich, per Telefon oder Video. Danach wissen Sie, was zu Ihnen passt.
       </p>
 
       <div class="contact__person">
         <Image src={buero} alt="" width={480} class="contact__avatar" />
-        <p>Am Telefon sprechen Sie direkt mit mir, nicht mit einem Callcenter.</p>
+        <p>Sie sprechen direkt mit mir. Kein Callcenter.</p>
       </div>
 
       <a href={kontakt.telefonLink} class="contact__phone">{kontakt.telefonAnzeige}</a>
@@ -32,7 +31,7 @@ import { kontakt } from '../../data/kontakt';
     </div>
 
     <form class="contact__form" id="kontakt-formular">
-      <p class="contact__form-title">Oder lassen Sie sich zurückrufen</p>
+      <p class="contact__form-title">Lieber zurückrufen lassen?</p>
 
       <div class="field">
         <label for="k-name">Name</label>
@@ -53,11 +52,18 @@ import { kontakt } from '../../data/kontakt';
       <div class="field">
         <label for="k-anliegen">Worum geht es?</label>
         <select id="k-anliegen" name="anliegen">
-          <option value="angestellt">Als Angestellte/r in die PKV wechseln</option>
-          <option value="selbststaendig">Als Selbstständige/r in die PKV wechseln</option>
-          <option value="beamt">PKV für Beamte oder Anwärter</option>
-          <option value="privat">Meinen bestehenden PKV-Beitrag prüfen</option>
-          <option value="anderes">Etwas anderes</option>
+          <optgroup label="Private Krankenversicherung">
+            <option value="angestellt">PKV für Angestellte</option>
+            <option value="selbststaendig">PKV für Selbstständige</option>
+            <option value="beamt">PKV für Beamte und Anwärter</option>
+            <option value="privat">Meinen PKV-Beitrag prüfen</option>
+          </optgroup>
+          <optgroup label="Weitere Leistungen">
+            <option value="bu">Berufsunfähigkeit</option>
+            <option value="altersvorsorge">Altersvorsorge</option>
+            <option value="zusatz">Zusatzversicherung (Zahn, Krankenhaus, Pflege)</option>
+            <option value="anderes">Etwas anderes</option>
+          </optgroup>
         </select>
       </div>
 

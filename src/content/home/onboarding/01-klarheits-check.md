@@ -2,4 +2,4 @@
 number: "01"
 title: Kurzes Erstgespräch
 ---
-15 Minuten per Telefon oder Video. Wir klären Ihren Bedarf und ob wir zueinander passen. Kostenlos und unverbindlich.
+15 Minuten am Telefon oder per Video. Wir klären, was Sie brauchen. Kostenlos und unverbindlich.
